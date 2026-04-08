@@ -21,6 +21,8 @@
         .nav-links a:hover { color: var(--text); }
         .nav-cta { font-size: 13px; font-weight: 600; padding: 12px 28px; background: var(--text); color: #000; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
         .nav-cta:hover { transform: scale(1.06); box-shadow: 0 0 40px rgba(255,255,255,0.15); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 101; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
 
         /* Full page scroll container */
         .zoom-container { height: 800vh; position: relative; }
@@ -412,11 +414,7 @@ function onScroll() {
 window.addEventListener('scroll', onScroll);
 onScroll();
 </script>
-<style>
-/* Hamburger Menu */
-.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 101; }
-.hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
-</style>
+
 <script>
 // Mobile hamburger menu
 (function() {
