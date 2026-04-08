@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies — closed:in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #050505;
+            --card: #0A0A0A;
+            --border: rgba(255,255,255,0.06);
+            --text: #fff;
+            --muted: rgba(255,255,255,0.4);
+            --dim: rgba(255,255,255,0.6);
+            --accent: #7877C6;
+            --accent-glow: rgba(120,119,198,0.15);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══ NOISE TEXTURE OVERLAY ═══ */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 128px;
+        }
+
+        /* ═══ CURSOR ═══ */
+        .cursor-glow {
+            position: fixed;
+            width: 900px; height: 900px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(120,119,198,0.06) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: left 0.8s cubic-bezier(0.16,1,0.3,1), top 0.8s cubic-bezier(0.16,1,0.3,1);
+        }
+
+        /* ═══ NAV ═══ */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 10px 48px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5,5,5,0.6);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 64px; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta {
+            font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+            padding: 12px 28px;
+            background: var(--text); color: var(--bg);
+            border-radius: 100px; text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+            position: relative; overflow: hidden;
+        }
+        .nav-cta::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(120,119,198,0.3), transparent);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .nav-cta:hover { transform: scale(1.06); box-shadow: 0 0 40px rgba(255,255,255,0.15); }
+        .nav-cta:hover::before { opacity: 1; }
+
+        /* ═══ HERO ═══ */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center;
+            padding: 180px 40px 100px;
+            position: relative; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 60% 40% at 50% -10%, rgba(120,119,198,0.2), transparent),
+                radial-gradient(ellipse 40% 30% at 80% 50%, rgba(59,130,246,0.06), transparent),
+                radial-gradient(ellipse 50% 40% at 20% 70%, rgba(120,119,198,0.05), transparent);
+        }
+        .hero-grid {
+            position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: radial-gradient(ellipse at 50% 30%, black 10%, transparent 60%);
+            -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 10%, transparent 60%);
+            animation: gridPulse 4s ease-in-out infinite;
+        }
+        @keyframes gridPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .hero-particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+        .particle {
+            position: absolute;
+            width: 2px; height: 2px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: particleFloat linear infinite;
+        }
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-20vh) scale(1); opacity: 0; }
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 100px;
+            font-size: 13px; font-weight: 500; color: var(--muted);
+            backdrop-filter: blur(10px);
+            animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+        }
+        .hero-badge .dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px var(--accent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .hero h1 {
+            font-family: 'Satoshi', sans-serif;
+            font-size: clamp(56px, 8vw, 100px);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            margin: 40px 0 28px;
+            max-width: 900px;
+        }
+        .hero h1 .line {
+            display: block;
+            animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) both;
+        }
+        .hero h1 .line:nth-child(1) { animation-delay: 0.3s; }
+        .hero h1 .line:nth-child(2) { animation-delay: 0.45s; }
+        .hero h1 .line:nth-child(3) { animation-delay: 0.6s; }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.6s both, gradientShift 4s ease-in-out infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .hero p {
+            font-size: 18px; color: var(--muted); max-width: 500px; line-height: 1.7;
+            margin-bottom: 48px;
+            animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.8s both;
+        }
+        .hero-cta {
+            animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 1s both;
+        }
+        .hero-scroll-indicator {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 1.2s both;
+        }
+        .hero-scroll-indicator span { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+        .scroll-line { width: 1px; height: 40px; background: linear-gradient(180deg, var(--muted), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+        @keyframes scrollPulse { 0%, 100% { opacity: 0.3; height: 40px; } 50% { opacity: 1; height: 60px; } }
+
+        /* ═══ MARQUEE ═══ */
+        .marquee-section {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .marquee-track {
+            display: flex; gap: 60px;
+            animation: marquee 25s linear infinite;
+            width: max-content;
+        }
+        .marquee-track:hover { animation-play-state: paused; }
+        .marquee-item { display: flex; align-items: center; gap: 14px; white-space: nowrap; }
+        .marquee-item .num {
+            font-family: 'Satoshi', sans-serif; font-size: 42px; font-weight: 700; letter-spacing: -0.03em;
+        }
+        .marquee-item .label { font-size: 13px; color: var(--muted); max-width: 110px; white-space: normal; line-height: 1.4; }
+        .marquee-sep { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.15); flex-shrink: 0; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ═══ CASE CARDS ═══ */
+        .cases-section { padding: 100px 40px 120px; max-width: 1300px; margin: 0 auto; }
+        .cases-header { text-align: center; margin-bottom: 72px; }
+        .cases-header .label {
+            font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 20px;
+        }
+        .cases-header h2 {
+            font-family: 'Satoshi', sans-serif; font-size: clamp(40px, 5vw, 64px); font-weight: 900;
+            letter-spacing: -0.04em; line-height: 1;
+        }
+        .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+        .case-card {
+            position: relative; border-radius: 24px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            overflow: hidden; cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
+            text-decoration: none; color: inherit; display: block;
+            transform-style: preserve-3d; perspective: 1000px;
+        }
+        .case-card:hover {
+            border-color: rgba(120,119,198,0.2);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+        .case-card-glow {
+            position: absolute; inset: -1px;
+            border-radius: 24px;
+            opacity: 0; transition: opacity 0.5s ease;
+            pointer-events: none; z-index: 0;
+            background: conic-gradient(from 0deg, transparent, var(--accent), transparent, transparent);
+            animation: borderRotate 4s linear infinite paused;
+        }
+        .case-card:hover .case-card-glow { opacity: 0.3; animation-play-state: running; }
+        @keyframes borderRotate { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+        .case-card-inner { position: relative; z-index: 1; background: var(--card); border-radius: 23px; overflow: hidden; }
+        .case-card-spotlight {
+            position: absolute; inset: 0;
+            opacity: 0; transition: opacity 0.4s;
+            pointer-events: none; z-index: 2;
+        }
+        .case-card:hover .case-card-spotlight { opacity: 1; }
+        .case-card-image {
+            width: 100%; height: 200px; position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .case-card-image::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 30%, var(--card) 100%);
+        }
+        .case-card-client {
+            font-family: 'Satoshi', sans-serif; font-size: 28px; font-weight: 700;
+            color: rgba(255,255,255,0.1); letter-spacing: -0.02em; z-index: 1;
+        }
+        .case-card-content { padding: 24px 28px 28px; position: relative; z-index: 1; }
+        .case-card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+        .case-card-tag {
+            font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--muted); background: rgba(255,255,255,0.04); padding: 4px 10px; border-radius: 100px;
+        }
+        .case-card h3 {
+            font-family: 'Satoshi', sans-serif; font-size: 20px; font-weight: 700;
+            line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 10px;
+        }
+        .case-card .desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+        .case-card-stats { display: flex; gap: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+        .case-card-stat-val {
+            font-family: 'Satoshi', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; line-height: 1;
+        }
+        .case-card-stat-lbl { font-size: 11px; color: var(--muted); margin-top: 4px; }
+        .case-card-arrow {
+            position: absolute; bottom: 28px; right: 28px;
+            width: 40px; height: 40px; border-radius: 50%;
+            border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+            font-size: 14px; color: var(--muted);
+        }
+        .case-card:hover .case-card-arrow {
+            background: var(--text); color: var(--bg); border-color: var(--text);
+            transform: rotate(-45deg) scale(1.1);
+            box-shadow: 0 0 20px rgba(255,255,255,0.15);
+        }
+
+        /* ═══ MAGNETIC BUTTON ═══ */
+        .magnetic-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 18px 40px;
+            background: var(--text); color: var(--bg);
+            font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700;
+            border-radius: 100px; text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+            position: relative; overflow: hidden;
+        }
+        .magnetic-btn::before {
+            content: ''; position: absolute; inset: 0; border-radius: 100px;
+            background: linear-gradient(135deg, rgba(120,119,198,0.4), transparent);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .magnetic-btn:hover { transform: scale(1.08); box-shadow: 0 0 80px rgba(255,255,255,0.2), 0 0 160px var(--accent-glow); }
+        .magnetic-btn:hover::before { opacity: 1; }
+        .magnetic-btn svg { transition: transform 0.3s; }
+        .magnetic-btn:hover svg { transform: translateX(4px); }
+
+        /* ═══ BOTTOM CTA ═══ */
+        .bottom-cta {
+            text-align: center; padding: 140px 40px 180px; position: relative;
+        }
+        .bottom-cta::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(120,119,198,0.12), transparent);
+            pointer-events: none;
+        }
+        .bottom-cta h2 {
+            font-family: 'Satoshi', sans-serif; font-size: clamp(40px, 6vw, 72px); font-weight: 900;
+            letter-spacing: -0.04em; line-height: 0.95; margin-bottom: 20px; position: relative;
+        }
+        .bottom-cta p { font-size: 16px; color: var(--muted); max-width: 400px; margin: 0 auto 40px; line-height: 1.6; position: relative; }
+
+        /* ═══ ANIMATIONS ═══ */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.4); } }
+        .reveal { opacity: 0; transform: translateY(50px); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Premium Footer */
+        .premium-footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 80px 48px 40px; position: relative; }
+        .premium-footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(120,119,198,0.2), transparent); }
+        .footer-inner { max-width: 1100px; margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; gap: 60px; margin-bottom: 60px; }
+        .footer-brand { max-width: 280px; }
+        .footer-logo { height: 80px; margin-bottom: 16px; display: block; }
+        .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.35); line-height: 1.6; }
+        .footer-links { display: flex; gap: 60px; }
+        .footer-col { display: flex; flex-direction: column; gap: 12px; }
+        .footer-col h4 { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 4px; letter-spacing: -0.01em; }
+        .footer-col a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: rgba(120,119,198,0.8); }
+        .footer-badges { display: flex; gap: 24px; align-items: center; justify-content: center; padding: 40px 0; }
+        .footer-badges a { transition: transform 0.3s, opacity 0.3s; opacity: 0.85; }
+        .footer-badges a:hover { transform: translateY(-3px); opacity: 1; }
+        .footer-badges img { height: 80px; object-fit: contain; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+        .footer-bottom a { color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.3s; }
+        .footer-bottom a:hover { color: rgba(255,255,255,0.5); }
+
+        @media (max-width: 1024px) { .cases-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) {
+            .cases-grid { grid-template-columns: 1fr; }
+            nav { padding: 16px 20px; }
+            .nav-links { display: none; }
+            .hero { padding: 140px 20px 80px; }
+            .cases-section { padding: 80px 20px; }
+            .footer-top { flex-direction: column; gap: 40px; }
+            .footer-links { flex-direction: column; gap: 32px; }
+            .premium-footer { padding: 60px 20px 32px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+<canvas id="fogCanvas" style="position: fixed; inset: 0; z-index: 0; pointer-events: none;"></canvas>
+
+<nav>
+    <a href="homepage.html" class="logo"><img src="closedin-logo.png" alt="closed:in"></a>
+    <div class="nav-links">
+        <a href="homepage.html">Home</a>
+        <a href="index.html">Case Studies</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="nav-cta">Book Meeting</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-particles" id="particles"></div>
+
+    <div class="hero-badge">
+        <span class="dot"></span>
+        Real results from real campaigns
+    </div>
+
+    <h1>
+        <span class="line">Where outbound</span>
+        <span class="line"><span class="gradient">becomes pipeline</span></span>
+    </h1>
+
+    <p>We don't just send emails. We engineer meetings. Here's the proof.</p>
+
+    <div class="hero-cta">
+        <a href="#cases" class="magnetic-btn" id="heroCta">
+            View Case Studies
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+    </div>
+
+    <div class="hero-scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- MARQUEE -->
+<section class="marquee-section">
+    <div class="marquee-track">
+        <div class="marquee-item"><span class="num">1,000+</span><span class="label">Campaigns launched</span></div>
+        <div class="marquee-sep"></div>
+        <div class="marquee-item"><span class="num">98%</span><span class="label">Deliverability rate</span></div>
+        <div class="marquee-sep"></div>
+        <div class="marquee-item"><span class="num">20+</span><span class="label">Meetings per month</span></div>
+        <div class="marquee-sep"></div>
+        <div class="marquee-item"><span class="num">50+</span><span class="label">Trusted B2B clients</span></div>
+        <div class="marquee-sep"></div>
+        <div class="marquee-item"><span class="num">80%</span><span class="label">Meetings within 4 weeks</span></div>
+        <div class="marquee-sep"></div>
+        <div class="marquee-item"><span class="num">1,000+</span><span class="label">Campaigns launched</span></div>
+        <div class="marquee-sep"></div>
+        <div class="marquee-item"><span class="num">98%</span><span class="label">Deliverability rate</span></div>
+        <div class="marquee-sep"></div>
+        <div class="marquee-item"><span class="num">20+</span><span class="label">Meetings per month</span></div>
+        <div class="marquee-sep"></div>
+        <div class="marquee-item"><span class="num">50+</span><span class="label">Trusted B2B clients</span></div>
+        <div class="marquee-sep"></div>
+        <div class="marquee-item"><span class="num">80%</span><span class="label">Meetings within 4 weeks</span></div>
+        <div class="marquee-sep"></div>
+    </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="cases-section" id="cases">
+    <div class="cases-header reveal">
+        <div class="label">Case Studies</div>
+        <h2>The campaigns that<br>changed everything</h2>
+    </div>
+
+    <div class="cases-grid">
+        <a href="case-study-tsc.html" class="case-card reveal" id="card1">
+            <div class="case-card-glow"></div>
+            <div class="case-card-inner">
+                <div class="case-card-spotlight"></div>
+                <div class="case-card-image" style="background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(120,119,198,0.04));">
+                    <span class="case-card-client">Thomas Scott &amp; Co</span>
+                </div>
+                <div class="case-card-content">
+                    <div class="case-card-tags">
+                        <span class="case-card-tag">Private Equity / M&amp;A</span>
+                        <span class="case-card-tag">United Kingdom</span>
+                    </div>
+                    <h3>181 opportunities generated through multi-market PE outbound</h3>
+                    <p class="desc">Launched 4 targeted campaigns reaching buy-side decision makers and PE firms across the UK, generating $300K+ in pipeline.</p>
+                    <div class="case-card-stats">
+                        <div><div class="case-card-stat-val" data-count="181">0</div><div class="case-card-stat-lbl">Opportunities</div></div>
+                        <div><div class="case-card-stat-val">6 wk</div><div class="case-card-stat-lbl">Timeline</div></div>
+                        <div><div class="case-card-stat-val">4.96%</div><div class="case-card-stat-lbl">Reply rate</div></div>
+                    </div>
+                    <div class="case-card-arrow">&#8599;</div>
+                </div>
+            </div>
+        </a>
+
+        <a href="case-study-verzendbazen.html" class="case-card reveal" style="transition-delay: 0.15s;" id="card2">
+            <div class="case-card-glow"></div>
+            <div class="case-card-inner">
+                <div class="case-card-spotlight"></div>
+                <div class="case-card-image" style="background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(120,119,198,0.04));">
+                    <span class="case-card-client">Verzendbazen</span>
+                </div>
+                <div class="case-card-content">
+                    <div class="case-card-tags">
+                        <span class="case-card-tag">E-commerce Fulfillment</span>
+                        <span class="case-card-tag">NL / BE</span>
+                    </div>
+                    <h3>78 opportunities with a 13.9% reply rate</h3>
+                    <p class="desc">Built a complete outbound engine using Clay and Instantly to generate qualified e-commerce leads and create &euro;78K in pipeline.</p>
+                    <div class="case-card-stats">
+                        <div><div class="case-card-stat-val" data-count="78">0</div><div class="case-card-stat-lbl">Opportunities</div></div>
+                        <div><div class="case-card-stat-val">&euro;78K</div><div class="case-card-stat-lbl">Pipeline</div></div>
+                        <div><div class="case-card-stat-val">13.9%</div><div class="case-card-stat-lbl">Reply rate</div></div>
+                    </div>
+                    <div class="case-card-arrow">&#8599;</div>
+                </div>
+            </div>
+        </a>
+
+        <a href="case-study-jamezz.html" class="case-card reveal" style="transition-delay: 0.3s;" id="card3">
+            <div class="case-card-glow"></div>
+            <div class="case-card-inner">
+                <div class="case-card-spotlight"></div>
+                <div class="case-card-image" style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(120,119,198,0.04));">
+                    <span class="case-card-client">Jamezz</span>
+                </div>
+                <div class="case-card-content">
+                    <div class="case-card-tags">
+                        <span class="case-card-tag">Hospitality SaaS</span>
+                        <span class="case-card-tag">Local Data Sourcing</span>
+                    </div>
+                    <h3>81 qualified leads from an unreachable ICP in 60 days</h3>
+                    <p class="desc">Built a custom outbound system using Google Maps, Clay, and scraping tools to reach hospitality entrepreneurs invisible in B2B databases.</p>
+                    <div class="case-card-stats">
+                        <div><div class="case-card-stat-val" data-count="81">0</div><div class="case-card-stat-lbl">Qualified leads</div></div>
+                        <div><div class="case-card-stat-val">$190K+</div><div class="case-card-stat-lbl">Pipeline</div></div>
+                        <div><div class="case-card-stat-val">60d</div><div class="case-card-stat-lbl">Timeline</div></div>
+                    </div>
+                    <div class="case-card-arrow">&#8599;</div>
+                </div>
+            </div>
+        </a>
+
+        <a href="case-study-endresz.html" class="case-card reveal" style="transition-delay: 0.45s;" id="card4">
+            <div class="case-card-glow"></div>
+            <div class="case-card-inner">
+                <div class="case-card-spotlight"></div>
+                <div class="case-card-image" style="background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(120,119,198,0.04));">
+                    <span class="case-card-client">Endresz</span>
+                </div>
+                <div class="case-card-content">
+                    <div class="case-card-tags">
+                        <span class="case-card-tag">Creative Agency</span>
+                        <span class="case-card-tag">Netherlands</span>
+                    </div>
+                    <h3>247 boutique conversations across Europe for high-end fashion brand</h3>
+                    <p class="desc">Built a multi-market outbound system across NL, France, Poland and London with localized messaging that generated $128K+ pipeline.</p>
+                    <div class="case-card-stats">
+                        <div><div class="case-card-stat-val" data-count="247">0</div><div class="case-card-stat-lbl">Opportunities</div></div>
+                        <div><div class="case-card-stat-val">6 wk</div><div class="case-card-stat-lbl">Timeline</div></div>
+                        <div><div class="case-card-stat-val" data-count="12" data-suffix="%">0</div><div class="case-card-stat-lbl">Reply rate</div></div>
+                    </div>
+                    <div class="case-card-arrow">&#8599;</div>
+                </div>
+            </div>
+        </a>
+        <a href="case-study-mistertafel.html" class="case-card reveal" style="transition-delay: 0.6s;" id="card5">
+            <div class="case-card-glow"></div>
+            <div class="case-card-inner">
+                <div class="case-card-spotlight"></div>
+                <div class="case-card-image" style="background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(120,119,198,0.06));">
+                    <span class="case-card-client">Mistertafel</span>
+                </div>
+                <div class="case-card-content">
+                    <div class="case-card-tags">
+                        <span class="case-card-tag">B2C / Home Interior</span>
+                        <span class="case-card-tag">Netherlands</span>
+                    </div>
+                    <h3>96 retail opportunities in under 30 days from just 900 contacts</h3>
+                    <p class="desc">B2C founder with zero B2B experience. Built the outbound engine from scratch, achieving 35%+ reply rate and 10% opportunity rate.</p>
+                    <div class="case-card-stats">
+                        <div><div class="case-card-stat-val" data-count="96">0</div><div class="case-card-stat-lbl">Opportunities</div></div>
+                        <div><div class="case-card-stat-val">30 days</div><div class="case-card-stat-lbl">Timeline</div></div>
+                        <div><div class="case-card-stat-val" data-count="35" data-suffix="%">0</div><div class="case-card-stat-lbl">Reply rate</div></div>
+                    </div>
+                    <div class="case-card-arrow">&#8599;</div>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+    <div class="reveal">
+        <h2>Ready to fill<br>your pipeline?</h2>
+        <p>See how we can generate qualified meetings for your business within 4 weeks.</p>
+        <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="magnetic-btn" id="bottomCta">
+            Book a 30 Minute Call
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+    </div>
+</section>
+
+<footer class="premium-footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="closedin-logo.png" alt="closed:in" class="footer-logo">
+                <p class="footer-tagline">Your B2B Go-To-Market Partner</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Navigate</h4>
+                    <a href="homepage.html">Home</a>
+                    <a href="index.html">Case Studies</a>
+                    <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="mailto:info@closedin.io">info@closedin.io</a>
+                    <a href="https://closedin.neetocal.com/discovery-call" target="_blank">Book a Call</a>
+                    <a href="https://www.linkedin.com/company/closedin" target="_blank">LinkedIn</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Partners</h4>
+                    <a href="https://www.clay.com/experts/partner/closedin" target="_blank">Clay Solutions Partner</a>
+                    <a href="https://instantly.ai/experts/jurre-groot" target="_blank">Instantly Expert</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-badges">
+            <a href="https://www.clay.com/experts/partner/closedin" target="_blank"><img src="badge-clay.png" alt="Clay Artisan Solutions Partner 2026"></a>
+            <a href="https://instantly.ai/experts/jurre-groot" target="_blank"><img src="badge-instantly.png" alt="Instantly Certified Expert"></a>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 closed:in. All rights reserved.</span>
+            <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// ═══ CURSOR GLOW ═══
+const glow = document.getElementById('cursorGlow');
+document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+});
+
+// ═══ PARTICLES ═══
+const particleContainer = document.getElementById('particles');
+for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (8 + Math.random() * 12) + 's';
+    p.style.animationDelay = Math.random() * 10 + 's';
+    p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
+    particleContainer.appendChild(p);
+}
+
+// ═══ CARD 3D TILT + SPOTLIGHT ═══
+document.querySelectorAll('.case-card').forEach(card => {
+    const spotlight = card.querySelector('.case-card-spotlight');
+    card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        const tiltX = (y - 0.5) * 8;
+        const tiltY = (x - 0.5) * -8;
+        card.style.transform = `translateY(-8px) scale(1.01) perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+        spotlight.style.background = `radial-gradient(500px circle at ${x*100}% ${y*100}%, rgba(120,119,198,0.1), transparent 40%)`;
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+    });
+});
+
+// ═══ MAGNETIC BUTTONS ═══
+document.querySelectorAll('.magnetic-btn').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `scale(1.08) translate(${x * 0.15}px, ${y * 0.15}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+    });
+});
+
+// ═══ SCROLL REVEAL ═══
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ═══ COUNT UP ═══
+const countObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.count);
+            const suffix = el.dataset.suffix || '';
+            const start = performance.now();
+            const animate = now => {
+                const p = Math.min((now - start) / 1800, 1);
+                const eased = 1 - Math.pow(1 - p, 4);
+                el.textContent = Math.floor(eased * target) + suffix;
+                if (p < 1) requestAnimationFrame(animate);
+            };
+            requestAnimationFrame(animate);
+            countObs.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => countObs.observe(el));
+
+// ═══ PARALLAX ON SCROLL ═══
+window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const hero = document.getElementById('hero');
+    if (hero) {
+        hero.querySelector('.hero-bg').style.transform = `translateY(${y * 0.3}px)`;
+        hero.querySelector('.hero-grid').style.transform = `translateY(${y * 0.15}px)`;
+    }
+});
+
+// ═══ FOG / MIST BACKGROUND ═══
+const fogCanvas = document.getElementById('fogCanvas');
+const fogCtx = fogCanvas.getContext('2d');
+let fogMouseX = 0, fogMouseY = 0;
+
+function resizeFog() { fogCanvas.width = window.innerWidth; fogCanvas.height = window.innerHeight; }
+resizeFog();
+window.addEventListener('resize', resizeFog);
+document.addEventListener('mousemove', e => { fogMouseX = e.clientX; fogMouseY = e.clientY; });
+
+// Create fog particles
+const fogParticles = [];
+for (let i = 0; i < 60; i++) {
+    fogParticles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        radius: Math.random() * 200 + 100,
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: (Math.random() - 0.5) * 0.15,
+        opacity: Math.random() * 0.04 + 0.01,
+        pulse: Math.random() * Math.PI * 2,
+        pulseSpeed: Math.random() * 0.008 + 0.002,
+        hue: Math.random() > 0.5 ? 240 : 250,
+    });
+}
+
+function drawFog() {
+    fogCtx.clearRect(0, 0, fogCanvas.width, fogCanvas.height);
+
+    fogParticles.forEach(p => {
+        // Mouse interaction - fog swirls around cursor
+        const dx = p.x - fogMouseX;
+        const dy = p.y - fogMouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 300) {
+            const force = (300 - dist) / 300;
+            p.x += (dx / dist) * force * 0.8;
+            p.y += (dy / dist) * force * 0.8;
+        }
+
+        p.pulse += p.pulseSpeed;
+        const currentOpacity = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
+
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < -p.radius) p.x = fogCanvas.width + p.radius;
+        if (p.x > fogCanvas.width + p.radius) p.x = -p.radius;
+        if (p.y < -p.radius) p.y = fogCanvas.height + p.radius;
+        if (p.y > fogCanvas.height + p.radius) p.y = -p.radius;
+
+        const gradient = fogCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
+        gradient.addColorStop(0, `hsla(${p.hue}, 40%, 60%, ${currentOpacity})`);
+        gradient.addColorStop(0.5, `hsla(${p.hue}, 30%, 50%, ${currentOpacity * 0.4})`);
+        gradient.addColorStop(1, `hsla(${p.hue}, 20%, 40%, 0)`);
+        fogCtx.beginPath();
+        fogCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        fogCtx.fillStyle = gradient;
+        fogCtx.fill();
+    });
+
+    // Mouse glow mist
+    const mGrad = fogCtx.createRadialGradient(fogMouseX, fogMouseY, 0, fogMouseX, fogMouseY, 200);
+    mGrad.addColorStop(0, 'rgba(120, 119, 198, 0.06)');
+    mGrad.addColorStop(0.5, 'rgba(120, 119, 198, 0.02)');
+    mGrad.addColorStop(1, 'rgba(120, 119, 198, 0)');
+    fogCtx.beginPath();
+    fogCtx.arc(fogMouseX, fogMouseY, 200, 0, Math.PI * 2);
+    fogCtx.fillStyle = mGrad;
+    fogCtx.fill();
+
+    requestAnimationFrame(drawFog);
+}
+drawFog();
+</script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - closed:in</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #050505; --card: #0A0A0A; --border: rgba(255,255,255,0.06); --text: #fff; --muted: rgba(255,255,255,0.4); --dim: rgba(255,255,255,0.6); --accent: #7877C6; }
+        body { font-family: 'Inter', sans-serif; background: #000; color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.02; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 10px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.7); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 64px; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { font-size: 13px; font-weight: 600; padding: 12px 28px; background: var(--text); color: #000; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+        .nav-cta:hover { transform: scale(1.06); box-shadow: 0 0 40px rgba(255,255,255,0.15); }
+
+        /* Full page scroll container */
+        .zoom-container { height: 800vh; position: relative; }
+        .zoom-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+
+        /* Map fills the screen */
+        #map { position: absolute; inset: 0; z-index: 1; }
+        .leaflet-control-zoom, .leaflet-control-attribution { display: none !important; }
+        .leaflet-container { background: #000 !important; }
+
+        /* Overlay UI */
+        .zoom-overlay { position: absolute; inset: 0; z-index: 10; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+
+        /* Phase labels */
+        .phase-label { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 20; pointer-events: none; transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+        .phase-label h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(28px, 5vw, 56px); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 8px; text-shadow: 0 4px 30px rgba(0,0,0,0.8); }
+        .phase-label p { font-size: 15px; color: rgba(255,255,255,0.6); text-shadow: 0 2px 20px rgba(0,0,0,0.8); }
+        .gradient { background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% 200%; animation: gradShift 4s ease-in-out infinite; }
+        @keyframes gradShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .nl-flag { background: linear-gradient(180deg, rgba(200,40,50,0.85) 0%, rgba(200,40,50,0.7) 30%, rgba(255,255,255,0.8) 40%, rgba(255,255,255,0.8) 60%, rgba(40,80,160,0.7) 70%, rgba(40,80,160,0.85) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .ams-text { color: #fff; position: relative; }
+        .ams-x { position: relative; }
+        .ams-x::before { content: '×××'; position: absolute; top: -0.15em; left: 50%; transform: translateX(-50%); font-size: 0.35em; color: rgba(204, 0, 0, 0.35); letter-spacing: 0.15em; pointer-events: none; }
+
+        /* HUD elements */
+        .hud { position: absolute; z-index: 20; pointer-events: none; }
+        .hud-alt { top: 100px; right: 40px; text-align: right; }
+        .hud-alt-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+        .hud-alt-value { font-family: 'Satoshi', sans-serif; font-size: 22px; font-weight: 700; color: rgba(255,255,255,0.5); text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .hud-coords { bottom: 40px; left: 40px; }
+        .hud-coords span { font-family: monospace; font-size: 12px; color: rgba(255,255,255,0.3); display: block; text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
+
+        /* Crosshair */
+        .crosshair { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 15; pointer-events: none; opacity: 0; transition: opacity 0.5s; }
+        .crosshair-v { position: absolute; left: 50%; top: -30px; width: 1px; height: 60px; background: linear-gradient(180deg, transparent, rgba(120,119,198,0.4), transparent); transform: translateX(-50%); }
+        .crosshair-h { position: absolute; top: 50%; left: -30px; width: 60px; height: 1px; background: linear-gradient(90deg, transparent, rgba(120,119,198,0.4), transparent); transform: translateY(-50%); }
+        .crosshair-ring { position: absolute; top: 50%; left: 50%; width: 20px; height: 20px; border: 1px solid rgba(120,119,198,0.3); border-radius: 50%; transform: translate(-50%, -50%); }
+
+        /* Scroll hint */
+        .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 20; display: flex; flex-direction: column; align-items: center; gap: 8px; pointer-events: none; transition: opacity 0.5s; }
+        .scroll-hint span { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .scroll-hint-line { width: 1px; height: 40px; background: linear-gradient(180deg, rgba(255,255,255,0.4), transparent); animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+        /* Location card */
+        .location-card { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); z-index: 30; max-width: 500px; width: 90%; padding: 44px 40px; background: rgba(10,10,10,0.92); backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; text-align: center; opacity: 0; pointer-events: none; transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .location-card.visible { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
+        .location-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); border-radius: 24px 24px 0 0; }
+        .loc-icon { width: 52px; height: 52px; border-radius: 50%; background: rgba(120,119,198,0.1); border: 1px solid rgba(120,119,198,0.2); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+        .loc-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+        .location-card h3 { font-family: 'Satoshi', sans-serif; font-size: 26px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 8px; }
+        .location-card .address { font-size: 15px; color: var(--dim); margin-bottom: 6px; }
+        .location-card .coffee { font-size: 14px; color: var(--accent); font-style: italic; margin-bottom: 24px; }
+        .contact-links { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+        .contact-link { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 20px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--dim); font-size: 14px; font-weight: 500; transition: all 0.3s; pointer-events: auto; }
+        .contact-link:hover { border-color: rgba(120,119,198,0.25); background: rgba(255,255,255,0.06); color: var(--text); }
+        .contact-link svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; background: var(--text); color: #000; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: auto; }
+        .btn-primary:hover { transform: scale(1.06); box-shadow: 0 0 60px rgba(255,255,255,0.15); }
+
+        /* Pin marker */
+        .pin-marker { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -100%); z-index: 25; opacity: 0; transition: opacity 0.5s; pointer-events: none; }
+        .pin-marker svg { width: 40px; height: 52px; filter: drop-shadow(0 4px 12px rgba(120,119,198,0.4)); }
+        .pin-pulse { position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 12px; height: 12px; border-radius: 50%; background: var(--accent); animation: pinPulse 2s ease-in-out infinite; }
+        @keyframes pinPulse { 0%,100% { transform: translateX(-50%) scale(1); opacity: 0.6; } 50% { transform: translateX(-50%) scale(2); opacity: 0; } }
+
+        /* Premium Footer */
+        .premium-footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 80px 48px 40px; position: relative; background: var(--bg); }
+        .premium-footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(120,119,198,0.2), transparent); }
+        .footer-inner { max-width: 1100px; margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; gap: 60px; margin-bottom: 60px; }
+        .footer-brand { max-width: 280px; }
+        .footer-logo { height: 80px; margin-bottom: 16px; display: block; }
+        .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.35); line-height: 1.6; }
+        .footer-links { display: flex; gap: 60px; }
+        .footer-col { display: flex; flex-direction: column; gap: 12px; }
+        .footer-col h4 { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 4px; }
+        .footer-col a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: rgba(120,119,198,0.8); }
+        .footer-badges { display: flex; gap: 24px; align-items: center; justify-content: center; padding: 40px 0; }
+        .footer-badges a { transition: transform 0.3s, opacity 0.3s; opacity: 0.85; }
+        .footer-badges a:hover { transform: translateY(-3px); opacity: 1; }
+        .footer-badges img { height: 80px; object-fit: contain; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+        .footer-bottom a { color: rgba(255,255,255,0.2); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            nav { padding: 10px 20px; }
+            .nav-links { display: none; }
+            .hud-alt { right: 16px; }
+            .hud-coords { left: 16px; }
+            .location-card { padding: 32px 24px; }
+            .footer-top { flex-direction: column; gap: 40px; }
+            .footer-links { flex-direction: column; gap: 32px; }
+            .premium-footer { padding: 60px 20px 32px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="homepage.html" class="logo"><img src="closedin-logo.png" alt="closed:in"></a>
+    <div class="nav-links">
+        <a href="homepage.html">Home</a>
+        <a href="index.html">Case Studies</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="nav-cta">Book Meeting</a>
+</nav>
+
+<div class="zoom-container" id="zoomContainer">
+    <div class="zoom-sticky">
+        <div id="map"></div>
+        <canvas id="warpCanvas" style="position:absolute;inset:0;z-index:5;pointer-events:none;"></canvas>
+
+        <!-- Phase labels -->
+        <div class="phase-label" id="p1"><h2>Find us from <span class="gradient">space</span></h2><p>Scroll down to zoom in</p></div>
+        <div class="phase-label" id="p2" style="opacity:0;"><h2>Entering <span class="gradient">Europe</span></h2></div>
+        <div class="phase-label" id="p3" style="opacity:0;"><h2>The <span class="nl-flag">Netherlands</span></h2></div>
+        <div class="phase-label" id="p4" style="opacity:0;"><h2><span class="ams-text">Amster<span class="ams-x">d</span>am</span></h2></div>
+        <div class="phase-label" id="p5" style="opacity:0;"><h2>Waterlooplein</h2></div>
+
+        <!-- HUD -->
+        <div class="hud hud-alt"><div class="hud-alt-label">Altitude</div><div class="hud-alt-value" id="alt">35,786 km</div></div>
+        <div class="hud hud-coords"><span id="lat">52.3676° N</span><span id="lng">4.9041° E</span></div>
+
+        <!-- Crosshair -->
+        <div class="crosshair" id="crosshair"><div class="crosshair-v"></div><div class="crosshair-h"></div><div class="crosshair-ring"></div></div>
+
+        <!-- Pin -->
+        <div class="pin-marker" id="pin">
+            <svg viewBox="0 0 24 32" fill="none"><path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20C24 5.4 18.6 0 12 0z" fill="#7877C6"/><circle cx="12" cy="12" r="5" fill="#fff"/></svg>
+            <div class="pin-pulse"></div>
+        </div>
+
+        <!-- Location card -->
+        <div class="location-card" id="locCard">
+            <div class="loc-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <h3>You've arrived</h3>
+            <p class="address">Jodenbreestraat 25, 1011 NH Amsterdam</p>
+            <p class="coffee">The coffee is ready.</p>
+            <div class="contact-links">
+                <a href="mailto:info@closedin.io" class="contact-link"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>info@closedin.io</a>
+                <a href="https://www.linkedin.com/company/closedin" target="_blank" class="contact-link"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+            </div>
+            <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="btn-primary">Book a 30 Minute Call →</a>
+        </div>
+
+        <!-- Scroll hint -->
+        <div class="scroll-hint" id="hint"><span>Scroll to zoom in</span><div class="scroll-hint-line"></div></div>
+    </div>
+</div>
+
+<footer class="premium-footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="closedin-logo.png" alt="closed:in" class="footer-logo">
+                <p class="footer-tagline">Your B2B Go-To-Market Partner</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col"><h4>Navigate</h4><a href="homepage.html">Home</a><a href="index.html">Case Studies</a><a href="team.html">Team</a><a href="contact.html">Contact</a></div>
+                <div class="footer-col"><h4>Contact</h4><a href="mailto:info@closedin.io">info@closedin.io</a><a href="https://closedin.neetocal.com/discovery-call" target="_blank">Book a Call</a><a href="https://www.linkedin.com/company/closedin" target="_blank">LinkedIn</a></div>
+                <div class="footer-col"><h4>Partners</h4><a href="https://www.clay.com/experts/partner/closedin" target="_blank">Clay Solutions Partner</a><a href="https://instantly.ai/experts/jurre-groot" target="_blank">Instantly Expert</a></div>
+            </div>
+        </div>
+        <div class="footer-badges">
+            <a href="https://www.clay.com/experts/partner/closedin" target="_blank"><img src="badge-clay.png" alt="Clay"></a>
+            <a href="https://instantly.ai/experts/jurre-groot" target="_blank"><img src="badge-instantly.png" alt="Instantly"></a>
+        </div>
+        <div class="footer-bottom"><span>&copy; 2026 closed:in. All rights reserved.</span><a href="#">Privacy Policy</a></div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// Amsterdam office coordinates
+const TARGET = [52.3676, 4.9041];
+
+// Create dark-themed map
+const map = L.map('map', {
+    center: [20, 10],
+    zoom: 3,
+    zoomControl: false,
+    attributionControl: false,
+    dragging: false,
+    scrollWheelZoom: false,
+    doubleClickZoom: false,
+    touchZoom: false,
+    keyboard: false,
+    zoomSnap: 0.1,
+    zoomDelta: 0.1,
+});
+
+// Dark satellite tiles
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 19,
+}).addTo(map);
+
+// Dark overlay for space feel at low zoom
+const darkOverlay = document.createElement('div');
+darkOverlay.style.cssText = 'position:absolute;inset:0;background:rgba(0,0,0,0.6);z-index:2;pointer-events:none;transition:opacity 0.5s;';
+document.getElementById('map').parentElement.appendChild(darkOverlay);
+
+// Zoom levels for each phase
+const phases = [
+    { zoom: 3,    center: [20, 10],      alt: '35,786 km' },
+    { zoom: 5,    center: [50, 10],       alt: '5,000 km' },
+    { zoom: 7,    center: [52.2, 5.3],    alt: '800 km' },
+    { zoom: 11,   center: [52.37, 4.9],   alt: '50 km' },
+    { zoom: 14,   center: [52.368, 4.904],alt: '5 km' },
+    { zoom: 17,   center: TARGET,         alt: '200 m' },
+    { zoom: 18.5, center: TARGET,         alt: '0 m' },
+];
+
+const container = document.getElementById('zoomContainer');
+const altEl = document.getElementById('alt');
+const hint = document.getElementById('hint');
+const crosshair = document.getElementById('crosshair');
+const pin = document.getElementById('pin');
+const locCard = document.getElementById('locCard');
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+
+// ═══ WARP SPEED STARFIELD ═══
+const warpCanvas = document.getElementById('warpCanvas');
+const warpCtx = warpCanvas.getContext('2d');
+const warpStars = [];
+const WARP_COUNT = 600;
+
+function resizeWarp() { warpCanvas.width = window.innerWidth; warpCanvas.height = window.innerHeight; }
+resizeWarp();
+window.addEventListener('resize', resizeWarp);
+
+const cx = () => warpCanvas.width / 2;
+const cy = () => warpCanvas.height / 2;
+
+for (let i = 0; i < WARP_COUNT; i++) {
+    warpStars.push({
+        x: (Math.random() - 0.5) * 2000,
+        y: (Math.random() - 0.5) * 2000,
+        z: Math.random() * 1500 + 500,
+        ox: 0, oy: 0,
+    });
+}
+
+let lastProgress = 0;
+let warpSpeed = 0;
+
+function drawWarp() {
+    warpCtx.clearRect(0, 0, warpCanvas.width, warpCanvas.height);
+
+    // Only show warp when actively scrolling (speed > 0)
+    if (warpSpeed < 0.001) {
+        requestAnimationFrame(drawWarp);
+        return;
+    }
+
+    const streakLen = Math.min(warpSpeed * 150, 80);
+
+    warpStars.forEach(s => {
+        // Move stars toward camera
+        s.z -= warpSpeed * 30;
+        if (s.z <= 1) {
+            s.x = (Math.random() - 0.5) * 2000;
+            s.y = (Math.random() - 0.5) * 2000;
+            s.z = 1500;
+        }
+
+        // Project to 2D
+        const k = 400 / s.z;
+        const px = s.x * k + cx();
+        const py = s.y * k + cy();
+
+        // Previous position for streak
+        const k2 = 400 / (s.z + streakLen);
+        const px2 = s.x * k2 + cx();
+        const py2 = s.y * k2 + cy();
+
+        // Brightness based on depth
+        const brightness = Math.min(1, (1500 - s.z) / 1500);
+        const alpha = brightness * Math.min(1, warpSpeed * 2) * 0.9;
+
+        if (alpha <= 0) return;
+
+        // Draw streak
+        warpCtx.beginPath();
+        warpCtx.moveTo(px2, py2);
+        warpCtx.lineTo(px, py);
+        warpCtx.strokeStyle = `rgba(180, 190, 255, ${alpha})`;
+        warpCtx.lineWidth = brightness * 3;
+        warpCtx.stroke();
+
+        // Bright dot at front
+        warpCtx.beginPath();
+        warpCtx.arc(px, py, brightness * 2.5, 0, Math.PI * 2);
+        warpCtx.fillStyle = `rgba(200, 210, 255, ${alpha})`;
+        warpCtx.fill();
+    });
+
+    requestAnimationFrame(drawWarp);
+}
+drawWarp();
+
+function onScroll() {
+    const rect = container.getBoundingClientRect();
+    const total = container.offsetHeight - window.innerHeight;
+    const progress = Math.max(0, Math.min(-rect.top / total, 1));
+
+    // Warp speed based on scroll delta
+    const delta = Math.abs(progress - lastProgress);
+    warpSpeed = lerp(warpSpeed, delta * 40 * (progress < 0.75 ? 1 : 0), 0.1);
+    lastProgress = progress;
+
+    // Calculate which phase we're in
+    const phaseProgress = progress * (phases.length - 1);
+    const phaseIdx = Math.min(Math.floor(phaseProgress), phases.length - 2);
+    const phaseFrac = phaseProgress - phaseIdx;
+
+    const from = phases[phaseIdx];
+    const to = phases[phaseIdx + 1];
+
+    // Smooth zoom and pan
+    const zoom = lerp(from.zoom, to.zoom, phaseFrac);
+    const lat = lerp(from.center[0], to.center[0], phaseFrac);
+    const lng = lerp(from.center[1], to.center[1], phaseFrac);
+    map.setView([lat, lng], zoom, { animate: false });
+
+    // Dark overlay fades as we zoom in
+    darkOverlay.style.opacity = Math.max(0, 0.6 - progress * 1.2);
+
+    // Altitude
+    altEl.textContent = from.alt;
+
+    // Phase labels
+    const showPhase = (id, start, end) => {
+        const el = document.getElementById(id);
+        const visible = progress >= start && progress < end;
+        el.style.opacity = visible ? '1' : '0';
+        el.style.transform = visible ? 'translate(-50%,-50%) scale(1)' : `translate(-50%,-50%) scale(${progress < start ? 0.9 : 1.1})`;
+    };
+    showPhase('p1', 0, 0.12);
+    showPhase('p2', 0.14, 0.28);
+    showPhase('p3', 0.30, 0.44);
+    showPhase('p4', 0.46, 0.60);
+    showPhase('p5', 0.62, 0.74);
+
+    // Crosshair
+    crosshair.style.opacity = progress > 0.1 && progress < 0.78 ? '1' : '0';
+
+    // Pin
+    pin.style.opacity = progress > 0.75 ? '1' : '0';
+
+    // Location card
+    if (progress > 0.85) {
+        locCard.classList.add('visible');
+    } else {
+        locCard.classList.remove('visible');
+    }
+
+    // Scroll hint
+    hint.style.opacity = progress < 0.03 ? '1' : '0';
+}
+
+window.addEventListener('scroll', onScroll);
+onScroll();
+</script>
+</body>
+</html>

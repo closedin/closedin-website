@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Outbound Engine - closed:in</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #050505; --card: #0A0A0A; --border: rgba(255,255,255,0.06); --text: #fff; --muted: rgba(255,255,255,0.4); --accent: #7877C6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.02; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
+
+        /* ═══ PIPELINE JOURNEY ═══ */
+        .journey { position: relative; min-height: 500vh; }
+
+        .journey-sticky {
+            position: sticky; top: 0; height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Background elements */
+        .journey-bg {
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(120,119,198,0.08), transparent);
+        }
+        .journey-grid {
+            position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+        }
+
+        /* Progress line */
+        .journey-progress {
+            position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+            background: rgba(255,255,255,0.04);
+            transform: translateX(-50%);
+        }
+        .journey-progress-fill {
+            position: absolute; top: 0; left: 0; right: 0;
+            background: linear-gradient(180deg, var(--accent), rgba(99,102,241,0.6));
+            height: 0%; transition: height 0.1s linear;
+            box-shadow: 0 0 20px var(--accent);
+        }
+        .journey-progress-dot {
+            position: absolute; left: 50%; width: 12px; height: 12px;
+            background: var(--accent); border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px var(--accent), 0 0 40px rgba(120,119,198,0.3);
+            transition: top 0.1s linear;
+        }
+
+        /* Step counter */
+        .journey-step-counter {
+            position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
+            font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700;
+            color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+            background: rgba(120,119,198,0.1); border: 1px solid rgba(120,119,198,0.2);
+            padding: 8px 20px; border-radius: 100px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Content panels */
+        .journey-content {
+            position: relative; z-index: 2;
+            max-width: 1100px; width: 100%; padding: 0 60px;
+            display: flex; align-items: center; gap: 80px;
+        }
+        .journey-left, .journey-right { flex: 1; }
+
+        /* Step text */
+        .step-phase {
+            font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .step-phase::before { content: ''; width: 24px; height: 2px; background: var(--accent); border-radius: 2px; }
+        .step-heading {
+            font-family: 'Satoshi', sans-serif; font-size: clamp(32px, 4vw, 48px);
+            font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 20px;
+        }
+        .step-desc { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+        .step-features { display: flex; flex-direction: column; gap: 12px; }
+        .step-feature {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 14px; color: rgba(255,255,255,0.6);
+            padding: 12px 16px; background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border); border-radius: 12px;
+            transition: all 0.3s;
+        }
+        .step-feature:hover { border-color: rgba(120,119,198,0.2); background: rgba(255,255,255,0.04); transform: translateX(4px); }
+        .step-feature-icon {
+            width: 32px; height: 32px; border-radius: 8px;
+            background: rgba(120,119,198,0.1); display: flex;
+            align-items: center; justify-content: center;
+            font-size: 16px; flex-shrink: 0;
+        }
+
+        /* Visual side - animated pipeline visualization */
+        .pipeline-visual {
+            width: 100%; aspect-ratio: 1;
+            position: relative; max-width: 440px; margin: 0 auto;
+        }
+
+        /* Animated circles/nodes */
+        .pipeline-ring {
+            position: absolute; border-radius: 50%;
+            border: 1px solid rgba(120,119,198,0.15);
+            transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+        }
+        .pipeline-ring.active { border-color: rgba(120,119,198,0.4); box-shadow: 0 0 40px rgba(120,119,198,0.1); }
+
+        .pipeline-node {
+            position: absolute; border-radius: 50%;
+            background: var(--card); border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
+            font-size: 20px;
+        }
+        .pipeline-node.active {
+            border-color: var(--accent); background: rgba(120,119,198,0.1);
+            box-shadow: 0 0 30px rgba(120,119,198,0.2);
+            transform: scale(1.1);
+        }
+        .pipeline-node.completed {
+            border-color: rgba(16,185,129,0.5); background: rgba(16,185,129,0.1);
+        }
+
+        /* Data particles flowing between nodes */
+        .data-particle {
+            position: absolute; width: 4px; height: 4px;
+            background: var(--accent); border-radius: 50%;
+            opacity: 0; pointer-events: none;
+            box-shadow: 0 0 8px var(--accent);
+        }
+        .data-particle.flowing { animation: flowParticle 2s ease-in-out infinite; }
+        @keyframes flowParticle {
+            0% { opacity: 0; transform: translate(0, 0) scale(0); }
+            20% { opacity: 1; transform: scale(1); }
+            80% { opacity: 1; }
+            100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); }
+        }
+
+        /* Center hub */
+        .pipeline-hub {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 80px; height: 80px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(120,119,198,0.15), var(--card));
+            border: 2px solid rgba(120,119,198,0.3);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+            transition: all 0.6s; z-index: 5;
+        }
+        .pipeline-hub.active {
+            box-shadow: 0 0 60px rgba(120,119,198,0.3);
+            border-color: var(--accent);
+        }
+
+        /* Stats that fly in */
+        .flying-stat {
+            position: absolute; padding: 8px 16px;
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 10px; font-size: 12px; font-weight: 600;
+            opacity: 0; transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+            white-space: nowrap;
+        }
+        .flying-stat.visible { opacity: 1; transform: translateY(0); }
+        .flying-stat .val { color: var(--accent); font-size: 18px; font-weight: 900; font-family: 'Satoshi', sans-serif; }
+
+        /* Scroll indicator */
+        .scroll-hint {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+        }
+        .scroll-line { width: 1px; height: 40px; background: linear-gradient(180deg, var(--muted), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+        @keyframes scrollPulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+        /* Final result screen */
+        .journey-result {
+            opacity: 0; transform: scale(0.95);
+            transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+            text-align: center;
+        }
+        .journey-result.visible { opacity: 1; transform: scale(1); }
+        .result-number {
+            font-family: 'Satoshi', sans-serif; font-size: 120px;
+            font-weight: 900; letter-spacing: -0.04em; line-height: 1;
+            background: linear-gradient(135deg, #fff 30%, var(--accent) 70%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .result-label { font-size: 20px; color: var(--muted); margin-top: 8px; }
+        .result-sub { font-size: 14px; color: rgba(255,255,255,0.25); margin-top: 24px; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .journey-content { flex-direction: column; gap: 40px; padding: 0 20px; }
+            .pipeline-visual { max-width: 300px; }
+            .journey-progress { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="journey" id="journey">
+    <div class="journey-sticky" id="journeySticky">
+        <div class="journey-bg"></div>
+        <div class="journey-grid"></div>
+
+        <div class="journey-progress">
+            <div class="journey-progress-fill" id="progressFill"></div>
+            <div class="journey-progress-dot" id="progressDot"></div>
+        </div>
+
+        <div class="journey-step-counter" id="stepCounter">Step 1 of 5</div>
+
+        <div class="journey-content" id="journeyContent">
+            <!-- Left: Text content (changes per step) -->
+            <div class="journey-left" id="journeyLeft"></div>
+
+            <!-- Right: Pipeline visualization -->
+            <div class="journey-right">
+                <div class="pipeline-visual" id="pipelineVisual">
+                    <!-- Rings -->
+                    <div class="pipeline-ring" style="inset: 0;" id="ring1"></div>
+                    <div class="pipeline-ring" style="inset: 15%;" id="ring2"></div>
+                    <div class="pipeline-ring" style="inset: 30%;" id="ring3"></div>
+
+                    <!-- Center hub -->
+                    <div class="pipeline-hub" id="hub">ICP</div>
+
+                    <!-- Nodes around the circle -->
+                    <div class="pipeline-node" id="node1" style="width:48px;height:48px;top:5%;left:50%;transform:translateX(-50%);">🎯</div>
+                    <div class="pipeline-node" id="node2" style="width:48px;height:48px;top:25%;right:5%;">🔍</div>
+                    <div class="pipeline-node" id="node3" style="width:48px;height:48px;top:50%;right:0;transform:translateY(-50%);">📊</div>
+                    <div class="pipeline-node" id="node4" style="width:48px;height:48px;bottom:25%;right:5%;">✉️</div>
+                    <div class="pipeline-node" id="node5" style="width:48px;height:48px;bottom:5%;left:50%;transform:translateX(-50%);">⚙️</div>
+                    <div class="pipeline-node" id="node6" style="width:48px;height:48px;bottom:25%;left:5%;">📈</div>
+                    <div class="pipeline-node" id="node7" style="width:48px;height:48px;top:50%;left:0;transform:translateY(-50%);">🤝</div>
+                    <div class="pipeline-node" id="node8" style="width:48px;height:48px;top:25%;left:5%;">📋</div>
+
+                    <!-- Flying stats -->
+                    <div class="flying-stat" id="fstat1" style="top: -10px; right: -20px;"><span class="val">120+</span> data providers</div>
+                    <div class="flying-stat" id="fstat2" style="bottom: 20%; right: -30px;"><span class="val">98%</span> deliverability</div>
+                    <div class="flying-stat" id="fstat3" style="bottom: -10px; left: -20px;"><span class="val">10%</span> reply rate</div>
+                    <div class="flying-stat" id="fstat4" style="top: 20%; left: -30px;"><span class="val">20+</span> meetings/mo</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result screen (shows at end) -->
+        <div class="journey-result" id="journeyResult" style="position: absolute; z-index: 10;">
+            <div class="result-number" id="resultNumber">0</div>
+            <div class="result-label">qualified meetings booked</div>
+            <div class="result-sub">This is what happens when ICP research, data enrichment, technical infrastructure, and personalized outreach come together.</div>
+            <a href="https://closedin.neetocal.com/discovery-call" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: #fff; color: #000; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; margin-top: 40px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1);">
+                Build Your Engine →
+            </a>
+        </div>
+
+        <div class="scroll-hint" id="scrollHint">
+            <span>Scroll to explore</span>
+            <div class="scroll-line"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+const steps = [
+    {
+        phase: "Phase 1", title: "ICP Definition",
+        desc: "We start by deeply understanding who your ideal customer is. Not just job titles, but buying signals, tech stack, company size, and growth indicators.",
+        features: [
+            { icon: "🎯", text: "Define your Ideal Customer Profile" },
+            { icon: "👤", text: "Map decision makers and buying committees" },
+            { icon: "🏢", text: "Identify target account characteristics" },
+            { icon: "📊", text: "Score and prioritize segments" },
+        ],
+        activeNodes: [1, 8], hub: "ICP", stats: [1]
+    },
+    {
+        phase: "Phase 2", title: "Lead Sourcing",
+        desc: "Using 120+ data providers through Clay, we build hyper-targeted lead lists with verified contact data. Every lead is qualified before outreach begins.",
+        features: [
+            { icon: "🔍", text: "Source leads from 120+ data providers" },
+            { icon: "✅", text: "Verify every email address" },
+            { icon: "🧹", text: "Clean and deduplicate data" },
+            { icon: "📋", text: "Build segmented lead lists" },
+        ],
+        activeNodes: [1, 2, 3, 8], hub: "DATA", stats: [1]
+    },
+    {
+        phase: "Phase 3", title: "Enrichment & Personalization",
+        desc: "Every lead gets enriched with targeted data: icebreakers, recent news, tech stack signals, and custom variables that make every email feel 1-to-1.",
+        features: [
+            { icon: "🧩", text: "Enrich with company and personal data" },
+            { icon: "💬", text: "Generate personalized icebreakers" },
+            { icon: "🔗", text: "Add LinkedIn and social signals" },
+            { icon: "📰", text: "Pull recent news and triggers" },
+        ],
+        activeNodes: [1, 2, 3, 4, 8], hub: "ENRICH", stats: [1, 4]
+    },
+    {
+        phase: "Phase 4", title: "Infrastructure & Deliverability",
+        desc: "We set up bulletproof email infrastructure: fresh domains, SPF/DKIM/DMARC, inbox warmup, and ongoing monitoring to ensure 98%+ deliverability.",
+        features: [
+            { icon: "🌐", text: "Purchase and configure sending domains" },
+            { icon: "🔒", text: "Set up SPF, DKIM, DMARC records" },
+            { icon: "🔥", text: "Warm up all inboxes gradually" },
+            { icon: "📡", text: "Monitor deliverability in real-time" },
+        ],
+        activeNodes: [1, 2, 3, 4, 5, 6, 8], hub: "INFRA", stats: [1, 2]
+    },
+    {
+        phase: "Phase 5", title: "Campaign Launch & Optimization",
+        desc: "Multi-step sequences go live. We continuously A/B test subject lines, copy, and timing. Your calendar fills with qualified meetings.",
+        features: [
+            { icon: "🚀", text: "Launch personalized email sequences" },
+            { icon: "📧", text: "A/B test subjects, copy, and CTAs" },
+            { icon: "📅", text: "Book qualified meetings on your calendar" },
+            { icon: "📈", text: "Optimize based on reply data weekly" },
+        ],
+        activeNodes: [1, 2, 3, 4, 5, 6, 7, 8], hub: "LIVE", stats: [1, 2, 3, 4]
+    }
+];
+
+let currentStep = 0;
+const journey = document.getElementById('journey');
+const progressFill = document.getElementById('progressFill');
+const progressDot = document.getElementById('progressDot');
+const stepCounter = document.getElementById('stepCounter');
+const journeyLeft = document.getElementById('journeyLeft');
+const journeyContent = document.getElementById('journeyContent');
+const journeyResult = document.getElementById('journeyResult');
+const scrollHint = document.getElementById('scrollHint');
+const hub = document.getElementById('hub');
+
+function renderStep(index, progress) {
+    if (index >= steps.length) {
+        // Show result
+        journeyContent.style.opacity = '0';
+        journeyContent.style.transform = 'scale(0.95)';
+        journeyResult.classList.add('visible');
+        stepCounter.textContent = 'Complete';
+        scrollHint.style.opacity = '0';
+
+        // Count up result
+        const resultNum = document.getElementById('resultNumber');
+        const target = 20;
+        const p = Math.min((progress - 1) * 5, 1);
+        resultNum.textContent = Math.floor(p * target) + '+';
+        return;
+    }
+
+    journeyContent.style.opacity = '1';
+    journeyContent.style.transform = 'scale(1)';
+    journeyResult.classList.remove('visible');
+    scrollHint.style.opacity = '1';
+
+    const step = steps[index];
+    stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
+    hub.textContent = step.hub;
+
+    // Update text
+    const featureProgress = Math.min(progress * 1.5, 1);
+    const visibleFeatures = Math.ceil(featureProgress * step.features.length);
+
+    journeyLeft.innerHTML = `
+        <div class="step-phase">${step.phase}</div>
+        <div class="step-heading">${step.title}</div>
+        <div class="step-desc">${step.desc}</div>
+        <div class="step-features">
+            ${step.features.map((f, i) => `
+                <div class="step-feature" style="opacity: ${i < visibleFeatures ? 1 : 0.2}; transform: translateX(${i < visibleFeatures ? 0 : 20}px); transition-delay: ${i * 0.05}s;">
+                    <div class="step-feature-icon">${f.icon}</div>
+                    <span>${f.text}</span>
+                </div>
+            `).join('')}
+        </div>
+    `;
+
+    // Update nodes
+    for (let i = 1; i <= 8; i++) {
+        const node = document.getElementById(`node${i}`);
+        const isActive = step.activeNodes.includes(i);
+        const wasActive = index > 0 && steps[index - 1].activeNodes.includes(i);
+        node.classList.toggle('active', isActive && !wasActive);
+        node.classList.toggle('completed', wasActive);
+    }
+
+    // Update rings
+    document.getElementById('ring1').classList.toggle('active', index >= 1);
+    document.getElementById('ring2').classList.toggle('active', index >= 2);
+    document.getElementById('ring3').classList.toggle('active', index >= 3);
+
+    // Hub
+    hub.classList.toggle('active', index >= 2);
+
+    // Flying stats
+    step.stats.forEach(s => {
+        document.getElementById(`fstat${s}`).classList.add('visible');
+    });
+    [1,2,3,4].forEach(s => {
+        if (!step.stats.includes(s)) {
+            document.getElementById(`fstat${s}`).classList.remove('visible');
+        }
+    });
+}
+
+// Scroll handler
+function onScroll() {
+    const rect = journey.getBoundingClientRect();
+    const journeyHeight = journey.offsetHeight - window.innerHeight;
+    const scrolled = -rect.top;
+    const totalProgress = Math.max(0, Math.min(scrolled / journeyHeight, 1));
+
+    // Progress bar
+    progressFill.style.height = (totalProgress * 100) + '%';
+    progressDot.style.top = (totalProgress * 100) + '%';
+
+    // Determine step
+    const stepProgress = totalProgress * (steps.length + 0.5);
+    const stepIndex = Math.floor(stepProgress);
+    const stepFraction = stepProgress - stepIndex;
+
+    if (stepIndex !== currentStep) {
+        currentStep = stepIndex;
+    }
+
+    renderStep(stepIndex, stepFraction);
+}
+
+window.addEventListener('scroll', onScroll);
+renderStep(0, 0);
+</script>
+
+</body>
+</html>

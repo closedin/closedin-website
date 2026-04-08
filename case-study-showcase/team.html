@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - closed:in</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #050505; --card: #0A0A0A; --border: rgba(255,255,255,0.06); --border-hover: rgba(255,255,255,0.12); --text: #fff; --muted: rgba(255,255,255,0.4); --dim: rgba(255,255,255,0.6); --accent: #7877C6; --accent-glow: rgba(120,119,198,0.15); }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
+
+        .cursor-glow { position: fixed; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(120,119,198,0.05) 0%, transparent 60%); pointer-events: none; z-index: 0; transform: translate(-50%, -50%); transition: left 0.7s cubic-bezier(0.16,1,0.3,1), top 0.7s cubic-bezier(0.16,1,0.3,1); }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 10px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.6); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 64px; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { font-size: 13px; font-weight: 600; padding: 12px 28px; background: var(--text); color: var(--bg); border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+        .nav-cta:hover { transform: scale(1.06); box-shadow: 0 0 40px rgba(255,255,255,0.15); }
+
+        /* Hero */
+        .hero { min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 180px 40px 60px; position: relative; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(120,119,198,0.15), transparent); }
+        .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse at 50% 30%, black 10%, transparent 60%); -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 10%, transparent 60%); }
+        .hero-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 14px; }
+        .hero-label::before { content: ''; width: 28px; height: 2px; background: var(--accent); border-radius: 2px; }
+        .hero-label::after { content: ''; width: 28px; height: 2px; background: var(--accent); border-radius: 2px; }
+        .hero h1 { font-family: 'Satoshi', sans-serif; font-size: clamp(48px, 7vw, 88px); font-weight: 900; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 24px; position: relative; }
+        .hero h1 .gradient { background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% 200%; animation: gradShift 4s ease-in-out infinite; }
+        .hero p { font-size: 18px; color: var(--muted); max-width: 520px; line-height: 1.7; position: relative; }
+        @keyframes gradShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+        /* Team section */
+        .team-section { max-width: 1100px; margin: 0 auto; padding: 40px 40px 60px; }
+        .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+
+        .team-card { position: relative; border-radius: 28px; border: 1px solid var(--border); background: var(--card); overflow: hidden; transition: all 0.6s cubic-bezier(0.16,1,0.3,1); }
+        .team-card:hover { border-color: rgba(120,119,198,0.2); transform: translateY(-6px); box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px var(--accent-glow); }
+        .team-card-glow { position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s; pointer-events: none; z-index: 2; }
+        .team-card:hover .team-card-glow { opacity: 1; }
+
+        .team-photo { width: 100%; height: 400px; position: relative; overflow: hidden; }
+        .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(100%) brightness(0.8) contrast(1.1); transition: all 0.6s cubic-bezier(0.16,1,0.3,1); }
+        .team-card:hover .team-photo img { filter: grayscale(30%) brightness(0.9) contrast(1.05); transform: scale(1.03); }
+        .team-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, var(--card) 100%); }
+        .team-photo-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0; transition: opacity 0.4s; z-index: 3; }
+        .team-card:hover .team-photo-accent { opacity: 1; }
+
+        .team-info { padding: 32px 36px 40px; position: relative; z-index: 1; }
+        .team-name { font-family: 'Satoshi', sans-serif; font-size: 28px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 6px; }
+        .team-role { font-size: 14px; font-weight: 600; color: var(--accent); margin-bottom: 16px; letter-spacing: 0.02em; }
+        .team-desc { font-size: 15px; color: var(--dim); line-height: 1.7; margin-bottom: 24px; }
+        .team-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .team-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 6px 14px; border-radius: 100px; transition: all 0.3s; }
+        .team-card:hover .team-tag { border-color: var(--border-hover); }
+        .team-social { display: flex; gap: 12px; margin-top: 20px; }
+        .team-social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; }
+        .team-social a:hover { border-color: var(--accent); background: rgba(120,119,198,0.1); }
+        .team-social a svg { width: 16px; height: 16px; fill: var(--muted); transition: fill 0.3s; }
+        .team-social a:hover svg { fill: var(--accent); }
+
+        /* Values section */
+        .values-section { max-width: 1100px; margin: 0 auto; padding: 80px 40px 120px; }
+        .values-header { text-align: center; margin-bottom: 48px; }
+        .values-header h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 900; letter-spacing: -0.04em; }
+        .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .value-card { padding: 32px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; }
+        .value-card:hover { border-color: rgba(120,119,198,0.15); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px var(--accent-glow); }
+        .value-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--accent), transparent); opacity: 0; transition: opacity 0.3s; }
+        .value-card:hover::before { opacity: 1; }
+        .value-num { font-family: 'Satoshi', sans-serif; font-size: 36px; font-weight: 900; color: rgba(120,119,198,0.15); margin-bottom: 16px; }
+        .value-card h3 { font-family: 'Satoshi', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; }
+        .value-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+        /* CTA */
+        .cta-section { text-align: center; padding: 80px 40px 140px; position: relative; }
+        .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(120,119,198,0.1), transparent); pointer-events: none; }
+        .cta-section h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(36px, 5vw, 56px); font-weight: 900; letter-spacing: -0.04em; line-height: 0.95; margin-bottom: 20px; position: relative; }
+        .cta-section p { font-size: 16px; color: var(--muted); max-width: 400px; margin: 0 auto 36px; line-height: 1.6; position: relative; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; }
+        .btn-primary:hover { transform: scale(1.06); box-shadow: 0 0 60px rgba(255,255,255,0.15); }
+
+        .reveal { opacity: 0; transform: translateY(50px); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Premium Footer */
+        .premium-footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 80px 48px 40px; position: relative; }
+        .premium-footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(120,119,198,0.2), transparent); }
+        .footer-inner { max-width: 1100px; margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; gap: 60px; margin-bottom: 60px; }
+        .footer-brand { max-width: 280px; }
+        .footer-logo { height: 80px; margin-bottom: 16px; display: block; }
+        .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.35); line-height: 1.6; }
+        .footer-links { display: flex; gap: 60px; }
+        .footer-col { display: flex; flex-direction: column; gap: 12px; }
+        .footer-col h4 { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 4px; letter-spacing: -0.01em; }
+        .footer-col a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: rgba(120,119,198,0.8); }
+        .footer-badges { display: flex; gap: 24px; align-items: center; justify-content: center; padding: 40px 0; }
+        .footer-badges a { transition: transform 0.3s, opacity 0.3s; opacity: 0.85; }
+        .footer-badges a:hover { transform: translateY(-3px); opacity: 1; }
+        .footer-badges img { height: 80px; object-fit: contain; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+        .footer-bottom a { color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.3s; }
+        .footer-bottom a:hover { color: rgba(255,255,255,0.5); }
+
+        @media (max-width: 768px) {
+            .team-grid { grid-template-columns: 1fr; }
+            .values-grid { grid-template-columns: 1fr; }
+            nav { padding: 14px 20px; }
+            .nav-links { display: none; }
+            .hero { padding: 140px 20px 40px; }
+            .team-section { padding: 20px 20px 40px; }
+            .values-section { padding: 60px 20px 80px; }
+            .team-photo { height: 320px; }
+            .footer-top { flex-direction: column; gap: 40px; }
+            .footer-links { flex-direction: column; gap: 32px; }
+            .premium-footer { padding: 60px 20px 32px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="cursor-glow" id="cursorGlow"></div>
+<canvas id="starfield" style="position: fixed; inset: 0; z-index: 0; pointer-events: none;"></canvas>
+
+<nav>
+    <a href="homepage.html" class="logo"><img src="closedin-logo.png" alt="closed:in"></a>
+    <div class="nav-links">
+        <a href="homepage.html">Home</a>
+        <a href="index.html">Case Studies</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="nav-cta">Book Meeting</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-label reveal">Meet the Team</div>
+    <h1 class="reveal">The people behind<br>your <span class="gradient">pipeline</span></h1>
+    <p class="reveal" style="transition-delay: 0.15s;">Two founders. One mission. Building predictable outbound engines for ambitious B2B companies across Europe.</p>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+    <div class="team-grid">
+        <div class="team-card reveal">
+            <div class="team-card-glow"></div>
+            <div class="team-photo">
+                <img src="jurre.png" alt="Jurre Groot">
+                <div class="team-photo-accent"></div>
+            </div>
+            <div class="team-info">
+                <div class="team-name">Jurre Groot</div>
+                <div class="team-role">Co-Founder & Marketing Mastermind</div>
+                <div class="team-desc">Leads strategy, client delivery, and operations at closed:in. Jurre makes sure every campaign is built to perform and every client gets results that matter.</div>
+                <div class="team-tags">
+                    <span class="team-tag">Strategy</span>
+                    <span class="team-tag">Client Delivery</span>
+                    <span class="team-tag">Operations</span>
+                </div>
+                <div class="team-social">
+                    <a href="https://www.linkedin.com/in/jurre-groot-04b7a11a1/" target="_blank"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-card reveal" style="transition-delay: 0.15s;">
+            <div class="team-card-glow"></div>
+            <div class="team-photo">
+                <img src="max.png" alt="Max Münstermann">
+                <div class="team-photo-accent"></div>
+            </div>
+            <div class="team-info">
+                <div class="team-name">Max Münstermann</div>
+                <div class="team-role">Co-Founder & Data Perfectionist</div>
+                <div class="team-desc">Builds the data infrastructure and Clay workflows that power every outbound campaign. Max is obsessed with deliverability, precision, and getting the details right.</div>
+                <div class="team-tags">
+                    <span class="team-tag">Data Engineering</span>
+                    <span class="team-tag">Clay</span>
+                    <span class="team-tag">Deliverability</span>
+                </div>
+                <div class="team-social">
+                    <a href="https://www.linkedin.com/in/max-munstermann/" target="_blank"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+    <div class="values-header reveal">
+        <h2>What drives us</h2>
+    </div>
+    <div class="values-grid">
+        <div class="value-card reveal">
+            <div class="value-num">01</div>
+            <h3>Results over vanity</h3>
+            <p>We don't care about open rates. We care about qualified meetings on your calendar and pipeline in your CRM.</p>
+        </div>
+        <div class="value-card reveal" style="transition-delay: 0.1s;">
+            <div class="value-num">02</div>
+            <h3>Systems over shortcuts</h3>
+            <p>Every campaign we build is designed to be repeatable and scalable. No hacks, no tricks. Just solid infrastructure.</p>
+        </div>
+        <div class="value-card reveal" style="transition-delay: 0.2s;">
+            <div class="value-num">03</div>
+            <h3>Precision over volume</h3>
+            <p>We'd rather send 1,000 perfectly targeted emails than 10,000 generic ones. Quality data leads to quality conversations.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="reveal">
+        <h2>Want to work<br>with us?</h2>
+        <p>Book a free strategy call and discover how we can build a predictable outbound pipeline for your business.</p>
+        <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="btn-primary">Book a 30 Minute Call →</a>
+    </div>
+</section>
+
+<footer class="premium-footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="closedin-logo.png" alt="closed:in" class="footer-logo">
+                <p class="footer-tagline">Your B2B Go-To-Market Partner</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Navigate</h4>
+                    <a href="homepage.html">Home</a>
+                    <a href="index.html">Case Studies</a>
+                    <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="mailto:info@closedin.io">info@closedin.io</a>
+                    <a href="https://closedin.neetocal.com/discovery-call" target="_blank">Book a Call</a>
+                    <a href="https://www.linkedin.com/company/closedin" target="_blank">LinkedIn</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Partners</h4>
+                    <a href="https://www.clay.com/experts/partner/closedin" target="_blank">Clay Solutions Partner</a>
+                    <a href="https://instantly.ai/experts/jurre-groot" target="_blank">Instantly Expert</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-badges">
+            <a href="https://www.clay.com/experts/partner/closedin" target="_blank"><img src="badge-clay.png" alt="Clay Artisan Solutions Partner 2026"></a>
+            <a href="https://instantly.ai/experts/jurre-groot" target="_blank"><img src="badge-instantly.png" alt="Instantly Certified Expert"></a>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 closed:in. All rights reserved.</span>
+            <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Cursor
+document.addEventListener('mousemove', e => { const g = document.getElementById('cursorGlow'); g.style.left = e.clientX + 'px'; g.style.top = e.clientY + 'px'; });
+
+// Reveal
+const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Card glow
+document.querySelectorAll('.team-card').forEach(card => {
+    const glow = card.querySelector('.team-card-glow');
+    card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width) * 100;
+        const y = ((e.clientY - r.top) / r.height) * 100;
+        glow.style.background = `radial-gradient(500px circle at ${x}% ${y}%, rgba(120,119,198,0.08), transparent 40%)`;
+    });
+});
+
+// Starfield
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let stars = [], mouseX = 0, mouseY = 0;
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+for (let i = 0; i < 200; i++) { stars.push({ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, size: Math.random() * 2 + 0.5, speedX: (Math.random() - 0.5) * 0.2, speedY: (Math.random() - 0.5) * 0.2, opacity: Math.random() * 0.6 + 0.2, pulse: Math.random() * Math.PI * 2, pulseSpeed: Math.random() * 0.02 + 0.005 }); }
+function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach(s => {
+        const dx = s.x - mouseX, dy = s.y - mouseY, dist = Math.sqrt(dx*dx+dy*dy);
+        if (dist < 200) { const f = (200-dist)/200; s.x += (dx/dist)*f*1.5; s.y += (dy/dist)*f*1.5; }
+        s.pulse += s.pulseSpeed;
+        const op = s.opacity * (0.4 + 0.6 * Math.sin(s.pulse));
+        s.x += s.speedX; s.y += s.speedY;
+        if (s.x < 0) s.x = canvas.width; if (s.x > canvas.width) s.x = 0;
+        if (s.y < 0) s.y = canvas.height; if (s.y > canvas.height) s.y = 0;
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fillStyle = `rgba(200,200,240,${op})`; ctx.fill();
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.size*3, 0, Math.PI*2); ctx.fillStyle = `rgba(120,119,198,${op*0.2})`; ctx.fill();
+    });
+    requestAnimationFrame(drawStars);
+}
+drawStars();
+</script>
+</body>
+</html>
