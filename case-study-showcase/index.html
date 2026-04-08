@@ -337,13 +337,23 @@
             .step-feature-icon { width: 28px; height: 28px; font-size: 10px; }
             .journey-result .result-number { font-size: 72px; }
             .journey-result .result-label { font-size: 16px; }
-            .services-interactive { min-height: auto; }
-            .services-display { padding: 28px 20px; }
-            .service-panel { padding: 28px 20px; }
+            .services-interactive { min-height: auto; flex-direction: column; border-radius: 16px; }
+            .services-tabs { flex-direction: column; border-bottom: none; border-right: none; min-width: auto; overflow-x: visible; }
+            .service-tab { border-bottom: 1px solid var(--border); border-right: none; padding: 16px 20px; }
+            .service-tab:last-child { border-bottom: 1px solid var(--border); }
+            .service-tab.active::before { left: 0; top: 0; bottom: 0; width: 3px; height: auto; }
+            .services-display { position: relative; min-height: 280px; padding: 24px 20px; }
+            .service-panel { padding: 24px 20px; position: absolute; inset: 0; }
             .service-panel h3 { font-size: 22px; }
-            .service-panel p { font-size: 14px; }
+            .service-panel p { font-size: 14px; line-height: 1.6; }
             .service-panel-stats { gap: 20px; flex-wrap: wrap; }
             .service-panel-stats strong { font-size: 20px; }
+            .section-header-row { gap: 16px; }
+            .section-header-row .section-header-img { width: 60px; height: 60px; }
+            .testimonial-card { padding: 24px; }
+            .testimonial-text { font-size: 14px; }
+            .faq-image-section { padding: 0 20px 20px; }
+            .cta-section h2 { font-size: clamp(32px, 7vw, 76px); }
             .clients-section h3 { font-size: 14px; }
             .testimonials-grid { grid-template-columns: 1fr; }
             .services-interactive { flex-direction: column; }
