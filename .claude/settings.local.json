@@ -82,7 +82,10 @@
       "Bash(git remote:*)",
       "Bash(git push:*)",
       "Bash(mv index.html case-studies.html)",
-      "Bash(mv homepage.html index.html)"
+      "Bash(mv homepage.html index.html)",
+      "Bash(dig closedin.io A +short)",
+      "Bash(find /Users/jurregroot/closedin-website/case-study-showcase -type f -exec ls -lhS {} +)",
+      "Bash(ls /Users/jurregroot/closedin-website/case-study-showcase/*.html)"
     ]
   }
 }

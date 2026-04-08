@@ -360,6 +360,16 @@
             .cases-grid { grid-template-columns: 1fr; }
             nav { padding: 16px 20px; }
             .nav-links { display: none; }
+            .nav-cta { display: none; }
+            .hamburger { display: flex; }
+            .mobile-menu { display: none; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5,5,5,0.98); z-index: 999; padding: 100px 40px 40px; align-items: center; justify-content: center; gap: 32px; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+            .mobile-menu.open { display: flex; }
+            .mobile-menu a { font-family: 'Satoshi', sans-serif; font-size: 28px; font-weight: 700; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; letter-spacing: -0.02em; }
+            .mobile-menu a:hover { color: #fff; }
+            .mobile-menu .mobile-cta { font-size: 15px; font-weight: 700; padding: 18px 40px; background: #fff; color: #050505; border-radius: 100px; text-decoration: none; margin-top: 16px; }
+            .mobile-menu-close { position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; background: none; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; }
+            .mobile-menu-close span { display: block; width: 20px; height: 2px; background: #fff; position: relative; transform: rotate(45deg); }
+            .mobile-menu-close span::after { content: ''; position: absolute; width: 20px; height: 2px; background: #fff; transform: rotate(-90deg); }
             .hero { padding: 140px 20px 80px; }
             .cases-section { padding: 80px 20px; }
             .footer-top { flex-direction: column; gap: 40px; }
@@ -383,7 +393,19 @@
         <a href="contact.html">Contact</a>
     </div>
     <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="nav-cta">Book Meeting</a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+    </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu"><span></span></button>
+    <a href="index.html">Home</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="mobile-cta">Book Meeting</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -783,6 +805,24 @@ function drawFog() {
     requestAnimationFrame(drawFog);
 }
 drawFog();
+</script>
+<style>
+/* Hamburger Menu */
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 101; }
+.hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+</style>
+<script>
+// Mobile hamburger menu
+(function() {
+    const btn = document.getElementById("hamburgerBtn");
+    const menu = document.getElementById("mobileMenu");
+    const closeBtn = document.getElementById("mobileMenuClose");
+    if (!btn || !menu) return;
+    btn.addEventListener("click", function() { menu.classList.add("open"); document.body.style.overflow = "hidden"; });
+    function closeMenu() { menu.classList.remove("open"); document.body.style.overflow = ""; }
+    closeBtn.addEventListener("click", closeMenu);
+    menu.querySelectorAll("a").forEach(function(a) { a.addEventListener("click", closeMenu); });
+})();
 </script>
 </body>
 </html>
