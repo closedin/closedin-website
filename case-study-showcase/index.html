@@ -105,6 +105,7 @@
         .client-card:hover img { opacity: 1; }
         .client-card span { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); transition: color 0.3s; }
         .client-card:hover span { color: var(--accent); }
+        .client-logos-grid { max-width: 1200px; margin: 32px auto 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
 
         /* Case Studies section */
         .cases-section { max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
@@ -316,10 +317,22 @@
             .video-section { padding: 0 20px; }
             .stats-section { padding: 0 20px; }
             .hands-section { padding: 40px 20px 10px; }
+            .client-logos-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .client-card img { height: 32px; }
+            .client-card { padding: 20px 12px; }
+            .clients-section { padding: 40px 20px 60px !important; }
+            .clients-section h3 { font-size: 14px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .services-interactive { flex-direction: column; }
+            .services-tabs { flex-direction: row; overflow-x: auto; border-right: none; border-bottom: 1px solid var(--border); min-width: auto; }
+            .service-tab { white-space: nowrap; border-bottom: none; }
+            .section-title { font-size: clamp(28px, 5vw, 56px); }
             .footer-top { flex-direction: column; gap: 40px; }
             .footer-links { flex-direction: column; gap: 32px; }
             .premium-footer { padding: 60px 20px 32px; }
             .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+            .footer-badges { flex-wrap: wrap; justify-content: center; }
+            .footer-badges img { height: 60px; }
         }
     </style>
 </head>
@@ -460,7 +473,7 @@
 <!-- B2B COMPANIES THAT TRUST CLOSED:IN (clickable logos → case studies) -->
 <section class="clients-section" style="padding: 60px 40px 80px;">
     <h3 class="reveal">B2B companies that trust closed:in</h3>
-    <div class="reveal" style="max-width: 1200px; margin: 32px auto 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px;">
+    <div class="reveal client-logos-grid">
         <a href="case-study-tsc.html" class="client-card">
             <img src="tsc-logo.png" alt="Thomas Scott & Co" style="filter: brightness(10);">
             <span>Thomas Scott & Co</span>
