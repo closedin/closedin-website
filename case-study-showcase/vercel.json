@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/case-study.html",
+      "destination": "/case-study-verzendbazen.html",
+      "permanent": true
+    }
+  ]
+}

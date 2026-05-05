@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /case-study.html
+
+Sitemap: https://www.closedin.io/sitemap.xml
