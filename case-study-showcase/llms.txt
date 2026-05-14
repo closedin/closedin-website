@@ -40,6 +40,14 @@ closed:in clients average 20+ qualified sales meetings per month, with most enga
 - [Pipeline demo](https://www.closedin.io/pipeline-demo.html): interactive walkthrough of the outbound engine.
 - [Contact](https://www.closedin.io/contact.html): book a discovery call.
 
+## Specialised service pages
+
+- [Cold email agency Amsterdam](https://www.closedin.io/cold-email-agency-amsterdam.html): cold email services for Dutch and European B2B companies, GDPR-compliant infrastructure, local market expertise.
+- [Clay agency · Solutions Partner](https://www.closedin.io/clay-agency.html): official Clay Solutions Partner. Production-ready Clay tables, waterfall enrichment, Claygent prompts, CRM orchestration.
+- [GTM engineering agency](https://www.closedin.io/gtm-engineering-agency.html): full-system go-to-market engineering across data, outbound, CRM and analytics layers.
+- [Cold email agency for SaaS](https://www.closedin.io/cold-email-agency-saas.html): outbound systems tuned for B2B SaaS sales cycles, ICP segmentation and demo booking.
+- [Outbound agency UK](https://www.closedin.io/outbound-agency-uk.html): cold email and LinkedIn outbound for UK B2B companies. Documented PE recruitment results in London.
+
 ## Contact
 
 - Email: info@closedin.io
