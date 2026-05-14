@@ -380,7 +380,191 @@
             .footer-badges { flex-wrap: wrap; justify-content: center; }
             .footer-badges img { height: 60px; }
         }
+
+        /* FAQ section */
+        .faq-section { max-width: 900px; margin: 0 auto; padding: 100px 40px 40px; position: relative; z-index: 2; }
+        .faq-section .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+        .faq-section .section-label::before { content: ''; width: 28px; height: 2px; background: var(--accent); border-radius: 2px; }
+        .faq-section h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(36px, 5vw, 56px); font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 60px; }
+        .faq-list { display: flex; flex-direction: column; gap: 12px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color 0.3s; }
+        .faq-item:hover { border-color: rgba(120,119,198,0.2); }
+        .faq-item summary { cursor: pointer; padding: 24px 28px; font-family: 'Satoshi', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 20px; transition: color 0.3s; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; font-family: 'Satoshi', sans-serif; font-size: 28px; font-weight: 300; color: var(--accent); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item[open] summary::after { transform: rotate(45deg); }
+        .faq-item[open] summary { color: var(--accent); }
+        .faq-answer { padding: 0 28px 24px; font-size: 15px; color: var(--dim); line-height: 1.7; }
     </style>
+
+    <!-- ═══ STRUCTURED DATA / JSON-LD ═══ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.closedin.io/#organization",
+          "name": "closed:in",
+          "alternateName": "closedin",
+          "url": "https://www.closedin.io/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.closedin.io/closedin-logo.png",
+            "width": 512,
+            "height": 512
+          },
+          "description": "GTM engineering agency in Amsterdam. We build outbound sales systems for B2B service companies that want more qualified meetings within 4 weeks.",
+          "email": "info@closedin.io",
+          "founder": [
+            { "@type": "Person", "name": "Max Münstermann", "jobTitle": "Founder & Sales Lead", "sameAs": "https://www.linkedin.com/in/maxmunstermann" },
+            { "@type": "Person", "name": "Jurre Groot", "jobTitle": "Operations & Campaign Execution" }
+          ],
+          "foundingDate": "2024",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jodenbreestraat 25",
+            "addressLocality": "Amsterdam",
+            "addressCountry": "NL"
+          },
+          "areaServed": [
+            { "@type": "Country", "name": "Netherlands" },
+            { "@type": "Country", "name": "Belgium" },
+            { "@type": "Country", "name": "United Kingdom" },
+            { "@type": "Place", "name": "European Union" }
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/company/closedin",
+            "https://www.clay.com/experts/partner/closedin",
+            "https://instantly.ai/experts/jurre-groot"
+          ],
+          "knowsAbout": [
+            "Cold email outbound",
+            "LinkedIn outreach",
+            "Lead enrichment",
+            "Clay data orchestration",
+            "Instantly email infrastructure",
+            "B2B sales pipeline",
+            "Go-to-market engineering",
+            "Signal-based selling",
+            "CRM automation"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.closedin.io/#website",
+          "url": "https://www.closedin.io/",
+          "name": "closed:in",
+          "publisher": { "@id": "https://www.closedin.io/#organization" },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://www.closedin.io/#service",
+          "name": "closed:in GTM Engineering Agency",
+          "image": "https://www.closedin.io/closedin-logo.png",
+          "url": "https://www.closedin.io/",
+          "telephone": "",
+          "priceRange": "$$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jodenbreestraat 25",
+            "addressLocality": "Amsterdam",
+            "addressCountry": "NL"
+          },
+          "areaServed": ["NL", "BE", "GB", "DE", "FR"],
+          "serviceType": [
+            "Cold email outbound",
+            "LinkedIn outreach",
+            "Lead enrichment (Clay)",
+            "Outbound infrastructure setup",
+            "Signal-based selling",
+            "CRM automation"
+          ],
+          "provider": { "@id": "https://www.closedin.io/#organization" },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Outbound services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cold email infrastructure & campaigns" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "LinkedIn outbound" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lead enrichment & list building" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CRM & pipeline orchestration" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Signal-based selling & visitor tracking" } }
+            ]
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "12",
+            "bestRating": "5"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.closedin.io/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What does closed:in do?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "closed:in is a GTM engineering agency in Amsterdam. We build and run outbound sales systems for B2B companies, combining cold email (Instantly), LinkedIn outreach, lead enrichment (Clay), website visitor tracking and CRM orchestration into one managed engine. Most clients see qualified meetings booked within 4 weeks."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How is closed:in different from a traditional cold email agency?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Traditional cold email agencies send volume. closed:in is a GTM engineering agency, meaning we build a full outbound system on top of your CRM. That includes enriched, signal-based lead lists via Clay, multi-channel sequences across email and LinkedIn, deliverability infrastructure, and reply handling wired straight into your sales pipeline."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What kind of companies do you work with?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "B2B service companies, SaaS founders, recruitment and PE firms, agencies and product companies selling into mid-market and enterprise. Our clients usually have an average contract value of EUR 5K or more and need a predictable, repeatable way to book qualified meetings without hiring an in-house SDR team."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How fast do you deliver results?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Setup of infrastructure takes 2 to 3 weeks (domains, inboxes, warmup, lists, copy, sequences). Most clients get their first qualified meeting within 4 weeks of launch. Documented case studies show 78 to 247 opportunities per engagement, with pipeline values between EUR 78K and USD 300K+."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which tools and platforms does closed:in use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Core stack: Instantly for cold email, Clay for enrichment and orchestration, Close CRM for pipeline management, Apollo and Sales Navigator for sourcing, and LinkedIn for direct outreach. We are a Clay Solutions Partner, an Instantly Certified Expert and an Apollo Partner."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where is closed:in based and which regions do you serve?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "closed:in is based in Amsterdam, Netherlands. We run campaigns into the Netherlands, Belgium, the United Kingdom and the broader European market, in English, Dutch or other local languages depending on the target country."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I get started?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Book a 30 minute discovery call at https://closedin.neetocal.com/discovery-call-with-max-munstermann. We'll review your current outbound setup, your ICP and your goals, and confirm whether closed:in is a fit before sending a tailored proposal."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -749,6 +933,42 @@
                 <div class="testimonial-author">Zen Alex, Founder Red Fox Agency</div>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+    <div class="section-label reveal">FAQ</div>
+    <h2 class="reveal">Questions, answered.</h2>
+    <div class="faq-list reveal">
+        <details class="faq-item">
+            <summary>What does closed:in do?</summary>
+            <div class="faq-answer">closed:in is a GTM engineering agency in Amsterdam. We build and run outbound sales systems for B2B companies, combining cold email (Instantly), LinkedIn outreach, lead enrichment (Clay), website visitor tracking and CRM orchestration into one managed engine. Most clients see qualified meetings booked within 4 weeks.</div>
+        </details>
+        <details class="faq-item">
+            <summary>How is closed:in different from a traditional cold email agency?</summary>
+            <div class="faq-answer">Traditional cold email agencies send volume. closed:in is a GTM engineering agency, meaning we build a full outbound system on top of your CRM. That includes enriched, signal-based lead lists via Clay, multi-channel sequences across email and LinkedIn, deliverability infrastructure, and reply handling wired straight into your sales pipeline.</div>
+        </details>
+        <details class="faq-item">
+            <summary>What kind of companies do you work with?</summary>
+            <div class="faq-answer">B2B service companies, SaaS founders, recruitment and PE firms, agencies and product companies selling into mid-market and enterprise. Our clients usually have an average contract value of EUR 5K or more and need a predictable, repeatable way to book qualified meetings without hiring an in-house SDR team.</div>
+        </details>
+        <details class="faq-item">
+            <summary>How fast do you deliver results?</summary>
+            <div class="faq-answer">Setup of infrastructure takes 2 to 3 weeks (domains, inboxes, warmup, lists, copy, sequences). Most clients get their first qualified meeting within 4 weeks of launch. Documented case studies show 78 to 247 opportunities per engagement, with pipeline values between EUR 78K and USD 300K+.</div>
+        </details>
+        <details class="faq-item">
+            <summary>Which tools and platforms does closed:in use?</summary>
+            <div class="faq-answer">Core stack: Instantly for cold email, Clay for enrichment and orchestration, Close CRM for pipeline management, Apollo and Sales Navigator for sourcing, and LinkedIn for direct outreach. We are a Clay Solutions Partner, an Instantly Certified Expert and an Apollo Partner.</div>
+        </details>
+        <details class="faq-item">
+            <summary>Where is closed:in based and which regions do you serve?</summary>
+            <div class="faq-answer">closed:in is based in Amsterdam, Netherlands. We run campaigns into the Netherlands, Belgium, the United Kingdom and the broader European market, in English, Dutch or other local languages depending on the target country.</div>
+        </details>
+        <details class="faq-item">
+            <summary>How do I get started?</summary>
+            <div class="faq-answer">Book a 30 minute discovery call. We'll review your current outbound setup, your ICP and your goals, and confirm whether closed:in is a fit before sending a tailored proposal.</div>
+        </details>
     </div>
 </section>
 
