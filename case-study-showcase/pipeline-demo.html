@@ -453,6 +453,52 @@ window.addEventListener('scroll', onScroll);
 renderStep(0, 0);
 </script>
 
-<script src="https://static.claydar.com/init.v1.js?id=cq9do9BG0M"></script>
+<style>
+.cookie-banner { display: none; position: fixed; bottom: 24px; left: 24px; right: 24px; max-width: 580px; margin: 0 auto; padding: 20px 24px; background: rgba(10,10,10,0.95); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 9998; box-shadow: 0 8px 40px rgba(0,0,0,0.4); font-family: 'Inter', sans-serif; }
+.cookie-banner p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5; margin: 0 0 14px; }
+.cookie-banner a { color: #7877C6; text-decoration: underline; }
+.cookie-banner-buttons { display: flex; gap: 8px; }
+.cookie-btn { flex: 1; padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+.cookie-btn-accept { background: #fff; color: #000; border: none; }
+.cookie-btn-accept:hover { transform: scale(1.02); }
+.cookie-btn-reject { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+.cookie-btn-reject:hover { border-color: rgba(255,255,255,0.4); }
+</style>
+<div class="cookie-banner" id="cookie-banner">
+    <p>We gebruiken een tracking-script om te zien welke <strong>bedrijven</strong> onze website bezoeken. We zien geen individuele personen. <a href="privacy.html">Lees meer</a>.</p>
+    <div class="cookie-banner-buttons">
+        <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Accepteren</button>
+        <button class="cookie-btn cookie-btn-reject" id="cookie-reject">Weigeren</button>
+    </div>
+</div>
+<script>
+(function() {
+    var CLAYDAR_SRC = 'https://static.claydar.com/init.v1.js?id=cq9do9BG0M';
+    function loadClaydar() {
+        if (document.querySelector('script[src="' + CLAYDAR_SRC + '"]')) return;
+        var s = document.createElement('script');
+        s.src = CLAYDAR_SRC;
+        document.head.appendChild(s);
+    }
+    var banner = document.getElementById('cookie-banner');
+    var consent = localStorage.getItem('cookieConsent');
+    if (consent === 'accepted') {
+        loadClaydar();
+    } else if (consent !== 'rejected') {
+        if (banner) banner.style.display = 'block';
+    }
+    var acceptBtn = document.getElementById('cookie-accept');
+    var rejectBtn = document.getElementById('cookie-reject');
+    if (acceptBtn) acceptBtn.addEventListener('click', function() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        if (banner) banner.style.display = 'none';
+        loadClaydar();
+    });
+    if (rejectBtn) rejectBtn.addEventListener('click', function() {
+        localStorage.setItem('cookieConsent', 'rejected');
+        if (banner) banner.style.display = 'none';
+    });
+})();
+</script>
 </body>
 </html>

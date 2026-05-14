@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <title>Privacy Policy - closed:in</title>
+    <meta name="description" content="Privacyverklaring closed:in: hoe we omgaan met persoonsgegevens, cookies en website tracking.">
+    <link rel="canonical" href="https://www.closedin.io/privacy.html">
+    <meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #050505; --card: #0A0A0A; --border: rgba(255,255,255,0.06); --border-hover: rgba(255,255,255,0.12); --text: #fff; --muted: rgba(255,255,255,0.4); --dim: rgba(255,255,255,0.6); --accent: #7877C6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 10px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.6); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 88px; }
+        .nav-links { display: flex; gap: 32px; align-items: center; justify-self: center; }
+        .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { font-size: 13px; font-weight: 600; padding: 12px 28px; background: var(--text); color: var(--bg); border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); justify-self: end; }
+        .nav-cta:hover { transform: scale(1.06); box-shadow: 0 0 40px rgba(255,255,255,0.15); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 101; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+
+        .hero { padding: 200px 40px 60px; max-width: 900px; margin: 0 auto; text-align: center; }
+        .hero-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+        .hero h1 { font-family: 'Satoshi', sans-serif; font-size: clamp(40px, 6vw, 64px); font-weight: 900; line-height: 0.98; letter-spacing: -0.04em; margin-bottom: 16px; }
+        .hero p { font-size: 15px; color: var(--muted); }
+
+        .content { max-width: 780px; margin: 0 auto; padding: 40px 40px 120px; }
+        .content section { margin-bottom: 48px; }
+        .content h2 { font-family: 'Satoshi', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; color: var(--text); }
+        .content p { font-size: 15px; line-height: 1.75; color: var(--dim); margin-bottom: 14px; }
+        .content ul { list-style: none; padding: 0; margin: 14px 0; }
+        .content ul li { font-size: 15px; line-height: 1.75; color: var(--dim); padding-left: 20px; position: relative; margin-bottom: 8px; }
+        .content ul li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+        .content a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(120,119,198,0.4); transition: text-decoration-color 0.2s; }
+        .content a:hover { text-decoration-color: var(--accent); }
+        .content strong { color: var(--text); font-weight: 600; }
+
+        .revoke-box { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px 28px; margin-top: 16px; }
+        .revoke-box p { margin-bottom: 14px; }
+        .revoke-btn { display: inline-block; padding: 10px 20px; background: var(--text); color: var(--bg); border: none; border-radius: 100px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; transition: transform 0.2s; }
+        .revoke-btn:hover { transform: scale(1.04); }
+        .revoke-status { font-size: 13px; color: var(--accent); margin-left: 12px; }
+
+        /* Footer */
+        .premium-footer { background: linear-gradient(180deg, transparent, rgba(120,119,198,0.02)); border-top: 1px solid var(--border); padding: 80px 40px 32px; position: relative; overflow: hidden; }
+        .footer-top { display: flex; justify-content: space-between; gap: 80px; margin-bottom: 80px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .footer-brand { max-width: 320px; }
+        .footer-logo { height: 48px; margin-bottom: 16px; }
+        .footer-tagline { font-size: 14px; color: var(--muted); line-height: 1.6; }
+        .footer-links { display: flex; gap: 64px; }
+        .footer-col { display: flex; flex-direction: column; gap: 12px; }
+        .footer-col h4 { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 4px; }
+        .footer-col a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: rgba(120,119,198,0.8); }
+        .footer-badges { display: flex; gap: 24px; align-items: center; justify-content: center; padding: 40px 0; }
+        .footer-badges a { transition: transform 0.3s, opacity 0.3s; opacity: 0.85; }
+        .footer-badges a:hover { transform: translateY(-3px); opacity: 1; }
+        .footer-badges img { height: 80px; object-fit: contain; }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom span, .footer-bottom a { font-size: 12px; color: var(--muted); text-decoration: none; }
+        .footer-bottom a:hover { color: var(--text); }
+
+        /* Cookie banner */
+        .cookie-banner { display: none; position: fixed; bottom: 24px; left: 24px; right: 24px; max-width: 580px; margin: 0 auto; padding: 20px 24px; background: rgba(10,10,10,0.95); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 9998; box-shadow: 0 8px 40px rgba(0,0,0,0.4); }
+        .cookie-banner p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5; margin: 0 0 14px; }
+        .cookie-banner a { color: var(--accent); text-decoration: underline; }
+        .cookie-banner-buttons { display: flex; gap: 8px; }
+        .cookie-btn { flex: 1; padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+        .cookie-btn-accept { background: #fff; color: #000; border: none; }
+        .cookie-btn-accept:hover { transform: scale(1.02); }
+        .cookie-btn-reject { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        .cookie-btn-reject:hover { border-color: rgba(255,255,255,0.4); }
+
+        @media (max-width: 768px) {
+            nav { padding: 14px 20px; }
+            .nav-links { display: none; }
+            .nav-cta { display: none; }
+            .hamburger { display: flex; }
+            .mobile-menu { display: none; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5,5,5,0.98); z-index: 999; padding: 100px 40px 40px; align-items: center; justify-content: center; gap: 32px; backdrop-filter: blur(24px); }
+            .mobile-menu.open { display: flex; }
+            .mobile-menu a { font-family: 'Satoshi', sans-serif; font-size: 28px; font-weight: 700; color: rgba(255,255,255,0.6); text-decoration: none; }
+            .mobile-menu .mobile-cta { font-size: 15px; font-weight: 700; padding: 18px 40px; background: #fff; color: #050505; border-radius: 100px; text-decoration: none; margin-top: 16px; }
+            .mobile-menu-close { position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; background: none; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; }
+            .mobile-menu-close span { display: block; width: 20px; height: 2px; background: #fff; position: relative; transform: rotate(45deg); }
+            .mobile-menu-close span::after { content: ''; position: absolute; width: 20px; height: 2px; background: #fff; transform: rotate(-90deg); }
+            .hero { padding: 140px 20px 40px; }
+            .content { padding: 20px 20px 60px; }
+            .footer-top { flex-direction: column; gap: 40px; }
+            .footer-links { flex-direction: column; gap: 32px; }
+            .premium-footer { padding: 60px 20px 32px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo"><img src="closedin-logo.png" alt="closed:in"></a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a>
+    </div>
+    <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="nav-cta">Book Meeting</a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu"><span></span></button>
+    <a href="index.html">Home</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a>
+    <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="mobile-cta">Book Meeting</a>
+</div>
+
+<section class="hero">
+    <div class="hero-label">Privacy</div>
+    <h1>Privacy Policy</h1>
+    <p>Laatst bijgewerkt: 14 mei 2026</p>
+</section>
+
+<section class="content">
+    <section>
+        <p>closed:in respecteert je privacy. In deze verklaring leggen we uit welke gegevens we verzamelen wanneer je onze website bezoekt, waarvoor we ze gebruiken en welke rechten je hebt.</p>
+    </section>
+
+    <section>
+        <h2>1. Wie zijn wij</h2>
+        <p>closed:in is gevestigd aan de Jodenbreestraat 25, 1011 NH Amsterdam. Voor vragen over privacy kun je ons bereiken via <a href="mailto:info@closedin.io">info@closedin.io</a>.</p>
+    </section>
+
+    <section>
+        <h2>2. Welke gegevens verzamelen we</h2>
+        <p>Wanneer je onze website bezoekt verzamelen we — afhankelijk van je toestemming — de volgende gegevens:</p>
+        <ul>
+            <li><strong>Bezoekgegevens (anoniem, altijd):</strong> aantal page views, geanonimiseerde locatie en apparaattype, via Vercel Web Analytics. Deze tool gebruikt geen cookies en bevat geen persoonsgegevens.</li>
+            <li><strong>Bedrijfsherkenning (alleen na toestemming):</strong> via Claydar (een product van Clay Labs Inc.) koppelen we het IP-adres van je bezoek aan het bedrijfsdomein van je werkgever. We zien dus dat een specifiek <em>bedrijf</em> onze website heeft bezocht — niet welke persoon binnen dat bedrijf.</li>
+            <li><strong>Contactformulier:</strong> als je contact opneemt of een meeting boekt, verwerken we je naam, e-mailadres en eventueel telefoonnummer om je vraag te beantwoorden.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>3. Waarvoor gebruiken we deze gegevens</h2>
+        <ul>
+            <li>Om onze website te verbeteren en te begrijpen welke content waardevol is voor onze doelgroep.</li>
+            <li>Om relevante outreach te kunnen doen richting bedrijven die interesse hebben getoond in onze diensten (B2B prospecting).</li>
+            <li>Om je vragen of aanvragen te beantwoorden.</li>
+        </ul>
+        <p>De wettelijke grondslag is jouw <strong>toestemming</strong> (voor tracking) en ons <strong>gerechtvaardigd belang</strong> (voor beperkte, niet-identificerende analytics en het beantwoorden van je verzoeken).</p>
+    </section>
+
+    <section>
+        <h2>4. Cookies en tracking</h2>
+        <p>We gebruiken zo min mogelijk cookies. Bij je eerste bezoek vragen we expliciet om toestemming voor bedrijfsherkenning via Claydar. Zonder toestemming wordt dit script niet geladen. Vercel Web Analytics werkt zonder cookies en verzamelt geen persoonsgegevens.</p>
+    </section>
+
+    <section>
+        <h2>5. Met wie delen we gegevens</h2>
+        <p>We delen gegevens uitsluitend met de volgende verwerkers, op basis van een verwerkersovereenkomst:</p>
+        <ul>
+            <li><strong>Vercel Inc.</strong> — hosting en analytics (server in EU).</li>
+            <li><strong>Clay Labs Inc.</strong> — Claydar website visitor identificatie.</li>
+            <li><strong>Instantly.ai, Apollo.io</strong> — outbound e-mail tooling, alleen voor zakelijke prospects.</li>
+        </ul>
+        <p>We verkopen je gegevens nooit aan derden.</p>
+    </section>
+
+    <section>
+        <h2>6. Bewaartermijn</h2>
+        <p>Bezoekgegevens bewaren we maximaal 12 maanden. Contactgegevens van prospects bewaren we zolang er een redelijke commerciële relatie bestaat, of totdat je verzoekt deze te verwijderen.</p>
+    </section>
+
+    <section>
+        <h2>7. Jouw rechten</h2>
+        <p>Onder de AVG heb je het recht op inzage, correctie, verwijdering, beperking en bezwaar tegen de verwerking van je persoonsgegevens. Je kunt ook je toestemming intrekken. Stuur een e-mail naar <a href="mailto:info@closedin.io">info@closedin.io</a> om gebruik te maken van deze rechten. Je hebt daarnaast het recht om een klacht in te dienen bij de <a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">Autoriteit Persoonsgegevens</a>.</p>
+    </section>
+
+    <section>
+        <h2>8. Toestemming intrekken</h2>
+        <p>Je kunt je toestemming voor website tracking op elk moment intrekken via onderstaande knop:</p>
+        <div class="revoke-box">
+            <p>Huidige status: <span id="consent-status">aan het laden...</span></p>
+            <button class="revoke-btn" id="revoke-btn">Toestemming intrekken</button>
+            <button class="revoke-btn" id="grant-btn" style="background: var(--accent); color: #fff; margin-left: 8px;">Toestemming geven</button>
+            <span class="revoke-status" id="revoke-status"></span>
+        </div>
+    </section>
+
+    <section>
+        <h2>9. Wijzigingen</h2>
+        <p>We kunnen deze privacyverklaring van tijd tot tijd aanpassen. De meest actuele versie staat altijd op deze pagina, met de laatste update-datum bovenaan vermeld.</p>
+    </section>
+</section>
+
+<footer class="premium-footer">
+    <div class="footer-top">
+        <div class="footer-brand">
+            <img src="closedin-logo.png" alt="closed:in" class="footer-logo">
+            <p class="footer-tagline">Your B2B Go-To-Market Partner</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Navigate</h4>
+                <a href="index.html">Home</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="team.html">Team</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:info@closedin.io">info@closedin.io</a>
+                <a href="https://closedin.neetocal.com/discovery-call" target="_blank">Book a Call</a>
+                <a href="https://www.linkedin.com/company/closedin" target="_blank">LinkedIn</a>
+                <a href="https://maps.google.com/?q=Jodenbreestraat+25,+Amsterdam" target="_blank">Jodenbreestraat 25, Amsterdam</a>
+            </div>
+            <div class="footer-col">
+                <h4>Partners</h4>
+                <a href="https://www.clay.com/experts/partner/closedin" target="_blank">Clay Solutions Partner</a>
+                <a href="https://instantly.ai/experts/jurre-groot" target="_blank">Instantly Expert</a>
+                <a href="https://www.apollo.io" target="_blank">Apollo Partner</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-badges">
+        <a href="https://www.clay.com/experts/partner/closedin" target="_blank"><img src="badge-clay.png" alt="Clay"></a>
+        <a href="https://instantly.ai/experts/jurre-groot" target="_blank"><img src="badge-instantly.png" alt="Instantly"></a>
+        <a href="https://www.apollo.io" target="_blank"><img src="badge-apollo.png" alt="Apollo Partner"></a>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 closed:in. All rights reserved.</span>
+        <a href="privacy.html">Privacy Policy</a>
+    </div>
+</footer>
+
+<!-- Cookie Consent Banner -->
+<div class="cookie-banner" id="cookie-banner">
+    <p>We gebruiken een tracking-script om te zien welke <strong>bedrijven</strong> onze website bezoeken, zodat we relevante outreach kunnen doen. We zien geen individuele personen. <a href="privacy.html">Lees meer in onze privacyverklaring</a>.</p>
+    <div class="cookie-banner-buttons">
+        <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Accepteren</button>
+        <button class="cookie-btn cookie-btn-reject" id="cookie-reject">Weigeren</button>
+    </div>
+</div>
+
+<script>
+// Cookie consent + conditional tracking
+(function() {
+    var CLAYDAR_SRC = 'https://static.claydar.com/init.v1.js?id=cq9do9BG0M';
+    function loadClaydar() {
+        if (document.querySelector('script[src="' + CLAYDAR_SRC + '"]')) return;
+        var s = document.createElement('script');
+        s.src = CLAYDAR_SRC;
+        document.head.appendChild(s);
+    }
+    var banner = document.getElementById('cookie-banner');
+    var consent = localStorage.getItem('cookieConsent');
+    if (consent === 'accepted') {
+        loadClaydar();
+    } else if (consent !== 'rejected') {
+        banner.style.display = 'block';
+    }
+    document.getElementById('cookie-accept').addEventListener('click', function() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        banner.style.display = 'none';
+        loadClaydar();
+    });
+    document.getElementById('cookie-reject').addEventListener('click', function() {
+        localStorage.setItem('cookieConsent', 'rejected');
+        banner.style.display = 'none';
+    });
+
+    // Status + revoke/grant on this page
+    function updateStatus() {
+        var c = localStorage.getItem('cookieConsent');
+        var statusEl = document.getElementById('consent-status');
+        if (!statusEl) return;
+        if (c === 'accepted') statusEl.textContent = 'toestemming gegeven';
+        else if (c === 'rejected') statusEl.textContent = 'toestemming geweigerd';
+        else statusEl.textContent = 'nog geen keuze gemaakt';
+    }
+    updateStatus();
+    var revokeBtn = document.getElementById('revoke-btn');
+    var grantBtn = document.getElementById('grant-btn');
+    var revokeStatus = document.getElementById('revoke-status');
+    if (revokeBtn) {
+        revokeBtn.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'rejected');
+            updateStatus();
+            revokeStatus.textContent = 'Toestemming ingetrokken. Tracking is uitgeschakeld bij je volgende bezoek.';
+        });
+    }
+    if (grantBtn) {
+        grantBtn.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            loadClaydar();
+            updateStatus();
+            revokeStatus.textContent = 'Bedankt — toestemming geregistreerd.';
+        });
+    }
+})();
+
+// Mobile menu
+var hamburger = document.getElementById('hamburgerBtn');
+var mobileMenu = document.getElementById('mobileMenu');
+var mobileClose = document.getElementById('mobileMenuClose');
+if (hamburger) hamburger.addEventListener('click', function() { mobileMenu.classList.add('open'); });
+if (mobileClose) mobileClose.addEventListener('click', function() { mobileMenu.classList.remove('open'); });
+</script>
+
+</body>
+</html>
