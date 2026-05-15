@@ -1,12 +1,12 @@
 # closed:in
 
-> closed:in is a GTM engineering agency based in Amsterdam, Netherlands. We build outbound sales systems for B2B service companies that want more qualified sales meetings within 4 weeks. We combine cold email infrastructure (Instantly), LinkedIn outreach, lead enrichment (Clay), website visitor tracking and CRM orchestration (Close) into a single managed outbound engine.
+> closed:in is a GTM engineering agency based in Amsterdam, Netherlands. We build outbound sales systems for B2B service companies that want more qualified sales meetings within 2-3 weeks. We combine cold email infrastructure (Instantly), LinkedIn outreach, lead enrichment (Clay), website visitor tracking and CRM orchestration (Close) into a single managed outbound engine.
 
 ## About
 
 closed:in was founded by Max Münstermann (Founder & Sales Lead) and Jurre Groot (Operations & Campaign Execution). The team operates from Amsterdam and serves clients across the Netherlands, Belgium, the United Kingdom and the broader European market. closed:in is a certified Clay Solutions Partner, an Instantly Certified Expert and an Apollo Partner.
 
-The agency targets B2B service companies, SaaS founders, recruitment firms, agencies and PE-backed businesses that need predictable outbound pipeline but do not want to hire and manage an in-house SDR team. Standard engagements run for three months, with most clients seeing qualified meetings booked within the first 4 weeks.
+The agency targets B2B service companies, SaaS founders, recruitment firms, agencies and PE-backed businesses that need predictable outbound pipeline but do not want to hire and manage an in-house SDR team. Standard engagements run for three months, with most clients seeing qualified meetings booked within the first 2-3 weeks.
 
 ## Core services
 
@@ -19,13 +19,12 @@ The agency targets B2B service companies, SaaS founders, recruitment firms, agen
 
 ## Typical results
 
-closed:in clients average 20+ qualified sales meetings per month, with most engagements producing the first qualified meeting within 4 weeks of launch. Documented case study results include:
+closed:in clients average 20+ qualified sales meetings per month, with most engagements producing the first qualified meeting within 2-3 weeks of launch. Documented case study results include:
 
 - **Verzendbazen** (e-commerce fulfillment, NL/BE): 78 opportunities, 13.9% reply rate, EUR 78K pipeline.
 - **Jamezz** (hospitality SaaS): 81 qualified leads from an unreachable ICP in 60 days, USD 190K+ pipeline.
 - **Endresz** (creative agency): 247 boutique conversations across NL, France, Poland and London, USD 128K+ pipeline.
 - **Mistertafel** (home interior B2C founder, first B2B campaign): 96 retail opportunities in under 30 days from 900 contacts, 35%+ reply rate.
-- **Thomas Scott & Co** (UK recruitment / PE): 181 opportunities from multi-market PE outbound, 4.96% reply rate, USD 300K+ pipeline.
 
 ## Key pages
 
@@ -35,10 +34,18 @@ closed:in clients average 20+ qualified sales meetings per month, with most enga
 - [Case study: Jamezz](https://www.closedin.io/case-study-jamezz.html): custom outbound system for hospitality SaaS targeting an unreachable ICP.
 - [Case study: Endresz](https://www.closedin.io/case-study-endresz.html): multi-market boutique outbound for a creative agency.
 - [Case study: Mistertafel](https://www.closedin.io/case-study-mistertafel.html): first B2B campaign for a B2C founder.
-- [Case study: Thomas Scott & Co](https://www.closedin.io/case-study-tsc.html): UK private equity outbound.
 - [Team](https://www.closedin.io/team.html): about Max Münstermann and Jurre Groot.
 - [Pipeline demo](https://www.closedin.io/pipeline-demo.html): interactive walkthrough of the outbound engine.
 - [Contact](https://www.closedin.io/contact.html): book a discovery call.
+
+## Specialised service pages
+
+- [Cold email agency Amsterdam](https://www.closedin.io/cold-email-agency-amsterdam.html): cold email services for Dutch and European B2B companies, GDPR-compliant infrastructure, local market expertise.
+- [Clay agency · Solutions Partner](https://www.closedin.io/clay-agency.html): official Clay Solutions Partner. Production-ready Clay tables, waterfall enrichment, Claygent prompts, CRM orchestration.
+- [GTM engineering agency](https://www.closedin.io/gtm-engineering-agency.html): full-system go-to-market engineering across data, outbound, CRM and analytics layers.
+- [Cold email agency for SaaS](https://www.closedin.io/cold-email-agency-saas.html): outbound systems tuned for B2B SaaS sales cycles, ICP segmentation and demo booking.
+- [Outbound agency UK](https://www.closedin.io/outbound-agency-uk.html): cold email and LinkedIn outbound for UK B2B companies. Multi-market campaigns including London documented in the Endresz case study.
+- [Outbound agency US](https://www.closedin.io/outbound-agency-us.html): outbound sales for B2B companies targeting the United States. CAN-SPAM compliant infrastructure, US time zone aware sequencing, European pricing.
 
 ## Contact
 
