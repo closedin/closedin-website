@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <script type="text/javascript">_linkedin_partner_id = "__LINKEDIN_PARTNER_ID__";window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script>
+    <script type="text/javascript">(function(l) { if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[]} var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s); })(window.lintrk);</script>
+    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '__META_PIXEL_ID__');fbq('track', 'PageView');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=__GA4_MEASUREMENT_ID__"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '__GA4_MEASUREMENT_ID__');</script>
+    <title>Free B2B Outbound ROI Calculator | closed:in</title>
+    <meta name="description" content="Free interactive calculator. Plug in your monthly prospect volume, reply rates, ACV. See projected pipeline, meetings, and revenue from outbound. Benchmarks from 1,000+ closed:in campaigns.">
+    <link rel="canonical" href="https://www.closedin.io/tools/roi-calculator.html">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free B2B Outbound ROI Calculator">
+    <meta property="og:url" content="https://www.closedin.io/tools/roi-calculator.html">
+    <meta property="og:image" content="https://www.closedin.io/closedin-logo.png">
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@graph": [
+      { "@type": "WebApplication", "name": "Outbound ROI Calculator", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0" }, "url": "https://www.closedin.io/tools/roi-calculator.html", "provider": { "@type": "Organization", "name": "closed:in" } },
+      { "@type": "BreadcrumbList", "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.closedin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://www.closedin.io/resources.html" },
+        { "@type": "ListItem", "position": 3, "name": "ROI Calculator", "item": "https://www.closedin.io/tools/roi-calculator.html" }
+      ]}
+    ]}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #050505; --card: #0A0A0A; --border: rgba(255,255,255,0.06); --text: #fff; --muted: rgba(255,255,255,0.4); --dim: rgba(255,255,255,0.6); --accent: #7877C6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 10px 48px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; background: rgba(5,5,5,0.6); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        .logo img { height: 88px; }
+        .nav-links { display: flex; gap: 32px; justify-self: center; }
+        .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { font-size: 13px; font-weight: 600; padding: 12px 28px; background: var(--text); color: var(--bg); border-radius: 100px; text-decoration: none; justify-self: end; }
+
+        .hero { padding: 140px 40px 40px; text-align: center; }
+        .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+        .breadcrumb a { color: var(--dim); text-decoration: none; }
+        .hero h1 { font-family: 'Satoshi', sans-serif; font-size: clamp(36px, 5vw, 56px); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 14px; max-width: 880px; margin-inline: auto; }
+        .hero p { font-size: 17px; color: var(--dim); max-width: 680px; margin: 0 auto; line-height: 1.6; }
+
+        .calc-wrap { max-width: 1200px; margin: 40px auto; padding: 0 40px 40px; }
+        .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+
+        .calc-inputs { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 36px; }
+        .calc-inputs h2 { font-family: 'Satoshi', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 24px; }
+        .calc-input { margin-bottom: 22px; }
+        .calc-input-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .calc-input-label label { font-size: 14px; font-weight: 600; color: var(--text); }
+        .calc-input-value { font-family: 'Satoshi', sans-serif; font-size: 16px; font-weight: 700; color: var(--accent); }
+        .calc-input input[type="range"] { width: 100%; height: 6px; -webkit-appearance: none; appearance: none; background: rgba(255,255,255,0.08); border-radius: 100px; outline: none; }
+        .calc-input input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: var(--accent); border-radius: 50%; cursor: pointer; box-shadow: 0 0 12px rgba(120,119,198,0.5); border: 2px solid #fff; }
+        .calc-input input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; background: var(--accent); border-radius: 50%; cursor: pointer; border: 2px solid #fff; }
+        .calc-input-hint { font-size: 12px; color: var(--muted); margin-top: 6px; }
+        .calc-input input[type="number"] { width: 120px; padding: 8px 12px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'Satoshi', sans-serif; font-size: 16px; font-weight: 700; outline: none; text-align: right; }
+        .calc-input-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+        .calc-reset { margin-top: 16px; padding: 10px 18px; background: transparent; border: 1px solid var(--border); border-radius: 100px; color: var(--muted); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .calc-reset:hover { border-color: rgba(120,119,198,0.4); color: var(--text); }
+
+        .calc-results { background: linear-gradient(180deg, var(--card) 0%, rgba(120,119,198,0.06) 100%); border: 1px solid rgba(120,119,198,0.2); border-radius: 24px; padding: 36px; position: sticky; top: 100px; }
+        .calc-results h2 { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+        .result-big { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+        .result-big-label { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+        .result-big-val { font-family: 'Satoshi', sans-serif; font-size: clamp(40px, 5vw, 56px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; background: linear-gradient(135deg, #fff 30%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .result-big-meta { font-size: 12px; color: var(--muted); margin-top: 6px; }
+        .result-row { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border); }
+        .result-row:last-of-type { border-bottom: none; }
+        .result-row-label { font-size: 14px; color: var(--dim); }
+        .result-row-val { font-family: 'Satoshi', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); }
+
+        .save-section { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+        .save-section h3 { font-family: 'Satoshi', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+        .save-section p { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+        .save-form { display: flex; gap: 6px; }
+        .save-form input { flex: 1; padding: 12px 16px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 100px; color: var(--text); font-size: 13px; outline: none; }
+        .save-form input:focus { border-color: rgba(120,119,198,0.4); }
+        .save-form input::placeholder { color: var(--muted); }
+        .save-form button { padding: 12px 20px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; white-space: nowrap; }
+
+        .assumptions { max-width: 1200px; margin: 60px auto; padding: 0 40px; }
+        .assumptions h2 { font-family: 'Satoshi', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 18px; }
+        .assumptions p { font-size: 15px; color: var(--dim); line-height: 1.65; margin-bottom: 14px; }
+        .assumptions table { width: 100%; margin-top: 18px; border-collapse: collapse; }
+        .assumptions th, .assumptions td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); font-size: 14px; }
+        .assumptions th { font-family: 'Satoshi', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+        .assumptions td:first-child { color: var(--dim); }
+        .assumptions td:nth-child(2) { font-family: 'Satoshi', sans-serif; font-weight: 700; color: var(--accent); }
+
+        .cta-section { text-align: center; padding: 60px 40px 100px; max-width: 760px; margin: 0 auto; }
+        .cta-section h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 900; margin-bottom: 14px; }
+        .cta-section p { font-size: 15px; color: var(--muted); margin-bottom: 24px; }
+        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-weight: 700; border-radius: 100px; text-decoration: none; }
+        .premium-footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 60px 48px 32px; }
+        .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.2); }
+        .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+        @media (max-width: 880px) {
+            .calc-grid { grid-template-columns: 1fr; }
+            .calc-results { position: relative; top: 0; }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 14px 20px; } .nav-links, .nav-cta { display: none; }
+            .hero { padding: 120px 20px 30px; }
+            .calc-wrap { padding: 0 20px 30px; }
+            .calc-inputs, .calc-results { padding: 24px; }
+            .save-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="logo"><img src="../closedin-logo.png" alt="closed:in"></a>
+    <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../case-studies.html">Case Studies</a>
+        <a href="../resources.html">Resources</a>
+        <a href="../team.html">Team</a>
+        <a href="../contact.html">Contact</a>
+    </div>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=roi-calc" target="_blank" class="nav-cta">Book Meeting</a>
+</nav>
+
+<section class="hero">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../resources.html">Resources</a> / ROI Calculator</div>
+    <h1>Outbound ROI Calculator</h1>
+    <p>Plug in your monthly prospect volume, conversion rates, and ACV. See projected meetings, pipeline, and revenue. Defaults from 1,000+ closed:in campaigns. All math is client-side, no data leaves your browser until you choose to save.</p>
+</section>
+
+<div class="calc-wrap">
+    <div class="calc-grid">
+
+        <!-- INPUTS -->
+        <div class="calc-inputs">
+            <h2>Your inputs</h2>
+
+            <div class="calc-input">
+                <div class="calc-input-label">
+                    <label for="prospects">Monthly prospects contacted</label>
+                    <div class="calc-input-row">
+                        <input type="number" id="prospects-num" min="100" max="50000" step="100" value="7000">
+                    </div>
+                </div>
+                <input type="range" id="prospects" min="100" max="20000" step="100" value="7000">
+                <div class="calc-input-hint">Total unique prospects you email + LinkedIn touch per month. closed:in default: 7,000 (= 1 inbox cluster at full warmth)</div>
+            </div>
+
+            <div class="calc-input">
+                <div class="calc-input-label">
+                    <label for="reply">Reply rate</label>
+                    <div class="calc-input-value"><span id="reply-val">3</span>%</div>
+                </div>
+                <input type="range" id="reply" min="1" max="20" step="0.5" value="3">
+                <div class="calc-input-hint">Total replies (positive + negative) divided by prospects. closed:in benchmark: 2.5-3.5%</div>
+            </div>
+
+            <div class="calc-input">
+                <div class="calc-input-label">
+                    <label for="positive">Positive reply share</label>
+                    <div class="calc-input-value"><span id="positive-val">33</span>%</div>
+                </div>
+                <input type="range" id="positive" min="10" max="80" step="1" value="33">
+                <div class="calc-input-hint">Of all replies, share that signal interest (vs unsubscribe/out-of-office/wrong person). closed:in default: 33%</div>
+            </div>
+
+            <div class="calc-input">
+                <div class="calc-input-label">
+                    <label for="book">Positive-to-meeting book rate</label>
+                    <div class="calc-input-value"><span id="book-val">60</span>%</div>
+                </div>
+                <input type="range" id="book" min="20" max="90" step="1" value="60">
+                <div class="calc-input-hint">Of positive replies, share that actually book a call. closed:in default: 50-70%</div>
+            </div>
+
+            <div class="calc-input">
+                <div class="calc-input-label">
+                    <label for="show">Meeting show-up rate</label>
+                    <div class="calc-input-value"><span id="show-val">78</span>%</div>
+                </div>
+                <input type="range" id="show" min="50" max="100" step="1" value="78">
+                <div class="calc-input-hint">Share of booked meetings that actually happen. closed:in default: 75-80%</div>
+            </div>
+
+            <div class="calc-input">
+                <div class="calc-input-label">
+                    <label for="sqo">SQO rate (meeting to qualified opp)</label>
+                    <div class="calc-input-value"><span id="sqo-val">92</span>%</div>
+                </div>
+                <input type="range" id="sqo" min="50" max="100" step="1" value="92">
+                <div class="calc-input-hint">Of meetings that happened, share that qualified as opportunities. closed:in default: 90-95%</div>
+            </div>
+
+            <div class="calc-input">
+                <div class="calc-input-label">
+                    <label for="close">Opportunity close rate</label>
+                    <div class="calc-input-value"><span id="close-val">15</span>%</div>
+                </div>
+                <input type="range" id="close" min="5" max="50" step="1" value="15">
+                <div class="calc-input-hint">Of qualified opps, share that close into paying customers. closed:in default: 10-20%</div>
+            </div>
+
+            <div class="calc-input">
+                <div class="calc-input-label">
+                    <label for="acv">Average contract value (EUR)</label>
+                    <div class="calc-input-row">
+                        <input type="number" id="acv-num" min="500" max="200000" step="500" value="15000">
+                    </div>
+                </div>
+                <input type="range" id="acv" min="500" max="100000" step="500" value="15000">
+                <div class="calc-input-hint">First-year contract value. For SaaS this is annual recurring revenue, for services the project value.</div>
+            </div>
+
+            <button class="calc-reset" id="reset">Reset to closed:in defaults</button>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="calc-results">
+            <h2>Projected monthly outbound output</h2>
+
+            <div class="result-big">
+                <div class="result-big-label">Projected new revenue per month</div>
+                <div class="result-big-val">€<span id="result-revenue">87,885</span></div>
+                <div class="result-big-meta">Annualized: €<span id="result-annual">1,054,620</span>/year</div>
+            </div>
+
+            <div class="result-row">
+                <div class="result-row-label">Replies</div>
+                <div class="result-row-val"><span id="result-replies">210</span></div>
+            </div>
+            <div class="result-row">
+                <div class="result-row-label">Positive replies</div>
+                <div class="result-row-val"><span id="result-positive">69</span></div>
+            </div>
+            <div class="result-row">
+                <div class="result-row-label">Meetings booked</div>
+                <div class="result-row-val"><span id="result-booked">42</span></div>
+            </div>
+            <div class="result-row">
+                <div class="result-row-label">Meetings held</div>
+                <div class="result-row-val"><span id="result-held">32</span></div>
+            </div>
+            <div class="result-row">
+                <div class="result-row-label">Qualified opportunities</div>
+                <div class="result-row-val"><span id="result-opps">30</span></div>
+            </div>
+            <div class="result-row">
+                <div class="result-row-label">Closed-won deals</div>
+                <div class="result-row-val"><span id="result-deals">5</span></div>
+            </div>
+            <div class="result-row">
+                <div class="result-row-label">Pipeline (open)</div>
+                <div class="result-row-val">€<span id="result-pipeline">446,250</span></div>
+            </div>
+
+            <div class="save-section">
+                <h3>Save these numbers + benchmarks</h3>
+                <p>Get this projection + 1 weekly tactical email with real campaign benchmarks.</p>
+                <form class="save-form" action="https://closedins-newsletter.beehiiv.com/subscribe" method="GET" target="_blank">
+                    <input type="email" name="email" placeholder="you@yourcompany.com" required>
+                    <button type="submit">Save + subscribe</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<section class="assumptions">
+    <h2>How the math works</h2>
+    <p>This is a funnel calculator. Each stage multiplies. The defaults come from closed:in's <strong>funnel math benchmarks</strong>, which we extract from running 1,000+ campaigns across SaaS, recruitment, e-commerce, agencies and PE.</p>
+    <p>If your reality differs, just adjust the sliders. If you do not know yet, use the defaults: they reflect what we typically deliver in month 2-3 of a client engagement.</p>
+    <table>
+        <thead><tr><th>Stage</th><th>closed:in default</th><th>Industry range we see</th></tr></thead>
+        <tbody>
+            <tr><td>Reply rate</td><td>2.5-3.5%</td><td>0.8% (poor list) to 15% (boutique ICP)</td></tr>
+            <tr><td>Positive reply share</td><td>33%</td><td>20% (loose ICP) to 60% (tight ICP)</td></tr>
+            <tr><td>Book rate (positive to meeting)</td><td>50-70%</td><td>30% (cold follow-up gaps) to 80% (instant scheduling)</td></tr>
+            <tr><td>Show-up rate</td><td>75-80%</td><td>60% (consumer-adjacent) to 90% (executives, reminders)</td></tr>
+            <tr><td>SQO (meeting to qualified opp)</td><td>90-95%</td><td>75% (broad ICP) to 95% (signal-led list)</td></tr>
+            <tr><td>Close rate</td><td>10-20%</td><td>5% (long enterprise) to 30% (smaller deals, urgent pain)</td></tr>
+        </tbody>
+    </table>
+    <p style="margin-top: 24px;">Note: the calculator assumes month-2 steady state, not month-1 (during which deliverability warmup and copy iteration usually cut output by 30-50%).</p>
+</section>
+
+<section class="cta-section">
+    <h2>Want closed:in to hit these numbers for you?</h2>
+    <p>30-minute discovery call. We review your ICP, current outbound and pipeline goal, and tell you whether closed:in is a fit.</p>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=tool-cta&utm_content=roi-calc" target="_blank" class="btn-primary">Book a 30 min call →</a>
+</section>
+
+<footer class="premium-footer">
+    <div class="footer-bottom">
+        <span>&copy; 2026 closed:in</span>
+        <a href="../privacy.html">Privacy Policy</a>
+    </div>
+</footer>
+
+<script>
+(function() {
+    const ids = ['prospects', 'reply', 'positive', 'book', 'show', 'sqo', 'close', 'acv'];
+    const defaults = { prospects: 7000, reply: 3, positive: 33, book: 60, show: 78, sqo: 92, close: 15, acv: 15000 };
+    const state = { ...defaults };
+
+    function fmtNum(n) { return Math.round(n).toLocaleString('en-US'); }
+    function fmtMoney(n) { return Math.round(n).toLocaleString('en-US'); }
+
+    function compute() {
+        const p = state.prospects;
+        const replies = p * state.reply / 100;
+        const positive = replies * state.positive / 100;
+        const booked = positive * state.book / 100;
+        const held = booked * state.show / 100;
+        const opps = held * state.sqo / 100;
+        const deals = opps * state.close / 100;
+        const revenue = deals * state.acv;
+        const pipeline = opps * state.acv;
+
+        document.getElementById('result-replies').textContent = fmtNum(replies);
+        document.getElementById('result-positive').textContent = fmtNum(positive);
+        document.getElementById('result-booked').textContent = fmtNum(booked);
+        document.getElementById('result-held').textContent = fmtNum(held);
+        document.getElementById('result-opps').textContent = fmtNum(opps);
+        document.getElementById('result-deals').textContent = fmtNum(deals);
+        document.getElementById('result-pipeline').textContent = fmtMoney(pipeline);
+        document.getElementById('result-revenue').textContent = fmtMoney(revenue);
+        document.getElementById('result-annual').textContent = fmtMoney(revenue * 12);
+    }
+
+    function syncDisplay(id) {
+        const el = document.getElementById(id + '-val');
+        if (el) el.textContent = state[id];
+        const numEl = document.getElementById(id + '-num');
+        if (numEl) numEl.value = state[id];
+        const rangeEl = document.getElementById(id);
+        if (rangeEl) rangeEl.value = state[id];
+    }
+
+    ids.forEach(id => {
+        const slider = document.getElementById(id);
+        if (slider) {
+            slider.addEventListener('input', e => {
+                state[id] = parseFloat(e.target.value);
+                syncDisplay(id);
+                compute();
+            });
+        }
+        const num = document.getElementById(id + '-num');
+        if (num) {
+            num.addEventListener('input', e => {
+                state[id] = parseFloat(e.target.value);
+                syncDisplay(id);
+                compute();
+            });
+        }
+    });
+
+    document.getElementById('reset').addEventListener('click', () => {
+        Object.assign(state, defaults);
+        ids.forEach(syncDisplay);
+        compute();
+    });
+
+    compute();
+})();
+</script>
+
+</body>
+</html>

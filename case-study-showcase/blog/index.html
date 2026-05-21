@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <script type="text/javascript">_linkedin_partner_id = "__LINKEDIN_PARTNER_ID__";window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script>
+    <script type="text/javascript">(function(l) { if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[]} var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s); })(window.lintrk);</script>
+    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '__META_PIXEL_ID__');fbq('track', 'PageView');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=__GA4_MEASUREMENT_ID__"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '__GA4_MEASUREMENT_ID__');</script>
+    <title>Blog | closed:in — Tactics, Teardowns and Numbers from B2B Outbound</title>
+    <meta name="description" content="Real tactics, teardowns and numbers from B2B outbound campaigns we run at closed:in. Cold email, Clay workflows, deliverability, signal-based selling.">
+    <link rel="canonical" href="https://www.closedin.io/blog/">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The closed:in blog">
+    <meta property="og:url" content="https://www.closedin.io/blog/">
+    <meta property="og:image" content="https://www.closedin.io/closedin-logo.png">
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "Blog", "name": "The closed:in blog", "url": "https://www.closedin.io/blog/", "publisher": { "@id": "https://www.closedin.io/#organization" }, "inLanguage": "en" }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #050505; --card: #0A0A0A; --border: rgba(255,255,255,0.06); --text: #fff; --muted: rgba(255,255,255,0.4); --dim: rgba(255,255,255,0.6); --accent: #7877C6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 10px 48px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; background: rgba(5,5,5,0.6); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        .logo img { height: 88px; }
+        .nav-links { display: flex; gap: 32px; justify-self: center; }
+        .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { font-size: 13px; font-weight: 600; padding: 12px 28px; background: var(--text); color: var(--bg); border-radius: 100px; text-decoration: none; justify-self: end; }
+        .hero { padding: 160px 40px 40px; text-align: center; }
+        .hero h1 { font-family: 'Satoshi', sans-serif; font-size: clamp(40px, 6vw, 64px); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 16px; }
+        .hero p { font-size: 17px; color: var(--dim); max-width: 660px; margin: 0 auto; line-height: 1.6; }
+        .posts { max-width: 1100px; margin: 40px auto 80px; padding: 0 40px; }
+        .post-card { display: block; padding: 28px 32px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; text-decoration: none; color: inherit; margin-bottom: 16px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+        .post-card:hover { border-color: rgba(120,119,198,0.25); transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+        .post-meta { display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+        .post-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); padding: 3px 10px; background: rgba(120,119,198,0.1); border: 1px solid rgba(120,119,198,0.25); border-radius: 100px; }
+        .post-card h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(22px, 2.6vw, 28px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px; }
+        .post-card p { font-size: 15px; color: var(--dim); line-height: 1.6; margin-bottom: 16px; }
+        .post-cta { font-size: 13px; font-weight: 700; color: var(--text); display: inline-flex; align-items: center; gap: 6px; transition: gap 0.3s; }
+        .post-card:hover .post-cta { gap: 10px; }
+        .signup-banner { background: linear-gradient(180deg, rgba(120,119,198,0.06), rgba(120,119,198,0.12)); border: 1px solid rgba(120,119,198,0.25); border-radius: 24px; padding: 40px 48px; margin: 60px 0; text-align: center; }
+        .signup-banner h3 { font-family: 'Satoshi', sans-serif; font-size: clamp(24px, 3vw, 32px); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 12px; }
+        .signup-banner p { font-size: 15px; color: var(--dim); margin-bottom: 22px; }
+        .signup-form { display: flex; gap: 8px; max-width: 480px; margin: 0 auto; }
+        .signup-form input { flex: 1; padding: 14px 22px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; color: var(--text); font-size: 14px; outline: none; }
+        .signup-form button { padding: 14px 24px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-weight: 700; font-size: 13px; border: none; border-radius: 100px; cursor: pointer; }
+        .premium-footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 60px 48px 32px; }
+        .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.2); }
+        .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+        @media (max-width: 768px) {
+            nav { padding: 14px 20px; } .nav-links, .nav-cta { display: none; }
+            .hero { padding: 140px 20px 30px; }
+            .posts { padding: 0 20px 60px; }
+            .post-card { padding: 22px 24px; }
+            .signup-banner { padding: 28px 24px; }
+            .signup-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="logo"><img src="../closedin-logo.png" alt="closed:in"></a>
+    <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../case-studies.html">Case Studies</a>
+        <a href="../resources.html">Resources</a>
+        <a href="../blog/">Blog</a>
+        <a href="../team.html">Team</a>
+    </div>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=blog" target="_blank" class="nav-cta">Book Meeting</a>
+</nav>
+
+<section class="hero">
+    <h1>Tactics, teardowns, numbers</h1>
+    <p>One tactical post per week from a live closed:in client campaign. Real numbers, real copy, real lessons. No theory.</p>
+</section>
+
+<div class="posts">
+
+    <a href="cold-email-open-rate-vanity-metric.html" class="post-card">
+        <div class="post-meta">
+            <span class="post-tag">Deliverability</span>
+            <span>22 May 2026</span>
+            <span>·</span>
+            <span>5 min read</span>
+        </div>
+        <h2>Apple killed open rate. Most agencies still report on it.</h2>
+        <p>Since iOS 15 Mail Privacy Protection launched in 2021, roughly 60-65% of email "opens" are fake pre-loads by Apple. closed:in dropped open rate from client reports two years ago. Here is what we use instead.</p>
+        <span class="post-cta">Read post →</span>
+    </a>
+
+    <a href="cold-email-warmup-schedule.html" class="post-card">
+        <div class="post-meta">
+            <span class="post-tag">Infrastructure</span>
+            <span>22 May 2026</span>
+            <span>·</span>
+            <span>7 min read</span>
+        </div>
+        <h2>The cold email warmup schedule that actually works in 2026</h2>
+        <p>Skip warmup or run it wrong and your domain reputation is dead before you send the first real email. The exact 21-day warmup schedule closed:in uses on every client inbox, plus the 4 traps that wreck deliverability.</p>
+        <span class="post-cta">Read post →</span>
+    </a>
+
+    <a href="finding-prospects-not-in-apollo.html" class="post-card">
+        <div class="post-meta">
+            <span class="post-tag">Sourcing</span>
+            <span>22 May 2026</span>
+            <span>·</span>
+            <span>6 min read</span>
+        </div>
+        <h2>How to find prospects who are not in Apollo or ZoomInfo</h2>
+        <p>Niche B2B ICPs (boutique retailers, hospitality operators, local service businesses) often do not appear in standard B2B databases. The custom data sourcing pipeline closed:in built for Jamezz that produced 81 qualified leads in 60 days.</p>
+        <span class="post-cta">Read post →</span>
+    </a>
+
+    <div class="signup-banner">
+        <h3>Get next week's post in your inbox</h3>
+        <p>One tactical post per week from a real closed:in campaign. Plus the 1-page Cold Email Infrastructure Checklist on signup.</p>
+        <form class="signup-form" action="https://closedins-newsletter.beehiiv.com/subscribe" method="GET" target="_blank">
+            <input type="email" name="email" placeholder="you@yourcompany.com" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+
+</div>
+
+<footer class="premium-footer">
+    <div class="footer-bottom">
+        <span>&copy; 2026 closed:in</span>
+        <a href="../privacy.html">Privacy Policy</a>
+    </div>
+</footer>
+
+</body>
+</html>

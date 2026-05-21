@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <script type="text/javascript">_linkedin_partner_id = "__LINKEDIN_PARTNER_ID__";window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script>
+    <script type="text/javascript">(function(l) { if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[]} var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s); })(window.lintrk);</script>
+    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '__META_PIXEL_ID__');fbq('track', 'PageView');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=__GA4_MEASUREMENT_ID__"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '__GA4_MEASUREMENT_ID__');</script>
+    <title>Free Email Verifier — No Credits, No Signup to Try | closed:in</title>
+    <meta name="description" content="Free bulk email verifier. Syntax check, disposable filter, role detection, MX record validation. Up to 500 emails per check. Zero enrichment credits. Free download as CSV with email signup.">
+    <link rel="canonical" href="https://www.closedin.io/tools/email-verifier.html">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Email Verifier — No Credits, No Signup to Try">
+    <meta property="og:url" content="https://www.closedin.io/tools/email-verifier.html">
+    <meta property="og:image" content="https://www.closedin.io/closedin-logo.png">
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@graph": [
+      { "@type": "WebApplication", "name": "closed:in Email Verifier", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0" }, "url": "https://www.closedin.io/tools/email-verifier.html", "provider": { "@type": "Organization", "name": "closed:in" } },
+      { "@type": "BreadcrumbList", "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.closedin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://www.closedin.io/resources.html" },
+        { "@type": "ListItem", "position": 3, "name": "Email Verifier", "item": "https://www.closedin.io/tools/email-verifier.html" }
+      ]}
+    ]}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #050505; --card: #0A0A0A; --border: rgba(255,255,255,0.06); --text: #fff; --muted: rgba(255,255,255,0.4); --dim: rgba(255,255,255,0.6); --accent: #7877C6; --green: #10b981; --amber: #f59e0b; --red: #ef4444; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 10px 48px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; background: rgba(5,5,5,0.6); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        .logo img { height: 88px; }
+        .nav-links { display: flex; gap: 32px; justify-self: center; }
+        .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { font-size: 13px; font-weight: 600; padding: 12px 28px; background: var(--text); color: var(--bg); border-radius: 100px; text-decoration: none; justify-self: end; }
+
+        .hero { padding: 140px 40px 40px; text-align: center; }
+        .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+        .breadcrumb a { color: var(--dim); text-decoration: none; }
+        .hero h1 { font-family: 'Satoshi', sans-serif; font-size: clamp(36px, 5vw, 56px); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 14px; max-width: 880px; margin-inline: auto; }
+        .hero p { font-size: 17px; color: var(--dim); max-width: 700px; margin: 0 auto; line-height: 1.6; }
+        .hero-badges { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 22px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(120,119,198,0.08); border: 1px solid rgba(120,119,198,0.2); border-radius: 100px; font-size: 12px; color: var(--dim); font-weight: 600; }
+
+        .tool-wrap { max-width: 1100px; margin: 32px auto; padding: 0 40px 40px; }
+        .input-card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 32px; }
+        .input-card label { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+        .input-card-hint { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+        .input-card textarea { width: 100%; min-height: 180px; padding: 16px 18px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6; outline: none; resize: vertical; transition: border-color 0.3s; }
+        .input-card textarea:focus { border-color: rgba(120,119,198,0.4); }
+        .input-card textarea::placeholder { color: var(--muted); }
+        .input-actions { display: flex; gap: 12px; align-items: center; margin-top: 18px; flex-wrap: wrap; }
+        .btn-verify { padding: 14px 32px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; transition: all 0.3s; }
+        .btn-verify:hover:not(:disabled) { transform: scale(1.04); box-shadow: 0 0 30px rgba(255,255,255,0.15); }
+        .btn-verify:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-secondary { padding: 14px 24px; background: transparent; border: 1px solid var(--border); border-radius: 100px; color: var(--dim); font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .btn-secondary:hover { border-color: rgba(120,119,198,0.3); color: var(--text); }
+        .input-count { font-size: 13px; color: var(--muted); margin-left: auto; }
+
+        .results-card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 32px; margin-top: 24px; display: none; }
+        .results-card.active { display: block; }
+        .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 14px; }
+        .results-title { font-family: 'Satoshi', sans-serif; font-size: 18px; font-weight: 800; }
+        .results-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+        .summary-cell { padding: 18px 16px; background: rgba(0,0,0,0.25); border: 1px solid var(--border); border-radius: 14px; text-align: center; }
+        .summary-cell-val { font-family: 'Satoshi', sans-serif; font-size: 26px; font-weight: 900; letter-spacing: -0.02em; }
+        .summary-cell-lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+        .summary-cell.valid .summary-cell-val { color: var(--green); }
+        .summary-cell.risky .summary-cell-val { color: var(--amber); }
+        .summary-cell.invalid .summary-cell-val { color: var(--red); }
+
+        .filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+        .filter-tab { padding: 6px 14px; background: transparent; border: 1px solid var(--border); border-radius: 100px; color: var(--muted); font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif; }
+        .filter-tab:hover { color: var(--text); }
+        .filter-tab.active { background: rgba(120,119,198,0.15); border-color: rgba(120,119,198,0.4); color: var(--text); }
+
+        .results-table { width: 100%; border-collapse: collapse; }
+        .results-table thead { background: rgba(0,0,0,0.2); }
+        .results-table th { padding: 12px 14px; text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
+        .results-table td { padding: 14px; font-size: 13px; border-bottom: 1px solid var(--border); }
+        .results-table td.email-cell { font-family: 'JetBrains Mono', monospace; color: var(--text); }
+        .status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+        .status-pill.valid { background: rgba(16,185,129,0.12); color: var(--green); border: 1px solid rgba(16,185,129,0.25); }
+        .status-pill.risky { background: rgba(245,158,11,0.12); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+        .status-pill.invalid { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.25); }
+        .reasons { font-size: 12px; color: var(--muted); }
+
+        .actions-bar { display: flex; gap: 12px; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+        .actions-bar .btn-secondary { font-size: 12px; padding: 10px 18px; }
+
+        .download-gate { background: linear-gradient(180deg, rgba(120,119,198,0.06), rgba(120,119,198,0.12)); border: 1px solid rgba(120,119,198,0.3); border-radius: 16px; padding: 24px 28px; margin-top: 20px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .download-gate-text { flex: 1; min-width: 220px; }
+        .download-gate-text strong { font-family: 'Satoshi', sans-serif; font-size: 15px; }
+        .download-gate-text div { font-size: 13px; color: var(--dim); margin-top: 4px; }
+        .download-gate-form { display: flex; gap: 6px; flex: 1; min-width: 280px; }
+        .download-gate-form input { flex: 1; padding: 12px 16px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 100px; color: var(--text); font-size: 13px; outline: none; }
+        .download-gate-form button { padding: 12px 22px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-weight: 700; font-size: 13px; border: none; border-radius: 100px; cursor: pointer; white-space: nowrap; }
+
+        .info-section { max-width: 920px; margin: 60px auto; padding: 0 40px; }
+        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 32px; }
+        .info-card { padding: 22px 24px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; }
+        .info-card h3 { font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .info-card h3 .check-icon { width: 22px; height: 22px; border-radius: 50%; background: rgba(120,119,198,0.15); border: 1px solid rgba(120,119,198,0.35); display: inline-flex; align-items: center; justify-content: center; color: var(--accent); }
+        .info-card p { font-size: 13px; color: var(--dim); line-height: 1.6; }
+        .info-section h2 { font-family: 'Satoshi', sans-serif; font-size: 24px; font-weight: 800; margin-bottom: 18px; }
+        .info-section p { font-size: 15px; color: var(--dim); line-height: 1.65; margin-bottom: 12px; }
+
+        .cta-section { text-align: center; padding: 60px 40px 100px; max-width: 760px; margin: 0 auto; }
+        .cta-section h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 900; margin-bottom: 14px; }
+        .cta-section p { font-size: 15px; color: var(--muted); margin-bottom: 24px; }
+        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-weight: 700; border-radius: 100px; text-decoration: none; }
+        .premium-footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 60px 48px 32px; }
+        .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.2); }
+        .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+        .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.25); border-top-color: var(--bg); border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: 8px; vertical-align: middle; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 768px) {
+            nav { padding: 14px 20px; } .nav-links, .nav-cta { display: none; }
+            .hero { padding: 120px 20px 30px; }
+            .tool-wrap { padding: 0 20px 30px; }
+            .input-card, .results-card { padding: 22px; }
+            .results-summary { grid-template-columns: repeat(2, 1fr); }
+            .info-grid { grid-template-columns: 1fr; }
+            .download-gate-form { flex-direction: column; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="logo"><img src="../closedin-logo.png" alt="closed:in"></a>
+    <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../case-studies.html">Case Studies</a>
+        <a href="../resources.html">Resources</a>
+        <a href="../team.html">Team</a>
+        <a href="../contact.html">Contact</a>
+    </div>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=email-verifier" target="_blank" class="nav-cta">Book Meeting</a>
+</nav>
+
+<section class="hero">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../resources.html">Resources</a> / Email Verifier</div>
+    <h1>Free email verifier, no enrichment credits</h1>
+    <p>Paste up to 500 emails. We run 4 validation layers (syntax, disposable, role-based, MX record) and return clean lists in 5-15 seconds. Catches ~70-80% of bad emails. No signup required to try.</p>
+    <div class="hero-badges">
+        <div class="hero-badge">✓ Up to 500 emails per check</div>
+        <div class="hero-badge">✓ No enrichment credits used</div>
+        <div class="hero-badge">✓ Browser-based, your list stays private</div>
+    </div>
+</section>
+
+<div class="tool-wrap">
+    <div class="input-card">
+        <label for="emails">Paste your email list (one per line)</label>
+        <div class="input-card-hint">Tip: paste from a spreadsheet column. Up to 500 emails per check.</div>
+        <textarea id="emails" placeholder="max@closedin.io
+jurre@closedin.io
+fake@discardthismail.com
+bademail@notarealdomain12345.io
+info@mediabureau.nl"></textarea>
+        <div class="input-actions">
+            <button id="verify-btn" class="btn-verify">Verify list</button>
+            <button id="clear-btn" class="btn-secondary">Clear</button>
+            <span class="input-count" id="count">0 emails</span>
+        </div>
+    </div>
+
+    <div class="results-card" id="results">
+        <div class="results-header">
+            <div class="results-title">Results</div>
+        </div>
+
+        <div class="results-summary">
+            <div class="summary-cell"><div class="summary-cell-val" id="stat-total">0</div><div class="summary-cell-lbl">Total</div></div>
+            <div class="summary-cell valid"><div class="summary-cell-val" id="stat-valid">0</div><div class="summary-cell-lbl">Valid</div></div>
+            <div class="summary-cell risky"><div class="summary-cell-val" id="stat-risky">0</div><div class="summary-cell-lbl">Risky</div></div>
+            <div class="summary-cell invalid"><div class="summary-cell-val" id="stat-invalid">0</div><div class="summary-cell-lbl">Invalid</div></div>
+        </div>
+
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-tab="all">All</button>
+            <button class="filter-tab" data-tab="valid">Valid only</button>
+            <button class="filter-tab" data-tab="risky">Risky</button>
+            <button class="filter-tab" data-tab="invalid">Invalid</button>
+        </div>
+
+        <div style="overflow-x: auto;">
+            <table class="results-table">
+                <thead>
+                    <tr><th>Email</th><th>Status</th><th>Reasons</th></tr>
+                </thead>
+                <tbody id="results-tbody"></tbody>
+            </table>
+        </div>
+
+        <div class="actions-bar">
+            <button class="btn-secondary" id="copy-valid">Copy valid emails to clipboard</button>
+            <button class="btn-secondary" id="download-csv">Download CSV</button>
+        </div>
+
+        <div class="download-gate">
+            <div class="download-gate-text">
+                <strong>Want the full closed:in playbook?</strong>
+                <div>1-page Cold Email Infrastructure Checklist + 1 weekly tactical email from a live campaign.</div>
+            </div>
+            <form class="download-gate-form" action="https://closedins-newsletter.beehiiv.com/subscribe" method="GET" target="_blank">
+                <input type="email" name="email" placeholder="you@yourcompany.com" required>
+                <button type="submit">Get the playbook</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<section class="info-section">
+    <h2>How this works</h2>
+    <p>This verifier runs 4 layers of validation, all using publicly available techniques. No external paid APIs, no enrichment credits, no data shared with third parties. The verification happens via a Vercel serverless function with DNS lookups; your email list is processed in memory and not stored.</p>
+
+    <div class="info-grid">
+        <div class="info-card">
+            <h3><span class="check-icon">✓</span>Syntax check</h3>
+            <p>RFC 5322 regex validation. Catches typos like missing @, invalid TLDs, illegal characters. Catches ~5% of bad inputs.</p>
+        </div>
+        <div class="info-card">
+            <h3><span class="check-icon">✓</span>Disposable filter</h3>
+            <p>Cross-checks against a bundled list of 300+ disposable email providers (mailinator, tempmail, etc). Catches throwaway addresses.</p>
+        </div>
+        <div class="info-card">
+            <h3><span class="check-icon">✓</span>Role-based detection</h3>
+            <p>Flags info@, sales@, contact@, no-reply@ and other role addresses. We flag rather than reject because some are legitimate but they typically have lower reply rates.</p>
+        </div>
+        <div class="info-card">
+            <h3><span class="check-icon">✓</span>MX record check</h3>
+            <p>Live DNS lookup confirms the domain has a valid mail server configured. Catches the biggest category of dead emails: misspelled or expired domains.</p>
+        </div>
+    </div>
+
+    <h2>What we don't do</h2>
+    <p>This verifier does <strong>not</strong> SMTP-probe inboxes. SMTP probing is what paid verifiers like ZeroBounce or Hunter use to confirm an email actually exists. It works, but it can damage your sending IP reputation if done at scale, and it costs the service money to do. We skip it to keep this 100% free and safe.</p>
+    <p>Expected accuracy: <strong>70-80% of bad emails caught</strong>. The remaining 20-30% (catch-all domains, full mailboxes, suspended users) will still pass our checks but fail when you actually send. For mission-critical lists, layer a paid SMTP verifier on top of this output.</p>
+</section>
+
+<section class="cta-section">
+    <h2>Want closed:in to handle list hygiene for you?</h2>
+    <p>We run a Clay-based 4-provider waterfall + verification on every list before any cold email goes out.</p>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=tool-cta&utm_content=email-verifier" target="_blank" class="btn-primary">Book a 30 min call →</a>
+</section>
+
+<footer class="premium-footer">
+    <div class="footer-bottom">
+        <span>&copy; 2026 closed:in</span>
+        <a href="../privacy.html">Privacy Policy</a>
+    </div>
+</footer>
+
+<script>
+(function() {
+    const textarea = document.getElementById('emails');
+    const verifyBtn = document.getElementById('verify-btn');
+    const clearBtn = document.getElementById('clear-btn');
+    const countSpan = document.getElementById('count');
+    const resultsCard = document.getElementById('results');
+    const tbody = document.getElementById('results-tbody');
+    let currentResults = [];
+    let currentFilter = 'all';
+
+    function getEmails() {
+        return textarea.value
+            .split(/[\n,;]+/)
+            .map(e => e.trim())
+            .filter(e => e.length > 0);
+    }
+
+    function updateCount() {
+        const emails = getEmails();
+        countSpan.textContent = `${emails.length} email${emails.length === 1 ? '' : 's'}`;
+        verifyBtn.disabled = emails.length === 0 || emails.length > 500;
+        if (emails.length > 500) {
+            countSpan.textContent += ' (max 500)';
+            countSpan.style.color = 'var(--red)';
+        } else {
+            countSpan.style.color = '';
+        }
+    }
+
+    textarea.addEventListener('input', updateCount);
+    updateCount();
+
+    clearBtn.addEventListener('click', () => {
+        textarea.value = '';
+        resultsCard.classList.remove('active');
+        currentResults = [];
+        updateCount();
+    });
+
+    async function verify() {
+        const emails = getEmails();
+        if (emails.length === 0) return;
+        verifyBtn.disabled = true;
+        verifyBtn.innerHTML = '<span class="spinner"></span>Verifying...';
+
+        try {
+            const res = await fetch('/api/verify-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ emails }),
+            });
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.error || `HTTP ${res.status}`);
+            }
+            const data = await res.json();
+            currentResults = data.results;
+            renderResults(data.stats);
+        } catch (err) {
+            alert('Verification failed: ' + err.message);
+        } finally {
+            verifyBtn.disabled = false;
+            verifyBtn.innerHTML = 'Verify list';
+        }
+    }
+
+    verifyBtn.addEventListener('click', verify);
+
+    function renderResults(stats) {
+        document.getElementById('stat-total').textContent = stats.total;
+        document.getElementById('stat-valid').textContent = stats.valid;
+        document.getElementById('stat-risky').textContent = stats.risky;
+        document.getElementById('stat-invalid').textContent = stats.invalid;
+        renderTable();
+        resultsCard.classList.add('active');
+        resultsCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function renderTable() {
+        const filtered = currentFilter === 'all' ? currentResults : currentResults.filter(r => r.status === currentFilter);
+        tbody.innerHTML = filtered.map(r => `
+            <tr>
+                <td class="email-cell">${escapeHtml(r.email)}</td>
+                <td><span class="status-pill ${r.status}">${r.status}</span></td>
+                <td class="reasons">${r.reasons.length ? escapeHtml(r.reasons.join(', ')) : '—'}</td>
+            </tr>
+        `).join('');
+    }
+
+    function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentFilter = tab.dataset.tab;
+            renderTable();
+        });
+    });
+
+    document.getElementById('copy-valid').addEventListener('click', () => {
+        const validEmails = currentResults.filter(r => r.status === 'valid').map(r => r.email).join('\n');
+        navigator.clipboard.writeText(validEmails).then(() => {
+            const btn = document.getElementById('copy-valid');
+            const orig = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = orig, 1500);
+        });
+    });
+
+    document.getElementById('download-csv').addEventListener('click', () => {
+        const csv = 'email,status,reasons\n' + currentResults.map(r =>
+            `"${r.email.replace(/"/g, '""')}","${r.status}","${r.reasons.join('; ').replace(/"/g, '""')}"`
+        ).join('\n');
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'closedin-email-verification.csv';
+        a.click();
+        URL.revokeObjectURL(url);
+    });
+})();
+</script>
+
+</body>
+</html>

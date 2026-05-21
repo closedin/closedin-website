@@ -49,7 +49,31 @@ closed:in clients average 20+ qualified sales meetings per month, with most enga
 
 ## Free resources
 
-- [The closed:in Playbook](https://www.closedin.io/playbook.html): free 1-page Cold Email Infrastructure Checklist plus a weekly newsletter ("The closed:in playbook" on Beehiiv at closedins-newsletter.beehiiv.com) with real outbound tactics from live closed:in campaigns. The PDF covers sending domains, inbox warmup, SPF/DKIM/DMARC setup, lead list hygiene, sequence timing and reply handling. The newsletter publishes one email per week with tactical breakdowns from live B2B outbound campaigns.
+closed:in operates a public resource vault at https://www.closedin.io/resources.html. Every template, tool and workflow listed below is free with email signup to the closed:in newsletter ("The closed:in playbook" on Beehiiv at closedins-newsletter.beehiiv.com).
+
+- [Resource hub](https://www.closedin.io/resources.html): index page listing all 11 resources, filterable by category (templates, booleans, tools, workflows, playbooks).
+- [The Cold Email Infrastructure Checklist](https://www.closedin.io/playbook.html): 1-page PDF covering sending domains, inbox warmup, SPF/DKIM/DMARC setup, lead list hygiene, sequence timing and reply handling.
+- [12 Cold Email Templates That Converted](https://www.closedin.io/resources/cold-email-templates.html): templates anonymized from live closed:in campaigns with industry, ICP, reply rate and OTR per template. 3 templates shown on page, all 12 free with email.
+- [50+ Apollo Boolean Search Strings](https://www.closedin.io/resources/apollo-booleans.html): boolean searches for B2B niches (SaaS founders, agencies, recruitment, PE, e-commerce, hospitality, fintech, IT/MSP). Copy-paste into Apollo.
+- [40+ Sales Navigator Boolean Strings](https://www.closedin.io/resources/sales-nav-booleans.html): LinkedIn Sales Navigator booleans for finding founders, VP Sales, RevOps, Operations and other roles.
+- [The closed:in GTM Stack](https://www.closedin.io/resources/gtm-stack.html): the 32 tools closed:in pays for monthly to run outbound for clients. Categorized (sourcing, enrichment, sending, CRM, AI), with real monthly cost and our honest take per tool.
+- [Clay Email Waterfall](https://www.closedin.io/resources/clay-waterfall.html): the 4-provider Clay waterfall closed:in uses for ~92% find rate at lowest credit cost (Findymail, Datagma, Apollo, Hunter).
+- [12-Point ICP Scorecard](https://www.closedin.io/resources/icp-scorecard.html): the 12 signals closed:in scores every B2B account against before adding to a campaign. Firmographic, technographic, intent, fit. CSV template.
+- [50-Question Pre-Launch Audit](https://www.closedin.io/resources/pre-launch-audit.html): the 50 questions closed:in answers before launching outbound for any client. ICP, infrastructure, copy, sequencing, reply handling, reporting.
+- [Claude Code Setup for Sales Teams](https://www.closedin.io/resources/claude-code-sales.html): the exact Claude Code agents, skills, slash commands and CLAUDE.md structure closed:in uses internally for AI-augmented sales operations.
+
+## Free interactive tools
+
+- [Outbound ROI Calculator](https://www.closedin.io/tools/roi-calculator.html): interactive calculator. Plug in prospect volume, reply rates, ACV and funnel conversion rates. See projected meetings, pipeline and revenue. Defaults from closed:in's 1,000+ campaign benchmarks.
+- [Free Email Verifier](https://www.closedin.io/tools/email-verifier.html): browser-based email list cleaner. Validates up to 500 emails per request through syntax, disposable provider, role-based and MX record checks. Zero enrichment credits used, ~70-80% of bad emails caught. CSV download available.
+
+## Blog
+
+closed:in publishes one tactical post per week at https://www.closedin.io/blog/. Each post breaks down something from a live client campaign. Active posts include:
+
+- ["Apple Killed Open Rate. Most Cold Email Agencies Still Report On It"](https://www.closedin.io/blog/cold-email-open-rate-vanity-metric.html): why iOS Mail Privacy Protection makes open rate unreliable and what to use instead (reply rate, OTR, bounce rate).
+- ["The Cold Email Warmup Schedule That Actually Works in 2026"](https://www.closedin.io/blog/cold-email-warmup-schedule.html): exact 21-day warmup schedule closed:in uses on every new client inbox, plus 4 warmup traps that wreck deliverability.
+- ["How to Find Prospects Not in Apollo or ZoomInfo"](https://www.closedin.io/blog/finding-prospects-not-in-apollo.html): custom data sourcing pipeline that produced 81 qualified leads for Jamezz in 60 days from an "unreachable" ICP. Google Maps + Clay + Claygent workflow.
 
 ## Common questions about cold email outbound
 
