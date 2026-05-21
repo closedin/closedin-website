@@ -220,18 +220,24 @@
         @media (max-width: 768px) { .footer-signup { padding: 60px 20px; } .footer-signup-form { flex-direction: column; } }
     
         /* ═══ STICKY BANNER ═══ */
-        .sticky-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(160%); width: calc(100% - 40px); max-width: 720px; background: rgba(10,10,10,0.92); border: 1px solid rgba(120,119,198,0.2); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(120,119,198,0.1); z-index: 9000; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .sticky-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(180%); width: calc(100% - 40px); max-width: 780px; background: rgba(10,10,10,0.94); border: 1px solid rgba(120,119,198,0.25); border-radius: 18px; padding: 18px 22px; display: flex; align-items: center; gap: 18px; box-shadow: 0 24px 70px rgba(0,0,0,0.6), 0 0 50px rgba(120,119,198,0.12); z-index: 9000; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
         .sticky-banner.visible { transform: translateX(-50%) translateY(0); }
-        .sticky-banner-text { flex: 1; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.85); }
-        .sticky-banner-text strong { font-family: 'Satoshi', sans-serif; font-weight: 700; color: #fff; }
+        .sticky-banner-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(120,119,198,0.12); border: 1px solid rgba(120,119,198,0.3); display: flex; align-items: center; justify-content: center; color: rgba(120,119,198,1); flex-shrink: 0; }
+        .sticky-banner-text { flex: 1; line-height: 1.4; min-width: 0; }
+        .sticky-banner-title { font-size: 14px; color: #fff; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 3px; }
+        .sticky-banner-title strong { font-family: 'Satoshi', sans-serif; font-weight: 700; }
+        .sticky-banner-pill { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(120,119,198,1); background: rgba(120,119,198,0.12); border: 1px solid rgba(120,119,198,0.3); padding: 2px 8px; border-radius: 100px; }
+        .sticky-banner-sub { font-size: 12px; color: rgba(255,255,255,0.55); }
         .sticky-banner-form { display: flex; gap: 6px; flex-shrink: 0; }
-        .sticky-banner-form input { padding: 10px 16px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; outline: none; min-width: 200px; }
+        .sticky-banner-form input { padding: 11px 16px; background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; outline: none; min-width: 220px; transition: border-color 0.3s; }
+        .sticky-banner-form input:focus { border-color: rgba(120,119,198,0.5); }
         .sticky-banner-form input::placeholder { color: rgba(255,255,255,0.4); }
-        .sticky-banner-form button { padding: 10px 20px; background: #fff; color: #050505; font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; white-space: nowrap; transition: transform 0.2s; }
-        .sticky-banner-form button:hover { transform: scale(1.05); }
-        .sticky-banner-close { background: none; border: none; color: rgba(255,255,255,0.4); font-size: 22px; cursor: pointer; padding: 4px 8px; line-height: 1; }
-        .sticky-banner-close:hover { color: #fff; }
-        @media (max-width: 768px) { .sticky-banner { flex-wrap: wrap; padding: 14px; gap: 10px; } .sticky-banner-text { flex: 1 1 100%; font-size: 12px; } .sticky-banner-form { flex: 1 1 100%; } .sticky-banner-form input { min-width: 0; flex: 1; } .sticky-banner-close { position: absolute; top: 8px; right: 8px; } }
+        .sticky-banner-form button { padding: 11px 22px; background: #fff; color: #050505; font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; white-space: nowrap; transition: all 0.3s; }
+        .sticky-banner-form button:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,255,255,0.2); }
+        .sticky-banner-close { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 50%; width: 28px; height: 28px; color: rgba(255,255,255,0.5); cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; transition: all 0.3s; flex-shrink: 0; }
+        .sticky-banner-close:hover { color: #fff; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.15); }
+        @media (max-width: 880px) { .sticky-banner { flex-wrap: wrap; padding: 14px 16px; gap: 12px; } .sticky-banner-icon { width: 36px; height: 36px; } .sticky-banner-text { flex: 1 1 calc(100% - 80px); } .sticky-banner-form { flex: 1 1 100%; order: 3; } .sticky-banner-form input { min-width: 0; flex: 1; } .sticky-banner-sub { font-size: 11px; } }
+        @media (max-width: 540px) { .sticky-banner-icon { display: none; } .sticky-banner-text { flex: 1 1 calc(100% - 40px); } }
     </style>
 </head>
 <body>
@@ -476,12 +482,20 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 
 <div class="sticky-banner" id="stickyBanner">
-    <div class="sticky-banner-text"><strong>Get the closed:in playbook</strong> &mdash; 1-page cold email infrastructure checklist + weekly tactics. Free.</div>
+    <div class="sticky-banner-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+    </div>
+    <div class="sticky-banner-text">
+        <div class="sticky-banner-title"><strong>The closed:in playbook</strong> <span class="sticky-banner-pill">Free PDF</span></div>
+        <div class="sticky-banner-sub">Cold email infrastructure checklist + weekly tactics from 1,000+ live campaigns.</div>
+    </div>
     <form class="sticky-banner-form" action="https://closedins-newsletter.beehiiv.com/subscribe" method="GET" target="_blank">
         <input type="email" name="email" placeholder="you@company.com" required>
         <button type="submit">Get it</button>
     </form>
-    <button class="sticky-banner-close" id="stickyBannerClose" aria-label="Close">&times;</button>
+    <button class="sticky-banner-close" id="stickyBannerClose" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
 </div>
 
 

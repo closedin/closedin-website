@@ -124,6 +124,15 @@
         .inside-card h3 { font-family: 'Satoshi', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; }
         .inside-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
+        .timeline-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .timeline-card { padding: 28px 26px; background: var(--card); border: 1px solid var(--border); border-radius: 18px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; }
+        .timeline-card:hover { border-color: rgba(120,119,198,0.2); transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.3), 0 0 24px var(--accent-glow); }
+        .timeline-day { display: inline-block; font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: rgba(120,119,198,0.1); border: 1px solid rgba(120,119,198,0.3); padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; }
+        .timeline-card h3 { font-family: 'Satoshi', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 8px; color: var(--text); }
+        .timeline-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+        @media (max-width: 880px) { .timeline-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 540px) { .timeline-grid { grid-template-columns: 1fr; } }
+
         .who { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 48px; max-width: 880px; margin: 0 auto; }
         .who h3 { font-family: 'Satoshi', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
         .who p { font-size: 16px; color: var(--dim); line-height: 1.7; margin-bottom: 16px; }
@@ -244,6 +253,43 @@
             <div class="inside-num">06</div>
             <h3>Reply handling</h3>
             <p>How to wire replies into Close, HubSpot or Salesforce automatically, the 3 reply categories that matter, and the auto-tag rules we use to keep the SDR inbox clean.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-label reveal">After signup</div>
+    <h2 class="reveal">Your first 14 days<br>in the newsletter.</h2>
+    <div class="timeline-grid">
+        <div class="timeline-card reveal">
+            <div class="timeline-day">Day 0</div>
+            <h3>The infrastructure checklist (PDF)</h3>
+            <p>Instant download with the 6-chunk pre-launch checklist closed:in runs before any client campaign goes live.</p>
+        </div>
+        <div class="timeline-card reveal" style="transition-delay: 0.07s;">
+            <div class="timeline-day">Day 2</div>
+            <h3>The detail that kills cold email</h3>
+            <p>Why most teams blame copy when the real failure is upstream. Plus the exact warmup window we use.</p>
+        </div>
+        <div class="timeline-card reveal" style="transition-delay: 0.14s;">
+            <div class="timeline-day">Day 5</div>
+            <h3>How Verzendbazen booked 78 opportunities</h3>
+            <p>Mini case study with the Clay list filters, sequence structure and reply rate numbers.</p>
+        </div>
+        <div class="timeline-card reveal" style="transition-delay: 0.21s;">
+            <div class="timeline-day">Day 9</div>
+            <h3>4 mistakes we see every week</h3>
+            <p>Subject lines, sending domains, personalisation traps and exit logic. Specific anti-patterns to remove from your campaigns.</p>
+        </div>
+        <div class="timeline-card reveal" style="transition-delay: 0.28s;">
+            <div class="timeline-day">Day 14</div>
+            <h3>Soft check-in</h3>
+            <p>Either you build outbound in-house with the playbook as a blueprint, or you book a discovery call. Either is a win.</p>
+        </div>
+        <div class="timeline-card reveal" style="transition-delay: 0.35s;">
+            <div class="timeline-day">Weekly</div>
+            <h3>Tactics from live campaigns</h3>
+            <p>One email per week with a tactical post from a real closed:in campaign. Real numbers, real copy, real lessons.</p>
         </div>
     </div>
 </section>
