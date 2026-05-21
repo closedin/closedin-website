@@ -219,6 +219,9 @@
         .footer-signup-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
         .footer-signup h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
         .footer-signup p { font-size: 15px; color: var(--muted); margin-bottom: 32px; }
+        .footer-signup-benefits { list-style: none; padding: 0; margin: 0 auto 28px; max-width: 520px; display: flex; flex-direction: column; gap: 10px; text-align: left; }
+        .footer-signup-benefits li { font-size: 14px; color: var(--dim); display: flex; align-items: flex-start; gap: 10px; padding-left: 0; }
+        .footer-signup-benefits li::before { content: ''; flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%; background: rgba(120,119,198,0.15); border: 1px solid rgba(120,119,198,0.4); display: flex; align-items: center; justify-content: center; margin-top: 1px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%237877C6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3,8 6.5,11.5 13,5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: 11px; }
         .footer-signup-form { display: flex; gap: 8px; max-width: 480px; margin: 0 auto; }
         .footer-signup-form input[type="email"] { flex: 1; padding: 16px 22px; background: var(--card); border: 1px solid var(--border); border-radius: 100px; color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; outline: none; transition: border-color 0.3s; }
         .footer-signup-form input[type="email"]:focus { border-color: rgba(120,119,198,0.4); }
@@ -403,6 +406,11 @@
         <div class="footer-signup-label">The closed:in playbook</div>
         <h2>1 email per week.<br>Real outbound tactics from live campaigns.</h2>
         <p>Free 1-page infrastructure checklist on signup. Built by founders who run cold email daily.</p>
+        <ul class="footer-signup-benefits">
+            <li>The 1-page cold email infrastructure checklist (instant PDF)</li>
+            <li>Weekly tactics from live closed:in client campaigns</li>
+            <li>Real numbers: reply rates, opportunities, pipeline value per case</li>
+        </ul>
         <form class="footer-signup-form" action="https://closedins-newsletter.beehiiv.com/subscribe" method="GET" target="_blank">
             <input type="email" name="email" placeholder="you@yourcompany.com" required>
             <button type="submit">Get the playbook</button>
