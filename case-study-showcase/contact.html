@@ -8,6 +8,39 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
+    <!-- ═══ ANALYTICS / RETARGETING PIXELS ═══ -->
+    <!-- LinkedIn Insight Tag -->
+    <script type="text/javascript">
+        _linkedin_partner_id = "__LINKEDIN_PARTNER_ID__";
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    </script>
+    <script type="text/javascript">
+        (function(l) {
+            if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[]}
+            var s = document.getElementsByTagName("script")[0];
+            var b = document.createElement("script");
+            b.type = "text/javascript";b.async = true;
+            b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+            s.parentNode.insertBefore(b, s);
+        })(window.lintrk);
+    </script>
+    <noscript><img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=__LINKEDIN_PARTNER_ID__&fmt=gif"></noscript>
+    <!-- Meta Pixel -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '__META_PIXEL_ID__');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=__META_PIXEL_ID__&ev=PageView&noscript=1"></noscript>
+    <!-- Google Tag (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=__GA4_MEASUREMENT_ID__"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '__GA4_MEASUREMENT_ID__');
+    </script>
     <title>Contact - closed:in</title>
     <meta name="description" content="Get in touch with closed:in. Book a discovery call to see if we are a fit for your B2B outbound goals.">
     <link rel="canonical" href="https://www.closedin.io/contact.html">
@@ -56,7 +89,7 @@
           "potentialAction": {
             "@type": "ReserveAction",
             "name": "Book a discovery call",
-            "target": "https://closedin.neetocal.com/discovery-call-with-max-munstermann"
+            "target": "https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=contact-with-max-munstermann"
           }
         }
       ]
@@ -194,6 +227,50 @@
             .premium-footer { padding: 60px 20px 32px; }
             .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
         }
+    
+        /* ═══ CONTACT FORM ═══ */
+        .contact-form-section { padding: 120px 40px 40px; position: relative; background: var(--bg); }
+        .contact-form-inner { max-width: 720px; margin: 0 auto; }
+        .contact-form-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 14px; }
+        .contact-form-label::before, .contact-form-label::after { content: ''; width: 28px; height: 2px; background: var(--accent); border-radius: 2px; }
+        .contact-form-section h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; text-align: center; margin-bottom: 16px; color: var(--text); }
+        .contact-form-lead { font-size: 16px; color: var(--muted); line-height: 1.7; text-align: center; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 18px; }
+        .contact-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .contact-form label { display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 600; color: var(--dim); }
+        .contact-form input, .contact-form textarea { padding: 14px 18px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; outline: none; transition: border-color 0.3s; resize: vertical; }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: rgba(120,119,198,0.4); }
+        .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.25); }
+        .contact-form-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+        .contact-form-submit { padding: 16px 32px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+        .contact-form-submit:hover { transform: scale(1.04); box-shadow: 0 0 40px rgba(255,255,255,0.15); }
+        .contact-form-or { font-size: 13px; color: var(--muted); }
+        .contact-form-alt { font-size: 14px; color: var(--accent); text-decoration: none; font-weight: 600; }
+        .contact-form-alt:hover { text-decoration: underline; }
+        .contact-form-meta { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 8px; }
+        @media (max-width: 768px) {
+            .contact-form-section { padding: 80px 20px 20px; }
+            .contact-form { padding: 28px 22px; }
+            .contact-form-row { grid-template-columns: 1fr; }
+            .contact-form-actions { flex-direction: column; align-items: stretch; gap: 12px; }
+            .contact-form-alt { text-align: center; }
+            .contact-form-or { display: none; }
+        }
+
+        /* ═══ FOOTER SIGNUP ═══ */
+        .footer-signup { background: linear-gradient(180deg, transparent 0%, rgba(120,119,198,0.04) 100%); padding: 100px 40px; text-align: center; position: relative; border-top: 1px solid rgba(255,255,255,0.06); }
+        .footer-signup::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(120,119,198,0.08), transparent); pointer-events: none; }
+        .footer-signup-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+        .footer-signup-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+        .footer-signup h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+        .footer-signup p { font-size: 15px; color: var(--muted); margin-bottom: 32px; }
+        .footer-signup-form { display: flex; gap: 8px; max-width: 480px; margin: 0 auto; }
+        .footer-signup-form input[type="email"] { flex: 1; padding: 16px 22px; background: var(--card); border: 1px solid var(--border); border-radius: 100px; color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; outline: none; transition: border-color 0.3s; }
+        .footer-signup-form input[type="email"]:focus { border-color: rgba(120,119,198,0.4); }
+        .footer-signup-form input[type="email"]::placeholder { color: var(--muted); }
+        .footer-signup-form button { padding: 16px 28px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
+        .footer-signup-form button:hover { transform: scale(1.04); box-shadow: 0 0 40px rgba(255,255,255,0.15); }
+        @media (max-width: 768px) { .footer-signup { padding: 60px 20px; } .footer-signup-form { flex-direction: column; } }
     </style>
 </head>
 <body>
@@ -207,7 +284,7 @@
         <a href="contact.html">Contact</a>
         <a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a>
     </div>
-    <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="nav-cta">Book Meeting</a>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=contact" target="_blank" class="nav-cta">Book Meeting</a>
     <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
     </button>
@@ -220,7 +297,7 @@
     <a href="team.html">Team</a>
     <a href="contact.html">Contact</a>
     <a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a>
-    <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="mobile-cta">Book Meeting</a>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=contact" target="_blank" class="mobile-cta">Book Meeting</a>
 </div>
 
 <div class="zoom-container" id="zoomContainer">
@@ -258,13 +335,60 @@
                 <a href="mailto:info@closedin.io" class="contact-link"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>info@closedin.io</a>
                 <a href="https://www.linkedin.com/company/closedin" target="_blank" class="contact-link"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
             </div>
-            <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="btn-primary">Book a 30 Minute Call →</a>
+            <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=contact" target="_blank" class="btn-primary">Book a 30 Minute Call →</a>
         </div>
 
         <!-- Scroll hint -->
         <div class="scroll-hint" id="hint"><span>Scroll to zoom in</span><div class="scroll-hint-line"></div></div>
     </div>
 </div>
+
+<section class="contact-form-section">
+    <div class="contact-form-inner">
+        <div class="contact-form-label">Send a message</div>
+        <h2>Tell us what you're working on.</h2>
+        <p class="contact-form-lead">Prefer a written intro instead of a call? Drop the details below and we'll come back within one working day. Quicker still: book a 30 minute discovery call directly.</p>
+        <form class="contact-form" action="https://formspree.io/f/__FORMSPREE_FORM_ID__" method="POST">
+            <div class="contact-form-row">
+                <label>
+                    <span>Your name</span>
+                    <input type="text" name="name" placeholder="Max Münstermann" required>
+                </label>
+                <label>
+                    <span>Company</span>
+                    <input type="text" name="company" placeholder="closed:in" required>
+                </label>
+            </div>
+            <label class="contact-form-full">
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@yourcompany.com" required>
+            </label>
+            <label class="contact-form-full">
+                <span>What are you working on?</span>
+                <textarea name="message" rows="5" placeholder="Short context: industry, ICP, current outbound setup, what you'd want from closed:in." required></textarea>
+            </label>
+            <input type="hidden" name="_subject" value="New website contact form submission">
+            <div class="contact-form-actions">
+                <button type="submit" class="contact-form-submit">Send message</button>
+                <span class="contact-form-or">or</span>
+                <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=contact-form-alt&utm_content=contact" target="_blank" class="contact-form-alt">Book a call instead</a>
+            </div>
+            <p class="contact-form-meta">Replies go to info@closedin.io. We never share or sell your data.</p>
+        </form>
+    </div>
+</section>
+
+<section class="footer-signup">
+    <div class="footer-signup-inner">
+        <div class="footer-signup-label">The closed:in playbook</div>
+        <h2>1 email per week.<br>Real outbound tactics from live campaigns.</h2>
+        <p>Free 1-page infrastructure checklist on signup. Built by founders who run cold email daily.</p>
+        <form class="footer-signup-form" action="__BEEHIIV_FORM_ACTION_URL__" method="POST" target="_blank">
+            <input type="email" name="email" placeholder="you@yourcompany.com" required>
+            <button type="submit">Get the playbook</button>
+        </form>
+    </div>
+</section>
 
 <footer class="premium-footer">
     <div class="footer-inner">
@@ -275,8 +399,8 @@
             </div>
             <div class="footer-links">
                 <div class="footer-col"><h4>Navigate</h4><a href="index.html">Home</a><a href="case-studies.html">Case Studies</a><a href="team.html">Team</a><a href="contact.html">Contact</a><a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a></div>
-                <div class="footer-col"><h4>Contact</h4><a href="mailto:info@closedin.io">info@closedin.io</a><a href="https://closedin.neetocal.com/discovery-call" target="_blank">Book a Call</a><a href="https://www.linkedin.com/company/closedin" target="_blank">LinkedIn</a><a href="https://maps.google.com/?q=Jodenbreestraat+25,+Amsterdam" target="_blank">Jodenbreestraat 25, Amsterdam</a></div>
-                <div class="footer-col"><h4>Services</h4><a href="cold-email-agency-amsterdam.html">Cold email NL/EU</a><a href="cold-email-agency-saas.html">Cold email SaaS</a><a href="clay-agency.html">Clay agency</a><a href="gtm-engineering-agency.html">GTM engineering</a><a href="outbound-agency-uk.html">Outbound UK</a><a href="outbound-agency-us.html">Outbound US</a></div>
+                <div class="footer-col"><h4>Contact</h4><a href="mailto:info@closedin.io">info@closedin.io</a><a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=contact" target="_blank">Book a Call</a><a href="https://www.linkedin.com/company/closedin" target="_blank">LinkedIn</a><a href="https://maps.google.com/?q=Jodenbreestraat+25,+Amsterdam" target="_blank">Jodenbreestraat 25, Amsterdam</a></div>
+                <div class="footer-col"><h4>Services</h4><a href="playbook.html">The Playbook (free)</a><a href="cold-email-agency-amsterdam.html">Cold email NL/EU</a><a href="cold-email-agency-saas.html">Cold email SaaS</a><a href="clay-agency.html">Clay agency</a><a href="gtm-engineering-agency.html">GTM engineering</a><a href="outbound-agency-uk.html">Outbound UK</a><a href="outbound-agency-us.html">Outbound US</a></div>
                 <div class="footer-col"><h4>Partners</h4><a href="https://www.clay.com/experts/partner/closedin" target="_blank">Clay Solutions Partner</a><a href="https://instantly.ai/experts/jurre-groot" target="_blank">Instantly Expert</a><a href="https://www.apollo.io" target="_blank">Apollo Partner</a></div>
             </div>
         </div>

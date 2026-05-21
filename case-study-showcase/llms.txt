@@ -47,6 +47,10 @@ closed:in clients average 20+ qualified sales meetings per month, with most enga
 - [Outbound agency UK](https://www.closedin.io/outbound-agency-uk.html): cold email and LinkedIn outbound for UK B2B companies. Multi-market campaigns including London documented in the Endresz case study.
 - [Outbound agency US](https://www.closedin.io/outbound-agency-us.html): outbound sales for B2B companies targeting the United States. CAN-SPAM compliant infrastructure, US time zone aware sequencing, European pricing.
 
+## Free resources
+
+- [The closed:in Playbook](https://www.closedin.io/playbook.html): free 1-page Cold Email Infrastructure Checklist plus a weekly newsletter with real outbound tactics from live closed:in campaigns. Covers sending domains, inbox warmup, SPF/DKIM/DMARC setup, lead list hygiene, sequence timing and reply handling.
+
 ## Contact
 
 - Email: info@closedin.io

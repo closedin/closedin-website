@@ -8,6 +8,39 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
+    <!-- ═══ ANALYTICS / RETARGETING PIXELS ═══ -->
+    <!-- LinkedIn Insight Tag -->
+    <script type="text/javascript">
+        _linkedin_partner_id = "__LINKEDIN_PARTNER_ID__";
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    </script>
+    <script type="text/javascript">
+        (function(l) {
+            if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[]}
+            var s = document.getElementsByTagName("script")[0];
+            var b = document.createElement("script");
+            b.type = "text/javascript";b.async = true;
+            b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+            s.parentNode.insertBefore(b, s);
+        })(window.lintrk);
+    </script>
+    <noscript><img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=__LINKEDIN_PARTNER_ID__&fmt=gif"></noscript>
+    <!-- Meta Pixel -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '__META_PIXEL_ID__');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=__META_PIXEL_ID__&ev=PageView&noscript=1"></noscript>
+    <!-- Google Tag (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=__GA4_MEASUREMENT_ID__"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '__GA4_MEASUREMENT_ID__');
+    </script>
     <title>The Outbound Engine - closed:in</title>
     <meta name="description" content="See the closed:in outbound engine in action. Live pipeline demo with real campaign data, bookings and reply rates.">
     <link rel="canonical" href="https://www.closedin.io/pipeline-demo.html">
@@ -296,7 +329,7 @@
             <div class="result-number" id="resultNumber">0</div>
             <div class="result-label">qualified meetings booked</div>
             <div class="result-sub">This is what happens when ICP research, data enrichment, technical infrastructure, and personalized outreach come together.</div>
-            <a href="https://closedin.neetocal.com/discovery-call" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: #fff; color: #000; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; margin-top: 40px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1);">
+            <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=pipeline-demo" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: #fff; color: #000; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; margin-top: 40px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1);">
                 Build Your Engine →
             </a>
         </div>

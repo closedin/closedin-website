@@ -8,6 +8,39 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
+    <!-- ═══ ANALYTICS / RETARGETING PIXELS ═══ -->
+    <!-- LinkedIn Insight Tag -->
+    <script type="text/javascript">
+        _linkedin_partner_id = "__LINKEDIN_PARTNER_ID__";
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    </script>
+    <script type="text/javascript">
+        (function(l) {
+            if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[]}
+            var s = document.getElementsByTagName("script")[0];
+            var b = document.createElement("script");
+            b.type = "text/javascript";b.async = true;
+            b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+            s.parentNode.insertBefore(b, s);
+        })(window.lintrk);
+    </script>
+    <noscript><img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=__LINKEDIN_PARTNER_ID__&fmt=gif"></noscript>
+    <!-- Meta Pixel -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '__META_PIXEL_ID__');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=__META_PIXEL_ID__&ev=PageView&noscript=1"></noscript>
+    <!-- Google Tag (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=__GA4_MEASUREMENT_ID__"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '__GA4_MEASUREMENT_ID__');
+    </script>
     <title>Cold Email Agency Amsterdam | closed:in</title>
     <meta name="description" content="Cold email agency based in Amsterdam. closed:in builds outbound systems for B2B companies in the Netherlands, Belgium and Europe. Qualified meetings within 2-3 weeks.">
     <link rel="canonical" href="https://www.closedin.io/cold-email-agency-amsterdam.html">
@@ -178,6 +211,35 @@
             .premium-footer { padding: 60px 20px 32px; }
             .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
         }
+    
+        /* ═══ FOOTER SIGNUP ═══ */
+        .footer-signup { background: linear-gradient(180deg, transparent 0%, rgba(120,119,198,0.04) 100%); padding: 100px 40px; text-align: center; position: relative; border-top: 1px solid rgba(255,255,255,0.06); }
+        .footer-signup::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(120,119,198,0.08), transparent); pointer-events: none; }
+        .footer-signup-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+        .footer-signup-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+        .footer-signup h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+        .footer-signup p { font-size: 15px; color: var(--muted); margin-bottom: 32px; }
+        .footer-signup-form { display: flex; gap: 8px; max-width: 480px; margin: 0 auto; }
+        .footer-signup-form input[type="email"] { flex: 1; padding: 16px 22px; background: var(--card); border: 1px solid var(--border); border-radius: 100px; color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; outline: none; transition: border-color 0.3s; }
+        .footer-signup-form input[type="email"]:focus { border-color: rgba(120,119,198,0.4); }
+        .footer-signup-form input[type="email"]::placeholder { color: var(--muted); }
+        .footer-signup-form button { padding: 16px 28px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
+        .footer-signup-form button:hover { transform: scale(1.04); box-shadow: 0 0 40px rgba(255,255,255,0.15); }
+        @media (max-width: 768px) { .footer-signup { padding: 60px 20px; } .footer-signup-form { flex-direction: column; } }
+    
+        /* ═══ STICKY BANNER ═══ */
+        .sticky-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(160%); width: calc(100% - 40px); max-width: 720px; background: rgba(10,10,10,0.92); border: 1px solid rgba(120,119,198,0.2); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(120,119,198,0.1); z-index: 9000; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .sticky-banner.visible { transform: translateX(-50%) translateY(0); }
+        .sticky-banner-text { flex: 1; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.85); }
+        .sticky-banner-text strong { font-family: 'Satoshi', sans-serif; font-weight: 700; color: #fff; }
+        .sticky-banner-form { display: flex; gap: 6px; flex-shrink: 0; }
+        .sticky-banner-form input { padding: 10px 16px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; outline: none; min-width: 200px; }
+        .sticky-banner-form input::placeholder { color: rgba(255,255,255,0.4); }
+        .sticky-banner-form button { padding: 10px 20px; background: #fff; color: #050505; font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; white-space: nowrap; transition: transform 0.2s; }
+        .sticky-banner-form button:hover { transform: scale(1.05); }
+        .sticky-banner-close { background: none; border: none; color: rgba(255,255,255,0.4); font-size: 22px; cursor: pointer; padding: 4px 8px; line-height: 1; }
+        .sticky-banner-close:hover { color: #fff; }
+        @media (max-width: 768px) { .sticky-banner { flex-wrap: wrap; padding: 14px; gap: 10px; } .sticky-banner-text { flex: 1 1 100%; font-size: 12px; } .sticky-banner-form { flex: 1 1 100%; } .sticky-banner-form input { min-width: 0; flex: 1; } .sticky-banner-close { position: absolute; top: 8px; right: 8px; } }
     </style>
 </head>
 <body>
@@ -192,7 +254,7 @@
         <a href="contact.html">Contact</a>
         <a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a>
     </div>
-    <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="nav-cta">Book Meeting</a>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=cold-email-agency-amsterdam" target="_blank" class="nav-cta">Book Meeting</a>
     <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
 
@@ -202,7 +264,7 @@
     <a href="case-studies.html">Case Studies</a>
     <a href="team.html">Team</a>
     <a href="contact.html">Contact</a>
-    <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="mobile-cta">Book Meeting</a>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=cold-email-agency-amsterdam" target="_blank" class="mobile-cta">Book Meeting</a>
 </div>
 
 <section class="hero">
@@ -211,7 +273,7 @@
     <div class="hero-label reveal">Cold Email Agency Amsterdam</div>
     <h1 class="reveal">The cold email agency<br>built for <span class="gradient">European B2B</span></h1>
     <p class="reveal" style="transition-delay: 0.15s;">closed:in is an Amsterdam-based cold email agency. We build outbound sales systems for B2B service companies in the Netherlands, Belgium and across Europe. Qualified meetings on your calendar within 2-3 weeks.</p>
-    <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="btn-primary reveal" style="transition-delay: 0.3s;">Book a 30 Minute Call →</a>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=cold-email-agency-amsterdam" target="_blank" class="btn-primary reveal" style="transition-delay: 0.3s;">Book a 30 Minute Call →</a>
     <div class="trust-bar reveal" style="transition-delay: 0.45s;">
         <div class="trust-stat"><div class="trust-num">50+</div><div class="trust-lbl">B2B clients served</div></div>
         <div class="trust-stat"><div class="trust-num">1,000+</div><div class="trust-lbl">Campaigns launched</div></div>
@@ -332,7 +394,19 @@
     <div class="reveal">
         <h2>Ready to launch outbound<br>from Amsterdam?</h2>
         <p>Book a 30 minute discovery call. We will review your ICP, current setup and goals, and tell you whether closed:in is a fit.</p>
-        <a href="https://closedin.neetocal.com/discovery-call" target="_blank" class="btn-primary">Book a 30 Minute Call →</a>
+        <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=cold-email-agency-amsterdam" target="_blank" class="btn-primary">Book a 30 Minute Call →</a>
+    </div>
+</section>
+
+<section class="footer-signup">
+    <div class="footer-signup-inner">
+        <div class="footer-signup-label">The closed:in playbook</div>
+        <h2>1 email per week.<br>Real outbound tactics from live campaigns.</h2>
+        <p>Free 1-page infrastructure checklist on signup. Built by founders who run cold email daily.</p>
+        <form class="footer-signup-form" action="__BEEHIIV_FORM_ACTION_URL__" method="POST" target="_blank">
+            <input type="email" name="email" placeholder="you@yourcompany.com" required>
+            <button type="submit">Get the playbook</button>
+        </form>
     </div>
 </section>
 
@@ -354,12 +428,13 @@
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <a href="mailto:info@closedin.io">info@closedin.io</a>
-                    <a href="https://closedin.neetocal.com/discovery-call" target="_blank">Book a Call</a>
+                    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=cold-email-agency-amsterdam" target="_blank">Book a Call</a>
                     <a href="https://www.linkedin.com/company/closedin" target="_blank">LinkedIn</a>
                     <a href="https://maps.google.com/?q=Jodenbreestraat+25,+Amsterdam" target="_blank">Jodenbreestraat 25, Amsterdam</a>
                 </div>
                 <div class="footer-col">
                     <h4>Services</h4>
+                    <a href="playbook.html">The Playbook (free)</a>
                     <a href="cold-email-agency-amsterdam.html">Cold email NL/EU</a>
                     <a href="cold-email-agency-saas.html">Cold email SaaS</a>
                     <a href="clay-agency.html">Clay agency</a>
@@ -400,6 +475,38 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     function closeMenu() { menu.classList.remove("open"); document.body.style.overflow = ""; }
     closeBtn.addEventListener("click", closeMenu);
     menu.querySelectorAll("a").forEach(function(a) { a.addEventListener("click", closeMenu); });
+})();
+</script>
+
+<div class="sticky-banner" id="stickyBanner">
+    <div class="sticky-banner-text"><strong>Get the closed:in playbook</strong> &mdash; 1-page cold email infrastructure checklist + weekly tactics. Free.</div>
+    <form class="sticky-banner-form" action="__BEEHIIV_FORM_ACTION_URL__" method="POST" target="_blank">
+        <input type="email" name="email" placeholder="you@company.com" required>
+        <button type="submit">Get it</button>
+    </form>
+    <button class="sticky-banner-close" id="stickyBannerClose" aria-label="Close">&times;</button>
+</div>
+
+
+<script>
+(function() {
+    if (localStorage.getItem('si_banner_dismissed')) return;
+    var banner = document.getElementById('stickyBanner');
+    var closeBtn = document.getElementById('stickyBannerClose');
+    if (!banner || !closeBtn) return;
+    var shown = false;
+    function show() { if (shown) return; banner.classList.add('visible'); shown = true; }
+    setTimeout(show, 30000);
+    window.addEventListener('scroll', function() {
+        var sd = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+        if (sd > 0.4) show();
+    });
+    closeBtn.addEventListener('click', function() {
+        banner.classList.remove('visible');
+        localStorage.setItem('si_banner_dismissed', '1');
+    });
+    var form = banner.querySelector('form');
+    if (form) form.addEventListener('submit', function() { localStorage.setItem('si_banner_dismissed', '1'); });
 })();
 </script>
 </body>
