@@ -119,7 +119,7 @@
         .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
 
         /* HERO with orbital tool ring */
-        .hero { padding: 160px 40px 100px; position: relative; overflow: hidden; min-height: 820px; display: flex; align-items: center; justify-content: center; }
+        .hero { padding: 160px 40px 80px; position: relative; overflow: hidden; min-height: 480px; display: flex; align-items: center; justify-content: center; }
         .hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 40%, rgba(120,119,198,0.13), transparent 70%); pointer-events: none; }
         .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 80%); }
         .hero-content { position: relative; z-index: 5; text-align: center; max-width: 760px; margin: 0 auto; }
@@ -225,21 +225,19 @@
             z-index: 5;
         }
         @keyframes vaultBorderSpin { to { --grad-angle: 360deg; } }
-        .vault-cell-icon { width: 78px; height: 78px; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; overflow: hidden; color: #fff; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; z-index: 1; }
-        .vault-cell-icon svg { width: 38px; height: 38px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-        .vault-cell-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+        .vault-cell-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--bg-elevated); border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; overflow: hidden; color: #fff; transition: opacity 0.35s, transform 0.35s; position: relative; z-index: 1; }
+        .vault-cell-icon svg { width: 26px; height: 26px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .vault-cell-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; transform: scale(1.18); transform-origin: center; }
         .vault-cell-icon.logo-only { background: #fff; border: 1px solid var(--border-strong); }
-        .vault-cell-icon::before { content: ''; position: absolute; inset: -3px; border-radius: 50%; padding: 3px; background: var(--brand, transparent); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.4s; }
-        .vault-cell:hover .vault-cell-icon { transform: scale(1.05); box-shadow: 0 0 32px var(--brand-glow, var(--accent-glow)); border-color: var(--brand, var(--border-strong)); }
-        .vault-cell:hover .vault-cell-icon::before { opacity: 0.4; }
-        .vault-cell-label { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 4px; pointer-events: none; }
+        .vault-cell-label { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 4px; pointer-events: none; transition: opacity 0.3s; }
         .vault-cell-label strong { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; white-space: nowrap; }
-        .vault-cell-label .tag { font-size: 10px; font-weight: 600; color: var(--muted); padding: 3px 9px; border: 1px solid var(--border); border-radius: 100px; letter-spacing: 0.04em; transition: all 0.3s; }
-        .vault-cell:hover .vault-cell-label .tag { border-color: var(--brand, var(--border-strong)); color: var(--brand-text, var(--text)); }
+        .vault-cell-label .tag { font-size: 10px; font-weight: 600; color: var(--muted); padding: 3px 9px; border: 1px solid var(--border); border-radius: 100px; letter-spacing: 0.04em; }
+        .vault-cell:hover .vault-cell-icon { opacity: 0; transform: scale(0.85); }
+        .vault-cell:hover .vault-cell-label { opacity: 0; }
 
         /* HOVER POPUP CARD, workflows.io style */
-        .vault-popup { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.94); width: 280px; padding: 22px 22px 18px; background: var(--bg-elevated); border: 1px solid var(--border-strong); border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04); opacity: 0; pointer-events: none; z-index: 10; transition: opacity 0.3s, transform 0.3s cubic-bezier(0.16,1,0.3,1); }
-        .vault-cell:hover .vault-popup { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        .vault-popup { position: absolute; inset: 12px; padding: 18px 18px 14px; background: rgba(14,14,18,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,0.6); opacity: 0; transform: scale(0.96); pointer-events: none; z-index: 10; transition: opacity 0.35s, transform 0.35s cubic-bezier(0.16,1,0.3,1); display: flex; flex-direction: column; justify-content: space-between; }
+        .vault-cell:hover .vault-popup { opacity: 1; transform: scale(1); }
         .vault-popup-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
         .vault-popup-header h3 { font-family: 'Satoshi', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; }
         .vault-popup-tag { font-size: 10px; font-weight: 600; color: var(--muted); padding: 3px 10px; border: 1px solid var(--border-strong); border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
@@ -379,41 +377,17 @@
             <div class="nav-dropdown-panel">
                 <div class="nav-dropdown-col">
                     <h5>Resources</h5>
-                    <a class="nav-dropdown-item" href="blog/">
-                        <span class="nav-dropdown-item-icon" style="background:#EC4899;color:#fff">Bl</span>
-                        <span class="nav-dropdown-item-text"><strong>Blog</strong><span>One tactical post per week</span></span>
-                    </a>
-                    <a class="nav-dropdown-item" href="resources.html">
-                        <span class="nav-dropdown-item-icon" style="background:#B388FF;color:#fff">Vt</span>
-                        <span class="nav-dropdown-item-text"><strong>The Vault</strong><span>11 free templates &amp; tools</span></span>
-                    </a>
-                    <a class="nav-dropdown-item" href="resources/gtm-stack.html">
-                        <span class="nav-dropdown-item-icon" style="background:linear-gradient(135deg,#B388FF,#7C5FCE);color:#fff">Gt</span>
-                        <span class="nav-dropdown-item-text"><strong>The GTM Stack</strong><span>32 tools, real cost, honest take</span></span>
-                    </a>
-                    <a class="nav-dropdown-item" href="playbook.html">
-                        <span class="nav-dropdown-item-icon" style="background:#fff;color:#000">Pb</span>
-                        <span class="nav-dropdown-item-text"><strong>The Playbook</strong><span>1-page infra checklist</span></span>
-                    </a>
+                    <a class="nav-dropdown-item" href="blog/"><span class="nav-dropdown-item-icon" style="background:#EC4899;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><span class="nav-dropdown-item-text"><strong>Blog</strong><span>One tactical post per week</span></span></a>
+                    <a class="nav-dropdown-item" href="resources.html"><span class="nav-dropdown-item-icon" style="background:#B388FF;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/></svg></span><span class="nav-dropdown-item-text"><strong>The Vault</strong><span>13 free templates &amp; tools</span></span></a>
+                    <a class="nav-dropdown-item" href="resources/gtm-stack.html"><span class="nav-dropdown-item-icon" style="background:linear-gradient(135deg,#B388FF,#7C5FCE);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span><span class="nav-dropdown-item-text"><strong>The GTM Stack</strong><span>32 tools, real cost, honest take</span></span></a>
+                    <a class="nav-dropdown-item" href="playbook.html"><span class="nav-dropdown-item-icon" style="background:#fff;color:#000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><span class="nav-dropdown-item-text"><strong>The Playbook</strong><span>1-page infra checklist</span></span></a>
                 </div>
                 <div class="nav-dropdown-col">
                     <h5>Free tools</h5>
-                    <a class="nav-dropdown-item" href="tools/roi-calculator.html">
-                        <span class="nav-dropdown-item-icon" style="background:#10B981;color:#fff">RO</span>
-                        <span class="nav-dropdown-item-text"><strong>ROI Calculator</strong><span>Pipeline projection</span></span>
-                    </a>
-                    <a class="nav-dropdown-item" href="tools/email-verifier.html">
-                        <span class="nav-dropdown-item-icon" style="background:#3B82F6;color:#fff">EV</span>
-                        <span class="nav-dropdown-item-text"><strong>Email Verifier</strong><span>500 emails, zero credits</span></span>
-                    </a>
-                    <a class="nav-dropdown-item" href="resources/cold-email-templates.html">
-                        <span class="nav-dropdown-item-icon" style="background:#FF6B35;color:#fff">CE</span>
-                        <span class="nav-dropdown-item-text"><strong>Cold email templates</strong><span>12, real reply rates</span></span>
-                    </a>
-                    <a class="nav-dropdown-item" href="resources/clay-waterfall.html">
-                        <span class="nav-dropdown-item-icon" style="background:#7C5FCE;color:#fff">CW</span>
-                        <span class="nav-dropdown-item-text"><strong>Clay waterfall</strong><span>4-provider stack, 92% find rate</span></span>
-                    </a>
+                    <a class="nav-dropdown-item" href="tools/roi-calculator.html"><span class="nav-dropdown-item-icon" style="background:#10B981;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="16" y1="14" x2="16" y2="14"/></svg></span><span class="nav-dropdown-item-text"><strong>ROI Calculator</strong><span>Pipeline projection</span></span></a>
+                    <a class="nav-dropdown-item" href="tools/email-verifier.html"><span class="nav-dropdown-item-icon" style="background:#3B82F6;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span class="nav-dropdown-item-text"><strong>Email Verifier</strong><span>500 emails, zero credits</span></span></a>
+                    <a class="nav-dropdown-item" href="resources/cold-email-templates.html"><span class="nav-dropdown-item-icon" style="background:#FF6B35;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><polyline points="2 7 12 13 22 7"/></svg></span><span class="nav-dropdown-item-text"><strong>Cold email templates</strong><span>12, real reply rates</span></span></a>
+                    <a class="nav-dropdown-item" href="resources/clay-waterfall.html"><span class="nav-dropdown-item-icon nav-dropdown-icon-logo"><img src="logos/clay.png" alt="Clay"></span><span class="nav-dropdown-item-text"><strong>Clay waterfall</strong><span>4-provider stack, 92% find rate</span></span></a>
                 </div>
             </div>
         </div>
@@ -427,31 +401,6 @@
 <section class="hero">
     <div class="hero-glow"></div>
     <div class="hero-grid-bg"></div>
-
-    <!-- Orbital tool ring -->
-    <div class="orbital-system">
-        <div class="orbital-ring r1"></div>
-        <div class="orbital-ring r2"></div>
-
-        <div class="orbital-rotate">
-            <div class="orbital-tool pos1"><div class="orbital-tool-inner"><img src="logos/clay.png" alt="Clay" loading="lazy"></div></div>
-            <div class="orbital-tool pos2"><div class="orbital-tool-inner"><img src="logos/instantly.png" alt="Instantly" loading="lazy"></div></div>
-            <div class="orbital-tool pos3"><div class="orbital-tool-inner"><img src="logos/apollo.png" alt="Apollo" loading="lazy"></div></div>
-            <div class="orbital-tool pos4"><div class="orbital-tool-inner"><img src="logos/close.png" alt="Close" loading="lazy"></div></div>
-            <div class="orbital-tool pos5"><div class="orbital-tool-inner"><img src="logos/claude.png" alt="Claude" loading="lazy"></div></div>
-            <div class="orbital-tool pos6"><div class="orbital-tool-inner"><img src="logos/hubspot.png" alt="HubSpot" loading="lazy"></div></div>
-        </div>
-
-        <div class="orbital-rotate reverse">
-            <div class="orbital-tool r2pos1"><div class="orbital-tool-inner"><img src="logos/findymail.png" alt="Findymail" loading="lazy"></div></div>
-            <div class="orbital-tool r2pos2"><div class="orbital-tool-inner"><img src="logos/linkedin.png" alt="LinkedIn" loading="lazy"></div></div>
-            <div class="orbital-tool r2pos3"><div class="orbital-tool-inner"><img src="logos/hunter.png" alt="Hunter" loading="lazy"></div></div>
-            <div class="orbital-tool r2pos4"><div class="orbital-tool-inner"><img src="logos/beehiiv.png" alt="Beehiiv" loading="lazy"></div></div>
-            <div class="orbital-tool r2pos5"><div class="orbital-tool-inner"><img src="logos/datagma.png" alt="Datagma" loading="lazy"></div></div>
-            <div class="orbital-tool r2pos6"><div class="orbital-tool-inner"><img src="logos/notion.png" alt="Notion" loading="lazy"></div></div>
-            <div class="orbital-tool r2pos7"><div class="orbital-tool-inner"><img src="logos/n8n.png" alt="n8n" loading="lazy"></div></div>
-        </div>
-    </div>
 
     <div class="hero-content">
         <div class="hero-pill reveal">
