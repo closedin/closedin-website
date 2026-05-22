@@ -103,7 +103,7 @@
 
         /* ═══ NAV ═══ */
         nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
             padding: 10px 48px;
             display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
             background: rgba(5,5,5,0.6);
@@ -313,6 +313,13 @@
             font-family: 'Satoshi', sans-serif; font-size: 28px; font-weight: 700;
             color: rgba(255,255,255,0.1); letter-spacing: -0.02em; z-index: 1;
         }
+        .case-card-logo {
+            max-height: 72px; max-width: 200px; width: auto; height: auto;
+            position: relative; z-index: 1; object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+            transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+        }
+        .case-card:hover .case-card-logo { transform: scale(1.06); }
         .case-card-content { padding: 24px 28px 28px; position: relative; z-index: 1; }
         .case-card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
         .case-card-tag {
@@ -452,7 +459,7 @@
 .nav-dropdown > button:hover { color: #fff; }
 .nav-dropdown > button svg { transition: transform 0.3s; }
 .nav-dropdown:hover > button svg { transform: rotate(180deg); }
-.nav-dropdown-panel { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%) translateY(-8px); width: 720px; padding: 24px; background: rgba(8,8,10,0.98); backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px); border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; z-index: 200; } .nav-dropdown-panel::before { content: ''; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
+.nav-dropdown-panel { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%) translateY(-8px); width: 720px; padding: 24px; background: rgba(8,8,10,0.98); backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px); border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; z-index: 9999; } .nav-dropdown-panel::before { content: ''; position: absolute; left: -24px; right: -24px; top: -24px; height: 36px; }
 .nav-dropdown:hover .nav-dropdown-panel { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
 .nav-dropdown-col { display: flex; flex-direction: column; gap: 4px; }
 .nav-dropdown-col h5 { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 10px; padding-left: 12px; }
@@ -685,7 +692,7 @@
             <div class="case-card-inner">
                 <div class="case-card-spotlight"></div>
                 <div class="case-card-image" style="background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(120,119,198,0.04));">
-                    <span class="case-card-client">Verzendbazen</span>
+                    <img class="case-card-logo" src="verzendbazen-logo.png" alt="Verzendbazen" loading="lazy">
                 </div>
                 <div class="case-card-content">
                     <div class="case-card-tags">
@@ -709,7 +716,7 @@
             <div class="case-card-inner">
                 <div class="case-card-spotlight"></div>
                 <div class="case-card-image" style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(120,119,198,0.04));">
-                    <span class="case-card-client">Jamezz</span>
+                    <img class="case-card-logo" src="https://framerusercontent.com/images/YY9He5jrWx87I4keGv6qFwL0.png" alt="Jamezz" loading="lazy">
                 </div>
                 <div class="case-card-content">
                     <div class="case-card-tags">
@@ -733,7 +740,7 @@
             <div class="case-card-inner">
                 <div class="case-card-spotlight"></div>
                 <div class="case-card-image" style="background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(120,119,198,0.04));">
-                    <span class="case-card-client">Endresz</span>
+                    <img class="case-card-logo" src="https://framerusercontent.com/images/lZMSlkgqqiqVAueZvqtJWBo.png" alt="Endresz" loading="lazy">
                 </div>
                 <div class="case-card-content">
                     <div class="case-card-tags">
@@ -756,7 +763,7 @@
             <div class="case-card-inner">
                 <div class="case-card-spotlight"></div>
                 <div class="case-card-image" style="background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(120,119,198,0.06));">
-                    <span class="case-card-client">Mistertafel</span>
+                    <img class="case-card-logo" src="logos/client-mistertafel.png" alt="Mistertafel" loading="lazy" style="max-height: 56px; border-radius: 14px;">
                 </div>
                 <div class="case-card-content">
                     <div class="case-card-tags">
