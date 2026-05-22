@@ -193,7 +193,10 @@
         .vault-grid { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; border-top: 1px solid var(--border); border-left: 1px solid var(--border); border-radius: 4px; overflow: visible; }
         .vault-cell { aspect-ratio: 1 / 1; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; display: flex; align-items: center; justify-content: center; transition: background 0.3s; cursor: pointer; text-decoration: none; }
         .vault-cell:hover { background: rgba(255,255,255,0.012); }
-        .vault-cell-icon { width: 78px; height: 78px; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 24px; color: #fff; letter-spacing: -0.04em; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; z-index: 1; }
+        .vault-cell-icon { width: 78px; height: 78px; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; overflow: hidden; color: #fff; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; z-index: 1; }
+        .vault-cell-icon svg { width: 38px; height: 38px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .vault-cell-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+        .vault-cell-icon.logo-only { background: #fff; border: 1px solid var(--border-strong); }
         .vault-cell-icon::before { content: ''; position: absolute; inset: -3px; border-radius: 50%; padding: 3px; background: var(--brand, transparent); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.4s; }
         .vault-cell:hover .vault-cell-icon { transform: scale(1.05); box-shadow: 0 0 32px var(--brand-glow, var(--accent-glow)); border-color: var(--brand, var(--border-strong)); }
         .vault-cell:hover .vault-cell-icon::before { opacity: 0.4; }
@@ -451,7 +454,7 @@
     <div class="vault-grid">
 
         <a href="playbook.html" class="vault-cell b-playbook" data-cat="playbook">
-            <div class="vault-cell-icon">Pb</div>
+            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg></div>
             <div class="vault-cell-label">
                 <strong>The Playbook</strong>
                 <span class="tag">PDF</span>
@@ -467,7 +470,7 @@
         </a>
 
         <a href="resources/cold-email-templates.html" class="vault-cell b-templates" data-cat="template">
-            <div class="vault-cell-icon">Ce</div>
+            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><polyline points="2 7 12 13 22 7"/></svg></div>
             <div class="vault-cell-label">
                 <strong>Cold Email Templates</strong>
                 <span class="tag">12 emails</span>
@@ -483,7 +486,7 @@
         </a>
 
         <a href="resources/apollo-booleans.html" class="vault-cell b-apollo-bool" data-cat="boolean">
-            <div class="vault-cell-icon">Ab</div>
+            <div class="vault-cell-icon logo-only"><img src="logos/apollo.png" alt="Apollo"></div>
             <div class="vault-cell-label">
                 <strong>Apollo Booleans</strong>
                 <span class="tag">50 strings</span>
@@ -499,7 +502,7 @@
         </a>
 
         <a href="resources/sales-nav-booleans.html" class="vault-cell b-sn-bool" data-cat="boolean">
-            <div class="vault-cell-icon">Sn</div>
+            <div class="vault-cell-icon logo-only"><img src="logos/linkedin.png" alt="LinkedIn Sales Navigator"></div>
             <div class="vault-cell-label">
                 <strong>Sales Nav Booleans</strong>
                 <span class="tag">40 strings</span>
@@ -515,7 +518,7 @@
         </a>
 
         <a href="resources/gtm-stack.html" class="vault-cell b-gtm" data-cat="playbook">
-            <div class="vault-cell-icon">Gt</div>
+            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
             <div class="vault-cell-label">
                 <strong>The GTM Stack</strong>
                 <span class="tag">32 tools</span>
@@ -531,7 +534,7 @@
         </a>
 
         <a href="resources/clay-waterfall.html" class="vault-cell b-clay-wf" data-cat="workflow">
-            <div class="vault-cell-icon">Cw</div>
+            <div class="vault-cell-icon logo-only"><img src="logos/clay.png" alt="Clay"></div>
             <div class="vault-cell-label">
                 <strong>Clay Waterfall</strong>
                 <span class="tag">4 providers</span>
@@ -547,7 +550,7 @@
         </a>
 
         <a href="resources/icp-scorecard.html" class="vault-cell b-icp" data-cat="template">
-            <div class="vault-cell-icon">Ic</div>
+            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg></div>
             <div class="vault-cell-label">
                 <strong>ICP Scorecard</strong>
                 <span class="tag">12 signals</span>
@@ -563,7 +566,7 @@
         </a>
 
         <a href="resources/pre-launch-audit.html" class="vault-cell b-audit" data-cat="playbook">
-            <div class="vault-cell-icon">Pa</div>
+            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10"/></svg></div>
             <div class="vault-cell-label">
                 <strong>Pre-Launch Audit</strong>
                 <span class="tag">50 questions</span>
@@ -579,7 +582,7 @@
         </a>
 
         <a href="resources/claude-code-sales.html" class="vault-cell b-claude-code" data-cat="workflow">
-            <div class="vault-cell-icon">Cc</div>
+            <div class="vault-cell-icon logo-only"><img src="logos/claude.png" alt="Claude"></div>
             <div class="vault-cell-label">
                 <strong>Claude Code Setup</strong>
                 <span class="tag">10+ agents</span>
@@ -595,7 +598,7 @@
         </a>
 
         <a href="tools/roi-calculator.html" class="vault-cell b-roi" data-cat="tool">
-            <div class="vault-cell-icon">Ro</div>
+            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="13" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="13" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="13" y1="18" x2="16" y2="18"/></svg></div>
             <div class="vault-cell-label">
                 <strong>ROI Calculator</strong>
                 <span class="tag">Interactive</span>
@@ -611,7 +614,7 @@
         </a>
 
         <a href="tools/email-verifier.html" class="vault-cell b-verifier" data-cat="tool">
-            <div class="vault-cell-icon">Ev</div>
+            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
             <div class="vault-cell-label">
                 <strong>Email Verifier</strong>
                 <span class="tag">Zero credits</span>
@@ -627,7 +630,7 @@
         </a>
 
         <a href="blog/" class="vault-cell b-blog" data-cat="playbook">
-            <div class="vault-cell-icon">Bl</div>
+            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/></svg></div>
             <div class="vault-cell-label">
                 <strong>The Blog</strong>
                 <span class="tag">Weekly</span>
