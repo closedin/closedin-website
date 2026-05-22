@@ -360,6 +360,45 @@
 /* nav-dropdown click toggle */
 .nav-dropdown.is-open .nav-dropdown-panel { opacity: 1 !important; pointer-events: auto !important; transform: translateX(-50%) translateY(0) !important; }
 .nav-dropdown.is-open > button svg { transform: rotate(180deg); }
+
+/* === mobile-nav-polish === */
+@media (max-width: 768px) {
+  nav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 6px 16px !important;
+    grid-template-columns: none !important;
+  }
+  nav .hamburger {
+    order: -1 !important;
+    display: flex !important;
+    padding: 8px !important;
+    margin-left: -4px !important;
+    position: relative !important;
+    z-index: 1100 !important;
+  }
+  nav .hamburger span { transition: transform 0.3s, opacity 0.3s !important; }
+  nav .logo { order: 1 !important; }
+  nav .logo img { height: 52px !important; }
+  /* Hamburger morphs into X when menu is open */
+  body:has(.mobile-menu.open) .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg) !important; }
+  body:has(.mobile-menu.open) .hamburger span:nth-child(2) { opacity: 0 !important; }
+  body:has(.mobile-menu.open) .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) !important; }
+}
+
+/* === mobile-menu-css === */
+@media (max-width: 768px) {
+  .mobile-menu { display: none; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5,5,5,0.98); z-index: 999; padding: 100px 40px 40px; align-items: center; justify-content: center; gap: 32px; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: 'Satoshi', sans-serif; font-size: 28px; font-weight: 700; color: rgba(255,255,255,0.6); text-decoration: none; letter-spacing: -0.02em; }
+  .mobile-menu a:hover { color: #fff; }
+  .mobile-menu .mobile-cta { font-size: 15px; font-weight: 700; padding: 18px 40px; background: #fff; color: #050505; border-radius: 100px; text-decoration: none; margin-top: 16px; }
+  .mobile-menu-close { position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; background: none; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; }
+  .mobile-menu-close span { display: block; width: 20px; height: 2px; background: #fff; position: relative; transform: rotate(45deg); }
+  .mobile-menu-close span::after { content: ''; position: absolute; width: 20px; height: 2px; background: #fff; transform: rotate(-90deg); }
+}
 </style>
     <!-- Prospect Pro – Bedrijfsherkenning -->
     <link rel="stylesheet" href="https://css.jsapis.com/controls.css">
@@ -397,6 +436,17 @@
     <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=resources" target="_blank" class="nav-cta">Book Meeting</a>
     <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu"><span></span></button>
+    <a href="index.html">Home</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="resources.html">Resources</a>
+    <a href="blog/">Blog</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=resources" target="_blank" class="mobile-cta">Book Meeting</a>
+</div>
 
 <section class="hero">
     <div class="hero-glow"></div>
@@ -743,5 +793,17 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
     <!-- Leadboxer – Bedrijfsherkenning -->
     <script type="text/javascript" defer="defer" src="//script.leadboxer.com/?dataset=316eddd7dcb64c2d96481f90418a96c1"></script>
+<script>
+// mobile-menu-toggle
+(function() {
+  var btn = document.getElementById("hamburgerBtn");
+  var menu = document.getElementById("mobileMenu");
+  var closeBtn = document.getElementById("mobileMenuClose");
+  if (!btn || !menu) return;
+  btn.addEventListener("click", function(e) { e.stopPropagation(); var isOpen = menu.classList.contains("open"); if (isOpen) { menu.classList.remove("open"); document.body.style.overflow = ""; } else { menu.classList.add("open"); document.body.style.overflow = "hidden"; } });
+  if (closeBtn) closeBtn.addEventListener("click", function() { menu.classList.remove("open"); document.body.style.overflow = ""; });
+  menu.querySelectorAll("a").forEach(function(a) { a.addEventListener("click", function() { menu.classList.remove("open"); document.body.style.overflow = ""; }); });
+})();
+</script>
 </body>
 </html>

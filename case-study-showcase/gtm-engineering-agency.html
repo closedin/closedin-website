@@ -261,6 +261,33 @@
 /* nav-dropdown click toggle */
 .nav-dropdown.is-open .nav-dropdown-panel { opacity: 1 !important; pointer-events: auto !important; transform: translateX(-50%) translateY(0) !important; }
 .nav-dropdown.is-open > button svg { transform: rotate(180deg); }
+
+/* === mobile-nav-polish === */
+@media (max-width: 768px) {
+  nav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 6px 16px !important;
+    grid-template-columns: none !important;
+  }
+  nav .hamburger {
+    order: -1 !important;
+    display: flex !important;
+    padding: 8px !important;
+    margin-left: -4px !important;
+    position: relative !important;
+    z-index: 1100 !important;
+  }
+  nav .hamburger span { transition: transform 0.3s, opacity 0.3s !important; }
+  nav .logo { order: 1 !important; }
+  nav .logo img { height: 52px !important; }
+  /* Hamburger morphs into X when menu is open */
+  body:has(.mobile-menu.open) .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg) !important; }
+  body:has(.mobile-menu.open) .hamburger span:nth-child(2) { opacity: 0 !important; }
+  body:has(.mobile-menu.open) .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) !important; }
+}
 </style>
     <!-- Prospect Pro – Bedrijfsherkenning -->
     <link rel="stylesheet" href="https://css.jsapis.com/controls.css">
@@ -520,7 +547,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     const menu = document.getElementById("mobileMenu");
     const closeBtn = document.getElementById("mobileMenuClose");
     if (!btn || !menu) return;
-    btn.addEventListener("click", function() { menu.classList.add("open"); document.body.style.overflow = "hidden"; });
+    btn.addEventListener("click", function(e) { e.stopPropagation(); var isOpen = menu.classList.contains("open"); if (isOpen) { menu.classList.remove("open"); document.body.style.overflow = ""; } else { menu.classList.add("open"); document.body.style.overflow = "hidden"; } });
     function closeMenu() { menu.classList.remove("open"); document.body.style.overflow = ""; }
     closeBtn.addEventListener("click", closeMenu);
     menu.querySelectorAll("a").forEach(function(a) { a.addEventListener("click", closeMenu); });
