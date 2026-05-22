@@ -103,7 +103,7 @@
         .nav-dropdown > button { display: inline-flex; align-items: center; gap: 4px; }
         .nav-dropdown > button svg { transition: transform 0.3s; }
         .nav-dropdown:hover > button svg { transform: rotate(180deg); }
-        .nav-dropdown-panel { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%) translateY(-8px); width: 720px; padding: 24px; background: rgba(10,10,12,0.92); backdrop-filter: blur(32px); border: 1px solid var(--border-strong); border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
+        .nav-dropdown-panel { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%) translateY(-8px); width: 720px; padding: 24px; background: rgba(8,8,10,0.98); backdrop-filter: blur(32px); border: 1px solid var(--border-strong); border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; } .nav-dropdown-panel::before { content: ''; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
         .nav-dropdown:hover .nav-dropdown-panel { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
         .nav-dropdown-col { display: flex; flex-direction: column; gap: 4px; }
         .nav-dropdown-col h5 { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; padding-left: 12px; }
@@ -119,48 +119,50 @@
         .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
 
         /* HERO with orbital tool ring */
-        .hero { padding: 160px 40px 80px; position: relative; overflow: hidden; min-height: 720px; display: flex; align-items: center; justify-content: center; }
+        .hero { padding: 160px 40px 100px; position: relative; overflow: hidden; min-height: 820px; display: flex; align-items: center; justify-content: center; }
         .hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 40%, rgba(120,119,198,0.13), transparent 70%); pointer-events: none; }
         .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 80%); }
         .hero-content { position: relative; z-index: 5; text-align: center; max-width: 760px; margin: 0 auto; }
         .hero-pill { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 8px; background: rgba(10,10,12,0.7); backdrop-filter: blur(12px); border: 1px solid var(--border-strong); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--text); letter-spacing: 0.04em; margin-bottom: 32px; }
-        .hero-pill-icon { width: 22px; height: 22px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 10px; color: #000; letter-spacing: -0.02em; }
+        .hero-pill-icon { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
         .hero h1 { font-family: 'Satoshi', sans-serif; font-size: clamp(48px, 8vw, 96px); font-weight: 400; line-height: 0.96; letter-spacing: -0.045em; margin-bottom: 20px; }
         .hero h1 .accent-word { font-weight: 900; display: inline-flex; align-items: center; gap: 12px; }
         .hero h1 .accent-glyph { display: inline-block; width: clamp(36px, 6vw, 72px); height: clamp(36px, 6vw, 72px); vertical-align: middle; position: relative; }
         .hero h1 .accent-glyph svg { width: 100%; height: 100%; }
         .hero p { font-size: 18px; color: var(--dim); max-width: 560px; margin: 0 auto 0; line-height: 1.6; }
 
-        /* Orbital floating tool icons */
-        .orbital-system { position: absolute; top: 50%; left: 50%; width: 100%; max-width: 1100px; height: 600px; transform: translate(-50%, -50%); pointer-events: none; z-index: 1; }
+        /* Orbital floating tool icons - solar-system layout */
+        .orbital-system { position: absolute; top: 50%; left: 50%; width: 100%; max-width: 1200px; height: 760px; transform: translate(-50%, -50%); pointer-events: none; z-index: 1; }
         .orbital-ring { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px solid rgba(255,255,255,0.04); border-radius: 50%; }
-        .orbital-ring.r1 { width: 380px; height: 380px; }
-        .orbital-ring.r2 { width: 620px; height: 620px; }
-        .orbital-ring.r3 { width: 880px; height: 880px; }
-        .orbital-rotate { position: absolute; top: 50%; left: 50%; width: 1px; height: 1px; animation: orbitRotate 80s linear infinite; }
-        .orbital-rotate.reverse { animation-direction: reverse; animation-duration: 110s; }
-        .orbital-rotate.med { animation-duration: 60s; }
-        .orbital-tool { position: absolute; width: 52px; height: 52px; top: -26px; left: -26px; animation: counterRotate 80s linear infinite; pointer-events: auto; }
-        .orbital-rotate.reverse .orbital-tool { animation-direction: reverse; animation-duration: 110s; }
-        .orbital-rotate.med .orbital-tool { animation-duration: 60s; }
+        .orbital-ring.r1 { width: 480px; height: 480px; }
+        .orbital-ring.r2 { width: 760px; height: 760px; }
+        .orbital-rotate { position: absolute; top: 50%; left: 50%; width: 1px; height: 1px; animation: orbitRotate 110s linear infinite; }
+        .orbital-rotate.reverse { animation-direction: reverse; animation-duration: 150s; }
+        .orbital-tool { position: absolute; width: 60px; height: 60px; top: -30px; left: -30px; animation: counterRotate 110s linear infinite; pointer-events: auto; }
+        .orbital-rotate.reverse .orbital-tool { animation-direction: reverse; animation-duration: 150s; }
         @keyframes orbitRotate { to { transform: rotate(360deg); } }
         @keyframes counterRotate { to { transform: rotate(-360deg); } }
-        .orbital-tool-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 18px; color: #fff; letter-spacing: -0.04em; box-shadow: 0 8px 24px rgba(0,0,0,0.5); transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
-        .orbital-tool:hover .orbital-tool-inner { transform: scale(1.18); }
+        .orbital-tool-inner { width: 100%; height: 100%; border-radius: 50%; background: #fff; border: 1px solid rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 0 4px rgba(10,10,12,0.7); transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+        .orbital-tool-inner img { width: 78%; height: 78%; object-fit: contain; display: block; }
+        .orbital-tool:hover .orbital-tool-inner { transform: scale(1.16); box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 32px rgba(120,119,198,0.5), 0 0 0 4px rgba(10,10,12,0.9); }
 
-        /* Position tools on the rings */
-        .orbital-tool.pos1 { transform: translateX(190px); }
-        .orbital-tool.pos2 { transform: rotate(72deg) translateX(190px); }
-        .orbital-tool.pos3 { transform: rotate(144deg) translateX(190px); }
-        .orbital-tool.pos4 { transform: rotate(216deg) translateX(190px); }
-        .orbital-tool.pos5 { transform: rotate(288deg) translateX(190px); }
-        .orbital-tool.r2pos1 { transform: rotate(30deg) translateX(310px); }
-        .orbital-tool.r2pos2 { transform: rotate(95deg) translateX(310px); }
-        .orbital-tool.r2pos3 { transform: rotate(165deg) translateX(310px); }
-        .orbital-tool.r2pos4 { transform: rotate(240deg) translateX(310px); }
-        .orbital-tool.r2pos5 { transform: rotate(305deg) translateX(310px); }
+        /* Inner ring: 6 tools at 60° apart, radius 240px */
+        .orbital-tool.pos1 { transform: translateX(240px); }
+        .orbital-tool.pos2 { transform: rotate(60deg) translateX(240px); }
+        .orbital-tool.pos3 { transform: rotate(120deg) translateX(240px); }
+        .orbital-tool.pos4 { transform: rotate(180deg) translateX(240px); }
+        .orbital-tool.pos5 { transform: rotate(240deg) translateX(240px); }
+        .orbital-tool.pos6 { transform: rotate(300deg) translateX(240px); }
+        /* Outer ring: 7 tools at ~51° apart, radius 380px, offset 26° */
+        .orbital-tool.r2pos1 { transform: rotate(26deg) translateX(380px); }
+        .orbital-tool.r2pos2 { transform: rotate(77deg) translateX(380px); }
+        .orbital-tool.r2pos3 { transform: rotate(129deg) translateX(380px); }
+        .orbital-tool.r2pos4 { transform: rotate(180deg) translateX(380px); }
+        .orbital-tool.r2pos5 { transform: rotate(231deg) translateX(380px); }
+        .orbital-tool.r2pos6 { transform: rotate(283deg) translateX(380px); }
+        .orbital-tool.r2pos7 { transform: rotate(334deg) translateX(380px); }
 
-        /* Brand color rings */
+        /* Legacy brand classes (used elsewhere in vault grid) */
         .b-clay .orbital-tool-inner { background: linear-gradient(135deg, #7C5FCE, #4D2DA8); border-color: rgba(124,95,206,0.4); }
         .b-instantly .orbital-tool-inner { background: linear-gradient(135deg, #2B72E5, #1D4FB3); border-color: rgba(43,114,229,0.4); }
         .b-apollo .orbital-tool-inner { background: linear-gradient(135deg, #1FBA82, #0D8053); border-color: rgba(31,186,130,0.4); }
@@ -275,19 +277,46 @@
         @media (max-width: 1024px) {
             .vault-grid { grid-template-columns: repeat(3, 1fr); }
             .nav-dropdown-panel { width: 560px; }
-            .orbital-tool.r2pos1, .orbital-tool.r2pos2, .orbital-tool.r2pos3, .orbital-tool.r2pos4, .orbital-tool.r2pos5 { display: none; }
+            .orbital-system { height: 600px; }
+            .orbital-ring.r1 { width: 360px; height: 360px; }
+            .orbital-ring.r2 { width: 560px; height: 560px; }
+            .orbital-tool { width: 52px; height: 52px; top: -26px; left: -26px; }
+            .orbital-tool.pos1 { transform: translateX(180px); }
+            .orbital-tool.pos2 { transform: rotate(60deg) translateX(180px); }
+            .orbital-tool.pos3 { transform: rotate(120deg) translateX(180px); }
+            .orbital-tool.pos4 { transform: rotate(180deg) translateX(180px); }
+            .orbital-tool.pos5 { transform: rotate(240deg) translateX(180px); }
+            .orbital-tool.pos6 { transform: rotate(300deg) translateX(180px); }
+            .orbital-tool.r2pos1 { transform: rotate(26deg) translateX(280px); }
+            .orbital-tool.r2pos2 { transform: rotate(77deg) translateX(280px); }
+            .orbital-tool.r2pos3 { transform: rotate(129deg) translateX(280px); }
+            .orbital-tool.r2pos4 { transform: rotate(180deg) translateX(280px); }
+            .orbital-tool.r2pos5 { transform: rotate(231deg) translateX(280px); }
+            .orbital-tool.r2pos6 { transform: rotate(283deg) translateX(280px); }
+            .orbital-tool.r2pos7 { transform: rotate(334deg) translateX(280px); }
         }
         @media (max-width: 768px) {
             nav { padding: 14px 20px; }
             .nav-links, .nav-cta { display: none; }
             .hamburger { display: flex; }
             .hero { padding: 130px 20px 60px; min-height: 540px; }
+            .orbital-system { height: 460px; }
+            .orbital-ring.r1 { width: 240px; height: 240px; }
+            .orbital-ring.r2 { width: 400px; height: 400px; }
             .orbital-tool { width: 40px; height: 40px; top: -20px; left: -20px; }
-            .orbital-tool.pos1 { transform: translateX(140px); }
-            .orbital-tool.pos2 { transform: rotate(72deg) translateX(140px); }
-            .orbital-tool.pos3 { transform: rotate(144deg) translateX(140px); }
-            .orbital-tool.pos4 { transform: rotate(216deg) translateX(140px); }
-            .orbital-tool.pos5 { transform: rotate(288deg) translateX(140px); }
+            .orbital-tool.pos1 { transform: translateX(120px); }
+            .orbital-tool.pos2 { transform: rotate(60deg) translateX(120px); }
+            .orbital-tool.pos3 { transform: rotate(120deg) translateX(120px); }
+            .orbital-tool.pos4 { transform: rotate(180deg) translateX(120px); }
+            .orbital-tool.pos5 { transform: rotate(240deg) translateX(120px); }
+            .orbital-tool.pos6 { transform: rotate(300deg) translateX(120px); }
+            .orbital-tool.r2pos1 { transform: rotate(26deg) translateX(200px); }
+            .orbital-tool.r2pos2 { transform: rotate(77deg) translateX(200px); }
+            .orbital-tool.r2pos3 { transform: rotate(129deg) translateX(200px); }
+            .orbital-tool.r2pos4 { transform: rotate(180deg) translateX(200px); }
+            .orbital-tool.r2pos5 { transform: rotate(231deg) translateX(200px); }
+            .orbital-tool.r2pos6 { transform: rotate(283deg) translateX(200px); }
+            .orbital-tool.r2pos7 { transform: rotate(334deg) translateX(200px); }
             .vault-grid { grid-template-columns: repeat(2, 1fr); }
             .vault-section { padding: 32px 16px 80px; }
             .vault-popup { display: none; }
@@ -295,7 +324,11 @@
             .footer-top { flex-direction: column; gap: 40px; }
             .footer-links { flex-direction: column; gap: 32px; }
         }
-    </style>
+    
+/* nav-dropdown click toggle */
+.nav-dropdown.is-open .nav-dropdown-panel { opacity: 1 !important; pointer-events: auto !important; transform: translateX(-50%) translateY(0) !important; }
+.nav-dropdown.is-open > button svg { transform: rotate(180deg); }
+</style>
 </head>
 <body>
 
@@ -362,28 +395,30 @@
     <div class="orbital-system">
         <div class="orbital-ring r1"></div>
         <div class="orbital-ring r2"></div>
-        <div class="orbital-ring r3"></div>
 
         <div class="orbital-rotate">
-            <div class="orbital-tool pos1 b-clay"><div class="orbital-tool-inner">Cl</div></div>
-            <div class="orbital-tool pos2 b-instantly"><div class="orbital-tool-inner">In</div></div>
-            <div class="orbital-tool pos3 b-apollo"><div class="orbital-tool-inner">Ap</div></div>
-            <div class="orbital-tool pos4 b-close"><div class="orbital-tool-inner">Cs</div></div>
-            <div class="orbital-tool pos5 b-claude"><div class="orbital-tool-inner">Cd</div></div>
+            <div class="orbital-tool pos1"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/clay.com" alt="Clay" loading="lazy"></div></div>
+            <div class="orbital-tool pos2"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/instantly.ai" alt="Instantly" loading="lazy"></div></div>
+            <div class="orbital-tool pos3"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/apollo.io" alt="Apollo" loading="lazy"></div></div>
+            <div class="orbital-tool pos4"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/close.com" alt="Close" loading="lazy"></div></div>
+            <div class="orbital-tool pos5"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/anthropic.com" alt="Claude" loading="lazy"></div></div>
+            <div class="orbital-tool pos6"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/hubspot.com" alt="HubSpot" loading="lazy"></div></div>
         </div>
 
         <div class="orbital-rotate reverse">
-            <div class="orbital-tool r2pos1 b-findymail"><div class="orbital-tool-inner">Fm</div></div>
-            <div class="orbital-tool r2pos2 b-linkedin"><div class="orbital-tool-inner">Li</div></div>
-            <div class="orbital-tool r2pos3 b-hunter"><div class="orbital-tool-inner">Hu</div></div>
-            <div class="orbital-tool r2pos4 b-beehiiv"><div class="orbital-tool-inner">Bh</div></div>
-            <div class="orbital-tool r2pos5 b-datagma"><div class="orbital-tool-inner">Dg</div></div>
+            <div class="orbital-tool r2pos1"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/findymail.com" alt="Findymail" loading="lazy"></div></div>
+            <div class="orbital-tool r2pos2"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/linkedin.com" alt="LinkedIn" loading="lazy"></div></div>
+            <div class="orbital-tool r2pos3"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/hunter.io" alt="Hunter" loading="lazy"></div></div>
+            <div class="orbital-tool r2pos4"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/beehiiv.com" alt="Beehiiv" loading="lazy"></div></div>
+            <div class="orbital-tool r2pos5"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/datagma.com" alt="Datagma" loading="lazy"></div></div>
+            <div class="orbital-tool r2pos6"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/notion.so" alt="Notion" loading="lazy"></div></div>
+            <div class="orbital-tool r2pos7"><div class="orbital-tool-inner"><img src="https://logo.clearbit.com/n8n.io" alt="n8n" loading="lazy"></div></div>
         </div>
     </div>
 
     <div class="hero-content">
         <div class="hero-pill reveal">
-            <span class="hero-pill-icon">ci</span>
+            <img src="favicon-32.png" alt="closed:in" class="hero-pill-icon">
             The closed:in Vault
         </div>
         <h1 class="reveal" style="transition-delay: 0.1s;">Every <span class="accent-word">tool, template</span><br>and workflow we use to<br>build <em style="font-style: normal; font-weight: 900;">B2B outbound</em></h1>
@@ -699,5 +734,26 @@ document.querySelectorAll('.vault-cell').forEach(cell => {
 });
 </script>
 
+<script>
+// nav-dropdown click toggle
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
+        var btn = dd.querySelector('button');
+        if (!btn) return;
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            var isOpen = dd.classList.contains('is-open');
+            document.querySelectorAll('.nav-dropdown.is-open').forEach(function(o) { o.classList.remove('is-open'); });
+            if (!isOpen) dd.classList.add('is-open');
+        });
+    });
+    document.addEventListener('click', function(e) {
+        document.querySelectorAll('.nav-dropdown.is-open').forEach(function(dd) {
+            if (!dd.contains(e.target)) dd.classList.remove('is-open');
+        });
+    });
+});
+</script>
 </body>
 </html>

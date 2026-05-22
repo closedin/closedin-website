@@ -484,7 +484,7 @@
 .nav-dropdown > button:hover { color: #fff; }
 .nav-dropdown > button svg { transition: transform 0.3s; }
 .nav-dropdown:hover > button svg { transform: rotate(180deg); }
-.nav-dropdown-panel { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%) translateY(-8px); width: 720px; padding: 24px; background: rgba(10,10,12,0.92); backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px); border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; z-index: 200; }
+.nav-dropdown-panel { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%) translateY(-8px); width: 720px; padding: 24px; background: rgba(8,8,10,0.98); backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px); border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; z-index: 200; } .nav-dropdown-panel::before { content: ''; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
 .nav-dropdown:hover .nav-dropdown-panel { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
 .nav-dropdown-col { display: flex; flex-direction: column; gap: 4px; }
 .nav-dropdown-col h5 { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 10px; padding-left: 12px; }
@@ -496,6 +496,10 @@
 .nav-dropdown-item-text > span:not(.nav-dropdown-item-icon) { font-size: 11px; color: rgba(255,255,255,0.4); }
 @media (max-width: 1024px) { .nav-dropdown-panel { width: 560px; } }
 @media (max-width: 768px) { .nav-dropdown { display: none; } }
+
+/* nav-dropdown click toggle */
+.nav-dropdown.is-open .nav-dropdown-panel { opacity: 1 !important; pointer-events: auto !important; transform: translateX(-50%) translateY(0) !important; }
+.nav-dropdown.is-open > button svg { transform: rotate(180deg); }
 </style>
 
     <!-- ═══ STRUCTURED DATA / JSON-LD ═══ -->
@@ -826,7 +830,7 @@
     <div class="toolverse-bg-glow"></div>
     <div class="toolverse-header reveal">
         <div class="toolverse-pill">
-            <span class="toolverse-pill-icon">ci</span>
+            <img src="favicon-32.png" alt="closed:in" class="toolverse-pill-icon">
             The closed:in stack
         </div>
         <h2 class="toolverse-title">
@@ -838,23 +842,24 @@
     <div class="toolverse-orbital reveal" style="transition-delay:0.15s;">
         <div class="tv-ring tv-ring-1"></div>
         <div class="tv-ring tv-ring-2"></div>
-        <div class="tv-ring tv-ring-3"></div>
 
         <div class="tv-rotate">
-            <div class="tv-tool tv-pos1 tv-clay" data-name="Clay" data-cat="Orchestration"><div class="tv-tool-inner">Cl</div></div>
-            <div class="tv-tool tv-pos2 tv-instantly" data-name="Instantly" data-cat="Email sending"><div class="tv-tool-inner">In</div></div>
-            <div class="tv-tool tv-pos3 tv-apollo" data-name="Apollo" data-cat="Sourcing"><div class="tv-tool-inner">Ap</div></div>
-            <div class="tv-tool tv-pos4 tv-close" data-name="Close" data-cat="CRM"><div class="tv-tool-inner">Cs</div></div>
-            <div class="tv-tool tv-pos5 tv-claude" data-name="Claude Code" data-cat="AI agents"><div class="tv-tool-inner">Cd</div></div>
+            <div class="tv-tool tv-pos1" data-name="Clay" data-cat="Orchestration"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/clay.com" alt="Clay" loading="lazy"></div></div>
+            <div class="tv-tool tv-pos2" data-name="Instantly" data-cat="Email sending"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/instantly.ai" alt="Instantly" loading="lazy"></div></div>
+            <div class="tv-tool tv-pos3" data-name="Apollo" data-cat="Sourcing"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/apollo.io" alt="Apollo" loading="lazy"></div></div>
+            <div class="tv-tool tv-pos4" data-name="Close" data-cat="CRM"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/close.com" alt="Close" loading="lazy"></div></div>
+            <div class="tv-tool tv-pos5" data-name="Claude" data-cat="AI agents"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/anthropic.com" alt="Claude" loading="lazy"></div></div>
+            <div class="tv-tool tv-pos6" data-name="HubSpot" data-cat="CRM &amp; marketing"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/hubspot.com" alt="HubSpot" loading="lazy"></div></div>
         </div>
 
         <div class="tv-rotate tv-reverse">
-            <div class="tv-tool tv-r2pos1 tv-findymail" data-name="Findymail" data-cat="Email finding"><div class="tv-tool-inner">Fm</div></div>
-            <div class="tv-tool tv-r2pos2 tv-linkedin" data-name="Sales Nav" data-cat="LinkedIn"><div class="tv-tool-inner">Li</div></div>
-            <div class="tv-tool tv-r2pos3 tv-hunter" data-name="Hunter" data-cat="Verification"><div class="tv-tool-inner">Hu</div></div>
-            <div class="tv-tool tv-r2pos4 tv-beehiiv" data-name="Beehiiv" data-cat="Newsletter"><div class="tv-tool-inner">Bh</div></div>
-            <div class="tv-tool tv-r2pos5 tv-datagma" data-name="Datagma" data-cat="Phone find"><div class="tv-tool-inner">Dg</div></div>
-            <div class="tv-tool tv-r2pos6 tv-notion" data-name="Notion" data-cat="Knowledge"><div class="tv-tool-inner">Nt</div></div>
+            <div class="tv-tool tv-r2pos1" data-name="Findymail" data-cat="Email finding"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/findymail.com" alt="Findymail" loading="lazy"></div></div>
+            <div class="tv-tool tv-r2pos2" data-name="Sales Nav" data-cat="LinkedIn"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/linkedin.com" alt="LinkedIn" loading="lazy"></div></div>
+            <div class="tv-tool tv-r2pos3" data-name="Hunter" data-cat="Verification"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/hunter.io" alt="Hunter" loading="lazy"></div></div>
+            <div class="tv-tool tv-r2pos4" data-name="Beehiiv" data-cat="Newsletter"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/beehiiv.com" alt="Beehiiv" loading="lazy"></div></div>
+            <div class="tv-tool tv-r2pos5" data-name="Datagma" data-cat="Phone find"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/datagma.com" alt="Datagma" loading="lazy"></div></div>
+            <div class="tv-tool tv-r2pos6" data-name="Notion" data-cat="Knowledge base"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/notion.so" alt="Notion" loading="lazy"></div></div>
+            <div class="tv-tool tv-r2pos7" data-name="n8n" data-cat="Workflow automation"><div class="tv-tool-inner"><img src="https://logo.clearbit.com/n8n.io" alt="n8n" loading="lazy"></div></div>
         </div>
 
         <div class="tv-center">
@@ -874,58 +879,50 @@
 </section>
 
 <style>
-.toolverse-section { position: relative; padding: 100px 40px 100px; max-width: 1200px; margin: 0 auto; overflow: hidden; }
+.toolverse-section { position: relative; padding: 100px 20px 100px; max-width: 1200px; margin: 0 auto; overflow: hidden; }
 .toolverse-bg-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(120,119,198,0.12), transparent 70%); pointer-events: none; }
 .toolverse-header { text-align: center; max-width: 720px; margin: 0 auto 40px; position: relative; z-index: 5; }
 .toolverse-pill { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 8px; background: rgba(10,10,12,0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; font-size: 12px; font-weight: 600; color: #fff; letter-spacing: 0.04em; margin-bottom: 24px; }
-.toolverse-pill-icon { width: 22px; height: 22px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 10px; color: #000; letter-spacing: -0.02em; }
+.toolverse-pill-icon { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
 .toolverse-title { font-family: 'Satoshi', sans-serif; font-size: clamp(34px, 5vw, 56px); font-weight: 400; line-height: 1.02; letter-spacing: -0.035em; margin-bottom: 18px; }
 .toolverse-sub { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 560px; margin: 0 auto; }
 
-.toolverse-orbital { position: relative; height: 560px; max-width: 720px; margin: 0 auto; }
+.toolverse-orbital { position: relative; height: 760px; max-width: 880px; margin: 0 auto; }
 .tv-ring { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px solid rgba(255,255,255,0.05); border-radius: 50%; }
-.tv-ring-1 { width: 240px; height: 240px; }
-.tv-ring-2 { width: 400px; height: 400px; }
-.tv-ring-3 { width: 560px; height: 560px; }
-.tv-rotate { position: absolute; top: 50%; left: 50%; width: 1px; height: 1px; animation: tvOrbit 80s linear infinite; }
-.tv-reverse { animation-duration: 110s; animation-direction: reverse; }
-.tv-tool { position: absolute; width: 56px; height: 56px; top: -28px; left: -28px; animation: tvCounter 80s linear infinite; cursor: pointer; }
-.tv-reverse .tv-tool { animation-duration: 110s; animation-direction: reverse; }
+.tv-ring-1 { width: 440px; height: 440px; }
+.tv-ring-2 { width: 720px; height: 720px; }
+.tv-rotate { position: absolute; top: 50%; left: 50%; width: 1px; height: 1px; animation: tvOrbit 100s linear infinite; }
+.tv-reverse { animation-duration: 140s; animation-direction: reverse; }
+.tv-tool { position: absolute; width: 64px; height: 64px; top: -32px; left: -32px; animation: tvCounter 100s linear infinite; cursor: pointer; }
+.tv-reverse .tv-tool { animation-duration: 140s; animation-direction: reverse; }
 @keyframes tvOrbit { to { transform: rotate(360deg); } }
 @keyframes tvCounter { to { transform: rotate(-360deg); } }
 
-/* Inner ring positions */
-.tv-pos1 { transform: translateX(120px); }
-.tv-pos2 { transform: rotate(72deg) translateX(120px); }
-.tv-pos3 { transform: rotate(144deg) translateX(120px); }
-.tv-pos4 { transform: rotate(216deg) translateX(120px); }
-.tv-pos5 { transform: rotate(288deg) translateX(120px); }
-/* Outer ring positions */
-.tv-r2pos1 { transform: rotate(20deg) translateX(200px); }
-.tv-r2pos2 { transform: rotate(80deg) translateX(200px); }
-.tv-r2pos3 { transform: rotate(140deg) translateX(200px); }
-.tv-r2pos4 { transform: rotate(200deg) translateX(200px); }
-.tv-r2pos5 { transform: rotate(260deg) translateX(200px); }
-.tv-r2pos6 { transform: rotate(320deg) translateX(200px); }
+/* Inner ring: 6 tools at 60° apart, radius 220px */
+.tv-pos1 { transform: translateX(220px); }
+.tv-pos2 { transform: rotate(60deg) translateX(220px); }
+.tv-pos3 { transform: rotate(120deg) translateX(220px); }
+.tv-pos4 { transform: rotate(180deg) translateX(220px); }
+.tv-pos5 { transform: rotate(240deg) translateX(220px); }
+.tv-pos6 { transform: rotate(300deg) translateX(220px); }
+/* Outer ring: 7 tools at ~51.4° apart, radius 360px, offset 26° */
+.tv-r2pos1 { transform: rotate(26deg) translateX(360px); }
+.tv-r2pos2 { transform: rotate(77deg) translateX(360px); }
+.tv-r2pos3 { transform: rotate(129deg) translateX(360px); }
+.tv-r2pos4 { transform: rotate(180deg) translateX(360px); }
+.tv-r2pos5 { transform: rotate(231deg) translateX(360px); }
+.tv-r2pos6 { transform: rotate(283deg) translateX(360px); }
+.tv-r2pos7 { transform: rotate(334deg) translateX(360px); }
 
-.tv-tool-inner { width: 100%; height: 100%; border-radius: 50%; background: #0A0A0A; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 19px; color: #fff; letter-spacing: -0.04em; box-shadow: 0 8px 24px rgba(0,0,0,0.5); transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
-.tv-tool:hover .tv-tool-inner { transform: scale(1.2); box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 32px var(--tv-glow, rgba(120,119,198,0.4)); }
+.tv-tool-inner { width: 100%; height: 100%; border-radius: 50%; background: #fff; border: 1px solid rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 0 4px rgba(10,10,12,0.7); transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+.tv-tool-inner img { width: 78%; height: 78%; object-fit: contain; display: block; }
+.tv-tool:hover .tv-tool-inner { transform: scale(1.18); box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 36px rgba(120,119,198,0.5), 0 0 0 4px rgba(10,10,12,0.9); }
 
-.tv-clay .tv-tool-inner { background: linear-gradient(135deg,#7C5FCE,#4D2DA8); border-color: rgba(124,95,206,0.4); --tv-glow: rgba(124,95,206,0.5); }
-.tv-instantly .tv-tool-inner { background: linear-gradient(135deg,#2B72E5,#1D4FB3); border-color: rgba(43,114,229,0.4); --tv-glow: rgba(43,114,229,0.5); }
-.tv-apollo .tv-tool-inner { background: linear-gradient(135deg,#1FBA82,#0D8053); border-color: rgba(31,186,130,0.4); --tv-glow: rgba(31,186,130,0.5); }
-.tv-close .tv-tool-inner { background: linear-gradient(135deg,#1A1A1A,#000); border-color: rgba(255,255,255,0.25); --tv-glow: rgba(255,255,255,0.3); }
-.tv-claude .tv-tool-inner { background: linear-gradient(135deg,#DA7756,#B85838); border-color: rgba(218,119,86,0.4); --tv-glow: rgba(218,119,86,0.5); }
-.tv-hunter .tv-tool-inner { background: linear-gradient(135deg,#FF5252,#C62828); border-color: rgba(255,82,82,0.4); --tv-glow: rgba(255,82,82,0.5); }
-.tv-findymail .tv-tool-inner { background: linear-gradient(135deg,#FF4778,#C2185B); border-color: rgba(255,71,120,0.4); --tv-glow: rgba(255,71,120,0.5); }
-.tv-linkedin .tv-tool-inner { background: linear-gradient(135deg,#0A66C2,#064583); border-color: rgba(10,102,194,0.4); --tv-glow: rgba(10,102,194,0.5); }
-.tv-beehiiv .tv-tool-inner { background: linear-gradient(135deg,#FFD300,#B89B00); border-color: rgba(255,211,0,0.4); --tv-glow: rgba(255,211,0,0.5); color: #000; }
-.tv-datagma .tv-tool-inner { background: linear-gradient(135deg,#5B66F3,#3340C9); border-color: rgba(91,102,243,0.4); --tv-glow: rgba(91,102,243,0.5); }
-.tv-notion .tv-tool-inner { background: linear-gradient(135deg,#FAFAFA,#C4C4C4); border-color: rgba(255,255,255,0.3); --tv-glow: rgba(255,255,255,0.4); color: #000; }
-
-.tv-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; z-index: 4; }
-.tv-center-glyph { width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(10,10,12,1), rgba(5,5,5,0.6)); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 60px rgba(120,119,198,0.2), inset 0 0 30px rgba(120,119,198,0.1); }
-.tv-center-glyph img { width: 80px; height: auto; opacity: 0.95; }
+.tv-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 140px; height: 140px; z-index: 4; }
+.tv-center-glyph { width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(10,10,12,1), rgba(5,5,5,0.6)); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 80px rgba(120,119,198,0.25), inset 0 0 40px rgba(120,119,198,0.12); }
+.tv-center-glyph img { width: 96px; height: auto; opacity: 0.98; }
+.tv-center::before { content: ''; position: absolute; inset: -16px; border-radius: 50%; background: radial-gradient(circle, rgba(120,119,198,0.18), transparent 60%); z-index: -1; animation: tvPulse 4s ease-in-out infinite; }
+@keyframes tvPulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
 
 .tv-hover-card { position: absolute; pointer-events: none; opacity: 0; transform: translate(-50%, calc(-100% - 16px)) scale(0.94); padding: 12px 18px; background: rgba(10,10,12,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; box-shadow: 0 16px 40px rgba(0,0,0,0.6); transition: opacity 0.25s, transform 0.25s; z-index: 100; min-width: 140px; text-align: center; }
 .tv-hover-card.active { opacity: 1; transform: translate(-50%, calc(-100% - 16px)) scale(1); }
@@ -938,25 +935,46 @@
 .toolverse-btn-ghost { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
 .toolverse-btn-ghost:hover { color: #fff; }
 
-@media (max-width: 768px) {
-    .toolverse-section { padding: 60px 20px 60px; }
-    .toolverse-orbital { height: 400px; max-width: 100%; }
-    .tv-ring-1 { width: 180px; height: 180px; }
-    .tv-ring-2 { width: 290px; height: 290px; }
-    .tv-ring-3 { width: 380px; height: 380px; }
+@media (max-width: 900px) {
+    .toolverse-orbital { height: 560px; max-width: 100%; }
+    .tv-ring-1 { width: 300px; height: 300px; }
+    .tv-ring-2 { width: 500px; height: 500px; }
+    .tv-tool { width: 52px; height: 52px; top: -26px; left: -26px; }
+    .tv-pos1 { transform: translateX(150px); }
+    .tv-pos2 { transform: rotate(60deg) translateX(150px); }
+    .tv-pos3 { transform: rotate(120deg) translateX(150px); }
+    .tv-pos4 { transform: rotate(180deg) translateX(150px); }
+    .tv-pos5 { transform: rotate(240deg) translateX(150px); }
+    .tv-pos6 { transform: rotate(300deg) translateX(150px); }
+    .tv-r2pos1 { transform: rotate(26deg) translateX(250px); }
+    .tv-r2pos2 { transform: rotate(77deg) translateX(250px); }
+    .tv-r2pos3 { transform: rotate(129deg) translateX(250px); }
+    .tv-r2pos4 { transform: rotate(180deg) translateX(250px); }
+    .tv-r2pos5 { transform: rotate(231deg) translateX(250px); }
+    .tv-r2pos6 { transform: rotate(283deg) translateX(250px); }
+    .tv-r2pos7 { transform: rotate(334deg) translateX(250px); }
+    .tv-center { width: 96px; height: 96px; }
+    .tv-center-glyph img { width: 64px; }
+}
+@media (max-width: 540px) {
+    .toolverse-section { padding: 60px 16px 60px; }
+    .toolverse-orbital { height: 440px; }
+    .tv-ring-1 { width: 220px; height: 220px; }
+    .tv-ring-2 { width: 380px; height: 380px; }
     .tv-tool { width: 44px; height: 44px; top: -22px; left: -22px; }
-    .tv-tool-inner { font-size: 15px; }
-    .tv-pos1 { transform: translateX(90px); }
-    .tv-pos2 { transform: rotate(72deg) translateX(90px); }
-    .tv-pos3 { transform: rotate(144deg) translateX(90px); }
-    .tv-pos4 { transform: rotate(216deg) translateX(90px); }
-    .tv-pos5 { transform: rotate(288deg) translateX(90px); }
-    .tv-r2pos1 { transform: rotate(20deg) translateX(145px); }
-    .tv-r2pos2 { transform: rotate(80deg) translateX(145px); }
-    .tv-r2pos3 { transform: rotate(140deg) translateX(145px); }
-    .tv-r2pos4 { transform: rotate(200deg) translateX(145px); }
-    .tv-r2pos5 { transform: rotate(260deg) translateX(145px); }
-    .tv-r2pos6 { transform: rotate(320deg) translateX(145px); }
+    .tv-pos1 { transform: translateX(110px); }
+    .tv-pos2 { transform: rotate(60deg) translateX(110px); }
+    .tv-pos3 { transform: rotate(120deg) translateX(110px); }
+    .tv-pos4 { transform: rotate(180deg) translateX(110px); }
+    .tv-pos5 { transform: rotate(240deg) translateX(110px); }
+    .tv-pos6 { transform: rotate(300deg) translateX(110px); }
+    .tv-r2pos1 { transform: rotate(26deg) translateX(190px); }
+    .tv-r2pos2 { transform: rotate(77deg) translateX(190px); }
+    .tv-r2pos3 { transform: rotate(129deg) translateX(190px); }
+    .tv-r2pos4 { transform: rotate(180deg) translateX(190px); }
+    .tv-r2pos5 { transform: rotate(231deg) translateX(190px); }
+    .tv-r2pos6 { transform: rotate(283deg) translateX(190px); }
+    .tv-r2pos7 { transform: rotate(334deg) translateX(190px); }
     .tv-center { width: 84px; height: 84px; }
     .tv-center-glyph img { width: 56px; }
 }
@@ -1094,6 +1112,21 @@
                     <div><div class="case-card-stat-val" data-count="78">0</div><div class="case-card-stat-lbl">Opportunities</div></div>
                     <div><div class="case-card-stat-val">8 wk</div><div class="case-card-stat-lbl">Timeline</div></div>
                     <div><div class="case-card-stat-val">13.9%</div><div class="case-card-stat-lbl">Reply rate</div></div>
+                </div>
+            </div>
+            <div class="case-card-arrow">&#8599;</div>
+        </a>
+        <a href="case-study-endresz.html" class="case-card reveal" style="transition-delay: 0.2s;">
+            <div class="case-card-spotlight"></div>
+            <div class="case-card-top">
+                <div class="case-card-client">Endresz</div>
+            </div>
+            <div class="case-card-body">
+                <div class="case-card-headline">247 boutique conversations across NL, France, Poland and London. USD 128K+ pipeline from a multi-market creative agency rollout.</div>
+                <div class="case-card-stats">
+                    <div><div class="case-card-stat-val" data-count="247">0</div><div class="case-card-stat-lbl">Conversations</div></div>
+                    <div><div class="case-card-stat-val">4</div><div class="case-card-stat-lbl">Markets</div></div>
+                    <div><div class="case-card-stat-val">$128K</div><div class="case-card-stat-lbl">Pipeline</div></div>
                 </div>
             </div>
             <div class="case-card-arrow">&#8599;</div>
@@ -1889,6 +1922,27 @@ drawStarfield();
     var form = banner.querySelector('form');
     if (form) form.addEventListener('submit', function() { localStorage.setItem('si_banner_dismissed', '1'); });
 })();
+</script>
+<script>
+// nav-dropdown click toggle
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
+        var btn = dd.querySelector('button');
+        if (!btn) return;
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            var isOpen = dd.classList.contains('is-open');
+            document.querySelectorAll('.nav-dropdown.is-open').forEach(function(o) { o.classList.remove('is-open'); });
+            if (!isOpen) dd.classList.add('is-open');
+        });
+    });
+    document.addEventListener('click', function(e) {
+        document.querySelectorAll('.nav-dropdown.is-open').forEach(function(dd) {
+            if (!dd.contains(e.target)) dd.classList.remove('is-open');
+        });
+    });
+});
 </script>
 </body>
 </html>
