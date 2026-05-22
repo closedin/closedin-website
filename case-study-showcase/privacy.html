@@ -135,6 +135,25 @@
             .premium-footer { padding: 60px 20px 32px; }
             .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
         }
+
+        /* === nav-dropdown styles === */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown > button { font-size: 14px; color: rgba(255,255,255,0.4); background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; font-weight: 500; transition: color 0.3s; display: inline-flex; align-items: center; gap: 4px; }
+        .nav-dropdown > button:hover { color: #fff; }
+        .nav-dropdown > button svg { transition: transform 0.3s; }
+        .nav-dropdown:hover > button svg { transform: rotate(180deg); }
+        .nav-dropdown-panel { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%) translateY(-8px); width: 720px; padding: 24px; background: rgba(10,10,12,0.92); backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px); border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; z-index: 200; }
+        .nav-dropdown:hover .nav-dropdown-panel { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+        .nav-dropdown-col { display: flex; flex-direction: column; gap: 4px; }
+        .nav-dropdown-col h5 { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 10px; padding-left: 12px; }
+        .nav-dropdown-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; text-decoration: none; transition: background 0.2s; }
+        .nav-dropdown-item:hover { background: rgba(255,255,255,0.04); }
+        .nav-dropdown-item-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 800; font-size: 12px; flex-shrink: 0; color: #000; letter-spacing: -0.02em; }
+        .nav-dropdown-item-text { display: flex; flex-direction: column; gap: 1px; }
+        .nav-dropdown-item-text strong { font-size: 13px; font-weight: 600; color: #fff; letter-spacing: -0.005em; }
+        .nav-dropdown-item-text > span:not(.nav-dropdown-item-icon) { font-size: 11px; color: rgba(255,255,255,0.4); }
+        @media (max-width: 1024px) { .nav-dropdown-panel { width: 560px; } }
+        @media (max-width: 768px) { .nav-dropdown { display: none; } }
     </style>
 </head>
 <body>
@@ -144,9 +163,27 @@
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="case-studies.html">Case Studies</a>
+        <div class="nav-dropdown">
+            <button>Resources <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="nav-dropdown-panel">
+                <div class="nav-dropdown-col">
+                    <h5>Resources</h5>
+                    <a class="nav-dropdown-item" href="blog/"><span class="nav-dropdown-item-icon" style="background:#EC4899;color:#fff">Bl</span><span class="nav-dropdown-item-text"><strong>Blog</strong><span>One tactical post per week</span></span></a>
+                    <a class="nav-dropdown-item" href="resources.html"><span class="nav-dropdown-item-icon" style="background:#B388FF;color:#fff">Vt</span><span class="nav-dropdown-item-text"><strong>The Vault</strong><span>13 free templates &amp; tools</span></span></a>
+                    <a class="nav-dropdown-item" href="resources/gtm-stack.html"><span class="nav-dropdown-item-icon" style="background:linear-gradient(135deg,#B388FF,#7C5FCE);color:#fff">Gt</span><span class="nav-dropdown-item-text"><strong>The GTM Stack</strong><span>32 tools, real cost, honest take</span></span></a>
+                    <a class="nav-dropdown-item" href="playbook.html"><span class="nav-dropdown-item-icon" style="background:#fff;color:#000">Pb</span><span class="nav-dropdown-item-text"><strong>The Playbook</strong><span>1-page infra checklist</span></span></a>
+                </div>
+                <div class="nav-dropdown-col">
+                    <h5>Free tools</h5>
+                    <a class="nav-dropdown-item" href="tools/roi-calculator.html"><span class="nav-dropdown-item-icon" style="background:#10B981;color:#fff">RO</span><span class="nav-dropdown-item-text"><strong>ROI Calculator</strong><span>Pipeline projection</span></span></a>
+                    <a class="nav-dropdown-item" href="tools/email-verifier.html"><span class="nav-dropdown-item-icon" style="background:#3B82F6;color:#fff">EV</span><span class="nav-dropdown-item-text"><strong>Email Verifier</strong><span>500 emails, zero credits</span></span></a>
+                    <a class="nav-dropdown-item" href="resources/cold-email-templates.html"><span class="nav-dropdown-item-icon" style="background:#FF6B35;color:#fff">CE</span><span class="nav-dropdown-item-text"><strong>Cold email templates</strong><span>12, real reply rates</span></span></a>
+                    <a class="nav-dropdown-item" href="resources/clay-waterfall.html"><span class="nav-dropdown-item-icon" style="background:#7C5FCE;color:#fff">CW</span><span class="nav-dropdown-item-text"><strong>Clay waterfall</strong><span>4-provider stack, 92% find rate</span></span></a>
+                </div>
+            </div>
+        </div>
         <a href="team.html">Team</a>
         <a href="contact.html">Contact</a>
-        <a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a>
     </div>
     <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=privacy" target="_blank" class="nav-cta">Book Meeting</a>
     <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">

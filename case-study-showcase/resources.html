@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
-    <!-- ═══ ANALYTICS / RETARGETING PIXELS ═══ -->
     <script type="text/javascript">
         _linkedin_partner_id = "__LINKEDIN_PARTNER_ID__";
         window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
@@ -38,7 +37,7 @@
         gtag('js', new Date());
         gtag('config', '__GA4_MEASUREMENT_ID__');
     </script>
-    <title>Resources | The closed:in Vault — Free Cold Email Templates, Clay Workflows, Apollo Booleans</title>
+    <title>Resources | The closed:in Vault, Free Cold Email Templates, Clay Workflows, Apollo Booleans</title>
     <meta name="description" content="Every tool, template and workflow closed:in uses to build B2B outbound systems. Cold email templates, Clay waterfalls, Apollo booleans, ICP scorers, GTM stack breakdowns. All free.">
     <link rel="canonical" href="https://www.closedin.io/resources.html">
     <meta name="robots" content="index, follow">
@@ -78,66 +77,176 @@
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg: #050505; --card: #0A0A0A; --border: rgba(255,255,255,0.06); --border-hover: rgba(255,255,255,0.12); --text: #fff; --muted: rgba(255,255,255,0.4); --dim: rgba(255,255,255,0.6); --accent: #7877C6; --accent-glow: rgba(120,119,198,0.15); }
+        :root {
+            --bg: #050505;
+            --bg-elevated: #0A0A0A;
+            --card: #0C0C0E;
+            --border: rgba(255,255,255,0.06);
+            --border-strong: rgba(255,255,255,0.12);
+            --text: #fff;
+            --muted: rgba(255,255,255,0.4);
+            --dim: rgba(255,255,255,0.6);
+            --accent: #7877C6;
+            --accent-glow: rgba(120,119,198,0.18);
+        }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-        body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
-        .cursor-glow { position: fixed; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(120,119,198,0.05) 0%, transparent 60%); pointer-events: none; z-index: 0; transform: translate(-50%, -50%); transition: left 0.7s cubic-bezier(0.16,1,0.3,1), top 0.7s cubic-bezier(0.16,1,0.3,1); }
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 10px 48px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; background: rgba(5,5,5,0.6); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.02; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 10px 48px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; background: rgba(5,5,5,0.65); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
         .logo { display: flex; align-items: center; text-decoration: none; }
         .logo img { height: 88px; }
         .nav-links { display: flex; gap: 32px; align-items: center; justify-self: center; }
-        .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.3s; font-weight: 500; }
-        .nav-links a:hover { color: var(--text); }
+        .nav-links > a, .nav-dropdown > button { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.3s; font-weight: 500; background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; }
+        .nav-links > a:hover, .nav-dropdown > button:hover { color: var(--text); }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown > button { display: inline-flex; align-items: center; gap: 4px; }
+        .nav-dropdown > button svg { transition: transform 0.3s; }
+        .nav-dropdown:hover > button svg { transform: rotate(180deg); }
+        .nav-dropdown-panel { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%) translateY(-8px); width: 720px; padding: 24px; background: rgba(10,10,12,0.92); backdrop-filter: blur(32px); border: 1px solid var(--border-strong); border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
+        .nav-dropdown:hover .nav-dropdown-panel { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+        .nav-dropdown-col { display: flex; flex-direction: column; gap: 4px; }
+        .nav-dropdown-col h5 { font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; padding-left: 12px; }
+        .nav-dropdown-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; text-decoration: none; transition: background 0.2s; }
+        .nav-dropdown-item:hover { background: rgba(255,255,255,0.04); }
+        .nav-dropdown-item-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 800; font-size: 12px; flex-shrink: 0; color: #000; letter-spacing: -0.02em; }
+        .nav-dropdown-item-text { display: flex; flex-direction: column; gap: 1px; }
+        .nav-dropdown-item-text strong { font-size: 13px; font-weight: 600; color: var(--text); letter-spacing: -0.005em; }
+        .nav-dropdown-item-text span { font-size: 11px; color: var(--muted); }
         .nav-cta { font-size: 13px; font-weight: 600; padding: 12px 28px; background: var(--text); color: var(--bg); border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); justify-self: end; }
         .nav-cta:hover { transform: scale(1.06); box-shadow: 0 0 40px rgba(255,255,255,0.15); }
         .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 101; }
-        .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
 
-        .hero { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 180px 40px 60px; position: relative; overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(120,119,198,0.15), transparent); }
-        .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse at 50% 30%, black 10%, transparent 60%); }
-        .hero-label { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; background: rgba(120,119,198,0.1); border: 1px solid rgba(120,119,198,0.25); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px; position: relative; z-index: 2; }
-        .hero-label::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); animation: pillPulse 2s ease-in-out infinite; }
-        @keyframes pillPulse { 0%,100% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
-        .hero h1 { font-family: 'Satoshi', sans-serif; font-size: clamp(40px, 6vw, 76px); font-weight: 900; line-height: 0.98; letter-spacing: -0.04em; margin-bottom: 20px; max-width: 920px; position: relative; z-index: 2; }
-        .hero h1 .gradient { background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% 200%; animation: gradShift 4s ease-in-out infinite; }
-        @keyframes gradShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        .hero p { font-size: 18px; color: var(--dim); max-width: 680px; line-height: 1.65; margin-bottom: 28px; position: relative; z-index: 2; }
+        /* HERO with orbital tool ring */
+        .hero { padding: 160px 40px 80px; position: relative; overflow: hidden; min-height: 720px; display: flex; align-items: center; justify-content: center; }
+        .hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 40%, rgba(120,119,198,0.13), transparent 70%); pointer-events: none; }
+        .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 80%); }
+        .hero-content { position: relative; z-index: 5; text-align: center; max-width: 760px; margin: 0 auto; }
+        .hero-pill { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 8px; background: rgba(10,10,12,0.7); backdrop-filter: blur(12px); border: 1px solid var(--border-strong); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--text); letter-spacing: 0.04em; margin-bottom: 32px; }
+        .hero-pill-icon { width: 22px; height: 22px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 10px; color: #000; letter-spacing: -0.02em; }
+        .hero h1 { font-family: 'Satoshi', sans-serif; font-size: clamp(48px, 8vw, 96px); font-weight: 400; line-height: 0.96; letter-spacing: -0.045em; margin-bottom: 20px; }
+        .hero h1 .accent-word { font-weight: 900; display: inline-flex; align-items: center; gap: 12px; }
+        .hero h1 .accent-glyph { display: inline-block; width: clamp(36px, 6vw, 72px); height: clamp(36px, 6vw, 72px); vertical-align: middle; position: relative; }
+        .hero h1 .accent-glyph svg { width: 100%; height: 100%; }
+        .hero p { font-size: 18px; color: var(--dim); max-width: 560px; margin: 0 auto 0; line-height: 1.6; }
 
-        .vault-meta { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; margin-top: 20px; position: relative; z-index: 2; }
-        .vault-meta div { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--dim); }
-        .vault-meta strong { color: var(--text); font-family: 'Satoshi', sans-serif; font-weight: 900; }
+        /* Orbital floating tool icons */
+        .orbital-system { position: absolute; top: 50%; left: 50%; width: 100%; max-width: 1100px; height: 600px; transform: translate(-50%, -50%); pointer-events: none; z-index: 1; }
+        .orbital-ring { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px solid rgba(255,255,255,0.04); border-radius: 50%; }
+        .orbital-ring.r1 { width: 380px; height: 380px; }
+        .orbital-ring.r2 { width: 620px; height: 620px; }
+        .orbital-ring.r3 { width: 880px; height: 880px; }
+        .orbital-rotate { position: absolute; top: 50%; left: 50%; width: 1px; height: 1px; animation: orbitRotate 80s linear infinite; }
+        .orbital-rotate.reverse { animation-direction: reverse; animation-duration: 110s; }
+        .orbital-rotate.med { animation-duration: 60s; }
+        .orbital-tool { position: absolute; width: 52px; height: 52px; top: -26px; left: -26px; animation: counterRotate 80s linear infinite; pointer-events: auto; }
+        .orbital-rotate.reverse .orbital-tool { animation-direction: reverse; animation-duration: 110s; }
+        .orbital-rotate.med .orbital-tool { animation-duration: 60s; }
+        @keyframes orbitRotate { to { transform: rotate(360deg); } }
+        @keyframes counterRotate { to { transform: rotate(-360deg); } }
+        .orbital-tool-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 18px; color: #fff; letter-spacing: -0.04em; box-shadow: 0 8px 24px rgba(0,0,0,0.5); transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+        .orbital-tool:hover .orbital-tool-inner { transform: scale(1.18); }
 
-        .filters { max-width: 1200px; margin: 60px auto 0; padding: 0 40px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 2; }
-        .filter-pill { padding: 8px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 100px; font-size: 13px; font-weight: 600; color: var(--dim); cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif; }
-        .filter-pill:hover { border-color: rgba(120,119,198,0.3); color: var(--text); }
-        .filter-pill.active { background: rgba(120,119,198,0.15); border-color: rgba(120,119,198,0.4); color: var(--text); }
+        /* Position tools on the rings */
+        .orbital-tool.pos1 { transform: translateX(190px); }
+        .orbital-tool.pos2 { transform: rotate(72deg) translateX(190px); }
+        .orbital-tool.pos3 { transform: rotate(144deg) translateX(190px); }
+        .orbital-tool.pos4 { transform: rotate(216deg) translateX(190px); }
+        .orbital-tool.pos5 { transform: rotate(288deg) translateX(190px); }
+        .orbital-tool.r2pos1 { transform: rotate(30deg) translateX(310px); }
+        .orbital-tool.r2pos2 { transform: rotate(95deg) translateX(310px); }
+        .orbital-tool.r2pos3 { transform: rotate(165deg) translateX(310px); }
+        .orbital-tool.r2pos4 { transform: rotate(240deg) translateX(310px); }
+        .orbital-tool.r2pos5 { transform: rotate(305deg) translateX(310px); }
 
-        .vault-section { max-width: 1200px; margin: 0 auto; padding: 60px 40px 100px; }
-        .vault-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .vault-card { padding: 28px 26px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit; }
-        .vault-card:hover { border-color: rgba(120,119,198,0.25); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px var(--accent-glow); }
-        .vault-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--accent), transparent); opacity: 0; transition: opacity 0.3s; }
-        .vault-card:hover::before { opacity: 1; }
-        .vault-card-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(120,119,198,0.1); border: 1px solid rgba(120,119,198,0.25); display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 18px; flex-shrink: 0; }
-        .vault-card-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-        .vault-card h3 { font-family: 'Satoshi', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 10px; }
-        .vault-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; flex: 1; }
-        .vault-card-meta { display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--dim); margin-top: auto; padding-top: 18px; border-top: 1px solid var(--border); }
-        .vault-card-meta span { display: flex; align-items: center; gap: 6px; }
-        .vault-card-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--text); margin-top: 14px; transition: gap 0.3s; }
-        .vault-card:hover .vault-card-cta { gap: 10px; }
-        .vault-card-cta svg { transition: transform 0.3s; }
-        .vault-card:hover .vault-card-cta svg { transform: translateX(2px); }
-        .vault-card-status { position: absolute; top: 18px; right: 18px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
-        .vault-card-status.ready { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: rgb(110,231,183); }
-        .vault-card-status.soon { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--muted); }
+        /* Brand color rings */
+        .b-clay .orbital-tool-inner { background: linear-gradient(135deg, #7C5FCE, #4D2DA8); border-color: rgba(124,95,206,0.4); }
+        .b-instantly .orbital-tool-inner { background: linear-gradient(135deg, #2B72E5, #1D4FB3); border-color: rgba(43,114,229,0.4); }
+        .b-apollo .orbital-tool-inner { background: linear-gradient(135deg, #1FBA82, #0D8053); border-color: rgba(31,186,130,0.4); }
+        .b-close .orbital-tool-inner { background: linear-gradient(135deg, #1A1A1A, #000); border-color: rgba(255,255,255,0.2); }
+        .b-claude .orbital-tool-inner { background: linear-gradient(135deg, #DA7756, #B85838); border-color: rgba(218,119,86,0.4); }
+        .b-hunter .orbital-tool-inner { background: linear-gradient(135deg, #FF5252, #C62828); border-color: rgba(255,82,82,0.4); }
+        .b-findymail .orbital-tool-inner { background: linear-gradient(135deg, #FF4778, #C2185B); border-color: rgba(255,71,120,0.4); }
+        .b-linkedin .orbital-tool-inner { background: linear-gradient(135deg, #0A66C2, #064583); border-color: rgba(10,102,194,0.4); }
+        .b-beehiiv .orbital-tool-inner { background: linear-gradient(135deg, #FFD300, #B89B00); border-color: rgba(255,211,0,0.4); color: #000; }
+        .b-datagma .orbital-tool-inner { background: linear-gradient(135deg, #5B66F3, #3340C9); border-color: rgba(91,102,243,0.4); }
 
-        .cta-section { text-align: center; padding: 100px 40px 140px; position: relative; max-width: 920px; margin: 0 auto; }
+        /* SCROLL DOWN INDICATOR */
+        .scroll-cue { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--muted); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; z-index: 5; }
+        .scroll-cue::after { content: ''; width: 1px; height: 36px; background: linear-gradient(180deg, rgba(255,255,255,0.3), transparent); animation: scrollLine 2.2s ease-in-out infinite; }
+        @keyframes scrollLine { 0%, 100% { opacity: 0.3; transform: scaleY(0.6); } 50% { opacity: 1; transform: scaleY(1); } }
+
+        /* CATEGORY FILTERS */
+        .filter-bar { max-width: 1200px; margin: 0 auto; padding: 80px 40px 0; display: flex; flex-direction: column; align-items: center; gap: 32px; }
+        .filter-header { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+        .filter-pill-label { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 8px; background: var(--bg-elevated); border: 1px solid var(--border-strong); border-radius: 100px; font-size: 11px; font-weight: 700; color: var(--text); letter-spacing: 0.14em; text-transform: uppercase; }
+        .filter-pill-label-icon { width: 20px; height: 20px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 9px; color: #000; letter-spacing: -0.02em; }
+        .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+        .filter-pill { padding: 11px 22px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: var(--dim); cursor: pointer; transition: all 0.3s; letter-spacing: -0.005em; }
+        .filter-pill:hover { color: var(--text); border-color: var(--border-strong); }
+        .filter-pill.active { background: transparent; border-color: #C4F542; color: #C4F542; box-shadow: 0 0 24px rgba(196,245,66,0.15), inset 0 0 24px rgba(196,245,66,0.04); }
+
+        /* RESOURCE GRID, cell-based like workflows.io */
+        .vault-section { max-width: 1200px; margin: 0 auto; padding: 48px 40px 100px; }
+        .vault-grid { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; border-top: 1px solid var(--border); border-left: 1px solid var(--border); border-radius: 4px; overflow: visible; }
+        .vault-cell { aspect-ratio: 1 / 1; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; display: flex; align-items: center; justify-content: center; transition: background 0.3s; cursor: pointer; text-decoration: none; }
+        .vault-cell:hover { background: rgba(255,255,255,0.012); }
+        .vault-cell-icon { width: 78px; height: 78px; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 24px; color: #fff; letter-spacing: -0.04em; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; z-index: 1; }
+        .vault-cell-icon::before { content: ''; position: absolute; inset: -3px; border-radius: 50%; padding: 3px; background: var(--brand, transparent); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.4s; }
+        .vault-cell:hover .vault-cell-icon { transform: scale(1.05); box-shadow: 0 0 32px var(--brand-glow, var(--accent-glow)); border-color: var(--brand, var(--border-strong)); }
+        .vault-cell:hover .vault-cell-icon::before { opacity: 0.4; }
+        .vault-cell-label { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 4px; pointer-events: none; }
+        .vault-cell-label strong { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; white-space: nowrap; }
+        .vault-cell-label .tag { font-size: 10px; font-weight: 600; color: var(--muted); padding: 3px 9px; border: 1px solid var(--border); border-radius: 100px; letter-spacing: 0.04em; transition: all 0.3s; }
+        .vault-cell:hover .vault-cell-label .tag { border-color: var(--brand, var(--border-strong)); color: var(--brand-text, var(--text)); }
+
+        /* HOVER POPUP CARD, workflows.io style */
+        .vault-popup { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.94); width: 280px; padding: 22px 22px 18px; background: var(--bg-elevated); border: 1px solid var(--border-strong); border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04); opacity: 0; pointer-events: none; z-index: 10; transition: opacity 0.3s, transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+        .vault-cell:hover .vault-popup { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        .vault-popup-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+        .vault-popup-header h3 { font-family: 'Satoshi', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; }
+        .vault-popup-tag { font-size: 10px; font-weight: 600; color: var(--muted); padding: 3px 10px; border: 1px solid var(--border-strong); border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+        .vault-popup p { font-size: 12.5px; color: var(--dim); line-height: 1.55; margin-bottom: 16px; }
+        .vault-popup-cta { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 20px; background: #fff; color: #000; border-radius: 12px; font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: -0.005em; transition: gap 0.3s; }
+        .vault-popup-cta:hover { gap: 12px; }
+
+        /* SHOW POPUP ONLY ON DESKTOP-LIKE INPUTS */
+        @media (hover: none) {
+            .vault-popup { display: none; }
+        }
+
+        /* BRAND COLOR VARIABLES per resource cell */
+        .b-playbook { --brand: #FFFFFF; --brand-glow: rgba(255,255,255,0.15); --brand-text: #fff; }
+        .b-playbook .vault-cell-icon { background: linear-gradient(135deg, #FFFFFF, #C4C4C4); color: #000; }
+        .b-templates { --brand: #FF6B35; --brand-glow: rgba(255,107,53,0.25); --brand-text: #FFB088; }
+        .b-templates .vault-cell-icon { background: linear-gradient(135deg, #FF6B35, #C2410C); color: #fff; }
+        .b-apollo-bool { --brand: #1FBA82; --brand-glow: rgba(31,186,130,0.25); --brand-text: #7BE2B9; }
+        .b-apollo-bool .vault-cell-icon { background: linear-gradient(135deg, #1FBA82, #0D8053); color: #fff; }
+        .b-sn-bool { --brand: #0A66C2; --brand-glow: rgba(10,102,194,0.3); --brand-text: #6FAEEB; }
+        .b-sn-bool .vault-cell-icon { background: linear-gradient(135deg, #0A66C2, #064583); color: #fff; }
+        .b-gtm { --brand: #B388FF; --brand-glow: rgba(179,136,255,0.25); --brand-text: #D4BCFF; }
+        .b-gtm .vault-cell-icon { background: linear-gradient(135deg, #B388FF, #6B40E5); color: #fff; }
+        .b-clay-wf { --brand: #7C5FCE; --brand-glow: rgba(124,95,206,0.3); --brand-text: #B49DEB; }
+        .b-clay-wf .vault-cell-icon { background: linear-gradient(135deg, #7C5FCE, #4D2DA8); color: #fff; }
+        .b-icp { --brand: #06B6D4; --brand-glow: rgba(6,182,212,0.25); --brand-text: #67E8F9; }
+        .b-icp .vault-cell-icon { background: linear-gradient(135deg, #06B6D4, #0E7490); color: #fff; }
+        .b-audit { --brand: #C4F542; --brand-glow: rgba(196,245,66,0.25); --brand-text: #C4F542; }
+        .b-audit .vault-cell-icon { background: linear-gradient(135deg, #C4F542, #8FB823); color: #000; }
+        .b-claude-code { --brand: #DA7756; --brand-glow: rgba(218,119,86,0.3); --brand-text: #F2B299; }
+        .b-claude-code .vault-cell-icon { background: linear-gradient(135deg, #DA7756, #B85838); color: #fff; }
+        .b-roi { --brand: #10B981; --brand-glow: rgba(16,185,129,0.25); --brand-text: #6EE7B7; }
+        .b-roi .vault-cell-icon { background: linear-gradient(135deg, #10B981, #047857); color: #fff; }
+        .b-verifier { --brand: #3B82F6; --brand-glow: rgba(59,130,246,0.25); --brand-text: #93C5FD; }
+        .b-verifier .vault-cell-icon { background: linear-gradient(135deg, #3B82F6, #1E40AF); color: #fff; }
+        .b-blog { --brand: #EC4899; --brand-glow: rgba(236,72,153,0.25); --brand-text: #F9A8D4; }
+        .b-blog .vault-cell-icon { background: linear-gradient(135deg, #EC4899, #BE185D); color: #fff; }
+
+        /* CTA SECTION */
+        .cta-section { text-align: center; padding: 80px 40px 140px; position: relative; max-width: 920px; margin: 0 auto; }
         .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(120,119,198,0.1), transparent); pointer-events: none; }
         .cta-section h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 16px; position: relative; }
-        .cta-section p { font-size: 16px; color: var(--muted); max-width: 560px; margin: 0 auto 32px; line-height: 1.6; position: relative; }
+        .cta-section p { font-size: 16px; color: var(--dim); max-width: 560px; margin: 0 auto 32px; line-height: 1.6; position: relative; }
         .cta-signup-form { display: flex; gap: 8px; max-width: 520px; margin: 0 auto; position: relative; z-index: 2; }
         .cta-signup-form input { flex: 1; padding: 18px 22px; background: var(--card); border: 1px solid var(--border); border-radius: 100px; color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; outline: none; transition: border-color 0.3s; }
         .cta-signup-form input:focus { border-color: rgba(120,119,198,0.4); }
@@ -145,10 +254,10 @@
         .cta-signup-form button { padding: 18px 32px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
         .cta-signup-form button:hover { transform: scale(1.04); box-shadow: 0 0 40px rgba(255,255,255,0.15); }
 
-        .reveal { opacity: 0; transform: translateY(50px); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        .premium-footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 80px 48px 40px; position: relative; }
+        .premium-footer { border-top: 1px solid var(--border); padding: 80px 48px 40px; position: relative; }
         .premium-footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(120,119,198,0.2), transparent); }
         .footer-inner { max-width: 1100px; margin: 0 auto; }
         .footer-top { display: flex; justify-content: space-between; gap: 60px; margin-bottom: 60px; }
@@ -160,17 +269,28 @@
         .footer-col h4 { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 4px; letter-spacing: -0.01em; }
         .footer-col a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.3s; }
         .footer-col a:hover { color: rgba(120,119,198,0.8); }
-        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid var(--border); font-size: 12px; color: rgba(255,255,255,0.2); }
         .footer-bottom a { color: rgba(255,255,255,0.2); text-decoration: none; }
 
-        @media (max-width: 1024px) { .vault-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px) {
-            .vault-grid { grid-template-columns: 1fr; }
+        @media (max-width: 1024px) {
+            .vault-grid { grid-template-columns: repeat(3, 1fr); }
+            .nav-dropdown-panel { width: 560px; }
+            .orbital-tool.r2pos1, .orbital-tool.r2pos2, .orbital-tool.r2pos3, .orbital-tool.r2pos4, .orbital-tool.r2pos5 { display: none; }
+        }
+        @media (max-width: 768px) {
             nav { padding: 14px 20px; }
             .nav-links, .nav-cta { display: none; }
             .hamburger { display: flex; }
-            .hero { padding: 140px 20px 40px; }
-            .vault-section { padding: 40px 20px 80px; }
+            .hero { padding: 130px 20px 60px; min-height: 540px; }
+            .orbital-tool { width: 40px; height: 40px; top: -20px; left: -20px; }
+            .orbital-tool.pos1 { transform: translateX(140px); }
+            .orbital-tool.pos2 { transform: rotate(72deg) translateX(140px); }
+            .orbital-tool.pos3 { transform: rotate(144deg) translateX(140px); }
+            .orbital-tool.pos4 { transform: rotate(216deg) translateX(140px); }
+            .orbital-tool.pos5 { transform: rotate(288deg) translateX(140px); }
+            .vault-grid { grid-template-columns: repeat(2, 1fr); }
+            .vault-section { padding: 32px 16px 80px; }
+            .vault-popup { display: none; }
             .cta-signup-form { flex-direction: column; }
             .footer-top { flex-direction: column; gap: 40px; }
             .footer-links { flex-direction: column; gap: 32px; }
@@ -178,14 +298,55 @@
     </style>
 </head>
 <body>
-<div class="cursor-glow" id="cursorGlow"></div>
 
 <nav>
     <a href="index.html" class="logo"><img src="closedin-logo.png" alt="closed:in"></a>
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="case-studies.html">Case Studies</a>
-        <a href="resources.html">Resources</a>
+        <div class="nav-dropdown">
+            <button>Resources <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="nav-dropdown-panel">
+                <div class="nav-dropdown-col">
+                    <h5>Resources</h5>
+                    <a class="nav-dropdown-item" href="blog/">
+                        <span class="nav-dropdown-item-icon" style="background:#EC4899;color:#fff">Bl</span>
+                        <span class="nav-dropdown-item-text"><strong>Blog</strong><span>One tactical post per week</span></span>
+                    </a>
+                    <a class="nav-dropdown-item" href="resources.html">
+                        <span class="nav-dropdown-item-icon" style="background:#B388FF;color:#fff">Vt</span>
+                        <span class="nav-dropdown-item-text"><strong>The Vault</strong><span>11 free templates &amp; tools</span></span>
+                    </a>
+                    <a class="nav-dropdown-item" href="resources/gtm-stack.html">
+                        <span class="nav-dropdown-item-icon" style="background:linear-gradient(135deg,#B388FF,#7C5FCE);color:#fff">Gt</span>
+                        <span class="nav-dropdown-item-text"><strong>The GTM Stack</strong><span>32 tools, real cost, honest take</span></span>
+                    </a>
+                    <a class="nav-dropdown-item" href="playbook.html">
+                        <span class="nav-dropdown-item-icon" style="background:#fff;color:#000">Pb</span>
+                        <span class="nav-dropdown-item-text"><strong>The Playbook</strong><span>1-page infra checklist</span></span>
+                    </a>
+                </div>
+                <div class="nav-dropdown-col">
+                    <h5>Free tools</h5>
+                    <a class="nav-dropdown-item" href="tools/roi-calculator.html">
+                        <span class="nav-dropdown-item-icon" style="background:#10B981;color:#fff">RO</span>
+                        <span class="nav-dropdown-item-text"><strong>ROI Calculator</strong><span>Pipeline projection</span></span>
+                    </a>
+                    <a class="nav-dropdown-item" href="tools/email-verifier.html">
+                        <span class="nav-dropdown-item-icon" style="background:#3B82F6;color:#fff">EV</span>
+                        <span class="nav-dropdown-item-text"><strong>Email Verifier</strong><span>500 emails, zero credits</span></span>
+                    </a>
+                    <a class="nav-dropdown-item" href="resources/cold-email-templates.html">
+                        <span class="nav-dropdown-item-icon" style="background:#FF6B35;color:#fff">CE</span>
+                        <span class="nav-dropdown-item-text"><strong>Cold email templates</strong><span>12, real reply rates</span></span>
+                    </a>
+                    <a class="nav-dropdown-item" href="resources/clay-waterfall.html">
+                        <span class="nav-dropdown-item-icon" style="background:#7C5FCE;color:#fff">CW</span>
+                        <span class="nav-dropdown-item-text"><strong>Clay waterfall</strong><span>4-provider stack, 92% find rate</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
         <a href="team.html">Team</a>
         <a href="contact.html">Contact</a>
     </div>
@@ -194,160 +355,254 @@
 </nav>
 
 <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-label reveal">The closed:in Vault</div>
-    <h1 class="reveal">Every tool, template<br>and workflow we use<br>to build <span class="gradient">B2B outbound</span></h1>
-    <p class="reveal" style="transition-delay: 0.15s;">closed:in runs outbound for B2B SaaS, recruitment firms, agencies and PE-backed businesses. Everything below is what we use internally to launch and run campaigns. We give it away because there are 50 things between a vault download and a booked meeting, and we want to be paid for the 50, not gate the playbook.</p>
-    <div class="vault-meta reveal" style="transition-delay: 0.3s;">
-        <div><strong>11</strong> resources</div>
-        <div><strong>1,000+</strong> campaigns behind them</div>
-        <div><strong>Free</strong> with email</div>
+    <div class="hero-glow"></div>
+    <div class="hero-grid-bg"></div>
+
+    <!-- Orbital tool ring -->
+    <div class="orbital-system">
+        <div class="orbital-ring r1"></div>
+        <div class="orbital-ring r2"></div>
+        <div class="orbital-ring r3"></div>
+
+        <div class="orbital-rotate">
+            <div class="orbital-tool pos1 b-clay"><div class="orbital-tool-inner">Cl</div></div>
+            <div class="orbital-tool pos2 b-instantly"><div class="orbital-tool-inner">In</div></div>
+            <div class="orbital-tool pos3 b-apollo"><div class="orbital-tool-inner">Ap</div></div>
+            <div class="orbital-tool pos4 b-close"><div class="orbital-tool-inner">Cs</div></div>
+            <div class="orbital-tool pos5 b-claude"><div class="orbital-tool-inner">Cd</div></div>
+        </div>
+
+        <div class="orbital-rotate reverse">
+            <div class="orbital-tool r2pos1 b-findymail"><div class="orbital-tool-inner">Fm</div></div>
+            <div class="orbital-tool r2pos2 b-linkedin"><div class="orbital-tool-inner">Li</div></div>
+            <div class="orbital-tool r2pos3 b-hunter"><div class="orbital-tool-inner">Hu</div></div>
+            <div class="orbital-tool r2pos4 b-beehiiv"><div class="orbital-tool-inner">Bh</div></div>
+            <div class="orbital-tool r2pos5 b-datagma"><div class="orbital-tool-inner">Dg</div></div>
+        </div>
     </div>
+
+    <div class="hero-content">
+        <div class="hero-pill reveal">
+            <span class="hero-pill-icon">ci</span>
+            The closed:in Vault
+        </div>
+        <h1 class="reveal" style="transition-delay: 0.1s;">Every <span class="accent-word">tool, template</span><br>and workflow we use to<br>build <em style="font-style: normal; font-weight: 900;">B2B outbound</em></h1>
+        <p class="reveal" style="transition-delay: 0.2s;">closed:in runs outbound for B2B SaaS, recruitment, PE-backed firms and agencies. Everything below is what we use internally. Free, because there are 50 things between a download and a booked meeting, and we'd rather be paid for the 50.</p>
+    </div>
+
+    <div class="scroll-cue">Scroll to vault</div>
 </section>
 
-<div class="filters reveal">
-    <button class="filter-pill active" data-filter="all">All</button>
-    <button class="filter-pill" data-filter="template">Templates</button>
-    <button class="filter-pill" data-filter="boolean">Booleans</button>
-    <button class="filter-pill" data-filter="tool">Tools</button>
-    <button class="filter-pill" data-filter="workflow">Workflows</button>
-    <button class="filter-pill" data-filter="playbook">Playbooks</button>
-</div>
+<section class="filter-bar reveal">
+    <div class="filter-header">
+        <div class="filter-pill-label">
+            <span class="filter-pill-label-icon">vt</span>
+            13 RESOURCES
+        </div>
+    </div>
+    <div class="filter-pills">
+        <button class="filter-pill active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="template">Templates</button>
+        <button class="filter-pill" data-filter="boolean">Booleans</button>
+        <button class="filter-pill" data-filter="tool">Tools</button>
+        <button class="filter-pill" data-filter="workflow">Workflows</button>
+        <button class="filter-pill" data-filter="playbook">Playbooks</button>
+    </div>
+</section>
 
 <section class="vault-section">
     <div class="vault-grid">
 
-        <a href="playbook.html" class="vault-card reveal" data-cat="playbook">
-            <span class="vault-card-status ready">Ready</span>
-            <div class="vault-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></div>
-            <div class="vault-card-tag">Playbook · PDF</div>
-            <h3>Cold Email Infrastructure Checklist</h3>
-            <p>The 6-chunk pre-launch checklist we run before any client campaign: domains, warmup, SPF/DKIM/DMARC, list hygiene, sequence timing, reply handling.</p>
-            <div class="vault-card-meta">
-                <span>1 page</span><span>· PDF</span><span>· 2 min read</span>
+        <a href="playbook.html" class="vault-cell b-playbook" data-cat="playbook">
+            <div class="vault-cell-icon">Pb</div>
+            <div class="vault-cell-label">
+                <strong>The Playbook</strong>
+                <span class="tag">PDF</span>
             </div>
-            <span class="vault-card-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>Cold Email Infrastructure Checklist</h3>
+                    <span class="vault-popup-tag">Playbook</span>
+                </div>
+                <p>The 6-chunk pre-launch checklist we run before any client campaign. Domains, warmup, SPF/DKIM/DMARC, list hygiene, sequence timing, reply handling.</p>
+                <span class="vault-popup-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
         </a>
 
-        <a href="resources/cold-email-templates.html" class="vault-card reveal" data-cat="template" style="transition-delay: 0.05s;">
-            <span class="vault-card-status ready">Ready</span>
-            <div class="vault-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg></div>
-            <div class="vault-card-tag">Templates · 12 emails</div>
-            <h3>Cold Email Templates That Converted</h3>
-            <p>12 cold email sequences anonymized from real closed:in client campaigns. Industry, ICP, reply rate and OTR per template. Plain text, copy-paste ready.</p>
-            <div class="vault-card-meta">
-                <span>12 templates</span><span>· Markdown</span><span>· 4-15% reply rates</span>
+        <a href="resources/cold-email-templates.html" class="vault-cell b-templates" data-cat="template">
+            <div class="vault-cell-icon">Ce</div>
+            <div class="vault-cell-label">
+                <strong>Cold Email Templates</strong>
+                <span class="tag">12 emails</span>
             </div>
-            <span class="vault-card-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>Cold Email Templates That Converted</h3>
+                    <span class="vault-popup-tag">Templates</span>
+                </div>
+                <p>12 cold email sequences anonymized from real closed:in client campaigns. Industry, ICP, reply rate and OTR per template. Plain text, copy-paste ready.</p>
+                <span class="vault-popup-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
         </a>
 
-        <a href="resources/apollo-booleans.html" class="vault-card reveal" data-cat="boolean" style="transition-delay: 0.1s;">
-            <span class="vault-card-status ready">Ready</span>
-            <div class="vault-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-            <div class="vault-card-tag">Booleans · 50 strings</div>
-            <h3>Apollo Boolean Search Library</h3>
-            <p>50+ Apollo search strings for B2B niches: SaaS, agencies, recruitment, PE, e-commerce, hospitality, fintech. Copy-paste into Apollo, get clean lists.</p>
-            <div class="vault-card-meta">
-                <span>50+ strings</span><span>· 7 industries</span>
+        <a href="resources/apollo-booleans.html" class="vault-cell b-apollo-bool" data-cat="boolean">
+            <div class="vault-cell-icon">Ab</div>
+            <div class="vault-cell-label">
+                <strong>Apollo Booleans</strong>
+                <span class="tag">50 strings</span>
             </div>
-            <span class="vault-card-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>Apollo Boolean Search Library</h3>
+                    <span class="vault-popup-tag">Booleans</span>
+                </div>
+                <p>50+ Apollo search strings for B2B niches. SaaS, agencies, recruitment, PE, e-commerce, hospitality, fintech. Copy-paste into Apollo, get clean lists.</p>
+                <span class="vault-popup-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
         </a>
 
-        <a href="resources/sales-nav-booleans.html" class="vault-card reveal" data-cat="boolean" style="transition-delay: 0.15s;">
-            <span class="vault-card-status ready">Ready</span>
-            <div class="vault-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg></div>
-            <div class="vault-card-tag">Booleans · LinkedIn</div>
-            <h3>Sales Navigator Boolean Vault</h3>
-            <p>40+ LinkedIn Sales Navigator boolean strings for finding founders, VP Sales, Heads of RevOps, Sales Engineers, Operations leads. Per role + per industry.</p>
-            <div class="vault-card-meta">
-                <span>40+ strings</span><span>· Per role &amp; industry</span>
+        <a href="resources/sales-nav-booleans.html" class="vault-cell b-sn-bool" data-cat="boolean">
+            <div class="vault-cell-icon">Sn</div>
+            <div class="vault-cell-label">
+                <strong>Sales Nav Booleans</strong>
+                <span class="tag">40 strings</span>
             </div>
-            <span class="vault-card-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>Sales Navigator Boolean Vault</h3>
+                    <span class="vault-popup-tag">Booleans</span>
+                </div>
+                <p>40+ LinkedIn Sales Navigator boolean strings for finding founders, VP Sales, Heads of RevOps, Sales Engineers, Operations leads. Per role and industry.</p>
+                <span class="vault-popup-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
         </a>
 
-        <a href="resources/gtm-stack.html" class="vault-card reveal" data-cat="playbook" style="transition-delay: 0.2s;">
-            <span class="vault-card-status ready">Ready</span>
-            <div class="vault-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
-            <div class="vault-card-tag">Playbook · Stack</div>
-            <h3>The closed:in GTM Stack</h3>
-            <p>Every tool we use, by category, with what we actually pay and what we think. Sourcing, enrichment, sending, CRM, automation, AI. No affiliate hype.</p>
-            <div class="vault-card-meta">
-                <span>32 tools</span><span>· 8 categories</span>
+        <a href="resources/gtm-stack.html" class="vault-cell b-gtm" data-cat="playbook">
+            <div class="vault-cell-icon">Gt</div>
+            <div class="vault-cell-label">
+                <strong>The GTM Stack</strong>
+                <span class="tag">32 tools</span>
             </div>
-            <span class="vault-card-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>The closed:in GTM Stack</h3>
+                    <span class="vault-popup-tag">Stack</span>
+                </div>
+                <p>Every tool we use, by category, with what we actually pay and what we think. Sourcing, enrichment, sending, CRM, automation, AI. No affiliate hype.</p>
+                <span class="vault-popup-cta">See the stack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
         </a>
 
-        <a href="resources/clay-waterfall.html" class="vault-card reveal" data-cat="workflow" style="transition-delay: 0.25s;">
-            <span class="vault-card-status ready">Ready</span>
-            <div class="vault-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
-            <div class="vault-card-tag">Workflow · Clay</div>
-            <h3>The Clay Email Waterfall We Use</h3>
-            <p>The exact 4-provider Clay waterfall that hits ~92% email find rate at the lowest credit cost. Provider order, credit logic, fallback paths.</p>
-            <div class="vault-card-meta">
-                <span>4 providers</span><span>· 92% find rate</span>
+        <a href="resources/clay-waterfall.html" class="vault-cell b-clay-wf" data-cat="workflow">
+            <div class="vault-cell-icon">Cw</div>
+            <div class="vault-cell-label">
+                <strong>Clay Waterfall</strong>
+                <span class="tag">4 providers</span>
             </div>
-            <span class="vault-card-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>The Clay Email Waterfall</h3>
+                    <span class="vault-popup-tag">Workflow</span>
+                </div>
+                <p>The exact 4-provider Clay waterfall that hits ~92% email find rate at the lowest credit cost. Provider order, credit logic, fallback paths.</p>
+                <span class="vault-popup-cta">See workflow <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
         </a>
 
-        <a href="resources/icp-scorecard.html" class="vault-card reveal" data-cat="template" style="transition-delay: 0.3s;">
-            <span class="vault-card-status ready">Ready</span>
-            <div class="vault-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-            <div class="vault-card-tag">Template · ICP</div>
-            <h3>The 12-Point ICP Scorecard</h3>
-            <p>The 12 signals we score every account against before adding to a campaign. Firmographic, technographic, intent, fit. Spreadsheet template included.</p>
-            <div class="vault-card-meta">
-                <span>12 signals</span><span>· CSV</span>
+        <a href="resources/icp-scorecard.html" class="vault-cell b-icp" data-cat="template">
+            <div class="vault-cell-icon">Ic</div>
+            <div class="vault-cell-label">
+                <strong>ICP Scorecard</strong>
+                <span class="tag">12 signals</span>
             </div>
-            <span class="vault-card-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>The 12-Point ICP Scorecard</h3>
+                    <span class="vault-popup-tag">Template</span>
+                </div>
+                <p>The 12 signals we score every account against before adding to a campaign. Firmographic, technographic, intent, fit. Spreadsheet template included.</p>
+                <span class="vault-popup-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
         </a>
 
-        <a href="resources/pre-launch-audit.html" class="vault-card reveal" data-cat="playbook" style="transition-delay: 0.35s;">
-            <span class="vault-card-status ready">Ready</span>
-            <div class="vault-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-            <div class="vault-card-tag">Playbook · Audit</div>
-            <h3>The 50-Question Pre-Launch Audit</h3>
-            <p>Every question we ask before launching outbound for a client. ICP, infrastructure, copy, sequencing, reply handling, reporting. If you can answer all 50, you are ready.</p>
-            <div class="vault-card-meta">
-                <span>50 questions</span><span>· 6 categories</span>
+        <a href="resources/pre-launch-audit.html" class="vault-cell b-audit" data-cat="playbook">
+            <div class="vault-cell-icon">Pa</div>
+            <div class="vault-cell-label">
+                <strong>Pre-Launch Audit</strong>
+                <span class="tag">50 questions</span>
             </div>
-            <span class="vault-card-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>The 50-Question Pre-Launch Audit</h3>
+                    <span class="vault-popup-tag">Playbook</span>
+                </div>
+                <p>Every question we ask before launching outbound for a client. ICP, infrastructure, copy, sequencing, reply handling, reporting. Answer all 50 and you are ready.</p>
+                <span class="vault-popup-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
         </a>
 
-        <a href="resources/claude-code-sales.html" class="vault-card reveal" data-cat="workflow" style="transition-delay: 0.4s;">
-            <span class="vault-card-status ready">Ready</span>
-            <div class="vault-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-            <div class="vault-card-tag">Workflow · AI</div>
-            <h3>Claude Code Setup for Sales Teams</h3>
-            <p>The exact Claude Code agents, skills, slash commands and CLAUDE.md structure we use internally. Copy our setup to run an AI-augmented sales team from day one.</p>
-            <div class="vault-card-meta">
-                <span>10+ agents</span><span>· Reusable</span>
+        <a href="resources/claude-code-sales.html" class="vault-cell b-claude-code" data-cat="workflow">
+            <div class="vault-cell-icon">Cc</div>
+            <div class="vault-cell-label">
+                <strong>Claude Code Setup</strong>
+                <span class="tag">10+ agents</span>
             </div>
-            <span class="vault-card-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>Claude Code Setup for Sales Teams</h3>
+                    <span class="vault-popup-tag">Workflow</span>
+                </div>
+                <p>The exact Claude Code agents, skills, slash commands and CLAUDE.md structure we use internally. Copy our setup to run an AI-augmented sales team from day one.</p>
+                <span class="vault-popup-cta">Get the setup <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
         </a>
 
-        <a href="tools/roi-calculator.html" class="vault-card reveal" data-cat="tool" style="transition-delay: 0.45s;">
-            <span class="vault-card-status ready">Ready</span>
-            <div class="vault-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg></div>
-            <div class="vault-card-tag">Tool · Calculator</div>
-            <h3>Outbound ROI Calculator</h3>
-            <p>Plug in your ICP volume, ACV and funnel rates. See projected pipeline, meetings, and revenue. Defaults based on closed:in's 1,000+ campaign benchmarks.</p>
-            <div class="vault-card-meta">
-                <span>Interactive</span><span>· 6 inputs</span>
+        <a href="tools/roi-calculator.html" class="vault-cell b-roi" data-cat="tool">
+            <div class="vault-cell-icon">Ro</div>
+            <div class="vault-cell-label">
+                <strong>ROI Calculator</strong>
+                <span class="tag">Interactive</span>
             </div>
-            <span class="vault-card-cta">Use it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>Outbound ROI Calculator</h3>
+                    <span class="vault-popup-tag">Tool</span>
+                </div>
+                <p>Plug in your ICP volume, ACV and funnel rates. See projected pipeline, meetings, and revenue. Defaults based on closed:in's 1,000+ campaign benchmarks.</p>
+                <span class="vault-popup-cta">Use it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
         </a>
 
-        <a href="tools/email-verifier.html" class="vault-card reveal" data-cat="tool" style="transition-delay: 0.5s;">
-            <span class="vault-card-status ready">Ready</span>
-            <div class="vault-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-            <div class="vault-card-tag">Tool · Validator</div>
-            <h3>Free Email Verifier</h3>
-            <p>Paste a list, get clean emails back. Syntax check, disposable filter, role-based detection, MX record validation. Zero credits, ~70-80% bad-email catch rate.</p>
-            <div class="vault-card-meta">
-                <span>Interactive</span><span>· No credits</span>
+        <a href="tools/email-verifier.html" class="vault-cell b-verifier" data-cat="tool">
+            <div class="vault-cell-icon">Ev</div>
+            <div class="vault-cell-label">
+                <strong>Email Verifier</strong>
+                <span class="tag">Zero credits</span>
             </div>
-            <span class="vault-card-cta">Use it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>Free Email Verifier</h3>
+                    <span class="vault-popup-tag">Tool</span>
+                </div>
+                <p>Paste a list, get clean emails back. Syntax check, disposable filter, role-based detection, MX record validation. Zero credits, ~70-80% bad-email catch rate.</p>
+                <span class="vault-popup-cta">Use it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+        </a>
+
+        <a href="blog/" class="vault-cell b-blog" data-cat="playbook">
+            <div class="vault-cell-icon">Bl</div>
+            <div class="vault-cell-label">
+                <strong>The Blog</strong>
+                <span class="tag">Weekly</span>
+            </div>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>The closed:in Blog</h3>
+                    <span class="vault-popup-tag">Articles</span>
+                </div>
+                <p>One tactical post per week from a live closed:in campaign. Real numbers, real copy, real lessons. No theory.</p>
+                <span class="vault-popup-cta">Read posts <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
         </a>
 
     </div>
@@ -377,6 +632,7 @@
                     <a href="index.html">Home</a>
                     <a href="case-studies.html">Case Studies</a>
                     <a href="resources.html">Resources</a>
+                    <a href="blog/">Blog</a>
                     <a href="team.html">Team</a>
                     <a href="contact.html">Contact</a>
                 </div>
@@ -406,7 +662,6 @@
 </footer>
 
 <script>
-document.addEventListener('mousemove', e => { const g = document.getElementById('cursorGlow'); g.style.left = e.clientX + 'px'; g.style.top = e.clientY + 'px'; });
 const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.05 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
@@ -416,15 +671,33 @@ document.querySelectorAll('.filter-pill').forEach(pill => {
         document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
         const filter = pill.dataset.filter;
-        document.querySelectorAll('.vault-card').forEach(card => {
-            if (filter === 'all' || card.dataset.cat === filter) {
-                card.style.display = '';
+        document.querySelectorAll('.vault-cell').forEach(cell => {
+            if (filter === 'all' || cell.dataset.cat === filter) {
+                cell.style.display = '';
             } else {
-                card.style.display = 'none';
+                cell.style.display = 'none';
             }
         });
     });
 });
+
+// Position popup smartly to avoid edge overflow
+document.querySelectorAll('.vault-cell').forEach(cell => {
+    cell.addEventListener('mouseenter', () => {
+        const popup = cell.querySelector('.vault-popup');
+        if (!popup) return;
+        const rect = cell.getBoundingClientRect();
+        const popupWidth = 280;
+        const margin = 16;
+        let xOffset = 0;
+        const cellCenterX = rect.left + rect.width / 2;
+        if (cellCenterX - popupWidth/2 < margin) xOffset = (margin - (cellCenterX - popupWidth/2));
+        else if (cellCenterX + popupWidth/2 > window.innerWidth - margin) xOffset = -((cellCenterX + popupWidth/2) - (window.innerWidth - margin));
+        popup.style.setProperty('--xOffset', xOffset + 'px');
+        popup.style.transform = `translate(calc(-50% + ${xOffset}px), -50%) scale(1)`;
+    });
+});
 </script>
+
 </body>
 </html>
