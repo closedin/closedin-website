@@ -277,6 +277,27 @@
             .pipeline-visual { max-width: 300px; }
             .journey-progress { display: none; }
         }
+    
+        /* === wf-gap-fill: applied === */
+        /* Workflows.io signature soft white double-halo: appears on hover for buttons, pills, CTAs */
+        @keyframes wfPulse { 0%,100% { opacity: 0.65; } 50% { opacity: 1; } }
+        .wf-halo-hover { transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .wf-halo-hover:hover { box-shadow: 0 0 48px rgba(255,255,255,0.10), 0 0 16px rgba(255,255,255,0.08); }
+        /* Apply WF halo on common interactive elements (combined with existing shadows where present) */
+        .nav-cta { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .nav-cta:hover { box-shadow: 0 0 48px rgba(255,255,255,0.12), 0 0 16px rgba(255,255,255,0.08), 0 0 40px rgba(255,255,255,0.15); }
+        .magnetic-btn { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .magnetic-btn:hover { box-shadow: 0 0 48px rgba(255,255,255,0.10), 0 0 16px rgba(255,255,255,0.08); }
+        .filter-pill:hover { box-shadow: 0 0 36px rgba(255,255,255,0.08), 0 0 12px rgba(255,255,255,0.05); }
+        .filter-pill.active { box-shadow: 0 0 36px rgba(120,119,198,0.18), 0 0 12px rgba(120,119,198,0.10); }
+        .hero-pill { transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .hero-pill:hover { box-shadow: 0 0 36px rgba(255,255,255,0.10), 0 0 12px rgba(255,255,255,0.06); }
+        .hero-label { transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .hero-label:hover { box-shadow: 0 0 36px rgba(120,119,198,0.20), 0 0 12px rgba(120,119,198,0.12); }
+        .partner-badge:hover { box-shadow: 0 0 48px rgba(255,255,255,0.08), 0 0 16px rgba(255,255,255,0.06); }
+        /* Will-change perf hints on commonly animated elements */
+        .case-card, .vault-cell, .info-card, .process-card, .partner-badge, .magnetic-btn, .nav-cta { will-change: transform; }
+        /* === wf-gap-fill end === */
     </style>
     <!-- Prospect Pro – Bedrijfsherkenning -->
     <link rel="stylesheet" href="https://css.jsapis.com/controls.css">

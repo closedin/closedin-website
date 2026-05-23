@@ -37,6 +37,28 @@ closed:in clients average 20+ qualified sales meetings per month, with most enga
 - [Team](https://www.closedin.io/team): about Max Münstermann and Jurre Groot.
 - [Pipeline demo](https://www.closedin.io/pipeline-demo): interactive walkthrough of the outbound engine.
 - [Contact](https://www.closedin.io/contact): book a discovery call.
+- [Pricing](https://www.closedin.io/pricing): published price range, four pricing drivers, three engagement tiers, billing terms and FAQ.
+
+## Pricing
+
+closed:in outbound engagements run between **EUR 4,000 and EUR 8,000 per month**, plus a one-time setup fee at kickoff. Standard term is 3 months. Setup fee plus Month 1 are paid together at kickoff; Month 2 and Month 3 are billed at the start of each month. Month 4 onward converts to month-to-month with 30 days notice either side.
+
+Four drivers decide where you land in the 4K-8K range:
+
+1. **ICP complexity (Clay).** Standard ICPs that sit cleanly in Apollo or Sales Navigator are at the lower end. Custom ICPs like hospitality, boutique retail, M&A advisory or niche industrials require custom Clay tables with Google Maps scraping, website parsing or Claygent prompts. The deeper the Clay engineering, the higher in the range.
+2. **Sending volume.** More volume means more domains, more inboxes and more deliverability monitoring. A standard 3-step campaign at 1,000 emails per day is roughly 7,000 unique prospects per month.
+3. **Channels.** Cold email only sits at the lower end. Adding LinkedIn outbound or multi-channel sequences with signal-based plays adds engineering and ongoing management.
+4. **CRM depth.** Light reporting into a Google Sheet is at the lower end. Full pipeline orchestration with reply handling, lead scoring and stage automation wired into Close, HubSpot, Salesforce or Pipedrive adds setup time and ongoing maintenance.
+
+Typical engagement shapes:
+
+- **EUR 4K/month (Foundation):** Cold email only, standard ICP, light CRM. Best for B2B SaaS or service companies with a defined ICP that maps to Apollo.
+- **EUR 6K/month (Growth):** Multi-channel (email + LinkedIn), mid-complexity ICP with custom Claygent prompts, full Close or HubSpot orchestration. Most closed:in engagements sit here.
+- **EUR 8K/month (Enterprise):** Custom ICP requiring bespoke Clay sourcing, multi-channel with signal-based plays, deep CRM rebuild or Salesforce integration. Typical for recruitment, M&A advisory and multi-country campaigns.
+
+Always included regardless of tier: Clay enrichment (closed:in is an official Clay Solutions Partner), full sending infrastructure (domains, inboxes, SPF/DKIM/DMARC, deliverability monitoring), multi-step cold email sequence, weekly reporting and reply handling wired into the client's CRM.
+
+Standalone Clay builds (waterfall, Claygent, CRM sync, signal scoring) run separately between EUR 2K and EUR 6K. GTM engineering consulting for in-house teams is scoped per project. closed:in does not offer performance-only pricing because outbound results compound on top of stable infrastructure and Clay tables, not short-term reply-rate spikes.
 
 ## Specialised service pages
 

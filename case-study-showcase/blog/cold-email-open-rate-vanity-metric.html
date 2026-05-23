@@ -114,7 +114,28 @@
 .nav-dropdown-item-text > span:not(.nav-dropdown-item-icon) { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: -0.005em; }
 @media (max-width: 1024px) { .nav-dropdown-panel { width: 560px; } }
 @media (max-width: 768px) { .nav-dropdown { display: none; } }
-</style>
+
+        /* === wf-gap-fill: applied === */
+        /* Workflows.io signature soft white double-halo: appears on hover for buttons, pills, CTAs */
+        @keyframes wfPulse { 0%,100% { opacity: 0.65; } 50% { opacity: 1; } }
+        .wf-halo-hover { transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .wf-halo-hover:hover { box-shadow: 0 0 48px rgba(255,255,255,0.10), 0 0 16px rgba(255,255,255,0.08); }
+        /* Apply WF halo on common interactive elements (combined with existing shadows where present) */
+        .nav-cta { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .nav-cta:hover { box-shadow: 0 0 48px rgba(255,255,255,0.12), 0 0 16px rgba(255,255,255,0.08), 0 0 40px rgba(255,255,255,0.15); }
+        .magnetic-btn { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .magnetic-btn:hover { box-shadow: 0 0 48px rgba(255,255,255,0.10), 0 0 16px rgba(255,255,255,0.08); }
+        .filter-pill:hover { box-shadow: 0 0 36px rgba(255,255,255,0.08), 0 0 12px rgba(255,255,255,0.05); }
+        .filter-pill.active { box-shadow: 0 0 36px rgba(120,119,198,0.18), 0 0 12px rgba(120,119,198,0.10); }
+        .hero-pill { transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .hero-pill:hover { box-shadow: 0 0 36px rgba(255,255,255,0.10), 0 0 12px rgba(255,255,255,0.06); }
+        .hero-label { transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .hero-label:hover { box-shadow: 0 0 36px rgba(120,119,198,0.20), 0 0 12px rgba(120,119,198,0.12); }
+        .partner-badge:hover { box-shadow: 0 0 48px rgba(255,255,255,0.08), 0 0 16px rgba(255,255,255,0.06); }
+        /* Will-change perf hints on commonly animated elements */
+        .case-card, .vault-cell, .info-card, .process-card, .partner-badge, .magnetic-btn, .nav-cta { will-change: transform; }
+        /* === wf-gap-fill end === */
+    </style>
     <!-- Prospect Pro – Bedrijfsherkenning -->
     <link rel="stylesheet" href="https://css.jsapis.com/controls.css">
     <script async src='https://cdn.prppr.nl/jq_bde1886c.js'></script>
@@ -171,7 +192,7 @@
 <div class="article">
 <p>If your outbound dashboard still leads with open rate, your team is optimising for a metric that does not exist anymore.</p>
 
-<p>This is not hyperbole. In September 2021, Apple launched <strong>Mail Privacy Protection</strong> in iOS 15. Every time a Mail.app user opens any email, their device <em>pre-loads</em> all tracking pixels in the background, regardless of whether they opened the email. The provider sending the email sees an "open" event for every Apple Mail user, whether or not the email was actually opened.</p>
+<p>This is not hyperbole. In September 2021, Apple launched <a href="https://support.apple.com/en-us/102321" target="_blank" rel="noopener">Mail Privacy Protection</a> in iOS 15. Every time a Mail.app user opens any email, their device <em>pre-loads</em> all tracking pixels in the background, regardless of whether they opened the email. The provider sending the email sees an "open" event for every Apple Mail user, whether or not the email was actually opened. Apple documents this as a privacy feature that hides the recipient's IP address and prevents senders from knowing when (or whether) an email was opened.</p>
 
 <p>Within 6 months of launch, the share of Apple Mail users with MPP enabled crossed 90%. Today it is the default, and adoption keeps climbing as iOS users upgrade.</p>
 
@@ -194,7 +215,7 @@
 <p>Three categories of cold email metrics are reliable in 2026:</p>
 
 <h3>1. Bounces</h3>
-<p>Hard bounces and soft bounces. These come back from the receiving mail server and are entirely server-to-server. No pixel involved. Bounce rate above 5% is a deliverability emergency. Aim for below 3%.</p>
+<p>Hard bounces and soft bounces. These come back from the receiving mail server and are entirely server-to-server. No pixel involved. Bounce rate above 5% is a deliverability emergency. Aim for below 3%. <a href="https://postmaster.google.com/" target="_blank" rel="noopener">Gmail Postmaster Tools</a> exposes domain-level reputation and spam-rate signals for the same reason: server-side feedback is the only deliverability data you can trust.</p>
 
 <h3>2. Reply rate</h3>
 <p>A reply is a human action that travels back to your sender inbox. Cannot be faked by pre-loading. Use this as your top-of-funnel signal.</p>

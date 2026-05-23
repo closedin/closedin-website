@@ -55,6 +55,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.closedin.io/pricing</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://www.closedin.io/playbook</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>

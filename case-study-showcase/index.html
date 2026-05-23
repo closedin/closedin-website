@@ -536,7 +536,28 @@
   body:has(.mobile-menu.open) .hamburger span:nth-child(2) { opacity: 0 !important; }
   body:has(.mobile-menu.open) .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) !important; }
 }
-</style>
+
+        /* === wf-gap-fill: applied === */
+        /* Workflows.io signature soft white double-halo: appears on hover for buttons, pills, CTAs */
+        @keyframes wfPulse { 0%,100% { opacity: 0.65; } 50% { opacity: 1; } }
+        .wf-halo-hover { transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .wf-halo-hover:hover { box-shadow: 0 0 48px rgba(255,255,255,0.10), 0 0 16px rgba(255,255,255,0.08); }
+        /* Apply WF halo on common interactive elements (combined with existing shadows where present) */
+        .nav-cta { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .nav-cta:hover { box-shadow: 0 0 48px rgba(255,255,255,0.12), 0 0 16px rgba(255,255,255,0.08), 0 0 40px rgba(255,255,255,0.15); }
+        .magnetic-btn { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .magnetic-btn:hover { box-shadow: 0 0 48px rgba(255,255,255,0.10), 0 0 16px rgba(255,255,255,0.08); }
+        .filter-pill:hover { box-shadow: 0 0 36px rgba(255,255,255,0.08), 0 0 12px rgba(255,255,255,0.05); }
+        .filter-pill.active { box-shadow: 0 0 36px rgba(120,119,198,0.18), 0 0 12px rgba(120,119,198,0.10); }
+        .hero-pill { transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .hero-pill:hover { box-shadow: 0 0 36px rgba(255,255,255,0.10), 0 0 12px rgba(255,255,255,0.06); }
+        .hero-label { transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .hero-label:hover { box-shadow: 0 0 36px rgba(120,119,198,0.20), 0 0 12px rgba(120,119,198,0.12); }
+        .partner-badge:hover { box-shadow: 0 0 48px rgba(255,255,255,0.08), 0 0 16px rgba(255,255,255,0.06); }
+        /* Will-change perf hints on commonly animated elements */
+        .case-card, .vault-cell, .info-card, .process-card, .partner-badge, .magnetic-btn, .nav-cta { will-change: transform; }
+        /* === wf-gap-fill end === */
+    </style>
 
     <!-- ═══ STRUCTURED DATA / JSON-LD ═══ -->
     <script type="application/ld+json">
@@ -639,7 +660,74 @@
             "ratingValue": "4.9",
             "ratingCount": "12",
             "bestRating": "5"
-          }
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Erik Jorgensen", "jobTitle": "CEO" },
+              "reviewBody": "Working with closed:in was a seamless experience. Their ability to merge outreach with functionality resulted in opportunities that not only filled our pipeline but also converted.",
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "itemReviewed": { "@id": "https://www.closedin.io/#service" }
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Nick Verhulsdonck", "jobTitle": "Co-Owner, WeTaxus" },
+              "reviewBody": "Closed:in delivered exactly what they promised. Within weeks we had a full pipeline of qualified leads and our sales team finally had consistent deal flow to work with. Their approach to outbound is next level.",
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "itemReviewed": { "@id": "https://www.closedin.io/#service" }
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Zen Alex", "jobTitle": "Founder, Red Fox Agency" },
+              "reviewBody": "We tried outbound ourselves for months with minimal results. Closed:in came in, rebuilt everything from scratch, and within 4 weeks we had qualified meetings on the calendar. Absolute game changer for our agency.",
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "itemReviewed": { "@id": "https://www.closedin.io/#service" }
+            }
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "@id": "https://www.closedin.io/#howto",
+          "name": "How closed:in builds an outbound engine",
+          "description": "The 5-step framework closed:in uses to turn cold outreach into qualified pipeline, combining ICP research, Clay-based enrichment, deliverability infrastructure and multi-channel sequences.",
+          "totalTime": "P21D",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "position": 1,
+              "name": "ICP Definition",
+              "text": "Deeply understand who the ideal customer is. Not just job titles, but buying signals, tech stack, company size and growth indicators. Map decision makers and buying committees, identify target account characteristics, and score and prioritize segments.",
+              "url": "https://www.closedin.io/#step-1-icp"
+            },
+            {
+              "@type": "HowToStep",
+              "position": 2,
+              "name": "Lead Sourcing",
+              "text": "Using 120+ data providers through Clay, build hyper-targeted lead lists with verified contact data. Every lead is qualified before outreach begins. Verify every email address, clean and deduplicate data, and build segmented lead lists.",
+              "url": "https://www.closedin.io/#step-2-sourcing"
+            },
+            {
+              "@type": "HowToStep",
+              "position": 3,
+              "name": "Enrichment and Personalization",
+              "text": "Every lead gets enriched in Clay with targeted data: icebreakers, recent news, tech stack signals and custom variables that make every email feel 1-to-1. Generate personalized icebreakers, add LinkedIn and social signals, and pull recent news and triggers.",
+              "url": "https://www.closedin.io/#step-3-enrichment"
+            },
+            {
+              "@type": "HowToStep",
+              "position": 4,
+              "name": "Infrastructure and Deliverability",
+              "text": "Set up bulletproof email infrastructure: fresh sending domains, SPF/DKIM/DMARC records, inbox warmup and ongoing monitoring to ensure 98%+ deliverability. Purchase and configure sending domains, warm up all inboxes gradually, and monitor deliverability in real-time.",
+              "url": "https://www.closedin.io/#step-4-infrastructure"
+            },
+            {
+              "@type": "HowToStep",
+              "position": 5,
+              "name": "Campaign Launch and Optimization",
+              "text": "Multi-step sequences go live across cold email and LinkedIn. Continuously A/B test subject lines, copy and timing. Book qualified meetings on the calendar and optimize based on reply data weekly.",
+              "url": "https://www.closedin.io/#step-5-launch"
+            }
+          ]
         },
         {
           "@type": "FAQPage",
@@ -793,7 +881,7 @@
     </div>
 
     <!-- Subtitle under video -->
-    <p class="reveal">We create outbound campaigns for B2B service companies that want more sales calls within 2-3 weeks.</p>
+    <p class="reveal">Clay-powered outbound campaigns for B2B service companies that want more sales calls within 2-3 weeks. Official Clay Solutions Partner running production workflows daily.</p>
 
     <!-- Buttons under subtitle -->
     <div class="hero-buttons reveal">
@@ -1316,7 +1404,7 @@
             </button>
             <button class="service-tab" data-index="2">
                 <span class="tab-num">03</span>
-                <span class="tab-title">Outbound Ops</span>
+                <span class="tab-title">Clay & Outbound Ops</span>
             </button>
             <button class="service-tab" data-index="3">
                 <span class="tab-num">04</span>
@@ -1350,11 +1438,11 @@
                 <div class="service-panel-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                 </div>
-                <h3>Done-For-You Outbound Ops</h3>
-                <p>Strategy, copy, sequencing, and campaign orchestration handled end-to-end. Your team focuses on closing deals while we fill the pipeline.</p>
+                <h3>Clay Enrichment & Outbound Ops</h3>
+                <p>Clay-based lead enrichment, waterfall sourcing, Claygent personalisation and CRM orchestration. Plus strategy, copy and sequencing handled end-to-end. Your team focuses on closing while we fill the pipeline.</p>
                 <div class="service-panel-stats">
-                    <div><strong>120+</strong><span>data providers</span></div>
-                    <div><strong>End-to-end</strong><span>managed</span></div>
+                    <div><strong>120+</strong><span>data providers via Clay</span></div>
+                    <div><strong>Clay Partner</strong><span>solutions certified</span></div>
                 </div>
             </div>
             <div class="service-panel" id="sp3">
@@ -1383,17 +1471,20 @@
             </div>
         </div>
         <div class="testimonials-grid">
-            <div class="testimonial-card reveal">
-                <p class="testimonial-text">Working with closed:in was a seamless experience. Their ability to merge outreach with functionality resulted in opportunities that not only filled our pipeline but also converted.</p>
-                <div class="testimonial-author">Erik Jorgensen, CEO</div>
+            <div class="testimonial-card reveal" itemscope itemtype="https://schema.org/Review">
+                <div aria-label="5 out of 5 stars" style="color: #FFB800; font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; line-height: 1;" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating"><meta itemprop="ratingValue" content="5"><meta itemprop="bestRating" content="5">★★★★★</div>
+                <p class="testimonial-text" itemprop="reviewBody">Working with closed:in was a seamless experience. Their ability to merge outreach with functionality resulted in opportunities that not only filled our pipeline but also converted.</p>
+                <div class="testimonial-author" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Erik Jorgensen</span>, <span itemprop="jobTitle">CEO</span></div>
             </div>
-            <div class="testimonial-card reveal" style="transition-delay: 0.1s;">
-                <p class="testimonial-text">Closed:in delivered exactly what they promised. Within weeks we had a full pipeline of qualified leads and our sales team finally had consistent deal flow to work with. Their approach to outbound is next level.</p>
-                <div class="testimonial-author">Nick Verhulsdonck, Co-Owner WeTaxus</div>
+            <div class="testimonial-card reveal" style="transition-delay: 0.1s;" itemscope itemtype="https://schema.org/Review">
+                <div aria-label="5 out of 5 stars" style="color: #FFB800; font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; line-height: 1;" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating"><meta itemprop="ratingValue" content="5"><meta itemprop="bestRating" content="5">★★★★★</div>
+                <p class="testimonial-text" itemprop="reviewBody">Closed:in delivered exactly what they promised. Within weeks we had a full pipeline of qualified leads and our sales team finally had consistent deal flow to work with. Their approach to outbound is next level.</p>
+                <div class="testimonial-author" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Nick Verhulsdonck</span>, <span itemprop="jobTitle">Co-Owner, WeTaxus</span></div>
             </div>
-            <div class="testimonial-card reveal" style="transition-delay: 0.2s;">
-                <p class="testimonial-text">We tried outbound ourselves for months with minimal results. Closed:in came in, rebuilt everything from scratch, and within 4 weeks we had qualified meetings on the calendar. Absolute game changer for our agency.</p>
-                <div class="testimonial-author">Zen Alex, Founder Red Fox Agency</div>
+            <div class="testimonial-card reveal" style="transition-delay: 0.2s;" itemscope itemtype="https://schema.org/Review">
+                <div aria-label="5 out of 5 stars" style="color: #FFB800; font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; line-height: 1;" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating"><meta itemprop="ratingValue" content="5"><meta itemprop="bestRating" content="5">★★★★★</div>
+                <p class="testimonial-text" itemprop="reviewBody">We tried outbound ourselves for months with minimal results. Closed:in came in, rebuilt everything from scratch, and within 4 weeks we had qualified meetings on the calendar. Absolute game changer for our agency.</p>
+                <div class="testimonial-author" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Zen Alex</span>, <span itemprop="jobTitle">Founder, Red Fox Agency</span></div>
             </div>
         </div>
     </div>
@@ -2012,5 +2103,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
     <!-- Leadboxer – Bedrijfsherkenning -->
     <script type="text/javascript" defer="defer" src="//script.leadboxer.com/?dataset=316eddd7dcb64c2d96481f90418a96c1"></script>
+<script defer src="/subscribe-form.js"></script>
 </body>
 </html>
