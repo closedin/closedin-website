@@ -87,7 +87,28 @@
         .hero { min-height: auto; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 180px 40px 80px; position: relative; overflow: hidden; }
         .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(120,119,198,0.15), transparent); }
         .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse at 50% 30%, black 10%, transparent 60%); -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 10%, transparent 60%); }
-        .hero-label { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; background: rgba(120,119,198,0.1); border: 1px solid rgba(120,119,198,0.25); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); position: relative; z-index: 2; }
+        @property --pill-spin { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+        @keyframes pillSpin { to { --pill-spin: 360deg; } }
+        .hero-label {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 8px 18px;
+            border: 1px solid transparent;
+            background:
+                linear-gradient(rgba(10,10,14,0.92), rgba(10,10,14,0.92)) padding-box,
+                conic-gradient(from var(--pill-spin),
+                    rgba(120,119,198,0.18) 0deg,
+                    rgba(180,178,255,0.9) 40deg,
+                    rgba(120,119,198,0.18) 90deg,
+                    rgba(120,119,198,0.18) 360deg) border-box;
+            border-radius: 100px;
+            font-size: 12px; font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.08em; text-transform: uppercase;
+            margin-bottom: 28px;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            position: relative; z-index: 2;
+            animation: pillSpin 6.5s linear infinite;
+        }
         .hero-label::before { content: ''; width: 16px; height: 16px; border-radius: 50%; background: url('favicon-32.png') center/cover no-repeat; box-shadow: 0 0 14px rgba(120,119,198,0.6); animation: pillPulse 2.4s ease-in-out infinite; }
         @keyframes pillPulse { 0%,100% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
         .hero-sub { font-size: 17px; color: var(--dim); max-width: 640px; line-height: 1.65; margin-bottom: 12px; position: relative; z-index: 2; }
