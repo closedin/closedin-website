@@ -11,17 +11,17 @@
     <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '__META_PIXEL_ID__');fbq('track', 'PageView');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=__GA4_MEASUREMENT_ID__"></script>
     <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '__GA4_MEASUREMENT_ID__');</script>
-    <title>The Clay Email Waterfall We Use (~92% hit rate) | closed:in</title>
-    <meta name="description" content="The exact 4-provider Clay waterfall closed:in uses to hit ~92% email find rate at lowest credit cost. Provider order, fallback logic, credit math.">
+    <title>The Clay Email Waterfall We Use (~95% hit rate) | closed:in</title>
+    <meta name="description" content="The exact 10-provider Clay waterfall closed:in uses to hit ~95% email find rate at lowest credit cost. Provider order, fallback logic, credit math.">
     <link rel="canonical" href="https://www.closedin.io/resources/clay-waterfall.html">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="The Clay Email Waterfall We Use (~92% hit rate)">
+    <meta property="og:title" content="The Clay Email Waterfall We Use (~95% hit rate)">
     <meta property="og:url" content="https://www.closedin.io/resources/clay-waterfall.html">
     <meta property="og:image" content="https://www.closedin.io/closedin-logo.png">
     <script type="application/ld+json">
     { "@context": "https://schema.org", "@graph": [
-      { "@type": "Article", "headline": "The Clay email waterfall we use (~92% find rate)", "datePublished": "2026-05-22", "inLanguage": "en", "author": { "@type": "Organization", "name": "closed:in" }, "publisher": { "@type": "Organization", "name": "closed:in", "logo": { "@type": "ImageObject", "url": "https://www.closedin.io/closedin-logo.png" } }, "mainEntityOfPage": "https://www.closedin.io/resources/clay-waterfall.html", "keywords": "clay waterfall, clay email enrichment, clay solutions partner, B2B email finder" },
+      { "@type": "Article", "headline": "The Clay email waterfall we use (~95% find rate)", "datePublished": "2026-05-22", "inLanguage": "en", "author": { "@type": "Organization", "name": "closed:in" }, "publisher": { "@type": "Organization", "name": "closed:in", "logo": { "@type": "ImageObject", "url": "https://www.closedin.io/closedin-logo.png" } }, "mainEntityOfPage": "https://www.closedin.io/resources/clay-waterfall.html", "keywords": "clay waterfall, clay email enrichment, clay solutions partner, B2B email finder" },
       { "@type": "BreadcrumbList", "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.closedin.io/" },
         { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://www.closedin.io/resources.html" },
@@ -36,7 +36,7 @@
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --bg: #050505; --card: #0A0A0A; --border: rgba(255,255,255,0.06); --text: #fff; --muted: rgba(255,255,255,0.4); --dim: rgba(255,255,255,0.6); --accent: #7877C6; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: clip; }
         body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 10px 48px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; background: rgba(5,5,5,0.6); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
         .logo img { height: 88px; }
@@ -62,7 +62,7 @@
         .preview-code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--dim); background: rgba(0,0,0,0.3); padding: 12px 16px; border-radius: 8px; border-left: 2px solid var(--accent); line-height: 1.6; word-break: break-word; margin-top: 12px; }
         .gate-section { background: linear-gradient(180deg, rgba(120,119,198,0.04), rgba(120,119,198,0.08)); border: 1px solid rgba(120,119,198,0.25); border-radius: 24px; padding: 48px; margin: 48px auto; max-width: 760px; text-align: center; }
         .gate-label { display: inline-flex; padding: 6px 14px; background: rgba(120,119,198,0.15); border: 1px solid rgba(120,119,198,0.35); border-radius: 100px; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
-        .gate-label::before { content: '🔒'; margin-right: 4px; }
+        .gate-label::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; margin-right: 8px; vertical-align: middle; }
         .gate-section h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 14px; }
         .gate-section p { font-size: 16px; color: var(--dim); margin-bottom: 28px; }
         .gate-form { display: flex; gap: 8px; max-width: 480px; margin: 0 auto; }
@@ -126,7 +126,7 @@
                     <a class="nav-dropdown-item" href="../tools/roi-calculator.html"><span class="nav-dropdown-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="16" y1="14" x2="16" y2="14"/></svg></span><span class="nav-dropdown-item-text"><strong>ROI Calculator</strong><span>Pipeline projection</span></span></a>
                     <a class="nav-dropdown-item" href="../tools/email-verifier.html"><span class="nav-dropdown-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span class="nav-dropdown-item-text"><strong>Email Verifier</strong><span>500 emails, zero credits</span></span></a>
                     <a class="nav-dropdown-item" href="../resources/cold-email-templates.html"><span class="nav-dropdown-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><polyline points="2 7 12 13 22 7"/></svg></span><span class="nav-dropdown-item-text"><strong>Cold email templates</strong><span>12, real reply rates</span></span></a>
-                    <a class="nav-dropdown-item" href="../resources/clay-waterfall.html"><span class="nav-dropdown-item-icon nav-dropdown-icon-logo"><img src="../logos/clay.png" alt="Clay"></span><span class="nav-dropdown-item-text"><strong>Clay waterfall</strong><span>4-provider stack, 92% find rate</span></span></a>
+                    <a class="nav-dropdown-item" href="../resources/clay-waterfall.html"><span class="nav-dropdown-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18"/><path d="M5 12h14"/><path d="M8 17h8"/></svg></span><span class="nav-dropdown-item-text"><strong>Clay waterfall</strong><span>10-provider waterfall, 95% find rate</span></span></a>
                 </div>
             </div>
         </div>
@@ -140,55 +140,81 @@
     <div class="hero-inner">
         <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../resources.html">Resources</a> / Clay waterfall</div>
         <h1>The Clay email waterfall we use (~92% find rate)</h1>
-        <p class="lead">closed:in is a Clay Solutions Partner. We run a 4-provider waterfall inside Clay that hits ~92% find rate on B2B emails at the lowest possible credit cost. Here is the exact provider order, the credit logic per step, and the fallback paths.</p>
+        <p class="lead">closed:in is a Clay Solutions Partner. We run a 10-provider waterfall inside Clay that hits ~95% find rate on B2B emails at the lowest possible credit cost. Cheap providers run first, expensive ones only fire when the previous step returned null. Here is the exact provider order and the credit cost per row.</p>
     </div>
 </section>
 
 <section class="content">
     <h2>Provider order</h2>
-    <p>Run these in series, not parallel. Each step only runs if the previous step failed. This saves credits dramatically.</p>
+    <p>Run these in series, not parallel. Each step only fires if the previous step returned null. Cheap providers go first to keep credit cost minimal on easy finds.</p>
 
     <div class="preview-card">
-        <h3>Step 1: Findymail</h3>
-        <p>Best hit rate on small business + personal email finders. Cheapest credits in our stack. Start here for most lists.</p>
-        <div class="preview-code">If Findymail email is not null → set primary_email = Findymail email, skip rest</div>
+        <h3>Step 1: Icypeas <span style="color: var(--accent); font-weight: 700;">— 0.5 credits / row</span></h3>
+        <p>Cheapest provider in our stack. Good baseline hit rate on common B2B emails. Always runs first to keep average cost down.</p>
     </div>
 
     <div class="preview-card">
-        <h3>Step 2: Datagma</h3>
-        <p>Strong in EU markets where Findymail lags. Run only when Findymail returns null. Pays for itself on NL/BE/DE lists.</p>
-        <div class="preview-code">If primary_email is null AND country is EU → run Datagma</div>
+        <h3>Step 2: LeadMagic <span style="color: var(--accent); font-weight: 700;">— 1 credit / row</span></h3>
+        <p>Strong on SMB and recent role changes. Picks up what Icypeas misses on smaller domains.</p>
     </div>
 
     <div class="preview-card">
-        <h3>Step 3: Apollo</h3>
-        <p>Volume player. Best for US lists. Lower per-credit cost but variable accuracy. Catches what others miss in tech B2B.</p>
-        <div class="preview-code">If primary_email is still null → run Apollo</div>
+        <h3>Step 3: Enrow <span style="color: var(--accent); font-weight: 700;">— 1 credit / row</span></h3>
+        <p>Solid EU coverage. Frequently hits where US-focused providers return null on European prospects.</p>
     </div>
 
     <div class="preview-card">
-        <h3>Step 4: Hunter (verification only)</h3>
-        <p>If we got an email from any of the above, run Hunter verification on the result. Catches false positives before sending. Final quality gate.</p>
-        <div class="preview-code">If primary_email is not null → verify with Hunter, drop if verification = invalid</div>
+        <h3>Step 4: Kitt <span style="color: var(--accent); font-weight: 700;">— 1 credit / row</span></h3>
+        <p>Final cheap step before we start spending real credits. Catches another slice of stragglers from steps 1-3.</p>
+    </div>
+
+    <div class="preview-card">
+        <h3>Step 5: Findymail <span style="color: var(--accent); font-weight: 700;">— 2 credits / row</span></h3>
+        <p>High-quality validated finds. We trust Findymail results without extra verification, which saves a credit downstream.</p>
+    </div>
+
+    <div class="preview-card">
+        <h3>Step 6: Hunter <span style="color: var(--accent); font-weight: 700;">— 2 credits / row</span></h3>
+        <p>Strong on tech B2B and US lists. Also doubles as our verification provider on results from earlier steps if we need a quality gate.</p>
+    </div>
+
+    <div class="preview-card">
+        <h3>Step 7: Prospeo <span style="color: var(--accent); font-weight: 700;">— 2 credits / row</span></h3>
+        <p>Niche provider with good catalog depth on long-tail domains. Often returns hits where the bigger names fail.</p>
+    </div>
+
+    <div class="preview-card">
+        <h3>Step 8: Datagma <span style="color: var(--accent); font-weight: 700;">— 2 credits / row</span></h3>
+        <p>Strong on NL/BE/DE markets. Worth the 2 credits when you target European mid-market.</p>
+    </div>
+
+    <div class="preview-card">
+        <h3>Step 9: Wiza <span style="color: var(--accent); font-weight: 700;">— 2 credits / row</span></h3>
+        <p>LinkedIn-derived data. Best for prospects with active LinkedIn profiles where we already have the URL.</p>
+    </div>
+
+    <div class="preview-card">
+        <h3>Step 10: Dropcontact <span style="color: var(--accent); font-weight: 700;">— 2 credits / row</span></h3>
+        <p>French-rooted, strong GDPR posture. Last resort when nothing else returns. Often picks up the final 2-3% of finds.</p>
     </div>
 
     <h2>Credit math</h2>
-    <p>On a typical 1,000-prospect list with our waterfall, we use roughly:</p>
+    <p>Average cost per 1,000 prospects on a mixed EU/US B2B list:</p>
     <ul>
-        <li>~600 Findymail credits (~60% hit rate stops here)</li>
-        <li>~150 Datagma credits (subset of remaining 40%)</li>
-        <li>~200 Apollo credits (subset still missing)</li>
-        <li>~750 Hunter verification credits (verify everything that came back)</li>
+        <li>Most rows resolve in steps 1-4 (cheap tier, 0.5-1 credit/row)</li>
+        <li>~25% of rows continue into the 2 credit/row tier</li>
+        <li>~5% of rows exhaust the full waterfall and still return null</li>
+        <li>Net: roughly 1,300-1,800 credits per 1,000 prospects at ~95% find rate</li>
     </ul>
-    <p>Total cost: roughly EUR 12-18 per 1,000 prospects with ~92% find rate. Much cheaper than running all 4 providers in parallel.</p>
+    <p>Running these 10 providers in parallel would cost 15.5 credits per row regardless of hit position. Sequencing them by price cuts that by 80-90%.</p>
 
     <h2>What you get in the full template</h2>
     <ul>
-        <li>Clay table JSON export (paste into Clay, edit credentials, run)</li>
+        <li>Clay table JSON export, all 10 providers wired and sequenced</li>
         <li>Column-by-column setup with screenshots</li>
-        <li>The fallback logic for when an entire provider rate-limits</li>
+        <li>Fallback logic for when a provider rate-limits or goes down</li>
         <li>Credit budget calculator: input list size, output expected cost</li>
-        <li>Two alternate orders for US-heavy and EU-heavy lists</li>
+        <li>Two alternate provider orders for US-heavy and EU-heavy lists</li>
     </ul>
 </section>
 
