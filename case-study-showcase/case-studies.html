@@ -274,15 +274,34 @@
             position: relative; border-radius: 24px;
             border: 1px solid var(--border);
             background: var(--card);
-            overflow: hidden; cursor: pointer;
-            transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
+            cursor: pointer;
+            transition: transform 0.55s cubic-bezier(0.22,1,0.36,1), box-shadow 0.55s cubic-bezier(0.22,1,0.36,1), border-color 0.4s;
             text-decoration: none; color: inherit; display: block;
             transform-style: preserve-3d; perspective: 1000px;
+            --mx: 50%; --my: 50%;
+            box-shadow:
+                inset 6px 6px 14px 0 rgba(0,0,0,0.38),
+                inset -6px -6px 18px 0 rgba(255,255,255,0.035),
+                0 8px 28px 0 rgba(0,0,0,0.3);
         }
+        .case-card::after {
+            content: ''; position: absolute; inset: 0;
+            border-radius: inherit; pointer-events: none;
+            opacity: 0; transition: opacity 0.5s; z-index: 3;
+            background:
+                radial-gradient(circle 320px at var(--mx) var(--my), rgba(168,85,247,0.18), transparent 55%),
+                radial-gradient(circle 180px at var(--mx) var(--my), rgba(255,255,255,0.05), transparent 60%);
+        }
+        .case-card:hover::after { opacity: 1; }
         .case-card:hover {
-            border-color: rgba(120,119,198,0.2);
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.06);
+            border-color: rgba(168,85,247,0.28);
+            transform: translate3d(0, -8px, 0) scale(1.005);
+            box-shadow:
+                inset 6px 6px 14px 0 rgba(0,0,0,0.45),
+                inset -6px -6px 18px 0 rgba(255,255,255,0.05),
+                0 28px 70px 0 rgba(0,0,0,0.6),
+                0 0 60px 0 rgba(168,85,247,0.32),
+                0 0 18px 0 rgba(255,255,255,0.05);
         }
         .case-card-glow {
             position: absolute; inset: -1px;
@@ -893,20 +912,24 @@ for (let i = 0; i < 30; i++) {
     particleContainer.appendChild(p);
 }
 
-// ═══ CARD 3D TILT + SPOTLIGHT ═══
+// ═══ CARD 3D TILT + SPOTLIGHT + SCULPTED HALO TRACKING ═══
 document.querySelectorAll('.case-card').forEach(card => {
     const spotlight = card.querySelector('.case-card-spotlight');
     card.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width;
         const y = (e.clientY - rect.top) / rect.height;
-        const tiltX = (y - 0.5) * 8;
-        const tiltY = (x - 0.5) * -8;
-        card.style.transform = `translateY(-8px) scale(1.01) perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-        spotlight.style.background = `radial-gradient(500px circle at ${x*100}% ${y*100}%, rgba(120,119,198,0.1), transparent 40%)`;
+        const tiltX = (y - 0.5) * 6;
+        const tiltY = (x - 0.5) * -6;
+        card.style.transform = `translate3d(0,-8px,0) scale(1.005) perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+        if (spotlight) spotlight.style.background = `radial-gradient(500px circle at ${x*100}% ${y*100}%, rgba(120,119,198,0.1), transparent 40%)`;
+        card.style.setProperty('--mx', (x*100) + '%');
+        card.style.setProperty('--my', (y*100) + '%');
     });
     card.addEventListener('mouseleave', () => {
         card.style.transform = '';
+        card.style.setProperty('--mx', '50%');
+        card.style.setProperty('--my', '50%');
     });
 });
 
