@@ -213,7 +213,28 @@
                 conic-gradient(from 0deg, rgba(255,255,255,0.07), rgba(255,255,255,0.07)) border-box;
             transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), background 0.4s, box-shadow 0.5s;
             box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            overflow: hidden;
+            --mx: 50%; --my: 50%;
         }
+        /* Cursor-following spotlight, layered radial gradients */
+        .vault-cell::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background:
+                radial-gradient(circle 220px at var(--mx) var(--my),
+                    var(--brand-glow, rgba(120,119,198,0.22)),
+                    transparent 55%),
+                radial-gradient(circle 140px at var(--mx) var(--my),
+                    rgba(255,255,255,0.06),
+                    transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .vault-cell:hover::before { opacity: 1; }
         .vault-cell:hover {
             background:
                 linear-gradient(#0E0E12, #0E0E12) padding-box,
@@ -807,6 +828,27 @@ document.addEventListener('DOMContentLoaded', function() {
   btn.addEventListener("click", function(e) { e.stopPropagation(); var isOpen = menu.classList.contains("open"); if (isOpen) { menu.classList.remove("open"); document.body.style.overflow = ""; } else { menu.classList.add("open"); document.body.style.overflow = "hidden"; } });
   if (closeBtn) closeBtn.addEventListener("click", function() { menu.classList.remove("open"); document.body.style.overflow = ""; });
   menu.querySelectorAll("a").forEach(function(a) { a.addEventListener("click", function() { menu.classList.remove("open"); document.body.style.overflow = ""; }); });
+})();
+</script>
+
+<script>
+// Vault cells: cursor-following spotlight
+(function() {
+    var cells = document.querySelectorAll('.vault-cell');
+    if (!cells.length) return;
+    cells.forEach(function(cell) {
+        cell.addEventListener('mousemove', function(e) {
+            var rect = cell.getBoundingClientRect();
+            var x = ((e.clientX - rect.left) / rect.width) * 100;
+            var y = ((e.clientY - rect.top) / rect.height) * 100;
+            cell.style.setProperty('--mx', x + '%');
+            cell.style.setProperty('--my', y + '%');
+        });
+        cell.addEventListener('mouseleave', function() {
+            cell.style.setProperty('--mx', '50%');
+            cell.style.setProperty('--my', '50%');
+        });
+    });
 })();
 </script>
 </body>
