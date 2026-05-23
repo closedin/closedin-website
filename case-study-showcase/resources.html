@@ -403,33 +403,46 @@
             border-color: var(--brand, rgba(120,119,198,0.4));
             color: var(--brand-text, #fff);
         }
-        /* Hover popup: floats over tile, escapes bounds, readable card */
+        /* Hover popup: floats BELOW tile so the icon ring + label stay visible above it */
         .vault-popup {
-            position: absolute; inset: -14px;
-            padding: 20px 20px 18px;
+            position: absolute;
+            top: calc(100% + 10px);
+            left: -10px;
+            right: -10px;
+            padding: 18px 18px 16px;
             background: rgba(12,12,16,0.97);
             -webkit-backdrop-filter: blur(28px); backdrop-filter: blur(28px);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 18px;
-            box-shadow: 0 36px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.03), 0 0 50px var(--brand-glow, rgba(120,119,198,0.18));
+            border-radius: 16px;
+            box-shadow:
+                0 24px 60px rgba(0,0,0,0.6),
+                0 0 0 1px rgba(255,255,255,0.03),
+                0 0 50px var(--brand-glow, rgba(120,119,198,0.2));
             opacity: 0;
-            transform: scale(0.95);
+            transform: translateY(8px);
             pointer-events: none;
             z-index: 60;
-            transition: opacity 0.32s, transform 0.32s cubic-bezier(0.22,1,0.36,1);
+            transition: opacity 0.3s, transform 0.32s cubic-bezier(0.22,1,0.36,1);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            gap: 12px;
+            gap: 10px;
         }
-        .vault-cell:hover .vault-popup { opacity: 1; transform: scale(1); }
-        /* Lift the hovered tile so its popup overlays neighbours */
+        /* Invisible bridge fills the gap between tile and popup so hover persists */
+        .vault-popup::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: 0; right: 0;
+            height: 10px;
+            pointer-events: auto;
+        }
+        /* Popup visible AND clickable on hover; CTA inside now reacts to mouse */
+        .vault-cell:hover .vault-popup {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        /* Lift the hovered tile so its popup overlays neighbours below */
         .vault-cell:hover { z-index: 30; }
-        /* Hide tile content while popup is shown */
-        .vault-cell:hover .vault-cell-ring,
-        .vault-cell:hover .vault-cell-meta,
-        .vault-cell:hover .vault-cell-label,
-        .vault-cell:hover .vault-cell-arrow { opacity: 0; transition: opacity 0.18s; }
         .vault-popup-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
         .vault-popup-header h3 { font-family: 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; color: #fff; }
         .vault-popup-tag { font-size: 8.5px; font-weight: 500; color: var(--muted); padding: 3px 9px; border: 1px solid var(--border); border-radius: 100px; white-space: nowrap; flex-shrink: 0; text-transform: uppercase; letter-spacing: 0.08em; }
