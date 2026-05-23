@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <script type="text/javascript">_linkedin_partner_id = "__LINKEDIN_PARTNER_ID__";window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script>
+    <script type="text/javascript">(function(l) { if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[]} var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s); })(window.lintrk);</script>
+    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '__META_PIXEL_ID__');fbq('track', 'PageView');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=__GA4_MEASUREMENT_ID__"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '__GA4_MEASUREMENT_ID__');</script>
+    <title>The n8n Workflow Vault | 10 Hand-Picked Templates for B2B Outbound | closed:in</title>
+    <meta name="description" content="10 production-ready n8n workflow templates we recommend for B2B outbound, AI agents and sales automation. Curated picks from Nick Saraev and Nate Herk, with notes on how we'd use each.">
+    <link rel="canonical" href="https://www.closedin.io/resources/n8n-workflows">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The n8n Workflow Vault | 10 Hand-Picked Templates for B2B Outbound">
+    <meta property="og:url" content="https://www.closedin.io/resources/n8n-workflows">
+    <meta property="og:image" content="https://www.closedin.io/closedin-logo.png">
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@graph": [
+      { "@type": "Article", "headline": "The n8n workflow vault: 10 hand-picked templates for B2B outbound", "datePublished": "2026-05-23", "inLanguage": "en", "author": { "@type": "Organization", "name": "closed:in" }, "publisher": { "@type": "Organization", "name": "closed:in", "logo": { "@type": "ImageObject", "url": "https://www.closedin.io/closedin-logo.png" } }, "mainEntityOfPage": "https://www.closedin.io/resources/n8n-workflows", "keywords": "n8n workflows, n8n templates, AI automation, B2B outbound, sales automation, Nick Saraev, Nate Herk" },
+      { "@type": "BreadcrumbList", "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.closedin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://www.closedin.io/resources" },
+        { "@type": "ListItem", "position": 3, "name": "n8n Workflows", "item": "https://www.closedin.io/resources/n8n-workflows" }
+      ]}
+    ]}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #050505; --card: #0A0A0A; --border: rgba(255,255,255,0.06); --text: #fff; --muted: rgba(255,255,255,0.4); --dim: rgba(255,255,255,0.6); --accent: #7877C6; --n8n: #EA4B71; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+        body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 10px 48px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; background: rgba(5,5,5,0.6); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        .logo img { height: 88px; }
+        .nav-links { display: flex; gap: 32px; justify-self: center; }
+        .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { font-size: 13px; font-weight: 600; padding: 12px 28px; background: var(--text); color: var(--bg); border-radius: 100px; text-decoration: none; justify-self: end; }
+        .hero { padding: 160px 40px 40px; }
+        .hero-inner { max-width: 920px; margin: 0 auto; }
+        .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+        .breadcrumb a { color: var(--dim); text-decoration: none; }
+        .hero-pill-mini { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px 5px 5px; background: rgba(234,75,113,0.1); border: 1px solid rgba(234,75,113,0.3); border-radius: 100px; font-size: 11px; font-weight: 600; color: var(--n8n); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 18px; }
+        .hero-pill-mini img { width: 18px; height: 18px; border-radius: 50%; }
+        .hero h1 { font-family: 'Inter', sans-serif; font-size: clamp(36px, 5vw, 56px); font-weight: 600; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 18px; }
+        .hero p.lead { font-size: 18px; color: var(--dim); line-height: 1.65; margin-bottom: 14px; max-width: 760px; }
+        .hero .disclosure { font-size: 13px; color: var(--muted); line-height: 1.6; padding: 14px 18px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-left: 2px solid var(--n8n); border-radius: 6px; margin-top: 22px; max-width: 760px; }
+        .content { max-width: 1080px; margin: 0 auto; padding: 40px 40px 60px; }
+        .creator-section { margin-bottom: 80px; }
+        .creator-header { display: flex; align-items: center; gap: 18px; margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+        .creator-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--n8n), #B83758); display: flex; align-items: center; justify-content: center; font-family: 'Satoshi', sans-serif; font-size: 24px; font-weight: 900; color: #fff; flex-shrink: 0; }
+        .creator-meta { flex: 1; min-width: 0; }
+        .creator-name { font-family: 'Satoshi', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 4px; }
+        .creator-tagline { font-size: 14px; color: var(--muted); line-height: 1.5; }
+        .creator-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+        .creator-link { font-size: 12px; color: var(--dim); text-decoration: none; padding: 4px 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 100px; transition: all 0.25s; }
+        .creator-link:hover { color: var(--text); border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.06); }
+        .wf-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .wf-card { display: flex; flex-direction: column; padding: 24px 26px 22px; background: var(--card); border: 1px solid var(--border); border-radius: 18px; text-decoration: none; color: inherit; transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), border-color 0.4s, box-shadow 0.4s; position: relative; overflow: hidden; }
+        .wf-card:hover { transform: translate3d(0,-4px,0); border-color: rgba(234,75,113,0.3); box-shadow: 0 16px 44px rgba(0,0,0,0.45), 0 0 36px rgba(234,75,113,0.18), 0 0 12px rgba(255,255,255,0.05); }
+        .wf-card-tag { font-size: 9.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--n8n); margin-bottom: 12px; }
+        .wf-card h3 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; color: #fff; margin-bottom: 10px; }
+        .wf-card p { font-size: 13px; color: var(--dim); line-height: 1.6; margin-bottom: 14px; flex: 1; }
+        .wf-card-note { font-size: 12.5px; color: var(--muted); line-height: 1.55; padding-top: 14px; border-top: 1px solid var(--border); margin-bottom: 16px; }
+        .wf-card-note strong { color: var(--text); font-weight: 600; }
+        .wf-card-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--text); padding: 9px 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 100px; align-self: flex-start; transition: gap 0.25s, background 0.25s, border-color 0.25s; }
+        .wf-card:hover .wf-card-cta { background: rgba(234,75,113,0.12); border-color: rgba(234,75,113,0.35); gap: 10px; }
+        .wf-card-cta svg { width: 11px; height: 11px; }
+        .gate-section { background: linear-gradient(180deg, rgba(120,119,198,0.04), rgba(120,119,198,0.08)); border: 1px solid rgba(120,119,198,0.25); border-radius: 24px; padding: 48px; margin: 48px auto; max-width: 760px; text-align: center; }
+        .gate-label { display: inline-flex; padding: 6px 14px; background: rgba(120,119,198,0.15); border: 1px solid rgba(120,119,198,0.35); border-radius: 100px; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
+        .gate-label::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+        .gate-section h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 14px; }
+        .gate-section p { font-size: 16px; color: var(--dim); margin-bottom: 28px; }
+        .gate-form { display: flex; gap: 8px; max-width: 480px; margin: 0 auto; }
+        .gate-form input { flex: 1; padding: 16px 22px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; color: var(--text); font-size: 15px; outline: none; }
+        .gate-form button { padding: 16px 28px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; }
+        .cta-section { text-align: center; padding: 80px 40px 100px; }
+        .cta-section h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 900; margin-bottom: 14px; }
+        .cta-section p { font-size: 15px; color: var(--muted); margin-bottom: 24px; }
+        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-weight: 700; border-radius: 100px; text-decoration: none; }
+        .credits-note { max-width: 760px; margin: 0 auto; padding: 22px 26px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 14px; font-size: 13px; color: var(--muted); line-height: 1.65; }
+        .credits-note strong { color: var(--text); }
+        .credits-note a { color: var(--dim); text-decoration: underline; text-underline-offset: 2px; }
+        .credits-note a:hover { color: var(--text); }
+        .premium-footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 60px 48px 32px; }
+        .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.2); }
+        .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+        @media (max-width: 768px) { nav { padding: 14px 20px; } .nav-links, .nav-cta { display: none; } .hero { padding: 140px 20px 30px; } .content { padding: 30px 20px 40px; } .wf-grid { grid-template-columns: 1fr; } .gate-section { padding: 32px 24px; } .gate-form { flex-direction: column; } .creator-header { flex-direction: column; align-items: flex-start; } }
+    /* === nav-dropdown styles === */
+.nav-dropdown { position: relative; }
+.nav-dropdown > button { font-size: 14px; color: rgba(255,255,255,0.4); background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; font-weight: 500; transition: color 0.3s; display: inline-flex; align-items: center; gap: 4px; }
+.nav-dropdown > button:hover { color: #fff; }
+.nav-dropdown > button svg { transition: transform 0.3s; }
+.nav-dropdown:hover > button svg { transform: rotate(180deg); }
+.nav-dropdown-panel { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%) translateY(-8px); width: 760px; padding: 26px 28px; background: rgba(10,10,12,0.98); backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px); border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.22,1,0.36,1); display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; z-index: 9999; } .nav-dropdown-panel::before { content: ''; position: absolute; left: -24px; right: -24px; top: -24px; height: 36px; }
+.nav-dropdown:hover .nav-dropdown-panel { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+.nav-dropdown.is-open .nav-dropdown-panel { opacity: 1 !important; pointer-events: auto !important; transform: translateX(-50%) translateY(0) !important; }
+.nav-dropdown.is-open > button svg { transform: rotate(180deg); }
+.nav-dropdown-col { display: flex; flex-direction: column; gap: 4px; }
+.nav-dropdown-col h5 { font-family: 'Satoshi', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; padding-left: 14px; }
+.nav-dropdown-item { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; text-decoration: none; transition: background 0.25s; }
+.nav-dropdown-item:hover { background: rgba(255,255,255,0.035); }
+.nav-dropdown-item-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
+.nav-dropdown-item-icon svg { width: 16px; height: 16px; }
+.nav-dropdown-item-icon img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.15); }
+.nav-dropdown-icon-logo { background: #fff; }
+.nav-dropdown-item-text { display: flex; flex-direction: column; gap: 2px; }
+.nav-dropdown-item-text strong { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 600; color: #fff; letter-spacing: -0.01em; }
+.nav-dropdown-item-text > span:not(.nav-dropdown-item-icon) { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: -0.005em; }
+@media (max-width: 1024px) { .nav-dropdown-panel { width: 560px; } }
+@media (max-width: 768px) { .nav-dropdown { display: none; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index" class="logo"><img src="../closedin-logo.png" alt="closed:in"></a>
+    <div class="nav-links">
+        <a href="../index">Home</a>
+        <a href="../case-studies">Case Studies</a>
+        <div class="nav-dropdown">
+            <button>Resources <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="nav-dropdown-panel">
+                <div class="nav-dropdown-col">
+                    <h5>Resources</h5>
+                    <a class="nav-dropdown-item" href="../blog/"><span class="nav-dropdown-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><span class="nav-dropdown-item-text"><strong>Blog</strong><span>One tactical post per week</span></span></a>
+                    <a class="nav-dropdown-item" href="../resources"><span class="nav-dropdown-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="4"/></svg></span><span class="nav-dropdown-item-text"><strong>The Vault</strong><span>14 free templates &amp; tools</span></span></a>
+                    <a class="nav-dropdown-item" href="../resources/gtm-stack"><span class="nav-dropdown-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span><span class="nav-dropdown-item-text"><strong>The GTM Stack</strong><span>32 tools, real cost, honest take</span></span></a>
+                    <a class="nav-dropdown-item" href="../resources/n8n-workflows"><span class="nav-dropdown-item-icon nav-dropdown-icon-logo"><img src="../logos/n8n.png" alt="n8n"></span><span class="nav-dropdown-item-text"><strong>n8n Workflows</strong><span>10 hand-picked templates</span></span></a>
+                    <a class="nav-dropdown-item" href="../playbook"><span class="nav-dropdown-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><span class="nav-dropdown-item-text"><strong>The Playbook</strong><span>1-page infra checklist</span></span></a>
+                </div>
+                <div class="nav-dropdown-col">
+                    <h5>Free tools</h5>
+                    <a class="nav-dropdown-item" href="../tools/roi-calculator"><span class="nav-dropdown-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg></span><span class="nav-dropdown-item-text"><strong>ROI Calculator</strong><span>Pipeline projection</span></span></a>
+                    <a class="nav-dropdown-item" href="../tools/email-verifier"><span class="nav-dropdown-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span class="nav-dropdown-item-text"><strong>Email Verifier</strong><span>500 emails, zero credits</span></span></a>
+                    <a class="nav-dropdown-item" href="../resources/cold-email-templates"><span class="nav-dropdown-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><polyline points="2 7 12 13 22 7"/></svg></span><span class="nav-dropdown-item-text"><strong>Cold email templates</strong><span>12, real reply rates</span></span></a>
+                    <a class="nav-dropdown-item" href="../resources/clay-waterfall"><span class="nav-dropdown-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18"/><path d="M5 12h14"/><path d="M8 17h8"/></svg></span><span class="nav-dropdown-item-text"><strong>Clay waterfall</strong><span>10-provider, 95% find rate</span></span></a>
+                </div>
+            </div>
+        </div>
+        <a href="../team">Team</a>
+        <a href="../contact">Contact</a>
+    </div>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=resource-n8n-workflows" target="_blank" class="nav-cta">Book Meeting</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-inner">
+        <div class="breadcrumb"><a href="../index">Home</a> / <a href="../resources">Resources</a> / n8n workflows</div>
+        <div class="hero-pill-mini"><img src="../logos/n8n.png" alt="n8n"> n8n Workflow Vault</div>
+        <h1>10 n8n workflow templates we'd actually use for B2B outbound</h1>
+        <p class="lead">closed:in runs outbound on Clay, Instantly and Close. We don't build in n8n internally, but a lot of our peers do, and there are two creators we trust to pick from: Nick Saraev and Nate Herk. Below are the 10 templates we'd grab first if we were starting an outbound stack in n8n today, with a short note on how we'd actually use each.</p>
+        <div class="disclosure"><strong>Disclosure:</strong> we don't host these workflows. Every "Get template" button links straight to the source on n8n.io or the creator's own channel. The picks and the commentary are ours, the JSON belongs to the authors.</div>
+    </div>
+</section>
+
+<section class="content">
+
+    <div class="creator-section">
+        <div class="creator-header">
+            <div class="creator-avatar">NS</div>
+            <div class="creator-meta">
+                <div class="creator-name">Nick Saraev</div>
+                <div class="creator-tagline">Verified n8n creator. Templates lean operator: outbound, lead-gen, competitive intel, proposal automation. Most of his stack maps 1-to-1 onto B2B service businesses.</div>
+                <div class="creator-links">
+                    <a class="creator-link" href="https://n8n.io/creators/nicksaraev/" target="_blank" rel="noopener">n8n.io profile ↗</a>
+                    <a class="creator-link" href="https://www.youtube.com/@nicksaraev" target="_blank" rel="noopener">YouTube ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="wf-grid">
+
+            <a class="wf-card" href="https://n8n.io/workflows/4803-personalized-linkedin-connection-requests-with-apollo-gpt-4-apify-and-phantombuster/" target="_blank" rel="noopener">
+                <div class="wf-card-tag">LinkedIn outreach</div>
+                <h3>Personalized LinkedIn connection requests with Apollo, GPT-4, Apify &amp; PhantomBuster</h3>
+                <p>Pulls a prospect list from Apollo, scrapes their LinkedIn via Apify, drafts a tailored connection note with GPT-4, sends via PhantomBuster.</p>
+                <div class="wf-card-note"><strong>Why we picked it:</strong> single best n8n equivalent to what we'd run in Clay + HeyReach. Honest reply rates over generic templates, no PhantomBuster lock-in if you swap it for Unipile.</div>
+                <span class="wf-card-cta">Get template <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+
+            <a class="wf-card" href="https://n8n.io/workflows/5388-cold-email-icebreaker-generator-with-apify-gpt-4-and-website-scraping/" target="_blank" rel="noopener">
+                <div class="wf-card-tag">Cold email</div>
+                <h3>Cold email icebreaker generator with Apify, GPT-4 &amp; website scraping</h3>
+                <p>Takes a list of company URLs, scrapes the homepage and recent content, and writes a contextual one-line opener for each prospect.</p>
+                <div class="wf-card-note"><strong>Why we picked it:</strong> bridges the gap if you don't have Clay budget. The 1-line opener model is what we use in production, just run on a cheaper stack.</div>
+                <span class="wf-card-cta">Get template <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+
+            <a class="wf-card" href="https://n8n.io/workflows/6172-competitive-ad-research-and-image-generator-with-apify-gpt-4o-and-facebook-ad-library/" target="_blank" rel="noopener">
+                <div class="wf-card-tag">Competitive intel</div>
+                <h3>Competitive ad research &amp; image generator with Apify, GPT-4o &amp; Facebook Ad Library</h3>
+                <p>Scrapes any competitor's Facebook Ad Library, classifies ads into video/image/text, rewrites copy with GPT-4o and generates fresh creative variants.</p>
+                <div class="wf-card-note"><strong>Why we picked it:</strong> we run this exact pattern manually for clients. Automating it gets you a continuous read on what your competitors are spending money on, weekly.</div>
+                <span class="wf-card-cta">Get template <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+
+            <a class="wf-card" href="https://n8n.io/workflows/5417-ai-facebook-ad-spy-tool-with-apify-openai-gemini-and-google-sheets/" target="_blank" rel="noopener">
+                <div class="wf-card-tag">Competitive intel</div>
+                <h3>AI Facebook ad spy tool with Apify, OpenAI, Gemini &amp; Google Sheets</h3>
+                <p>Continuously monitors competitor ad accounts, logs new creatives to Sheets, summarises angle and CTA with Gemini for video and OpenAI for text.</p>
+                <div class="wf-card-note"><strong>Why we picked it:</strong> the always-on version of the workflow above. Drop it on a weekly cron and you have a competitor intel feed without paying for AdSpy or Foreplay.</div>
+                <span class="wf-card-cta">Get template <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+
+            <a class="wf-card" href="https://n8n.io/workflows/4804-ai-premium-proposal-generator-with-openai-google-slides-and-pandadoc/" target="_blank" rel="noopener">
+                <div class="wf-card-tag">Sales ops</div>
+                <h3>AI premium proposal generator with OpenAI, Google Slides &amp; PandaDoc</h3>
+                <p>From a discovery call transcript or filled form, generates a branded proposal deck in Google Slides and pushes it through PandaDoc for signature.</p>
+                <div class="wf-card-note"><strong>Why we picked it:</strong> if you write proposals manually, this saves an afternoon per deal. We do it in Qwilr; the structure transfers directly.</div>
+                <span class="wf-card-cta">Get template <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+
+            <a class="wf-card" href="https://n8n.io/workflows/5387-automate-customer-support-and-calendar-bookings-with-openai-gpt-and-google-calendar/" target="_blank" rel="noopener">
+                <div class="wf-card-tag">Inbound &amp; ops</div>
+                <h3>Automate customer support &amp; calendar bookings with OpenAI GPT &amp; Google Calendar</h3>
+                <p>A support agent that classifies tickets, drafts replies in your voice, and books a meeting on Google Calendar when the request needs a call.</p>
+                <div class="wf-card-note"><strong>Why we picked it:</strong> useful for any agency or SaaS where inbound replies pile up. The booking handoff is the bit that actually saves time.</div>
+                <span class="wf-card-cta">Get template <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+
+            <a class="wf-card" href="https://n8n.io/workflows/5391-smart-invoice-collection-system-with-gpt-41-gmail-and-google-sheets/" target="_blank" rel="noopener">
+                <div class="wf-card-tag">Finance ops</div>
+                <h3>Smart invoice collection system with GPT-4.1, Gmail &amp; Google Sheets</h3>
+                <p>Tracks open invoices in Sheets, drafts polite chase emails in Gmail at the right cadence, and stops chasing when payment lands.</p>
+                <div class="wf-card-note"><strong>Why we picked it:</strong> boring but bankable. If you're an agency owner chasing late invoices, this pays for n8n hosting on its own.</div>
+                <span class="wf-card-cta">Get template <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="creator-section">
+        <div class="creator-header">
+            <div class="creator-avatar">NH</div>
+            <div class="creator-meta">
+                <div class="creator-name">Nate Herk</div>
+                <div class="creator-tagline">Founder of Uppit AI, 750K+ YouTube subs. Templates lean AI-agent: research agents, content production, multi-step orchestration. Great for content and ops, lighter on direct outbound.</div>
+                <div class="creator-links">
+                    <a class="creator-link" href="https://www.youtube.com/@nateherk/videos" target="_blank" rel="noopener">YouTube ↗</a>
+                    <a class="creator-link" href="https://www.nateherk.com/" target="_blank" rel="noopener">nateherk.com ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="wf-grid">
+
+            <a class="wf-card" href="https://www.youtube.com/@nateherk/videos" target="_blank" rel="noopener">
+                <div class="wf-card-tag">Prospect research</div>
+                <h3>Research ANYTHING and get a PDF report</h3>
+                <p>An n8n agent that researches a company or topic across the web and ships a structured PDF report with linked sources for about $0.50 per run.</p>
+                <div class="wf-card-note"><strong>Why we picked it:</strong> drop a prospect domain in, get a one-pager back. We do account research manually with Perplexity; this productises it.</div>
+                <span class="wf-card-cta">Watch + download <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+
+            <a class="wf-card" href="https://www.youtube.com/@nateherk/videos" target="_blank" rel="noopener">
+                <div class="wf-card-tag">Content engine</div>
+                <h3>Ultimate Army of Media Agents</h3>
+                <p>A multi-agent system that handles inbox, calendar, contacts, Drive and creative tasks (image gen, social posting) from one orchestration layer.</p>
+                <div class="wf-card-note"><strong>Why we picked it:</strong> mostly inspirational. If you're a solo founder building a content brand, this is the closest blueprint we've seen to a working "AI ops assistant".</div>
+                <span class="wf-card-cta">Watch + download <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+
+            <a class="wf-card" href="https://www.youtube.com/@nateherk/videos" target="_blank" rel="noopener">
+                <div class="wf-card-tag">LinkedIn content</div>
+                <h3>Faceless short-form video generator</h3>
+                <p>End-to-end pipeline that takes a topic, generates a script, builds matching visuals, syncs audio and outputs a vertical short ready to post.</p>
+                <div class="wf-card-note"><strong>Why we picked it:</strong> for founders posting volume on LinkedIn / TikTok. Quality is "good enough"; the volume is the unlock.</div>
+                <span class="wf-card-cta">Watch + download <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="credits-note">
+        <strong>Credit where credit is due.</strong> Every template above was built by <a href="https://n8n.io/creators/nicksaraev/" target="_blank" rel="noopener">Nick Saraev</a> or <a href="https://www.youtube.com/@nateherk" target="_blank" rel="noopener">Nate Herk</a>. closed:in did not author them. We picked them because they map onto problems we see in real B2B outbound stacks, and because the authors publish them under permissive terms. If you find these useful, subscribe to their channels.
+    </div>
+</section>
+
+<section class="content">
+    <div class="gate-section">
+        <div class="gate-label">Free with email</div>
+        <h2>We add a new pick every month</h2>
+        <p>One n8n workflow pick per month, plus the weekly closed:in playbook from real client campaigns. Free.</p>
+        <form class="gate-form" action="https://closedins-newsletter.beehiiv.com/subscribe" method="GET" target="_blank">
+            <input type="email" name="email" placeholder="you@yourcompany.com" required>
+            <button type="submit">Get the picks</button>
+        </form>
+    </div>
+</section>
+
+<section class="cta-section">
+    <h2>Want closed:in to build your outbound stack instead?</h2>
+    <p>We run Clay + Instantly + Close, not n8n. 30 minute discovery call, no slides.</p>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=resource-cta&utm_content=n8n-workflows" target="_blank" class="btn-primary">Book a call →</a>
+</section>
+
+<footer class="premium-footer">
+    <div class="footer-bottom">
+        <span>&copy; 2026 closed:in</span>
+        <a href="../privacy">Privacy Policy</a>
+    </div>
+</footer>
+
+    <!-- Leadboxer – Bedrijfsherkenning -->
+    <script type="text/javascript" defer="defer" src="//script.leadboxer.com/?dataset=316eddd7dcb64c2d96481f90418a96c1"></script>
+<script>// nav-dropdown click toggle
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
+        var btn = dd.querySelector('button');
+        if (!btn) return;
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            var isOpen = dd.classList.contains('is-open');
+            document.querySelectorAll('.nav-dropdown.is-open').forEach(function(o) { o.classList.remove('is-open'); });
+            if (!isOpen) dd.classList.add('is-open');
+        });
+    });
+    document.addEventListener('click', function(e) {
+        document.querySelectorAll('.nav-dropdown.is-open').forEach(function(dd) {
+            if (!dd.contains(e.target)) dd.classList.remove('is-open');
+        });
+    });
+});</script>
+<script defer src="/subscribe-form.js"></script>
+</body>
+</html>
