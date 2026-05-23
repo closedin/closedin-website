@@ -185,12 +185,31 @@
         /* CATEGORY FILTERS */
         .filter-bar { max-width: 1200px; margin: 0 auto; padding: 80px 40px 0; display: flex; flex-direction: column; align-items: center; gap: 32px; }
         .filter-header { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-        .filter-pill-label { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 8px; background: var(--bg-elevated); border: 1px solid var(--border-strong); border-radius: 100px; font-size: 11px; font-weight: 700; color: var(--text); letter-spacing: 0.14em; text-transform: uppercase; }
-        .filter-pill-label-icon { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; }
+        .filter-pill-label { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; background: var(--bg-elevated); border: 1px solid var(--border-strong); border-radius: 100px; font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.78); letter-spacing: 0.16em; text-transform: uppercase; }
+        .filter-pill-label-icon { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
         .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-        .filter-pill { padding: 11px 22px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: var(--dim); cursor: pointer; transition: all 0.3s; letter-spacing: -0.005em; }
-        .filter-pill:hover { color: var(--text); border-color: var(--border-strong); }
-        .filter-pill.active { background: rgba(120,119,198,0.08); border-color: rgba(120,119,198,0.5); color: #B5B4E8; box-shadow: 0 0 24px rgba(120,119,198,0.18), inset 0 0 24px rgba(120,119,198,0.05); }
+        .filter-pill {
+            position: relative; overflow: hidden;
+            padding: 9px 18px;
+            background: var(--bg-elevated); border: 1px solid var(--border);
+            border-radius: 100px;
+            font-family: 'Satoshi', sans-serif;
+            font-size: 12px; font-weight: 500;
+            color: var(--dim); cursor: pointer;
+            transition: color 0.35s, border-color 0.35s, background 0.35s, box-shadow 0.35s;
+            letter-spacing: -0.005em;
+            line-height: 1.4;
+        }
+        .filter-pill .pill-text-wrap { position: relative; display: inline-block; height: 1.4em; line-height: 1.4em; overflow: hidden; vertical-align: top; }
+        .filter-pill .pill-text-wrap > span { display: block; transition: transform 0.42s cubic-bezier(0.7,0,0.2,1); will-change: transform; }
+        .filter-pill:hover .pill-text-wrap > span { transform: translateY(-100%); }
+        .filter-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.04); }
+        .filter-pill.active {
+            background: rgba(120,119,198,0.1);
+            border-color: rgba(120,119,198,0.5);
+            color: #C8C7F0;
+            box-shadow: 0 0 22px rgba(120,119,198,0.18), inset 0 0 18px rgba(120,119,198,0.05);
+        }
 
         /* @property declarations for animatable gradient angles */
         @property --grad-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
@@ -257,30 +276,79 @@
             z-index: 5;
         }
         @keyframes vaultBorderSpin { to { --grad-angle: 360deg; } }
-        .vault-cell-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--bg-elevated); border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; overflow: hidden; color: #fff; transition: opacity 0.35s, transform 0.35s; position: relative; z-index: 1; }
-        .vault-cell-icon svg { width: 26px; height: 26px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-        .vault-cell-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; transform: scale(1.18); transform-origin: center; }
-        .vault-cell-icon.logo-only { background: #fff; border: 1px solid var(--border-strong); }
-        .vault-cell-label { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 4px; pointer-events: none; transition: opacity 0.3s; }
-        .vault-cell-label strong { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; white-space: nowrap; }
-        .vault-cell-label .tag { font-size: 10px; font-weight: 600; color: var(--muted); padding: 3px 9px; border: 1px solid var(--border); border-radius: 100px; letter-spacing: 0.04em; }
-        .vault-cell:hover .vault-cell-icon { opacity: 0; transform: scale(0.85); }
-        .vault-cell:hover .vault-cell-label { opacity: 0; }
-
-        /* HOVER POPUP CARD, workflows.io style */
-        .vault-popup { position: absolute; inset: 12px; padding: 18px 18px 14px; background: rgba(14,14,18,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,0.6); opacity: 0; transform: scale(0.96); pointer-events: none; z-index: 10; transition: opacity 0.35s, transform 0.35s cubic-bezier(0.16,1,0.3,1); display: flex; flex-direction: column; justify-content: space-between; }
-        .vault-cell:hover .vault-popup { opacity: 1; transform: scale(1); }
-        .vault-popup-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
-        .vault-popup-header h3 { font-family: 'Satoshi', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; }
-        .vault-popup-tag { font-size: 10px; font-weight: 600; color: var(--muted); padding: 3px 10px; border: 1px solid var(--border-strong); border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
-        .vault-popup p { font-size: 12.5px; color: var(--dim); line-height: 1.55; margin-bottom: 16px; }
-        .vault-popup-cta { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 20px; background: #fff; color: #000; border-radius: 12px; font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: -0.005em; transition: gap 0.3s; }
-        .vault-popup-cta:hover { gap: 12px; }
-
-        /* SHOW POPUP ONLY ON DESKTOP-LIKE INPUTS */
-        @media (hover: none) {
-            .vault-popup { display: none; }
+        /* Tile content: ring icon + meta stacked center, label always visible */
+        .vault-cell { padding: 24px 14px 22px; flex-direction: column; gap: 14px; }
+        .vault-cell-ring {
+            width: 76px; height: 76px; border-radius: 50%;
+            background: radial-gradient(circle at 30% 28%, rgba(255,255,255,0.07), rgba(0,0,0,0.55));
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; z-index: 1;
+            box-shadow:
+                inset 0 2px 5px rgba(255,255,255,0.05),
+                inset 0 -3px 8px rgba(0,0,0,0.45),
+                0 8px 22px rgba(0,0,0,0.4);
+            transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), border-color 0.4s, box-shadow 0.4s;
         }
+        .vault-cell:hover .vault-cell-ring {
+            border-color: var(--brand, rgba(120,119,198,0.55));
+            box-shadow:
+                inset 0 2px 5px rgba(255,255,255,0.08),
+                inset 0 -3px 8px rgba(0,0,0,0.5),
+                0 8px 22px rgba(0,0,0,0.45),
+                0 0 24px var(--brand-glow, rgba(120,119,198,0.45));
+            transform: scale(1.04);
+        }
+        .vault-cell-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--card); border: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; overflow: hidden; color: #fff; }
+        .vault-cell-icon svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 1.7; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .vault-cell-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .vault-cell-icon.logo-only { background: #fff; border: 1px solid rgba(255,255,255,0.06); }
+        .vault-cell-meta {
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            position: relative; z-index: 1; text-align: center; max-width: 92%;
+        }
+        .vault-cell-meta strong {
+            font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 600;
+            color: rgba(255,255,255,0.94); letter-spacing: -0.005em; line-height: 1.2;
+        }
+        .vault-cell-meta .tag {
+            font-size: 9.5px; font-weight: 500; color: var(--muted);
+            padding: 3px 10px; border: 1px solid var(--border); border-radius: 100px;
+            letter-spacing: 0.06em; background: rgba(0,0,0,0.25);
+            text-transform: uppercase;
+            transition: color 0.35s, border-color 0.35s, background 0.35s;
+        }
+        .vault-cell:hover .vault-cell-meta .tag {
+            color: var(--brand-text, #fff);
+            border-color: var(--brand, rgba(120,119,198,0.4));
+            background: color-mix(in srgb, var(--brand, rgba(120,119,198,0.5)) 10%, transparent);
+        }
+        /* Subtle top-right arrow that fades in on hover */
+        .vault-cell-arrow {
+            position: absolute; top: 14px; right: 14px;
+            width: 28px; height: 28px; border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--muted); opacity: 0;
+            transform: translate(-4px, 4px);
+            transition: opacity 0.4s, transform 0.4s, background 0.3s, color 0.3s, border-color 0.3s;
+            z-index: 2; pointer-events: none;
+        }
+        .vault-cell-arrow svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .vault-cell:hover .vault-cell-arrow {
+            opacity: 1; transform: translate(0, 0);
+            background: color-mix(in srgb, var(--brand, rgba(120,119,198,0.5)) 12%, transparent);
+            border-color: var(--brand, rgba(120,119,198,0.4));
+            color: var(--brand-text, #fff);
+        }
+        /* Legacy popup hidden, kept in DOM for backward compatibility */
+        .vault-popup { display: none; }
+        /* Legacy label class supports old markup; visually same as meta */
+        .vault-cell-label { display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; z-index: 1; text-align: center; }
+        .vault-cell-label strong { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.94); letter-spacing: -0.005em; line-height: 1.2; }
+        .vault-cell-label .tag { font-size: 9.5px; font-weight: 500; color: var(--muted); padding: 3px 10px; border: 1px solid var(--border); border-radius: 100px; letter-spacing: 0.06em; background: rgba(0,0,0,0.25); text-transform: uppercase; transition: color 0.35s, border-color 0.35s, background 0.35s; }
+        .vault-cell:hover .vault-cell-label .tag { color: var(--brand-text, #fff); border-color: var(--brand, rgba(120,119,198,0.4)); background: color-mix(in srgb, var(--brand, rgba(120,119,198,0.5)) 10%, transparent); }
 
         /* BRAND COLOR VARIABLES per resource cell */
         .b-playbook { --brand: #FFFFFF; --brand-glow: rgba(255,255,255,0.15); --brand-text: #fff; }
@@ -504,12 +572,12 @@
         </div>
     </div>
     <div class="filter-pills">
-        <button class="filter-pill active" data-filter="all">All</button>
-        <button class="filter-pill" data-filter="template">Templates</button>
-        <button class="filter-pill" data-filter="boolean">Booleans</button>
-        <button class="filter-pill" data-filter="tool">Tools</button>
-        <button class="filter-pill" data-filter="workflow">Workflows</button>
-        <button class="filter-pill" data-filter="playbook">Playbooks</button>
+        <button class="filter-pill active" data-filter="all"><span class="pill-text-wrap"><span>All</span></span></button>
+        <button class="filter-pill" data-filter="template"><span class="pill-text-wrap"><span>Templates</span></span></button>
+        <button class="filter-pill" data-filter="boolean"><span class="pill-text-wrap"><span>Booleans</span></span></button>
+        <button class="filter-pill" data-filter="tool"><span class="pill-text-wrap"><span>Tools</span></span></button>
+        <button class="filter-pill" data-filter="workflow"><span class="pill-text-wrap"><span>Workflows</span></span></button>
+        <button class="filter-pill" data-filter="playbook"><span class="pill-text-wrap"><span>Playbooks</span></span></button>
     </div>
 </section>
 
@@ -517,7 +585,7 @@
     <div class="vault-grid">
 
         <a href="playbook.html" class="vault-cell b-playbook" data-cat="playbook">
-            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg></div>
+            <div class="vault-cell-ring"><div class="vault-cell-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg></div></div>
             <div class="vault-cell-label">
                 <strong>The Playbook</strong>
                 <span class="tag">PDF</span>
@@ -530,10 +598,11 @@
                 <p>The 6-chunk pre-launch checklist we run before any client campaign. Domains, warmup, SPF/DKIM/DMARC, list hygiene, sequence timing, reply handling.</p>
                 <span class="vault-popup-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
 
         <a href="resources/cold-email-templates.html" class="vault-cell b-templates" data-cat="template">
-            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><polyline points="2 7 12 13 22 7"/></svg></div>
+            <div class="vault-cell-ring"><div class="vault-cell-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><polyline points="2 7 12 13 22 7"/></svg></div></div>
             <div class="vault-cell-label">
                 <strong>Cold Email Templates</strong>
                 <span class="tag">12 emails</span>
@@ -546,10 +615,11 @@
                 <p>12 cold email sequences anonymized from real closed:in client campaigns. Industry, ICP, reply rate and OTR per template. Plain text, copy-paste ready.</p>
                 <span class="vault-popup-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
 
         <a href="resources/apollo-booleans.html" class="vault-cell b-apollo-bool" data-cat="boolean">
-            <div class="vault-cell-icon logo-only"><img src="logos/apollo.png" alt="Apollo"></div>
+            <div class="vault-cell-ring"><div class="vault-cell-icon logo-only"><img src="logos/apollo.png" alt="Apollo"></div></div>
             <div class="vault-cell-label">
                 <strong>Apollo Booleans</strong>
                 <span class="tag">50 strings</span>
@@ -562,10 +632,11 @@
                 <p>50+ Apollo search strings for B2B niches. SaaS, agencies, recruitment, PE, e-commerce, hospitality, fintech. Copy-paste into Apollo, get clean lists.</p>
                 <span class="vault-popup-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
 
         <a href="resources/sales-nav-booleans.html" class="vault-cell b-sn-bool" data-cat="boolean">
-            <div class="vault-cell-icon logo-only"><img src="logos/linkedin.png" alt="LinkedIn Sales Navigator"></div>
+            <div class="vault-cell-ring"><div class="vault-cell-icon logo-only"><img src="logos/linkedin.png" alt="LinkedIn Sales Navigator"></div></div>
             <div class="vault-cell-label">
                 <strong>Sales Nav Booleans</strong>
                 <span class="tag">40 strings</span>
@@ -578,10 +649,11 @@
                 <p>40+ LinkedIn Sales Navigator boolean strings for finding founders, VP Sales, Heads of RevOps, Sales Engineers, Operations leads. Per role and industry.</p>
                 <span class="vault-popup-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
 
         <a href="resources/gtm-stack.html" class="vault-cell b-gtm" data-cat="playbook">
-            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+            <div class="vault-cell-ring"><div class="vault-cell-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div></div>
             <div class="vault-cell-label">
                 <strong>The GTM Stack</strong>
                 <span class="tag">32 tools</span>
@@ -594,10 +666,11 @@
                 <p>Every tool we use, by category, with what we actually pay and what we think. Sourcing, enrichment, sending, CRM, automation, AI. No affiliate hype.</p>
                 <span class="vault-popup-cta">See the stack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
 
         <a href="resources/clay-waterfall.html" class="vault-cell b-clay-wf" data-cat="workflow">
-            <div class="vault-cell-icon logo-only"><img src="logos/clay.png" alt="Clay"></div>
+            <div class="vault-cell-ring"><div class="vault-cell-icon logo-only"><img src="logos/clay.png" alt="Clay"></div></div>
             <div class="vault-cell-label">
                 <strong>Clay Waterfall</strong>
                 <span class="tag">4 providers</span>
@@ -610,10 +683,11 @@
                 <p>The exact 4-provider Clay waterfall that hits ~92% email find rate at the lowest credit cost. Provider order, credit logic, fallback paths.</p>
                 <span class="vault-popup-cta">See workflow <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
 
         <a href="resources/icp-scorecard.html" class="vault-cell b-icp" data-cat="template">
-            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg></div>
+            <div class="vault-cell-ring"><div class="vault-cell-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg></div></div>
             <div class="vault-cell-label">
                 <strong>ICP Scorecard</strong>
                 <span class="tag">12 signals</span>
@@ -626,10 +700,11 @@
                 <p>The 12 signals we score every account against before adding to a campaign. Firmographic, technographic, intent, fit. Spreadsheet template included.</p>
                 <span class="vault-popup-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
 
         <a href="resources/pre-launch-audit.html" class="vault-cell b-audit" data-cat="playbook">
-            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10"/></svg></div>
+            <div class="vault-cell-ring"><div class="vault-cell-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10"/></svg></div></div>
             <div class="vault-cell-label">
                 <strong>Pre-Launch Audit</strong>
                 <span class="tag">50 questions</span>
@@ -642,10 +717,11 @@
                 <p>Every question we ask before launching outbound for a client. ICP, infrastructure, copy, sequencing, reply handling, reporting. Answer all 50 and you are ready.</p>
                 <span class="vault-popup-cta">Get it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
 
         <a href="resources/claude-code-sales.html" class="vault-cell b-claude-code" data-cat="workflow">
-            <div class="vault-cell-icon logo-only"><img src="logos/claude.png" alt="Claude"></div>
+            <div class="vault-cell-ring"><div class="vault-cell-icon logo-only"><img src="logos/claude.png" alt="Claude"></div></div>
             <div class="vault-cell-label">
                 <strong>Claude Code Setup</strong>
                 <span class="tag">10+ agents</span>
@@ -658,10 +734,11 @@
                 <p>The exact Claude Code agents, skills, slash commands and CLAUDE.md structure we use internally. Copy our setup to run an AI-augmented sales team from day one.</p>
                 <span class="vault-popup-cta">Get the setup <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
 
         <a href="tools/roi-calculator.html" class="vault-cell b-roi" data-cat="tool">
-            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="13" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="13" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="13" y1="18" x2="16" y2="18"/></svg></div>
+            <div class="vault-cell-ring"><div class="vault-cell-icon"><svg viewBox="0 0 24 24"><line x1="3" y1="20" x2="21" y2="20"/><rect x="5" y="13" width="3.5" height="7" rx="0.5"/><rect x="10.25" y="9" width="3.5" height="11" rx="0.5"/><rect x="15.5" y="5" width="3.5" height="15" rx="0.5"/></svg></div></div>
             <div class="vault-cell-label">
                 <strong>ROI Calculator</strong>
                 <span class="tag">Interactive</span>
@@ -674,10 +751,11 @@
                 <p>Plug in your ICP volume, ACV and funnel rates. See projected pipeline, meetings, and revenue. Defaults based on closed:in's 1,000+ campaign benchmarks.</p>
                 <span class="vault-popup-cta">Use it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
 
         <a href="tools/email-verifier.html" class="vault-cell b-verifier" data-cat="tool">
-            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div class="vault-cell-ring"><div class="vault-cell-icon"><svg viewBox="0 0 24 24"><path d="M3 6h13a2 2 0 0 1 2 2v3"/><path d="M3 6v10a2 2 0 0 0 2 2h8"/><polyline points="3 7 9.5 12 16 7"/><circle cx="18" cy="18" r="4" fill="currentColor" stroke="none"/><polyline points="16.4 18 17.5 19.1 19.6 17" stroke="#0A0A0C" stroke-width="1.6" fill="none"/></svg></div></div>
             <div class="vault-cell-label">
                 <strong>Email Verifier</strong>
                 <span class="tag">Zero credits</span>
@@ -690,10 +768,11 @@
                 <p>Paste a list, get clean emails back. Syntax check, disposable filter, role-based detection, MX record validation. Zero credits, ~70-80% bad-email catch rate.</p>
                 <span class="vault-popup-cta">Use it <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
 
         <a href="blog/" class="vault-cell b-blog" data-cat="playbook">
-            <div class="vault-cell-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/></svg></div>
+            <div class="vault-cell-ring"><div class="vault-cell-icon"><svg viewBox="0 0 24 24"><path d="M4 4h13a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M19 8h2v9a2 2 0 0 1-2 2"/><rect x="7" y="7" width="6" height="4" rx="0.5" fill="currentColor" stroke="none"/><line x1="15" y1="8" x2="17" y2="8"/><line x1="15" y1="10" x2="17" y2="10"/><line x1="7" y1="14" x2="17" y2="14"/><line x1="7" y1="17" x2="14" y2="17"/></svg></div></div>
             <div class="vault-cell-label">
                 <strong>The Blog</strong>
                 <span class="tag">Weekly</span>
@@ -706,6 +785,7 @@
                 <p>One tactical post per week from a live closed:in campaign. Real numbers, real copy, real lessons. No theory.</p>
                 <span class="vault-popup-cta">Read posts <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
 
     </div>
