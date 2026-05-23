@@ -185,28 +185,67 @@
         /* CATEGORY FILTERS */
         .filter-bar { max-width: 1200px; margin: 0 auto; padding: 80px 40px 0; display: flex; flex-direction: column; align-items: center; gap: 32px; }
         .filter-header { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-        .filter-pill-label { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; background: var(--bg-elevated); border: 1px solid var(--border-strong); border-radius: 100px; font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.78); letter-spacing: 0.16em; text-transform: uppercase; }
+        @property --pill-spin { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+        @keyframes pillSpin { to { --pill-spin: 360deg; } }
+        .filter-pill-label {
+            position: relative;
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 6px 14px 6px 6px;
+            border: 1px solid transparent;
+            background:
+                linear-gradient(var(--bg-elevated), var(--bg-elevated)) padding-box,
+                conic-gradient(from var(--pill-spin),
+                    rgba(255,255,255,0.04) 0deg,
+                    rgba(255,255,255,0.55) 40deg,
+                    rgba(255,255,255,0.04) 90deg,
+                    rgba(255,255,255,0.04) 360deg) border-box;
+            border-radius: 100px;
+            font-size: 10px; font-weight: 600;
+            color: rgba(255,255,255,0.78);
+            letter-spacing: 0.16em; text-transform: uppercase;
+            animation: pillSpin 6s linear infinite;
+        }
         .filter-pill-label-icon { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
         .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
         .filter-pill {
             position: relative; overflow: hidden;
             padding: 9px 18px;
-            background: var(--bg-elevated); border: 1px solid var(--border);
+            border: 1px solid transparent;
+            background:
+                linear-gradient(var(--bg-elevated), var(--bg-elevated)) padding-box,
+                conic-gradient(from var(--pill-spin),
+                    rgba(255,255,255,0.03) 0deg,
+                    rgba(255,255,255,0.4) 50deg,
+                    rgba(255,255,255,0.03) 110deg,
+                    rgba(255,255,255,0.03) 360deg) border-box;
             border-radius: 100px;
-            font-family: 'Satoshi', sans-serif;
-            font-size: 12px; font-weight: 500;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 11.5px; font-weight: 500;
             color: var(--dim); cursor: pointer;
-            transition: color 0.35s, border-color 0.35s, background 0.35s, box-shadow 0.35s;
-            letter-spacing: -0.005em;
+            transition: color 0.35s, background 0.35s, box-shadow 0.35s;
+            letter-spacing: 0;
             line-height: 1.4;
+            animation: pillSpin 7s linear infinite;
         }
-        .filter-pill .pill-text-wrap { position: relative; display: inline-block; height: 1.4em; line-height: 1.4em; overflow: hidden; vertical-align: top; }
-        .filter-pill .pill-text-wrap > span { display: block; transition: transform 0.42s cubic-bezier(0.7,0,0.2,1); will-change: transform; }
+        .filter-pill .pill-text-wrap { position: relative; display: inline-block; height: 1.4em; line-height: 1.4em; overflow: hidden; vertical-align: top; min-width: 100%; }
+        .filter-pill .pill-text-wrap > span { display: block; transition: transform 0.45s cubic-bezier(0.65,0,0.25,1); will-change: transform; }
+        .filter-pill .pill-text-wrap > .pt-b { position: absolute; top: 100%; left: 0; right: 0; }
         .filter-pill:hover .pill-text-wrap > span { transform: translateY(-100%); }
-        .filter-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.04); }
+        .filter-pill:hover { color: var(--text); background:
+            linear-gradient(rgba(255,255,255,0.04), rgba(255,255,255,0.04)) padding-box,
+            conic-gradient(from var(--pill-spin),
+                rgba(255,255,255,0.05) 0deg,
+                rgba(255,255,255,0.6) 50deg,
+                rgba(255,255,255,0.05) 110deg,
+                rgba(255,255,255,0.05) 360deg) border-box; }
         .filter-pill.active {
-            background: rgba(120,119,198,0.1);
-            border-color: rgba(120,119,198,0.5);
+            background:
+                linear-gradient(rgba(120,119,198,0.1), rgba(120,119,198,0.1)) padding-box,
+                conic-gradient(from var(--pill-spin),
+                    rgba(120,119,198,0.15) 0deg,
+                    rgba(180,178,255,0.85) 50deg,
+                    rgba(120,119,198,0.15) 110deg,
+                    rgba(120,119,198,0.15) 360deg) border-box;
             color: #C8C7F0;
             box-shadow: 0 0 22px rgba(120,119,198,0.18), inset 0 0 18px rgba(120,119,198,0.05);
         }
@@ -280,24 +319,34 @@
         .vault-cell { padding: 24px 14px 22px; flex-direction: column; gap: 14px; }
         .vault-cell-ring {
             width: 76px; height: 76px; border-radius: 50%;
-            background: radial-gradient(circle at 30% 28%, rgba(255,255,255,0.07), rgba(0,0,0,0.55));
-            border: 1px solid rgba(255,255,255,0.08);
+            background:
+                radial-gradient(circle at 32% 26%, rgba(255,255,255,0.18), transparent 38%),
+                radial-gradient(circle at 70% 78%, rgba(0,0,0,0.55), transparent 55%),
+                radial-gradient(circle at 50% 50%, #15161A, #07070A);
+            border: 1px solid rgba(255,255,255,0.09);
             display: flex; align-items: center; justify-content: center;
             position: relative; z-index: 1;
             box-shadow:
-                inset 0 2px 5px rgba(255,255,255,0.05),
-                inset 0 -3px 8px rgba(0,0,0,0.45),
-                0 8px 22px rgba(0,0,0,0.4);
+                inset 0 2px 4px rgba(255,255,255,0.1),
+                inset 0 -4px 12px rgba(0,0,0,0.55),
+                0 10px 24px rgba(0,0,0,0.5);
             transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), border-color 0.4s, box-shadow 0.4s;
+        }
+        .vault-cell-ring::before {
+            content: ''; position: absolute; inset: 4px;
+            border-radius: 50%; pointer-events: none;
+            background: radial-gradient(ellipse 60% 35% at 50% 18%, rgba(255,255,255,0.22), transparent 70%);
+            opacity: 0.9;
+            mix-blend-mode: screen;
         }
         .vault-cell:hover .vault-cell-ring {
             border-color: var(--brand, rgba(120,119,198,0.55));
             box-shadow:
-                inset 0 2px 5px rgba(255,255,255,0.08),
-                inset 0 -3px 8px rgba(0,0,0,0.5),
-                0 8px 22px rgba(0,0,0,0.45),
-                0 0 24px var(--brand-glow, rgba(120,119,198,0.45));
-            transform: scale(1.04);
+                inset 0 2px 4px rgba(255,255,255,0.14),
+                inset 0 -4px 12px rgba(0,0,0,0.6),
+                0 10px 24px rgba(0,0,0,0.55),
+                0 0 28px var(--brand-glow, rgba(120,119,198,0.5));
+            transform: scale(1.05);
         }
         .vault-cell-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--card); border: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; overflow: hidden; color: #fff; }
         .vault-cell-icon svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 1.7; fill: none; stroke-linecap: round; stroke-linejoin: round; }
@@ -308,13 +357,13 @@
             position: relative; z-index: 1; text-align: center; max-width: 92%;
         }
         .vault-cell-meta strong {
-            font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 600;
-            color: rgba(255,255,255,0.94); letter-spacing: -0.005em; line-height: 1.2;
+            font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 500;
+            color: rgba(255,255,255,0.88); letter-spacing: -0.005em; line-height: 1.25;
         }
         .vault-cell-meta .tag {
-            font-size: 9.5px; font-weight: 500; color: var(--muted);
-            padding: 3px 10px; border: 1px solid var(--border); border-radius: 100px;
-            letter-spacing: 0.06em; background: rgba(0,0,0,0.25);
+            font-size: 8.5px; font-weight: 500; color: var(--muted);
+            padding: 3px 9px; border: 1px solid var(--border); border-radius: 100px;
+            letter-spacing: 0.08em; background: rgba(0,0,0,0.25);
             text-transform: uppercase;
             transition: color 0.35s, border-color 0.35s, background 0.35s;
         }
@@ -342,39 +391,88 @@
             border-color: var(--brand, rgba(120,119,198,0.4));
             color: var(--brand-text, #fff);
         }
-        /* Legacy popup hidden, kept in DOM for backward compatibility */
-        .vault-popup { display: none; }
+        /* Hover popup: floats over tile, escapes bounds, readable card */
+        .vault-popup {
+            position: absolute; inset: -14px;
+            padding: 20px 20px 18px;
+            background: rgba(12,12,16,0.97);
+            -webkit-backdrop-filter: blur(28px); backdrop-filter: blur(28px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 18px;
+            box-shadow: 0 36px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.03), 0 0 50px var(--brand-glow, rgba(120,119,198,0.18));
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+            z-index: 60;
+            transition: opacity 0.32s, transform 0.32s cubic-bezier(0.22,1,0.36,1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .vault-cell:hover .vault-popup { opacity: 1; transform: scale(1); }
+        /* Lift the hovered tile so its popup overlays neighbours */
+        .vault-cell:hover { z-index: 30; }
+        /* Hide tile content while popup is shown */
+        .vault-cell:hover .vault-cell-ring,
+        .vault-cell:hover .vault-cell-meta,
+        .vault-cell:hover .vault-cell-label,
+        .vault-cell:hover .vault-cell-arrow { opacity: 0; transition: opacity 0.18s; }
+        .vault-popup-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+        .vault-popup-header h3 { font-family: 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; color: #fff; }
+        .vault-popup-tag { font-size: 8.5px; font-weight: 500; color: var(--muted); padding: 3px 9px; border: 1px solid var(--border); border-radius: 100px; white-space: nowrap; flex-shrink: 0; text-transform: uppercase; letter-spacing: 0.08em; }
+        .vault-popup p { font-size: 11.5px; color: var(--dim); line-height: 1.55; }
+        .vault-popup-cta {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 11px 16px;
+            background: #fff; color: #0A0A0C;
+            border-radius: 10px;
+            font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600;
+            letter-spacing: -0.005em;
+            transition: background 0.25s, color 0.25s, gap 0.25s;
+            margin-top: 4px;
+        }
+        .vault-popup-cta svg { width: 12px; height: 12px; transition: transform 0.25s; }
+        .vault-popup-cta:hover {
+            gap: 12px;
+            background: var(--brand, #fff);
+            color: var(--brand-cta-text, #fff);
+        }
+        .vault-popup-cta:hover svg { transform: translateX(2px); }
+        @media (hover: none) { .vault-popup { display: none; } }
         /* Legacy label class supports old markup; visually same as meta */
-        .vault-cell-label { display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; z-index: 1; text-align: center; }
-        .vault-cell-label strong { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.94); letter-spacing: -0.005em; line-height: 1.2; }
-        .vault-cell-label .tag { font-size: 9.5px; font-weight: 500; color: var(--muted); padding: 3px 10px; border: 1px solid var(--border); border-radius: 100px; letter-spacing: 0.06em; background: rgba(0,0,0,0.25); text-transform: uppercase; transition: color 0.35s, border-color 0.35s, background 0.35s; }
+        .vault-cell-label { display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; z-index: 1; text-align: center; max-width: 92%; }
+        .vault-cell-label strong { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.88); letter-spacing: -0.005em; line-height: 1.25; }
+        .vault-cell-label .tag { font-size: 8.5px; font-weight: 500; color: var(--muted); padding: 3px 9px; border: 1px solid var(--border); border-radius: 100px; letter-spacing: 0.08em; background: rgba(0,0,0,0.25); text-transform: uppercase; transition: color 0.35s, border-color 0.35s, background 0.35s; }
         .vault-cell:hover .vault-cell-label .tag { color: var(--brand-text, #fff); border-color: var(--brand, rgba(120,119,198,0.4)); background: color-mix(in srgb, var(--brand, rgba(120,119,198,0.5)) 10%, transparent); }
 
         /* BRAND COLOR VARIABLES per resource cell */
-        .b-playbook { --brand: #FFFFFF; --brand-glow: rgba(255,255,255,0.15); --brand-text: #fff; }
+        .b-playbook { --brand: #FFFFFF; --brand-glow: rgba(255,255,255,0.15); --brand-text: #fff; --brand-cta-text: #000; }
         .b-playbook .vault-cell-icon { background: linear-gradient(135deg, #FFFFFF, #C4C4C4); color: #000; }
-        .b-templates { --brand: #FF6B35; --brand-glow: rgba(255,107,53,0.25); --brand-text: #FFB088; }
+        .b-templates { --brand: #FF6B35; --brand-glow: rgba(255,107,53,0.25); --brand-text: #FFB088; --brand-cta-text: #fff; }
         .b-templates .vault-cell-icon { background: linear-gradient(135deg, #FF6B35, #C2410C); color: #fff; }
-        .b-apollo-bool { --brand: #1FBA82; --brand-glow: rgba(31,186,130,0.25); --brand-text: #7BE2B9; }
+        .b-apollo-bool { --brand: #1FBA82; --brand-glow: rgba(31,186,130,0.25); --brand-text: #7BE2B9; --brand-cta-text: #fff; }
         .b-apollo-bool .vault-cell-icon { background: linear-gradient(135deg, #1FBA82, #0D8053); color: #fff; }
-        .b-sn-bool { --brand: #0A66C2; --brand-glow: rgba(10,102,194,0.3); --brand-text: #6FAEEB; }
+        .b-sn-bool { --brand: #0A66C2; --brand-glow: rgba(10,102,194,0.3); --brand-text: #6FAEEB; --brand-cta-text: #fff; }
         .b-sn-bool .vault-cell-icon { background: linear-gradient(135deg, #0A66C2, #064583); color: #fff; }
-        .b-gtm { --brand: #B388FF; --brand-glow: rgba(179,136,255,0.25); --brand-text: #D4BCFF; }
+        .b-gtm { --brand: #B388FF; --brand-glow: rgba(179,136,255,0.25); --brand-text: #D4BCFF; --brand-cta-text: #1A0033; }
         .b-gtm .vault-cell-icon { background: linear-gradient(135deg, #B388FF, #6B40E5); color: #fff; }
-        .b-clay-wf { --brand: #7C5FCE; --brand-glow: rgba(124,95,206,0.3); --brand-text: #B49DEB; }
+        .b-clay-wf { --brand: #7C5FCE; --brand-glow: rgba(124,95,206,0.3); --brand-text: #B49DEB; --brand-cta-text: #fff; }
         .b-clay-wf .vault-cell-icon { background: linear-gradient(135deg, #7C5FCE, #4D2DA8); color: #fff; }
-        .b-icp { --brand: #06B6D4; --brand-glow: rgba(6,182,212,0.25); --brand-text: #67E8F9; }
+        .b-icp { --brand: #06B6D4; --brand-glow: rgba(6,182,212,0.25); --brand-text: #67E8F9; --brand-cta-text: #002F38; }
         .b-icp .vault-cell-icon { background: linear-gradient(135deg, #06B6D4, #0E7490); color: #fff; }
-        .b-audit { --brand: #C4F542; --brand-glow: rgba(196,245,66,0.25); --brand-text: #C4F542; }
+        .b-audit { --brand: #C4F542; --brand-glow: rgba(196,245,66,0.25); --brand-text: #C4F542; --brand-cta-text: #1A2200; }
         .b-audit .vault-cell-icon { background: linear-gradient(135deg, #C4F542, #8FB823); color: #000; }
-        .b-claude-code { --brand: #DA7756; --brand-glow: rgba(218,119,86,0.3); --brand-text: #F2B299; }
+        .b-claude-code { --brand: #DA7756; --brand-glow: rgba(218,119,86,0.3); --brand-text: #F2B299; --brand-cta-text: #fff; }
         .b-claude-code .vault-cell-icon { background: linear-gradient(135deg, #DA7756, #B85838); color: #fff; }
-        .b-roi { --brand: #10B981; --brand-glow: rgba(16,185,129,0.25); --brand-text: #6EE7B7; }
+        .b-roi { --brand: #10B981; --brand-glow: rgba(16,185,129,0.25); --brand-text: #6EE7B7; --brand-cta-text: #fff; }
         .b-roi .vault-cell-icon { background: linear-gradient(135deg, #10B981, #047857); color: #fff; }
-        .b-verifier { --brand: #3B82F6; --brand-glow: rgba(59,130,246,0.25); --brand-text: #93C5FD; }
+        .b-verifier { --brand: #3B82F6; --brand-glow: rgba(59,130,246,0.25); --brand-text: #93C5FD; --brand-cta-text: #fff; }
         .b-verifier .vault-cell-icon { background: linear-gradient(135deg, #3B82F6, #1E40AF); color: #fff; }
-        .b-blog { --brand: #EC4899; --brand-glow: rgba(236,72,153,0.25); --brand-text: #F9A8D4; }
+        .b-blog { --brand: #EC4899; --brand-glow: rgba(236,72,153,0.25); --brand-text: #F9A8D4; --brand-cta-text: #fff; }
         .b-blog .vault-cell-icon { background: linear-gradient(135deg, #EC4899, #BE185D); color: #fff; }
+        .b-n8n { --brand: #EA4B71; --brand-glow: rgba(234,75,113,0.28); --brand-text: #F5A3B8; --brand-cta-text: #fff; }
+        .b-n8n .vault-cell-icon { background: #fff; }
 
         /* CTA SECTION */
         .cta-section { text-align: center; padding: 80px 40px 140px; position: relative; max-width: 920px; margin: 0 auto; }
@@ -568,16 +666,16 @@
     <div class="filter-header">
         <div class="filter-pill-label">
             <img src="favicon-32.png" alt="closed:in" class="filter-pill-label-icon">
-            13 RESOURCES
+            14 RESOURCES
         </div>
     </div>
     <div class="filter-pills">
-        <button class="filter-pill active" data-filter="all"><span class="pill-text-wrap"><span>All</span></span></button>
-        <button class="filter-pill" data-filter="template"><span class="pill-text-wrap"><span>Templates</span></span></button>
-        <button class="filter-pill" data-filter="boolean"><span class="pill-text-wrap"><span>Booleans</span></span></button>
-        <button class="filter-pill" data-filter="tool"><span class="pill-text-wrap"><span>Tools</span></span></button>
-        <button class="filter-pill" data-filter="workflow"><span class="pill-text-wrap"><span>Workflows</span></span></button>
-        <button class="filter-pill" data-filter="playbook"><span class="pill-text-wrap"><span>Playbooks</span></span></button>
+        <button class="filter-pill active" data-filter="all"><span class="pill-text-wrap"><span class="pt-a">All</span><span class="pt-b">All</span></span></button>
+        <button class="filter-pill" data-filter="template"><span class="pill-text-wrap"><span class="pt-a">Templates</span><span class="pt-b">Templates</span></span></button>
+        <button class="filter-pill" data-filter="boolean"><span class="pill-text-wrap"><span class="pt-a">Booleans</span><span class="pt-b">Booleans</span></span></button>
+        <button class="filter-pill" data-filter="tool"><span class="pill-text-wrap"><span class="pt-a">Tools</span><span class="pt-b">Tools</span></span></button>
+        <button class="filter-pill" data-filter="workflow"><span class="pill-text-wrap"><span class="pt-a">Workflows</span><span class="pt-b">Workflows</span></span></button>
+        <button class="filter-pill" data-filter="playbook"><span class="pill-text-wrap"><span class="pt-a">Playbooks</span><span class="pt-b">Playbooks</span></span></button>
     </div>
 </section>
 
@@ -784,6 +882,23 @@
                 </div>
                 <p>One tactical post per week from a live closed:in campaign. Real numbers, real copy, real lessons. No theory.</p>
                 <span class="vault-popup-cta">Read posts <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+        <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
+        </a>
+
+        <a href="#" class="vault-cell b-n8n" data-cat="workflow">
+            <div class="vault-cell-ring"><div class="vault-cell-icon logo-only"><img src="logos/n8n.png" alt="n8n"></div></div>
+            <div class="vault-cell-label">
+                <strong>n8n Workflows</strong>
+                <span class="tag">Coming soon</span>
+            </div>
+            <div class="vault-popup">
+                <div class="vault-popup-header">
+                    <h3>n8n Workflow Templates</h3>
+                    <span class="vault-popup-tag">Workflow</span>
+                </div>
+                <p>Production n8n automations we run for clients: lead sync, Clay to Close pipelines, Slack alerts, weekly reports. Drop in, configure, ship.</p>
+                <span class="vault-popup-cta">Get notified <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
         <span class="vault-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="9 7 17 7 17 15"/></svg></span>
         </a>
