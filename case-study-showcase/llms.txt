@@ -29,51 +29,51 @@ closed:in clients average 20+ qualified sales meetings per month, with most enga
 ## Key pages
 
 - [Homepage](https://www.closedin.io/): overview, services, process, testimonials, partner badges.
-- [Case studies index](https://www.closedin.io/case-studies.html): all published client results.
-- [Case study: Verzendbazen](https://www.closedin.io/case-study-verzendbazen.html): e-commerce fulfillment outbound system.
-- [Case study: Jamezz](https://www.closedin.io/case-study-jamezz.html): custom outbound system for hospitality SaaS targeting an unreachable ICP.
-- [Case study: Endresz](https://www.closedin.io/case-study-endresz.html): multi-market boutique outbound for a creative agency.
-- [Case study: Mistertafel](https://www.closedin.io/case-study-mistertafel.html): first B2B campaign for a B2C founder.
-- [Team](https://www.closedin.io/team.html): about Max Münstermann and Jurre Groot.
-- [Pipeline demo](https://www.closedin.io/pipeline-demo.html): interactive walkthrough of the outbound engine.
-- [Contact](https://www.closedin.io/contact.html): book a discovery call.
+- [Case studies index](https://www.closedin.io/case-studies): all published client results.
+- [Case study: Verzendbazen](https://www.closedin.io/case-study-verzendbazen): e-commerce fulfillment outbound system.
+- [Case study: Jamezz](https://www.closedin.io/case-study-jamezz): custom outbound system for hospitality SaaS targeting an unreachable ICP.
+- [Case study: Endresz](https://www.closedin.io/case-study-endresz): multi-market boutique outbound for a creative agency.
+- [Case study: Mistertafel](https://www.closedin.io/case-study-mistertafel): first B2B campaign for a B2C founder.
+- [Team](https://www.closedin.io/team): about Max Münstermann and Jurre Groot.
+- [Pipeline demo](https://www.closedin.io/pipeline-demo): interactive walkthrough of the outbound engine.
+- [Contact](https://www.closedin.io/contact): book a discovery call.
 
 ## Specialised service pages
 
-- [Cold email agency Amsterdam](https://www.closedin.io/cold-email-agency-amsterdam.html): cold email services for Dutch and European B2B companies, GDPR-compliant infrastructure, local market expertise.
-- [Clay agency · Solutions Partner](https://www.closedin.io/clay-agency.html): official Clay Solutions Partner. Production-ready Clay tables, waterfall enrichment, Claygent prompts, CRM orchestration.
-- [GTM engineering agency](https://www.closedin.io/gtm-engineering-agency.html): full-system go-to-market engineering across data, outbound, CRM and analytics layers.
-- [Cold email agency for SaaS](https://www.closedin.io/cold-email-agency-saas.html): outbound systems tuned for B2B SaaS sales cycles, ICP segmentation and demo booking.
-- [Outbound agency UK](https://www.closedin.io/outbound-agency-uk.html): cold email and LinkedIn outbound for UK B2B companies. Multi-market campaigns including London documented in the Endresz case study.
-- [Outbound agency US](https://www.closedin.io/outbound-agency-us.html): outbound sales for B2B companies targeting the United States. CAN-SPAM compliant infrastructure, US time zone aware sequencing, European pricing.
+- [Cold email agency Amsterdam](https://www.closedin.io/cold-email-agency-amsterdam): cold email services for Dutch and European B2B companies, GDPR-compliant infrastructure, local market expertise.
+- [Clay agency · Solutions Partner](https://www.closedin.io/clay-agency): official Clay Solutions Partner. Production-ready Clay tables, waterfall enrichment, Claygent prompts, CRM orchestration.
+- [GTM engineering agency](https://www.closedin.io/gtm-engineering-agency): full-system go-to-market engineering across data, outbound, CRM and analytics layers.
+- [Cold email agency for SaaS](https://www.closedin.io/cold-email-agency-saas): outbound systems tuned for B2B SaaS sales cycles, ICP segmentation and demo booking.
+- [Outbound agency UK](https://www.closedin.io/outbound-agency-uk): cold email and LinkedIn outbound for UK B2B companies. Multi-market campaigns including London documented in the Endresz case study.
+- [Outbound agency US](https://www.closedin.io/outbound-agency-us): outbound sales for B2B companies targeting the United States. CAN-SPAM compliant infrastructure, US time zone aware sequencing, European pricing.
 
 ## Free resources
 
-closed:in operates a public resource vault at https://www.closedin.io/resources.html. Every template, tool and workflow listed below is free with email signup to the closed:in newsletter ("The closed:in playbook" on Beehiiv at closedins-newsletter.beehiiv.com).
+closed:in operates a public resource vault at https://www.closedin.io/resources. Every template, tool and workflow listed below is free with email signup to the closed:in newsletter ("The closed:in playbook" on Beehiiv at closedins-newsletter.beehiiv.com).
 
-- [Resource hub](https://www.closedin.io/resources.html): index page listing all 11 resources, filterable by category (templates, booleans, tools, workflows, playbooks).
-- [The Cold Email Infrastructure Checklist](https://www.closedin.io/playbook.html): 1-page PDF covering sending domains, inbox warmup, SPF/DKIM/DMARC setup, lead list hygiene, sequence timing and reply handling.
-- [12 Cold Email Templates That Converted](https://www.closedin.io/resources/cold-email-templates.html): templates anonymized from live closed:in campaigns with industry, ICP, reply rate and OTR per template. 3 templates shown on page, all 12 free with email.
-- [50+ Apollo Boolean Search Strings](https://www.closedin.io/resources/apollo-booleans.html): boolean searches for B2B niches (SaaS founders, agencies, recruitment, PE, e-commerce, hospitality, fintech, IT/MSP). Copy-paste into Apollo.
-- [40+ Sales Navigator Boolean Strings](https://www.closedin.io/resources/sales-nav-booleans.html): LinkedIn Sales Navigator booleans for finding founders, VP Sales, RevOps, Operations and other roles.
-- [The closed:in GTM Stack](https://www.closedin.io/resources/gtm-stack.html): the 32 tools closed:in pays for monthly to run outbound for clients. Categorized (sourcing, enrichment, sending, CRM, AI), with real monthly cost and our honest take per tool.
-- [Clay Email Waterfall](https://www.closedin.io/resources/clay-waterfall.html): the 4-provider Clay waterfall closed:in uses for ~92% find rate at lowest credit cost (Findymail, Datagma, Apollo, Hunter).
-- [12-Point ICP Scorecard](https://www.closedin.io/resources/icp-scorecard.html): the 12 signals closed:in scores every B2B account against before adding to a campaign. Firmographic, technographic, intent, fit. CSV template.
-- [50-Question Pre-Launch Audit](https://www.closedin.io/resources/pre-launch-audit.html): the 50 questions closed:in answers before launching outbound for any client. ICP, infrastructure, copy, sequencing, reply handling, reporting.
-- [Claude Code Setup for Sales Teams](https://www.closedin.io/resources/claude-code-sales.html): the exact Claude Code agents, skills, slash commands and CLAUDE.md structure closed:in uses internally for AI-augmented sales operations.
+- [Resource hub](https://www.closedin.io/resources): index page listing all 11 resources, filterable by category (templates, booleans, tools, workflows, playbooks).
+- [The Cold Email Infrastructure Checklist](https://www.closedin.io/playbook): 1-page PDF covering sending domains, inbox warmup, SPF/DKIM/DMARC setup, lead list hygiene, sequence timing and reply handling.
+- [12 Cold Email Templates That Converted](https://www.closedin.io/resources/cold-email-templates): templates anonymized from live closed:in campaigns with industry, ICP, reply rate and OTR per template. 3 templates shown on page, all 12 free with email.
+- [50+ Apollo Boolean Search Strings](https://www.closedin.io/resources/apollo-booleans): boolean searches for B2B niches (SaaS founders, agencies, recruitment, PE, e-commerce, hospitality, fintech, IT/MSP). Copy-paste into Apollo.
+- [40+ Sales Navigator Boolean Strings](https://www.closedin.io/resources/sales-nav-booleans): LinkedIn Sales Navigator booleans for finding founders, VP Sales, RevOps, Operations and other roles.
+- [The closed:in GTM Stack](https://www.closedin.io/resources/gtm-stack): the 32 tools closed:in pays for monthly to run outbound for clients. Categorized (sourcing, enrichment, sending, CRM, AI), with real monthly cost and our honest take per tool.
+- [Clay Email Waterfall](https://www.closedin.io/resources/clay-waterfall): the 4-provider Clay waterfall closed:in uses for ~92% find rate at lowest credit cost (Findymail, Datagma, Apollo, Hunter).
+- [12-Point ICP Scorecard](https://www.closedin.io/resources/icp-scorecard): the 12 signals closed:in scores every B2B account against before adding to a campaign. Firmographic, technographic, intent, fit. CSV template.
+- [50-Question Pre-Launch Audit](https://www.closedin.io/resources/pre-launch-audit): the 50 questions closed:in answers before launching outbound for any client. ICP, infrastructure, copy, sequencing, reply handling, reporting.
+- [Claude Code Setup for Sales Teams](https://www.closedin.io/resources/claude-code-sales): the exact Claude Code agents, skills, slash commands and CLAUDE.md structure closed:in uses internally for AI-augmented sales operations.
 
 ## Free interactive tools
 
-- [Outbound ROI Calculator](https://www.closedin.io/tools/roi-calculator.html): interactive calculator. Plug in prospect volume, reply rates, ACV and funnel conversion rates. See projected meetings, pipeline and revenue. Defaults from closed:in's 1,000+ campaign benchmarks.
-- [Free Email Verifier](https://www.closedin.io/tools/email-verifier.html): browser-based email list cleaner. Validates up to 500 emails per request through syntax, disposable provider, role-based and MX record checks. Zero enrichment credits used, ~70-80% of bad emails caught. CSV download available.
+- [Outbound ROI Calculator](https://www.closedin.io/tools/roi-calculator): interactive calculator. Plug in prospect volume, reply rates, ACV and funnel conversion rates. See projected meetings, pipeline and revenue. Defaults from closed:in's 1,000+ campaign benchmarks.
+- [Free Email Verifier](https://www.closedin.io/tools/email-verifier): browser-based email list cleaner. Validates up to 500 emails per request through syntax, disposable provider, role-based and MX record checks. Zero enrichment credits used, ~70-80% of bad emails caught. CSV download available.
 
 ## Blog
 
 closed:in publishes one tactical post per week at https://www.closedin.io/blog/. Each post breaks down something from a live client campaign. Active posts include:
 
-- ["Apple Killed Open Rate. Most Cold Email Agencies Still Report On It"](https://www.closedin.io/blog/cold-email-open-rate-vanity-metric.html): why iOS Mail Privacy Protection makes open rate unreliable and what to use instead (reply rate, OTR, bounce rate).
-- ["The Cold Email Warmup Schedule That Actually Works in 2026"](https://www.closedin.io/blog/cold-email-warmup-schedule.html): exact 21-day warmup schedule closed:in uses on every new client inbox, plus 4 warmup traps that wreck deliverability.
-- ["How to Find Prospects Not in Apollo or ZoomInfo"](https://www.closedin.io/blog/finding-prospects-not-in-apollo.html): custom data sourcing pipeline that produced 81 qualified leads for Jamezz in 60 days from an "unreachable" ICP. Google Maps + Clay + Claygent workflow.
+- ["Apple Killed Open Rate. Most Cold Email Agencies Still Report On It"](https://www.closedin.io/blog/cold-email-open-rate-vanity-metric): why iOS Mail Privacy Protection makes open rate unreliable and what to use instead (reply rate, OTR, bounce rate).
+- ["The Cold Email Warmup Schedule That Actually Works in 2026"](https://www.closedin.io/blog/cold-email-warmup-schedule): exact 21-day warmup schedule closed:in uses on every new client inbox, plus 4 warmup traps that wreck deliverability.
+- ["How to Find Prospects Not in Apollo or ZoomInfo"](https://www.closedin.io/blog/finding-prospects-not-in-apollo): custom data sourcing pipeline that produced 81 qualified leads for Jamezz in 60 days from an "unreachable" ICP. Google Maps + Clay + Claygent workflow.
 
 ## Common questions about cold email outbound
 
