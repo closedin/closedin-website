@@ -1,0 +1,176 @@
+/*
+ * vault-premium.css
+ * Shared premium interactions for the /resources/* sub-pages, mirroring the
+ * design language of the resource vault (rotating conic glow + letter slide).
+ * Linked from every resource page so changes propagate everywhere at once.
+ */
+
+@property --pill-spin { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes pillSpin { to { --pill-spin: 360deg; } }
+
+/* ---------- Letter slide-up helper ----------
+ * Wrap text in <span class="pill-text-wrap"><span class="pt-a">X</span><span class="pt-b">X</span></span>
+ * On parent :hover, both spans translate up so the bottom one takes the visible slot.
+ */
+.pill-text-wrap {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  line-height: 1.4em;
+  height: 1.4em;
+  min-width: 100%;
+}
+.pill-text-wrap > span {
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.25, 1);
+  will-change: transform;
+  white-space: nowrap;
+}
+.pill-text-wrap > .pt-b {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+/* ---------- Rotating conic-gradient ring on hover (mask trick) ----------
+ * Re-used by .btn-primary, .nav-cta, .gate-form button.
+ * Mask compositing isolates the gradient to a thin ring around the button.
+ */
+.btn-primary,
+.nav-cta,
+.gate-form button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.btn-primary::before,
+.nav-cta::before,
+.gate-form button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--pill-spin, 0deg),
+    transparent 0deg,
+    rgba(255, 255, 255, 0.55) 60deg,
+    transparent 130deg,
+    rgba(120, 119, 198, 0.65) 200deg,
+    transparent 270deg,
+    rgba(255, 122, 42, 0.45) 320deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  animation: pillSpin 4.5s linear infinite;
+}
+
+.btn-primary:hover::before,
+.nav-cta:hover::before,
+.gate-form button:hover::before {
+  opacity: 1;
+}
+
+/* Letter slide on the same buttons */
+.btn-primary:hover .pill-text-wrap > span,
+.nav-cta:hover .pill-text-wrap > span,
+.gate-form button:hover .pill-text-wrap > span {
+  transform: translateY(-100%);
+}
+
+/* The button text shouldn't lose its baseline when wrapped in .pill-text-wrap */
+.btn-primary .pill-text-wrap,
+.nav-cta .pill-text-wrap,
+.gate-form button .pill-text-wrap {
+  height: 1.2em;
+  line-height: 1.2em;
+}
+
+/* ---------- Hero pill: continuous ambient rotation ----------
+ * The small "n8n Workflow Vault" pill above the H1. Constantly hints the brand
+ * detail without being aggressive.
+ */
+.hero-pill-mini {
+  position: relative;
+  isolation: isolate;
+}
+.hero-pill-mini::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--pill-spin, 0deg),
+    transparent 0deg,
+    rgba(255, 255, 255, 0.3) 90deg,
+    transparent 180deg,
+    rgba(120, 119, 198, 0.45) 270deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: pillSpin 9s linear infinite;
+  opacity: 0.85;
+}
+
+/* ---------- Gate section: ambient rotating border ----------
+ * Subtle outer glow ring on the email-gate section so the conversion block
+ * feels alive. Always on, slower spin.
+ */
+.gate-section {
+  position: relative;
+  isolation: isolate;
+}
+.gate-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--pill-spin, 0deg),
+    transparent 0deg,
+    rgba(120, 119, 198, 0.45) 90deg,
+    transparent 180deg,
+    rgba(255, 122, 42, 0.30) 270deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: pillSpin 14s linear infinite;
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
+}
+.gate-section:hover::after {
+  opacity: 1;
+}
+
+/* Honour reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary::before,
+  .nav-cta::before,
+  .gate-form button::before,
+  .hero-pill-mini::before,
+  .gate-section::after {
+    animation: none;
+  }
+  .pill-text-wrap > span {
+    transition: none;
+  }
+}
