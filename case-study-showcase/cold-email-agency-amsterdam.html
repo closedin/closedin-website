@@ -135,7 +135,7 @@
 
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-        .info-card { padding: 32px 28px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; transition: transform 0.55s cubic-bezier(0.22,1,0.36,1), box-shadow 0.55s cubic-bezier(0.22,1,0.36,1), border-color 0.4s; position: relative; --mx: 50%; --my: 50%; box-shadow: inset 5px 5px 12px 0 rgba(0,0,0,0.35), inset -5px -5px 16px 0 rgba(255,255,255,0.035), 0 6px 22px 0 rgba(0,0,0,0.25); }
+        .info-card { padding: 32px 28px; background: var(--card); border: 1px solid var(--border); border-radius: 24px; transition: transform 0.55s cubic-bezier(0.22,1,0.36,1), box-shadow 0.55s cubic-bezier(0.22,1,0.36,1), border-color 0.4s; position: relative; --mx: 50%; --my: 50%; box-shadow: inset 5px 5px 12px 0 rgba(0,0,0,0.35), inset -5px -5px 16px 0 rgba(255,255,255,0.035), 0 6px 22px 0 rgba(0,0,0,0.25); }
         .info-card:hover { border-color: rgba(168,85,247,0.25); transform: translate3d(0,-6px,0); box-shadow: inset 5px 5px 12px 0 rgba(0,0,0,0.42), inset -5px -5px 16px 0 rgba(255,255,255,0.045), 0 18px 50px 0 rgba(0,0,0,0.45), 0 0 48px 0 rgba(168,85,247,0.28), 0 0 14px 0 rgba(255,255,255,0.04); }
         .info-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--accent), transparent); opacity: 0; transition: opacity 0.3s; border-radius: 3px 0 0 3px; }
         .info-card::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.5s; background: radial-gradient(circle 260px at var(--mx) var(--my), rgba(168,85,247,0.16), transparent 55%), radial-gradient(circle 150px at var(--mx) var(--my), rgba(255,255,255,0.04), transparent 60%); }
@@ -156,7 +156,7 @@
         .case-spot-stat-lbl { font-size: 11px; color: var(--muted); margin-top: 4px; letter-spacing: 0.05em; }
 
         .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 860px; }
-        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color 0.3s; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.3s; }
         .faq-item:hover { border-color: rgba(120,119,198,0.2); }
         .faq-item summary { cursor: pointer; padding: 24px 28px; font-family: 'Satoshi', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 20px; transition: color 0.3s; }
         .faq-item summary::-webkit-details-marker { display: none; }
@@ -234,7 +234,7 @@
         @media (max-width: 768px) { .footer-signup { padding: 60px 20px; } .footer-signup-form { flex-direction: column; } }
     
         /* ═══ STICKY BANNER ═══ */
-        .sticky-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(180%); width: calc(100% - 40px); max-width: 780px; background: rgba(10,10,10,0.94); border: 1px solid rgba(120,119,198,0.25); border-radius: 18px; padding: 18px 22px; display: flex; align-items: center; gap: 18px; box-shadow: 0 24px 70px rgba(0,0,0,0.6), 0 0 50px rgba(120,119,198,0.12); z-index: 9000; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+        .sticky-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(180%); width: calc(100% - 40px); max-width: 780px; background: rgba(10,10,10,0.94); border: 1px solid rgba(120,119,198,0.25); border-radius: 24px; padding: 18px 22px; display: flex; align-items: center; gap: 18px; box-shadow: 0 24px 70px rgba(0,0,0,0.6), 0 0 50px rgba(120,119,198,0.12); z-index: 9000; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
         .sticky-banner.visible { transform: translateX(-50%) translateY(0); }
         .sticky-banner-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(120,119,198,0.12); border: 1px solid rgba(120,119,198,0.3); display: flex; align-items: center; justify-content: center; color: rgba(120,119,198,1); flex-shrink: 0; }
         .sticky-banner-text { flex: 1; line-height: 1.4; min-width: 0; }

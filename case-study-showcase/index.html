@@ -124,7 +124,7 @@
 
         /* Video section */
         .video-section { max-width: 800px; margin: -40px auto 0; padding: 0 40px; position: relative; z-index: 2; }
-        .video-wrapper { border-radius: 20px; overflow: hidden; border: 1px solid var(--border); background: var(--card); aspect-ratio: 16/9; }
+        .video-wrapper { border-radius: 24px; overflow: hidden; border: 1px solid var(--border); background: var(--card); aspect-ratio: 16/9; }
         .video-wrapper iframe, .video-wrapper video { width: 100%; height: 100%; border: none; }
 
         /* Stats ribbon */
@@ -199,7 +199,7 @@
         /* Services section */
         .services-section { max-width: 1200px; margin: 0 auto; padding: 100px 40px; position: relative; z-index: 2; }
         .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 48px; }
-        .service-card { padding: 36px 32px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; }
+        .service-card { padding: 36px 32px; background: var(--card); border: 1px solid var(--border); border-radius: 24px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; }
         .service-card:hover { border-color: rgba(120,119,198,0.15); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px var(--accent-glow); }
         .service-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--accent), transparent); opacity: 0; transition: opacity 0.3s; }
         .service-card:hover::before { opacity: 1; }
@@ -210,7 +210,7 @@
         .testimonials-section { padding: 100px 40px; position: relative; }
         .testimonials-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(120,119,198,0.06), transparent); pointer-events: none; }
         .testimonials-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
-        .testimonial-card { padding: 32px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; position: relative; transition: all 0.4s; }
+        .testimonial-card { padding: 32px; background: var(--card); border: 1px solid var(--border); border-radius: 24px; position: relative; transition: all 0.4s; }
         .testimonial-card:hover { border-color: var(--border-hover); }
         .testimonial-card::before { content: '"'; position: absolute; top: 16px; right: 24px; font-family: 'Satoshi', sans-serif; font-size: 60px; font-weight: 900; color: rgba(120,119,198,0.08); line-height: 1; }
         .testimonial-text { font-size: 15px; color: var(--dim); line-height: 1.7; font-style: italic; margin-bottom: 20px; }
@@ -324,7 +324,7 @@
         .service-panel-stats span { font-size: 12px; color: var(--muted); }
 
         /* Partner Badges */
-        .partner-badge { display: inline-flex; align-items: center; gap: 14px; padding: 14px 24px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; }
+        .partner-badge { display: inline-flex; align-items: center; gap: 14px; padding: 14px 24px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; }
         .partner-badge::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(120,119,198,0.06), transparent); opacity: 0; transition: opacity 0.3s; }
         .partner-badge:hover { border-color: rgba(120,119,198,0.25); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 20px rgba(120,119,198,0.08); }
         .partner-badge:hover::before { opacity: 1; }
@@ -427,7 +427,7 @@
         .faq-section .section-label::before { content: ''; width: 28px; height: 2px; background: var(--accent); border-radius: 2px; }
         .faq-section h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(36px, 5vw, 56px); font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 60px; }
         .faq-list { display: flex; flex-direction: column; gap: 12px; }
-        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color 0.3s; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.3s; }
         .faq-item:hover { border-color: rgba(120,119,198,0.2); }
         .faq-item summary { cursor: pointer; padding: 24px 28px; font-family: 'Satoshi', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 20px; transition: color 0.3s; }
         .faq-item summary::-webkit-details-marker { display: none; }
@@ -465,7 +465,7 @@
         @media (max-width: 768px) { .footer-signup { padding: 60px 20px; } .footer-signup-form { flex-direction: column; } }
     
         /* ═══ STICKY BANNER ═══ */
-        .sticky-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(180%); width: calc(100% - 40px); max-width: 780px; background: rgba(10,10,10,0.94); border: 1px solid rgba(120,119,198,0.25); border-radius: 18px; padding: 18px 22px; display: flex; align-items: center; gap: 18px; box-shadow: 0 24px 70px rgba(0,0,0,0.6), 0 0 50px rgba(120,119,198,0.12); z-index: 9000; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+        .sticky-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(180%); width: calc(100% - 40px); max-width: 780px; background: rgba(10,10,10,0.94); border: 1px solid rgba(120,119,198,0.25); border-radius: 24px; padding: 18px 22px; display: flex; align-items: center; gap: 18px; box-shadow: 0 24px 70px rgba(0,0,0,0.6), 0 0 50px rgba(120,119,198,0.12); z-index: 9000; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
         .sticky-banner.visible { transform: translateX(-50%) translateY(0); }
         .sticky-banner-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(120,119,198,0.12); border: 1px solid rgba(120,119,198,0.3); display: flex; align-items: center; justify-content: center; color: rgba(120,119,198,1); flex-shrink: 0; }
         .sticky-banner-text { flex: 1; line-height: 1.4; min-width: 0; }
@@ -673,14 +673,14 @@
             {
               "@type": "Review",
               "author": { "@type": "Person", "name": "Nick Verhulsdonck", "jobTitle": "Co-Owner, WeTaxus" },
-              "reviewBody": "Closed:in delivered exactly what they promised. Within weeks we had a full pipeline of qualified leads and our sales team finally had consistent deal flow to work with. Their approach to outbound is next level.",
+              "reviewBody": "closed:in delivered exactly what they promised. Within weeks we had a full pipeline of qualified leads and our sales team finally had consistent deal flow to work with. Their approach to outbound is next level.",
               "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
               "itemReviewed": { "@id": "https://www.closedin.io/#service" }
             },
             {
               "@type": "Review",
               "author": { "@type": "Person", "name": "Zen Alex", "jobTitle": "Founder, Red Fox Agency" },
-              "reviewBody": "We tried outbound ourselves for months with minimal results. Closed:in came in, rebuilt everything from scratch, and within 4 weeks we had qualified meetings on the calendar. Absolute game changer for our agency.",
+              "reviewBody": "We tried outbound ourselves for months with minimal results. closed:in came in, rebuilt everything from scratch, and within 4 weeks we had qualified meetings on the calendar. Absolute game changer for our agency.",
               "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
               "itemReviewed": { "@id": "https://www.closedin.io/#service" }
             }
@@ -1022,11 +1022,11 @@
 .tv-tool.tv-hovered { z-index: 5; }
 
 .tv-center { position: absolute; top: 50%; left: 50%; width: 160px; height: 160px; margin-top: -80px; margin-left: -80px; z-index: 4; }
-.tv-center-glyph { width: 100%; height: 100%; border-radius: 50%; background: #0A0A0C; border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 80px rgba(120,119,198,0.25), inset 0 0 30px rgba(120,119,198,0.12); overflow: hidden; }
+.tv-center-glyph { width: 100%; height: 100%; border-radius: 50%; background: #0A0A0A; border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 80px rgba(120,119,198,0.25), inset 0 0 30px rgba(120,119,198,0.12); overflow: hidden; }
 .tv-center-glyph img { width: 110px; height: 110px; object-fit: contain; display: block; }
 .tv-center::after { content: ''; position: absolute; inset: -24px; border-radius: 50%; background: radial-gradient(circle, rgba(120,119,198,0.16), transparent 65%); z-index: -1; pointer-events: none; }
 
-.tv-hover-card { position: absolute; pointer-events: none; opacity: 0; transform: translate(-50%, calc(-100% - 16px)) scale(0.94); padding: 12px 18px; background: rgba(10,10,12,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; box-shadow: 0 16px 40px rgba(0,0,0,0.6); transition: opacity 0.25s, transform 0.25s; z-index: 100; min-width: 140px; text-align: center; }
+.tv-hover-card { position: absolute; pointer-events: none; opacity: 0; transform: translate(-50%, calc(-100% - 16px)) scale(0.94); padding: 12px 18px; background: rgba(10,10,12,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.6); transition: opacity 0.25s, transform 0.25s; z-index: 100; min-width: 140px; text-align: center; }
 .tv-hover-card.active { opacity: 1; transform: translate(-50%, calc(-100% - 16px)) scale(1); }
 .tv-hover-card-name { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: -0.01em; color: #fff; margin-bottom: 2px; }
 .tv-hover-card-cat { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.03em; }
@@ -1328,7 +1328,7 @@
 
     <div class="who-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 1040px; margin: 0 auto;">
 
-        <a href="cold-email-agency-saas" class="reveal" style="display: block; padding: 36px 32px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden;">
+        <a href="cold-email-agency-saas" class="reveal" style="display: block; padding: 36px 32px; background: var(--card); border: 1px solid var(--border); border-radius: 24px; text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden;">
             <div style="font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px;">B2B SaaS founders</div>
             <h3 style="font-family: 'Satoshi', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 14px;">You need predictable demos, not more SDR hires</h3>
             <p style="font-size: 14px; color: var(--dim); line-height: 1.65; margin-bottom: 20px;">ACV between EUR 5K and EUR 50K, selling to mid-market. You tried outbound in-house and it took 4 months to get to 5 demos/month. closed:in gets you there in 4 weeks without hiring.</p>
@@ -1340,7 +1340,7 @@
             <div style="font-size: 13px; font-weight: 700; color: var(--text); display: inline-flex; align-items: center; gap: 6px;">See SaaS approach <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </a>
 
-        <a href="gtm-engineering-agency" class="reveal" style="display: block; padding: 36px 32px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; transition-delay: 0.1s;">
+        <a href="gtm-engineering-agency" class="reveal" style="display: block; padding: 36px 32px; background: var(--card); border: 1px solid var(--border); border-radius: 24px; text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; transition-delay: 0.1s;">
             <div style="font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px;">Recruitment &amp; PE firms</div>
             <h3 style="font-family: 'Satoshi', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 14px;">Your prospects don't reply to generic outreach</h3>
             <p style="font-size: 14px; color: var(--dim); line-height: 1.65; margin-bottom: 20px;">PE-focused executive search, buy-side advisory, niche recruitment. Your buyers expect specificity and credibility upfront. closed:in builds outbound that respects their inbox.</p>
@@ -1352,7 +1352,7 @@
             <div style="font-size: 13px; font-weight: 700; color: var(--text); display: inline-flex; align-items: center; gap: 6px;">See GTM engineering <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </a>
 
-        <a href="clay-agency" class="reveal" style="display: block; padding: 36px 32px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; transition-delay: 0.2s;">
+        <a href="clay-agency" class="reveal" style="display: block; padding: 36px 32px; background: var(--card); border: 1px solid var(--border); border-radius: 24px; text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; transition-delay: 0.2s;">
             <div style="font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px;">Agencies, e-commerce, services</div>
             <h3 style="font-family: 'Satoshi', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 14px;">Your ICP is niche or invisible in standard databases</h3>
             <p style="font-size: 14px; color: var(--dim); line-height: 1.65; margin-bottom: 20px;">Hospitality, boutique retail, B2C-to-B2B retail, sustainability, agency-services. ICPs that don't show up cleanly in Apollo. closed:in builds custom sourcing pipelines via Clay.</p>
@@ -1364,7 +1364,7 @@
             <div style="font-size: 13px; font-weight: 700; color: var(--text); display: inline-flex; align-items: center; gap: 6px;">See Clay agency <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </a>
 
-        <a href="gtm-engineering-agency" class="reveal" style="display: block; padding: 36px 32px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; transition-delay: 0.3s;">
+        <a href="gtm-engineering-agency" class="reveal" style="display: block; padding: 36px 32px; background: var(--card); border: 1px solid var(--border); border-radius: 24px; text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; transition-delay: 0.3s;">
             <div style="font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px;">Financial services, M&amp;A, advisory</div>
             <h3 style="font-family: 'Satoshi', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 14px;">Your buyers are senior, skeptical and signal-driven</h3>
             <p style="font-size: 14px; color: var(--dim); line-height: 1.65; margin-bottom: 20px;">M&amp;A advisory, corporate finance, asset management, audit, legal-tech, fintech. Your prospects ignore mass outreach but engage with credible, signal-based outbound that respects their seniority.</p>
