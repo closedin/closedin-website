@@ -11,12 +11,12 @@
     <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '__META_PIXEL_ID__');fbq('track', 'PageView');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=__GA4_MEASUREMENT_ID__"></script>
     <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '__GA4_MEASUREMENT_ID__');</script>
-    <title>Free Email Verifier — No Credits, No Signup to Try | closed:in</title>
+    <title>Free Email Verifier: No Credits, No Signup to Try | closed:in</title>
     <meta name="description" content="Free bulk email verifier. Syntax check, disposable filter, role detection, MX record validation. Up to 500 emails per check. Zero enrichment credits. Free download as CSV with email signup.">
     <link rel="canonical" href="https://www.closedin.io/tools/email-verifier">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Free Email Verifier — No Credits, No Signup to Try">
+    <meta property="og:title" content="Free Email Verifier: No Credits, No Signup to Try">
     <meta property="og:url" content="https://www.closedin.io/tools/email-verifier">
     <meta property="og:image" content="https://www.closedin.io/closedin-logo.png">
     <script type="application/ld+json">
@@ -119,7 +119,7 @@
         .cta-section { text-align: center; padding: 60px 40px 100px; max-width: 760px; margin: 0 auto; }
         .cta-section h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 900; margin-bottom: 14px; }
         .cta-section p { font-size: 15px; color: var(--muted); margin-bottom: 24px; }
-        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-weight: 700; border-radius: 100px; text-decoration: none; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; }
         .premium-footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 60px 48px 32px; }
         .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.2); }
         .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
@@ -417,7 +417,7 @@ info@mediabureau.nl"></textarea>
             <tr>
                 <td class="email-cell">${escapeHtml(r.email)}</td>
                 <td><span class="status-pill ${r.status}">${r.status}</span></td>
-                <td class="reasons">${r.reasons.length ? escapeHtml(r.reasons.join(', ')) : '—'}</td>
+                <td class="reasons">${r.reasons.length ? escapeHtml(r.reasons.join(', ')) : '·'}</td>
             </tr>
         `).join('');
     }

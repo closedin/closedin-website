@@ -72,7 +72,7 @@
         .cta-section { text-align: center; padding: 80px 40px 100px; }
         .cta-section h2 { font-family: 'Satoshi', sans-serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 900; margin-bottom: 14px; }
         .cta-section p { font-size: 15px; color: var(--muted); margin-bottom: 24px; }
-        .btn-primary { display: inline-flex; padding: 16px 36px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-weight: 700; border-radius: 100px; text-decoration: none; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; }
         .premium-footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 60px 48px 32px; }
         .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.2); }
         .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
@@ -172,52 +172,52 @@
     <p>Run these in series, not parallel. Each step only fires if the previous step returned null. Cheap providers go first to keep credit cost minimal on easy finds.</p>
 
     <div class="preview-card">
-        <h3>Step 1: Icypeas <span style="color: var(--accent); font-weight: 700;">— 0.5 credits / row</span></h3>
+        <h3>Step 1: Icypeas <span style="color: var(--accent); font-weight: 700;">·0.5 credits / row</span></h3>
         <p>Cheapest provider in our stack. Good baseline hit rate on common B2B emails. Always runs first to keep average cost down.</p>
     </div>
 
     <div class="preview-card">
-        <h3>Step 2: LeadMagic <span style="color: var(--accent); font-weight: 700;">— 1 credit / row</span></h3>
+        <h3>Step 2: LeadMagic <span style="color: var(--accent); font-weight: 700;">·1 credit / row</span></h3>
         <p>Strong on SMB and recent role changes. Picks up what Icypeas misses on smaller domains.</p>
     </div>
 
     <div class="preview-card">
-        <h3>Step 3: Enrow <span style="color: var(--accent); font-weight: 700;">— 1 credit / row</span></h3>
+        <h3>Step 3: Enrow <span style="color: var(--accent); font-weight: 700;">·1 credit / row</span></h3>
         <p>Solid EU coverage. Frequently hits where US-focused providers return null on European prospects.</p>
     </div>
 
     <div class="preview-card">
-        <h3>Step 4: Kitt <span style="color: var(--accent); font-weight: 700;">— 1 credit / row</span></h3>
+        <h3>Step 4: Kitt <span style="color: var(--accent); font-weight: 700;">·1 credit / row</span></h3>
         <p>Final cheap step before we start spending real credits. Catches another slice of stragglers from steps 1-3.</p>
     </div>
 
     <div class="preview-card">
-        <h3>Step 5: Findymail <span style="color: var(--accent); font-weight: 700;">— 2 credits / row</span></h3>
+        <h3>Step 5: Findymail <span style="color: var(--accent); font-weight: 700;">·2 credits / row</span></h3>
         <p>High-quality validated finds. We trust Findymail results without extra verification, which saves a credit downstream.</p>
     </div>
 
     <div class="preview-card">
-        <h3>Step 6: Hunter <span style="color: var(--accent); font-weight: 700;">— 2 credits / row</span></h3>
+        <h3>Step 6: Hunter <span style="color: var(--accent); font-weight: 700;">·2 credits / row</span></h3>
         <p>Strong on tech B2B and US lists. Also doubles as our verification provider on results from earlier steps if we need a quality gate.</p>
     </div>
 
     <div class="preview-card">
-        <h3>Step 7: Prospeo <span style="color: var(--accent); font-weight: 700;">— 2 credits / row</span></h3>
+        <h3>Step 7: Prospeo <span style="color: var(--accent); font-weight: 700;">·2 credits / row</span></h3>
         <p>Niche provider with good catalog depth on long-tail domains. Often returns hits where the bigger names fail.</p>
     </div>
 
     <div class="preview-card">
-        <h3>Step 8: Datagma <span style="color: var(--accent); font-weight: 700;">— 2 credits / row</span></h3>
+        <h3>Step 8: Datagma <span style="color: var(--accent); font-weight: 700;">·2 credits / row</span></h3>
         <p>Strong on NL/BE/DE markets. Worth the 2 credits when you target European mid-market.</p>
     </div>
 
     <div class="preview-card">
-        <h3>Step 9: Wiza <span style="color: var(--accent); font-weight: 700;">— 2 credits / row</span></h3>
+        <h3>Step 9: Wiza <span style="color: var(--accent); font-weight: 700;">·2 credits / row</span></h3>
         <p>LinkedIn-derived data. Best for prospects with active LinkedIn profiles where we already have the URL.</p>
     </div>
 
     <div class="preview-card">
-        <h3>Step 10: Dropcontact <span style="color: var(--accent); font-weight: 700;">— 2 credits / row</span></h3>
+        <h3>Step 10: Dropcontact <span style="color: var(--accent); font-weight: 700;">·2 credits / row</span></h3>
         <p>French-rooted, strong GDPR posture. Last resort when nothing else returns. Often picks up the final 2-3% of finds.</p>
     </div>
 
@@ -256,7 +256,7 @@
 <section class="cta-section">
     <h2>Or have closed:in build it in your Clay workspace</h2>
     <p>30 minute discovery call, no slides.</p>
-    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=resource-cta&utm_content=clay-waterfall" target="_blank" class="btn-primary"><span class="pill-text-wrap"><span class="pt-a">Book a call →</span><span class="pt-b">Book a call →</span></span></a>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=resource-cta&utm_content=clay-waterfall" target="_blank" class="btn-primary"><span class="pill-text-wrap"><span class="pt-a">Book a 30 min call →</span><span class="pt-b">Book a 30 min call →</span></span></a>
 </section>
 
 <footer class="premium-footer">

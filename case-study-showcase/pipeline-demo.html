@@ -53,7 +53,7 @@
           "@type": "WebPage",
           "@id": "https://www.closedin.io/pipeline-demo#webpage",
           "url": "https://www.closedin.io/pipeline-demo",
-          "name": "The Outbound Engine — closed:in",
+          "name": "The Outbound Engine | closed:in",
           "description": "Interactive walkthrough of the closed:in outbound engine: how prospect lists, cold email, LinkedIn outreach and CRM orchestration combine into qualified sales meetings.",
           "inLanguage": "en",
           "isPartOf": { "@id": "https://www.closedin.io/#website" },
@@ -106,15 +106,17 @@
 
         /* Progress line */
         .journey-progress {
-            position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+            position: absolute; left: 50%; top: 100px; bottom: 0; width: 2px;
             background: rgba(255,255,255,0.04);
             transform: translateX(-50%);
+            z-index: 1;
         }
         .journey-progress-fill {
             position: absolute; top: 0; left: 0; right: 0;
             background: linear-gradient(180deg, var(--accent), rgba(99,102,241,0.6));
             height: 0%; transition: height 0.1s linear;
             box-shadow: 0 0 20px var(--accent);
+            z-index: 1;
         }
         .journey-progress-dot {
             position: absolute; left: 50%; width: 12px; height: 12px;
@@ -122,6 +124,7 @@
             transform: translate(-50%, -50%);
             box-shadow: 0 0 20px var(--accent), 0 0 40px rgba(120,119,198,0.3);
             transition: top 0.1s linear;
+            z-index: 2;
         }
 
         /* Step counter */
@@ -129,9 +132,11 @@
             position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
             font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700;
             color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
-            background: rgba(120,119,198,0.1); border: 1px solid rgba(120,119,198,0.2);
+            background: rgba(10,10,18,0.92); border: 1px solid rgba(120,119,198,0.35);
             padding: 8px 20px; border-radius: 100px;
             backdrop-filter: blur(10px);
+            z-index: 10;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 4px rgba(5,5,5,0.6);
         }
 
         /* Content panels */
@@ -286,6 +291,8 @@
         /* Apply WF halo on common interactive elements (combined with existing shadows where present) */
         .nav-cta { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
         .nav-cta:hover { box-shadow: 0 0 48px rgba(255,255,255,0.12), 0 0 16px rgba(255,255,255,0.08), 0 0 40px rgba(255,255,255,0.15); }
+        .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; }
+        .btn-primary:hover { transform: scale(1.04); box-shadow: 0 0 48px rgba(255,255,255,0.18); }
         .magnetic-btn { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1); }
         .magnetic-btn:hover { box-shadow: 0 0 48px rgba(255,255,255,0.10), 0 0 16px rgba(255,255,255,0.08); }
         .filter-pill:hover { box-shadow: 0 0 36px rgba(255,255,255,0.08), 0 0 12px rgba(255,255,255,0.05); }
@@ -356,7 +363,7 @@
             <div class="result-number" id="resultNumber">0</div>
             <div class="result-label">qualified meetings booked</div>
             <div class="result-sub">This is what happens when ICP research, data enrichment, technical infrastructure, and personalized outreach come together.</div>
-            <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=pipeline-demo" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: #fff; color: #000; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; margin-top: 40px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1);">
+            <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=pipeline-demo" target="_blank" class="btn-primary" style="margin-top: 40px;">
                 Build Your Engine →
             </a>
         </div>

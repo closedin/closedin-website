@@ -261,10 +261,10 @@
         .journey-sticky { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; clip-path: inset(0); }
         .journey-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(120,119,198,0.08), transparent); }
         .journey-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%); }
-        .journey-progress-line { position: absolute; left: 50%; top: 10%; bottom: 10%; width: 2px; background: rgba(255,255,255,0.04); transform: translateX(-50%); border-radius: 2px; }
-        .journey-progress-fill { position: absolute; top: 0; left: 0; right: 0; background: linear-gradient(180deg, transparent, var(--accent), rgba(99,102,241,0.6)); height: 0%; transition: height 0.1s linear; box-shadow: 0 0 15px var(--accent); border-radius: 2px; }
-        .journey-progress-dot { position: absolute; left: 50%; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 15px var(--accent); transition: top 0.1s linear; }
-        .journey-step-counter { position: absolute; top: 110px; left: 50%; transform: translateX(-50%); font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; background: rgba(120,119,198,0.1); border: 1px solid rgba(120,119,198,0.2); padding: 8px 20px; border-radius: 100px; backdrop-filter: blur(10px); z-index: 5; }
+        .journey-progress-line { position: absolute; left: 50%; top: 170px; bottom: 10%; width: 2px; background: rgba(255,255,255,0.04); transform: translateX(-50%); border-radius: 2px; z-index: 1; }
+        .journey-progress-fill { position: absolute; top: 0; left: 0; right: 0; background: linear-gradient(180deg, transparent, var(--accent), rgba(99,102,241,0.6)); height: 0%; transition: height 0.1s linear; box-shadow: 0 0 15px var(--accent); border-radius: 2px; z-index: 1; }
+        .journey-progress-dot { position: absolute; left: 50%; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 15px var(--accent); transition: top 0.1s linear; z-index: 2; }
+        .journey-step-counter { position: absolute; top: 110px; left: 50%; transform: translateX(-50%); font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; background: rgba(10,10,18,0.92); border: 1px solid rgba(120,119,198,0.35); padding: 8px 20px; border-radius: 100px; backdrop-filter: blur(10px); z-index: 10; box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 4px rgba(5,5,5,0.6); }
         .journey-big-number { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Satoshi', sans-serif; font-size: clamp(250px, 35vw, 400px); font-weight: 900; color: rgba(120,119,198,0.04); z-index: 0; pointer-events: none; line-height: 1; transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
         .journey-content { position: relative; z-index: 2; max-width: 1100px; width: 100%; padding: 0 60px; display: flex; align-items: center; gap: 80px; transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
         .journey-left { flex: 1; transition: opacity 0.4s ease, transform 0.4s ease; }
@@ -1533,7 +1533,7 @@
         <h2>Ready to scale your<br><span class="gradient" style="background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% 200%; animation: gradShift 4s ease-in-out infinite;">outbound?</span></h2>
         <p>Book a free strategy call and discover how we can generate qualified meetings for your business within 2-3 weeks.</p>
         <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=homepage" target="_blank" class="btn-primary magnetic-btn">
-            Book a 30 Minute Call
+            Book a 30 min call
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
     </div>
