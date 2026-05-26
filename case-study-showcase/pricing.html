@@ -131,7 +131,7 @@
         .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse at 50% 30%, black 10%, transparent 60%); -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 10%, transparent 60%); }
         .hero-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 14px; position: relative; z-index: 2; }
         .hero-label::before, .hero-label::after { content: ''; width: 28px; height: 2px; background: var(--accent); border-radius: 2px; }
-        .hero h1 { font-family: 'Satoshi', sans-serif; font-size: clamp(48px, 7vw, 88px); font-weight: 900; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 24px; max-width: 980px; position: relative; z-index: 2; }
+        .hero h1 { font-family: 'Satoshi', sans-serif; font-size: clamp(40px, 7vw, 88px); font-weight: 900; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 24px; max-width: 980px; position: relative; z-index: 2; text-wrap: balance; }
         .hero h1 .gradient { background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% 200%; animation: gradShift 4s ease-in-out infinite; }
         .hero p { font-size: 18px; color: var(--muted); max-width: 620px; line-height: 1.7; margin-bottom: 36px; position: relative; z-index: 2; }
         @keyframes gradShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
@@ -670,7 +670,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
         <div class="sticky-banner-sub">Cold email infrastructure checklist + weekly tactics from 1,000+ live campaigns.</div>
     </div>
     <form class="sticky-banner-form" action="https://closedins-newsletter.beehiiv.com/subscribe" method="GET" target="_blank">
-        <input type="email" name="email" placeholder="you@company.com" required>
+        <input type="email" name="email" placeholder="you@yourcompany.com" required>
         <button type="submit">Get it</button>
     </form>
     <button class="sticky-banner-close" id="stickyBannerClose" aria-label="Close">

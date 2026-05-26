@@ -81,7 +81,7 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --bg: #050505; --card: #0A0A0A; --border: rgba(255,255,255,0.06); --text: #fff; --muted: rgba(255,255,255,0.4); --accent: #7877C6; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: clip; -webkit-font-smoothing: antialiased; }
-        body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.02; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
+        body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 128px; }
 
         /* ═══ PIPELINE JOURNEY ═══ */
         .journey { position: relative; min-height: 500vh; }
