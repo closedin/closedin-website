@@ -66,6 +66,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="vault-premium.css">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --bg: #050505; --card: #0A0A0A; --border: rgba(255,255,255,0.06); --border-hover: rgba(255,255,255,0.12); --text: #fff; --muted: rgba(255,255,255,0.4); --dim: rgba(255,255,255,0.6); --accent: #7877C6; --accent-glow: rgba(120,119,198,0.15); }
@@ -180,6 +181,10 @@
         .footer-col h4 { font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 4px; letter-spacing: -0.01em; }
         .footer-col a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.3s; }
         .footer-col a:hover { color: rgba(120,119,198,0.8); }
+        .footer-badges { display: flex; gap: 24px; align-items: center; justify-content: center; padding: 40px 0; }
+        .footer-badges a { transition: transform 0.3s, opacity 0.3s; opacity: 0.85; }
+        .footer-badges a:hover { transform: translateY(-3px); opacity: 1; }
+        .footer-badges img { height: 80px; object-fit: contain; }
         .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
         .footer-bottom a { color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.3s; }
 
@@ -321,7 +326,7 @@
         <a href="team">Team</a>
         <a href="contact">Contact</a>
     </div>
-    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=playbook" target="_blank" class="nav-cta">Book Meeting</a>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=playbook" target="_blank" class="nav-cta"><span class="pill-text-wrap"><span class="pt-a">Book Meeting</span><span class="pt-b">Book Meeting</span></span></a>
     <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
 
@@ -346,7 +351,7 @@
 
     <form class="signup-form reveal" style="transition-delay: 0.3s;" action="https://closedins-newsletter.beehiiv.com/subscribe" method="GET" target="_blank">
         <input type="email" name="email" placeholder="you@yourcompany.com" required>
-        <button type="submit">Get the playbook</button>
+        <button type="submit"><span class="pill-text-wrap"><span class="pt-a">Get the playbook</span><span class="pt-b">Get the playbook</span></span></button>
     </form>
     <div class="signup-meta reveal" style="transition-delay: 0.45s;">Used by 50+ B2B clients across NL, BE, UK and Europe. ~1 email per week. Unsubscribe in one click.</div>
 
@@ -451,7 +456,7 @@
         <p>Instant PDF download. ~1 email per week with tactics from live campaigns. Unsubscribe in one click.</p>
         <form class="signup-form" action="https://closedins-newsletter.beehiiv.com/subscribe" method="GET" target="_blank">
             <input type="email" name="email" placeholder="you@yourcompany.com" required>
-            <button type="submit">Get the playbook</button>
+            <button type="submit"><span class="pill-text-wrap"><span class="pt-a">Get the playbook</span><span class="pt-b">Get the playbook</span></span></button>
         </form>
     </div>
 </section>
@@ -468,8 +473,12 @@
                     <h4>Navigate</h4>
                     <a href="index">Home</a>
                     <a href="case-studies">Case Studies</a>
+                    <a href="resources">Resources</a>
+                    <a href="blog/">Blog</a>
+                    <a href="pricing">Pricing</a>
                     <a href="team">Team</a>
                     <a href="contact">Contact</a>
+                    <a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a>
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
@@ -488,6 +497,11 @@
                     <a href="outbound-agency-us">Outbound US</a>
                 </div>
             </div>
+        </div>
+        <div class="footer-badges">
+            <a href="https://www.clay.com/experts/partner/closedin" target="_blank"><img src="badge-clay.png" alt="Clay Artisan Solutions Partner 2026"></a>
+            <a href="https://instantly.ai/experts/jurre-groot" target="_blank"><img src="badge-instantly.png" alt="Instantly Certified Expert"></a>
+            <a href="https://www.apollo.io" target="_blank"><img src="badge-apollo.png" alt="Apollo Partner"></a>
         </div>
         <div class="footer-bottom">
             <span>&copy; 2026 closed:in. All rights reserved.</span>

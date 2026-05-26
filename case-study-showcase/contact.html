@@ -41,7 +41,7 @@
         gtag('js', new Date());
         gtag('config', '__GA4_MEASUREMENT_ID__');
     </script>
-    <title>Contact - closed:in</title>
+    <title>Contact | closed:in</title>
     <meta name="description" content="Get in touch with closed:in. Book a discovery call to see if we are a fit for your B2B outbound goals.">
     <link rel="canonical" href="https://www.closedin.io/contact">
     <meta name="robots" content="index, follow">
@@ -96,13 +96,14 @@
     }
     </script>
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Contact - closed:in">
+    <meta property="og:title" content="Contact | closed:in">
     <meta property="og:description" content="Get in touch with closed:in. Book a discovery call to see if we are a fit for your B2B outbound goals.">
     <meta property="og:url" content="https://www.closedin.io/contact">
     <meta property="og:image" content="https://www.closedin.io/closedin-logo.png">
     <meta name="twitter:card" content="summary_large_image">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="vault-premium.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -177,7 +178,7 @@
         .contact-link { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 20px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--dim); font-size: 14px; font-weight: 500; transition: all 0.3s; pointer-events: auto; }
         .contact-link:hover { border-color: rgba(120,119,198,0.25); background: rgba(255,255,255,0.06); color: var(--text); }
         .contact-link svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
-        .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: var(--text); color: #000; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: auto; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: var(--text); color: #000; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: auto; position: relative; }
         .btn-primary:hover { transform: scale(1.06); box-shadow: 0 0 60px rgba(255,255,255,0.15); }
 
         /* Pin marker */
@@ -384,7 +385,7 @@
         <a href="team">Team</a>
         <a href="contact">Contact</a>
     </div>
-    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=contact" target="_blank" class="nav-cta">Book Meeting</a>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=contact" target="_blank" class="nav-cta"><span class="pill-text-wrap"><span class="pt-a">Book Meeting</span><span class="pt-b">Book Meeting</span></span></a>
     <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
     </button>
@@ -436,7 +437,7 @@
                 <a href="mailto:info@closedin.io" class="contact-link"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>info@closedin.io</a>
                 <a href="https://www.linkedin.com/company/closedin" target="_blank" class="contact-link"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
             </div>
-            <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=contact" target="_blank" class="btn-primary">Book a 30 min call →</a>
+            <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=contact" target="_blank" class="btn-primary"><span class="pill-text-wrap"><span class="pt-a">Book a 30 min call →</span><span class="pt-b">Book a 30 min call →</span></span></a>
         </div>
 
         <!-- Scroll hint -->
@@ -504,7 +505,17 @@
                 <p class="footer-tagline">Your B2B Go-To-Market Partner</p>
             </div>
             <div class="footer-links">
-                <div class="footer-col"><h4>Navigate</h4><a href="index">Home</a><a href="case-studies">Case Studies</a><a href="resources">Resources</a><a href="blog/">Blog</a><a href="team">Team</a><a href="contact">Contact</a><a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a></div>
+                <div class="footer-col">
+                    <h4>Navigate</h4>
+                    <a href="index">Home</a>
+                    <a href="case-studies">Case Studies</a>
+                    <a href="resources">Resources</a>
+                    <a href="blog/">Blog</a>
+                    <a href="pricing">Pricing</a>
+                    <a href="team">Team</a>
+                    <a href="contact">Contact</a>
+                    <a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a>
+                </div>
                 <div class="footer-col"><h4>Contact</h4><a href="mailto:info@closedin.io">info@closedin.io</a><a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=contact" target="_blank">Book a Call</a><a href="https://www.linkedin.com/company/closedin" target="_blank">LinkedIn</a><a href="https://maps.google.com/?q=Jodenbreestraat+25,+Amsterdam" target="_blank">Jodenbreestraat 25, Amsterdam</a></div>
                 <div class="footer-col"><h4>Services</h4><a href="playbook">The Playbook (free)</a><a href="cold-email-agency-amsterdam">Cold email NL/EU</a><a href="cold-email-agency-saas">Cold email SaaS</a><a href="clay-agency">Clay agency</a><a href="gtm-engineering-agency">GTM engineering</a><a href="outbound-agency-uk">Outbound UK</a><a href="outbound-agency-us">Outbound US</a></div>
                 <div class="footer-col"><h4>Partners</h4><a href="https://www.clay.com/experts/partner/closedin" target="_blank">Clay Solutions Partner</a><a href="https://instantly.ai/experts/jurre-groot" target="_blank">Instantly Expert</a><a href="https://www.apollo.io" target="_blank">Apollo Partner</a></div>

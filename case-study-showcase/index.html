@@ -41,12 +41,12 @@
         gtag('js', new Date());
         gtag('config', '__GA4_MEASUREMENT_ID__');
     </script>
-    <title>closed:in - Scale Your Outreach Without Scaling Your Team</title>
+    <title>Scale Your Outreach Without Scaling Your Team | closed:in</title>
     <meta name="description" content="closed:in is a GTM engineering agency in Amsterdam. We build outbound campaigns for B2B service companies that want more sales calls within 2-3 weeks.">
     <link rel="canonical" href="https://www.closedin.io/">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="closed:in - Scale Your Outreach Without Scaling Your Team">
+    <meta property="og:title" content="Scale Your Outreach Without Scaling Your Team | closed:in">
     <meta property="og:description" content="closed:in is a GTM engineering agency in Amsterdam. We build outbound campaigns for B2B service companies that want more sales calls within 2-3 weeks.">
     <meta property="og:url" content="https://www.closedin.io/">
     <meta property="og:image" content="https://www.closedin.io/closedin-logo.png">
@@ -55,6 +55,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="vault-premium.css">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -98,7 +99,7 @@
         .hero h1 .gradient { background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% 200%; animation: gradShift 4s ease-in-out infinite; }
         .hero p { font-size: 18px; color: var(--muted); max-width: 520px; line-height: 1.7; margin-bottom: 36px; }
         .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-        .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+        .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: var(--text); color: var(--bg); font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; }
         .btn-primary:hover { transform: scale(1.06); box-shadow: 0 0 60px rgba(255,255,255,0.15); }
         .btn-secondary { display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px; background: transparent; color: var(--text); font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; border-radius: 100px; text-decoration: none; border: 1px solid var(--border); transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
         .btn-secondary:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.03); }
@@ -833,7 +834,7 @@
         <a href="team">Team</a>
         <a href="contact">Contact</a>
     </div>
-    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=homepage" target="_blank" class="nav-cta">Book Meeting</a>
+    <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=homepage" target="_blank" class="nav-cta"><span class="pill-text-wrap"><span class="pt-a">Book Meeting</span><span class="pt-b">Book Meeting</span></span></a>
     <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
     </button>
@@ -887,7 +888,7 @@
     <!-- Buttons under subtitle -->
     <div class="hero-buttons reveal">
         <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=homepage" target="_blank" class="btn-primary magnetic-btn">
-            Get Started Now
+            <span class="pill-text-wrap"><span class="pt-a">Get Started Now</span><span class="pt-b">Get Started Now</span></span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a href="playbook" class="btn-secondary">Get the playbook</a>
@@ -982,7 +983,7 @@
     </div>
 
     <div class="toolverse-cta reveal" style="transition-delay:0.25s;">
-        <a href="resources/gtm-stack" class="toolverse-btn-primary">See the full stack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="resources/gtm-stack" class="btn-primary-sm">See the full stack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a href="resources" class="toolverse-btn-ghost">Or the free resource vault</a>
     </div>
 </section>
@@ -1031,8 +1032,8 @@
 .tv-hover-card-cat { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.03em; }
 
 .toolverse-cta { text-align: center; margin-top: 30px; display: flex; flex-direction: column; gap: 14px; align-items: center; position: relative; z-index: 5; }
-.toolverse-btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; background: #fff; color: #000; font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
-.toolverse-btn-primary:hover { transform: scale(1.04); box-shadow: 0 0 40px rgba(255,255,255,0.2); }
+.btn-primary-sm { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; background: #fff; color: #000; font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+.btn-primary-sm:hover { transform: scale(1.04); box-shadow: 0 0 40px rgba(255,255,255,0.2); }
 .toolverse-btn-ghost { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
 .toolverse-btn-ghost:hover { color: #fff; }
 
@@ -1308,7 +1309,7 @@
             <div class="result-number" id="resultNumber">0</div>
             <div class="result-label">qualified meetings booked</div>
             <div class="result-sub">This is what happens when ICP research, data enrichment, technical infrastructure, and personalized outreach come together.</div>
-            <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=homepage" target="_blank" class="btn-primary" style="margin-top: 40px;">Build Your Engine →</a>
+            <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=homepage" target="_blank" class="btn-primary" style="margin-top: 40px;"><span class="pill-text-wrap"><span class="pt-a">Build Your Engine →</span><span class="pt-b">Build Your Engine →</span></span></a>
         </div>
 
         <div class="scroll-hint-journey" id="scrollHint">
@@ -1533,7 +1534,7 @@
         <h2>Ready to scale your<br><span class="gradient" style="background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% 200%; animation: gradShift 4s ease-in-out infinite;">outbound?</span></h2>
         <p>Book a free strategy call and discover how we can generate qualified meetings for your business within 2-3 weeks.</p>
         <a href="https://closedin.neetocal.com/discovery-call?utm_source=closedin.io&utm_medium=cta&utm_content=homepage" target="_blank" class="btn-primary magnetic-btn">
-            Book a 30 min call
+            <span class="pill-text-wrap"><span class="pt-a">Book a 30 min call</span><span class="pt-b">Book a 30 min call</span></span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
     </div>
@@ -1568,9 +1569,12 @@
                     <h4>Navigate</h4>
                     <a href="index">Home</a>
                     <a href="case-studies">Case Studies</a>
+                    <a href="resources">Resources</a>
+                    <a href="blog/">Blog</a>
+                    <a href="pricing">Pricing</a>
                     <a href="team">Team</a>
-        <a href="contact">Contact</a>
-        <a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a>
+                    <a href="contact">Contact</a>
+                    <a href="https://follow-up-dashboard-delta.vercel.app" target="_blank" rel="noopener">Partner login</a>
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>

@@ -35,12 +35,13 @@
 }
 
 /* ---------- Rotating conic-gradient ring on hover (mask trick) ----------
- * Re-used by .btn-primary, .nav-cta, .gate-form button.
+ * Re-used by .btn-primary, .nav-cta, .gate-form button, .signup-form button.
  * Mask compositing isolates the gradient to a thin ring around the button.
  */
 .btn-primary,
 .nav-cta,
-.gate-form button {
+.gate-form button,
+.signup-form button {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -48,7 +49,8 @@
 
 .btn-primary::before,
 .nav-cta::before,
-.gate-form button::before {
+.gate-form button::before,
+.signup-form button::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -76,21 +78,26 @@
 
 .btn-primary:hover::before,
 .nav-cta:hover::before,
-.gate-form button:hover::before {
+.gate-form button:hover::before,
+.signup-form button:hover::before {
   opacity: 1;
 }
 
 /* Letter slide on the same buttons */
 .btn-primary:hover .pill-text-wrap > span,
 .nav-cta:hover .pill-text-wrap > span,
-.gate-form button:hover .pill-text-wrap > span {
+.gate-form button:hover .pill-text-wrap > span,
+.signup-form button:hover .pill-text-wrap > span,
+.magnetic-btn:hover .pill-text-wrap > span {
   transform: translateY(-100%);
 }
 
 /* The button text shouldn't lose its baseline when wrapped in .pill-text-wrap */
 .btn-primary .pill-text-wrap,
 .nav-cta .pill-text-wrap,
-.gate-form button .pill-text-wrap {
+.gate-form button .pill-text-wrap,
+.signup-form button .pill-text-wrap,
+.magnetic-btn .pill-text-wrap {
   height: 1.2em;
   line-height: 1.2em;
 }
