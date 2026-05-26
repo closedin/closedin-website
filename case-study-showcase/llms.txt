@@ -83,7 +83,7 @@ closed:in operates a public resource vault at https://www.closedin.io/resources.
 - [12-Point ICP Scorecard](https://www.closedin.io/resources/icp-scorecard): the 12 signals closed:in scores every B2B account against before adding to a campaign. Firmographic, technographic, intent, fit. CSV template.
 - [50-Question Pre-Launch Audit](https://www.closedin.io/resources/pre-launch-audit): the 50 questions closed:in answers before launching outbound for any client. ICP, infrastructure, copy, sequencing, reply handling, reporting.
 - [Claude Code Setup for Sales Teams](https://www.closedin.io/resources/claude-code-sales): the exact Claude Code agents, skills, slash commands and CLAUDE.md structure closed:in uses internally for AI-augmented sales operations.
-- [n8n Workflow Vault](https://www.closedin.io/resources/n8n-workflows): 10 hand-picked n8n templates for B2B outbound and sales automation, curated from Nick Saraev and Nate Herk with closed:in commentary per pick. Links straight to the source.
+- [n8n Workflow Vault](https://www.closedin.io/resources/n8n-workflows): 10 hand-picked n8n templates for B2B outbound and sales automation, curated from leading n8n creators with closed:in commentary per pick. Links straight to the source.
 
 ## Free interactive tools
 
