@@ -178,6 +178,9 @@
             100% { transform: translateY(-20vh) scale(1); opacity: 0; }
         }
         .hero-badge {
+            animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+        }
+        .hero-badge-legacy {
             display: inline-flex; align-items: center; gap: 10px;
             padding: 10px 24px;
             background: rgba(255,255,255,0.03);
@@ -185,7 +188,6 @@
             border-radius: 100px;
             font-size: 13px; font-weight: 500; color: var(--muted);
             backdrop-filter: blur(10px);
-            animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.2s both;
         }
         .hero-badge .dot {
             width: 8px; height: 8px; border-radius: 50%;
@@ -229,8 +231,8 @@
             animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 1s both;
         }
         .hero-scroll-indicator {
-            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            margin-top: 88px;
+            display: flex; flex-direction: column; align-items: center; gap: 12px;
             animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 1.2s both;
         }
         .hero-scroll-indicator span { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
@@ -651,9 +653,9 @@
     <div class="hero-grid"></div>
     <div class="hero-particles" id="particles"></div>
 
-    <div class="hero-badge">
-        <span class="dot"></span>
-        Real results from real campaigns
+    <div class="hero-badge vault-pill">
+        <span class="vault-pill-dot"></span>
+        <span>Real results from real campaigns</span>
     </div>
 
     <h1>
