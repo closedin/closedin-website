@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 100" role="img" aria-label="ZO! Utrecht Business">
+  <style>
+    .wm { font-family: 'Satoshi', 'Inter', system-ui, sans-serif; font-weight: 900; letter-spacing: -0.06em; font-style: italic; }
+  </style>
+  <!-- ZO! wordmark, italic slanted in original brand -->
+  <text class="wm" x="6" y="76" font-size="86" fill="#ffffff">ZO</text>
+  <!-- exclamation stem -->
+  <rect x="128" y="22" width="18" height="42" fill="#ffffff" transform="skewX(-12 0 0)"/>
+  <!-- exclamation dot, red accent -->
+  <circle cx="132" cy="78" r="9" fill="#E63946"/>
+</svg>
