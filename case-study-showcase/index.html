@@ -155,7 +155,7 @@
         .client-card:hover img { opacity: 1; }
         .client-card span { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); transition: color 0.3s; }
         .client-card:hover span { color: var(--accent); }
-        .client-logos-grid { max-width: 1200px; margin: 32px auto 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+        .client-logos-grid { max-width: 1280px; margin: 32px auto 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 16px; }
 
         /* Case Studies section */
         .cases-section { max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
@@ -1157,33 +1157,41 @@
     </div>
 </div>
 
-<!-- OUR CLIENTS BOOKED MEETINGS WITH -->
-<section style="padding: 60px 40px 20px; text-align: center;">
-    <h4 class="reveal" style="font-family: 'Satoshi', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 32px; color: var(--dim);">Our clients booked meetings with</h4>
-    <div class="clients-marquee">
-        <div class="clients-track" id="meetingsMarquee">
-            <img src="logo-rabobank.png" alt="Rabobank" class="meeting-logo">
-            <img src="logo-bnp-white.png" alt="BNP Paribas" class="meeting-logo">
-            <img src="logo-amex.png" alt="American Express" class="meeting-logo">
-            <img src="logo-1.png" alt="Client" class="meeting-logo">
-            <img src="logo-2.png" alt="Client" class="meeting-logo">
-            <img src="logo-3.png" alt="Client" class="meeting-logo">
-            <img src="logo-4.png" alt="Client" class="meeting-logo">
-            <img src="logo-5.png" alt="Client" class="meeting-logo">
-            <img src="logo-6.png" alt="Client" class="meeting-logo">
-            <img src="logo-7.png" alt="Client" class="meeting-logo">
-            <img src="logo-8.png" alt="Client" class="meeting-logo">
-            <img src="logo-9.png" alt="Client" class="meeting-logo">
-            <img src="logo-10.png" alt="Client" class="meeting-logo">
-        </div>
-    </div>
-</section>
-
-<!-- B2B COMPANIES THAT TRUST CLOSED:IN (clickable logos → case studies) -->
+<!-- TRUSTED BY 50+ B2B COMPANIES (clickable logos → case studies, + ASIF backer) -->
 <section class="clients-section" style="padding: 120px 40px 120px;">
     <h3 class="reveal">Trusted by 50+ B2B companies</h3>
     <p class="reveal" style="font-size: 15px; color: var(--muted); max-width: 520px; margin: 16px auto 40px; line-height: 1.6; text-transform: none; letter-spacing: 0; font-weight: 400;">Service businesses, SaaS, recruitment, fintech. The same outbound engine, tuned per ICP.</p>
-    <div class="reveal" style="text-align: center;">
+    <div class="reveal client-logos-grid">
+        <a href="case-studies" class="client-card">
+            <img src="tsc-logo.png" alt="Thomas Scott &amp; Co" style="filter: brightness(10);">
+            <span>Thomas Scott &amp; Co</span>
+        </a>
+        <a href="case-studies" class="client-card">
+            <img src="zano-logo.svg" alt="Zano" style="filter: brightness(10);">
+            <span>Zano</span>
+        </a>
+        <a href="case-study-jamezz" class="client-card">
+            <img src="https://framerusercontent.com/images/YY9He5jrWx87I4keGv6qFwL0.png" alt="Jamezz">
+            <span>Jamezz</span>
+        </a>
+        <a href="case-study-endresz" class="client-card">
+            <img src="https://framerusercontent.com/images/lZMSlkgqqiqVAueZvqtJWBo.png" alt="Endresz">
+            <span>Endresz</span>
+        </a>
+        <a href="case-studies" class="client-card">
+            <img src="wetaxus-logo.png" alt="Wetaxus">
+            <span>Wetaxus</span>
+        </a>
+        <a href="case-studies" class="client-card">
+            <img src="rewize-logo.png" alt="Rewize">
+            <span>Rewize</span>
+        </a>
+        <a href="https://asif.ventures/" target="_blank" rel="noopener" class="client-card">
+            <img src="asif-logo.png" alt="ASIF Ventures">
+            <span>ASIF Ventures</span>
+        </a>
+    </div>
+    <div class="reveal" style="text-align: center; margin-top: 40px;">
         <a href="case-studies" class="btn-secondary" style="font-size: 14px; padding: 14px 32px;">View All Case Studies →</a>
     </div>
 </section>
