@@ -970,14 +970,14 @@
         <div class="tv-ring tv-ring-2"></div>
 
         <!-- Inner ring: 8 core tools -->
-        <div class="tv-tool tv-inner" data-name="Clay" data-cat="Orchestration"><img src="wall/clay.png" alt="Clay" loading="lazy"></div>
+        <div class="tv-tool tv-inner tv-fit" data-name="Clay" data-cat="Orchestration"><img src="wall/clay.png" alt="Clay" loading="lazy"></div>
         <div class="tv-tool tv-inner" data-name="Instantly" data-cat="Email sending"><img src="logos/instantly.png" alt="Instantly" loading="lazy"></div>
         <div class="tv-tool tv-inner" data-name="Apollo" data-cat="Sourcing"><img src="logos/apollo.png" alt="Apollo" loading="lazy"></div>
         <div class="tv-tool tv-inner" data-name="Close" data-cat="CRM"><img src="logos/close.png" alt="Close" loading="lazy"></div>
         <div class="tv-tool tv-inner" data-name="HubSpot" data-cat="CRM &amp; marketing"><img src="wall/hubspot.png" alt="HubSpot" loading="lazy"></div>
-        <div class="tv-tool tv-inner" data-name="Claude" data-cat="AI agents"><img src="wall/claude.png" alt="Claude" loading="lazy"></div>
+        <div class="tv-tool tv-inner tv-fit" data-name="Claude" data-cat="AI agents"><img src="wall/claude.png" alt="Claude" loading="lazy"></div>
         <div class="tv-tool tv-inner" data-name="n8n" data-cat="Workflow automation"><img src="logos/n8n.png" alt="n8n" loading="lazy"></div>
-        <div class="tv-tool tv-inner" data-name="Notion" data-cat="Knowledge base"><img src="wall/notion.png" alt="Notion" loading="lazy"></div>
+        <div class="tv-tool tv-inner tv-fit" data-name="Notion" data-cat="Knowledge base"><img src="wall/notion.png" alt="Notion" loading="lazy"></div>
 
         <!-- Outer ring: 12 specialty tools -->
         <div class="tv-tool tv-outer" data-name="Findymail" data-cat="Email finding"><img src="logos/findymail.png" alt="Findymail" loading="lazy"></div>
@@ -986,7 +986,7 @@
         <div class="tv-tool tv-outer" data-name="HeyReach" data-cat="LinkedIn outreach"><img src="logos/heyreach.png" alt="HeyReach" loading="lazy"></div>
         <div class="tv-tool tv-outer" data-name="Lemlist" data-cat="Email sending"><img src="logos/lemlist.png" alt="Lemlist" loading="lazy"></div>
         <div class="tv-tool tv-outer" data-name="Crossbeam" data-cat="Partner data"><img src="logos/crossbeam.png" alt="Crossbeam" loading="lazy"></div>
-        <div class="tv-tool tv-outer" data-name="Apify" data-cat="Web scraping"><img src="logos/apify.png" alt="Apify" loading="lazy"></div>
+        <div class="tv-tool tv-outer tv-fit" data-name="Apify" data-cat="Web scraping"><img src="logos/apify.png" alt="Apify" loading="lazy"></div>
         <div class="tv-tool tv-outer" data-name="Fireflies" data-cat="Meeting AI"><img src="logos/fireflies.png" alt="Fireflies" loading="lazy"></div>
         <div class="tv-tool tv-outer" data-name="ChatGPT" data-cat="AI assistant"><img src="logos/chatgpt.png" alt="ChatGPT" loading="lazy"></div>
         <div class="tv-tool tv-outer" data-name="Perplexity" data-cat="AI research"><img src="logos/perplexity.png" alt="Perplexity" loading="lazy"></div>
@@ -1039,6 +1039,7 @@
   width: 100%; height: 100%; object-fit: cover; display: block;
   transform: scale(1.08); transform-origin: center;
 }
+.tv-tool.tv-fit img { object-fit: contain; transform: scale(0.72); }
 .tv-tool:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 32px rgba(120,119,198,0.55), 0 0 0 3px rgba(10,10,12,0.95); filter: brightness(1.05); z-index: 3; }
 .tv-tool.tv-hovered { z-index: 5; }
 
