@@ -173,10 +173,10 @@
         .logo-cell:hover img[src*="-d.png"], .logo-cell:hover img[src*="notion"], .logo-cell:hover img[src*="mistertafel"] { filter: brightness(0) invert(1); }
         .logo-name { font-size: 9px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.32); transition: color 0.3s; }
         a.logo-cell:hover .logo-name { color: rgba(255,255,255,0.72); }
-        .logo-cell .cs-pill { font-size: 8px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); background: rgba(120,119,198,0.12); border: 1px solid rgba(120,119,198,0.3); padding: 2px 9px; border-radius: 100px; transition: all 0.3s; }
-        a.logo-cell:hover .cs-pill { background: rgba(120,119,198,0.22); color: #fff; }
-        .logo-cell .partner-pill { color: #5fcfb0; background: rgba(52,211,153,0.10); border-color: rgba(52,211,153,0.32); }
-        a.logo-cell:hover .partner-pill { background: rgba(52,211,153,0.20); color: #fff; }
+        .logo-cell .cs-pill { position: absolute; bottom: 7px; left: 8px; z-index: 4; font-size: 7px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(120,119,198,0.9); border: 1px solid rgba(120,119,198,0.9); padding: 2px 7px; border-radius: 100px; transition: all 0.3s; box-shadow: 0 0 12px rgba(120,119,198,0.35); }
+        a.logo-cell:hover .cs-pill { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 18px rgba(120,119,198,0.55); }
+        .logo-cell .partner-pill { color: rgba(255,255,255,0.42); background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.14); box-shadow: none; }
+        a.logo-cell:hover .partner-pill { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); }
         .cs-pop { position: absolute; bottom: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); width: 282px; padding: 15px 18px; background: rgba(12,12,16,0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 60; text-align: left; }
         .cs-pop::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 7px solid transparent; border-top-color: rgba(12,12,16,0.98); }
         .logo-cell:hover .cs-pop { opacity: 1; transform: translateX(-50%) translateY(0); }
