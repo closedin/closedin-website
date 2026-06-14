@@ -169,12 +169,12 @@
         .logo-cell { position: relative; flex-shrink: 0; width: 152px; height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; background: rgba(255,255,255,0.025); border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.35s, background 0.35s, transform 0.35s, box-shadow 0.35s; }
         a.logo-cell:hover { border-color: rgba(120,119,198,0.35); background: rgba(120,119,198,0.05); transform: translateY(-2px); box-shadow: 0 0 28px rgba(120,119,198,0.16); }
         .logo-cell img { height: 23px; max-width: 104px; object-fit: contain; opacity: 0.4; filter: brightness(0) invert(1); transition: opacity 0.3s, filter 0.3s; }
-        .logo-cell:hover img { opacity: 1; filter: none; }
-        .logo-cell:hover img[src*="-d.png"], .logo-cell:hover img[src*="notion"], .logo-cell:hover img[src*="mistertafel"] { filter: brightness(0) invert(1); }
+        .logo-cell:hover img { opacity: 1; filter: drop-shadow(0 0 7px rgba(255,255,255,0.85)) drop-shadow(0 0 2px rgba(255,255,255,0.9)); }
+        .logo-cell:hover img[src*="-d.png"]:not([src*="apollo"]):not([src*="instantly"]), .logo-cell:hover img[src*="notion"], .logo-cell:hover img[src*="mistertafel"] { filter: brightness(0) invert(1); }
         .logo-name { font-size: 9px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.32); transition: color 0.3s; }
         a.logo-cell:hover .logo-name { color: rgba(255,255,255,0.72); }
-        .logo-cell .cs-pill { position: absolute; bottom: 7px; left: 8px; z-index: 4; font-size: 7px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(120,119,198,0.9); border: 1px solid rgba(120,119,198,0.9); padding: 2px 7px; border-radius: 100px; transition: all 0.3s; box-shadow: 0 0 12px rgba(120,119,198,0.35); }
-        a.logo-cell:hover .cs-pill { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 18px rgba(120,119,198,0.55); }
+        .logo-cell .cs-pill { position: absolute; bottom: 7px; left: 8px; z-index: 4; font-size: 7px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: #3b82f6; border: 1px solid #3b82f6; padding: 2px 7px; border-radius: 100px; transition: all 0.3s; box-shadow: 0 0 12px rgba(59,130,246,0.45); }
+        a.logo-cell:hover .cs-pill { background: #5a98ff; border-color: #5a98ff; box-shadow: 0 0 18px rgba(59,130,246,0.6); }
         .logo-cell .partner-pill { color: rgba(255,255,255,0.42); background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.14); box-shadow: none; }
         a.logo-cell:hover .partner-pill { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); }
         .cs-pop { position: absolute; bottom: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); width: 282px; padding: 15px 18px; background: rgba(12,12,16,0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 60; text-align: left; }
