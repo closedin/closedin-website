@@ -157,6 +157,32 @@
         .client-card:hover span { color: var(--accent); }
         .client-logos-grid { max-width: 1280px; margin: 32px auto 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 16px; }
 
+        /* Logo wall (dual marquee with case-study pills) */
+        .logo-wall { position: relative; max-width: 1280px; margin: 32px auto 0; padding-top: 8px; display: flex; flex-direction: column; gap: 14px; overflow-x: clip; overflow-y: visible; }
+        .logo-wall::before { content: ''; position: absolute; inset: -24px -4%; background: radial-gradient(ellipse 55% 72% at 50% 50%, rgba(120,119,198,0.13), transparent 72%); pointer-events: none; z-index: 0; }
+        .logo-wall::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 3; background: linear-gradient(90deg, var(--bg), transparent 5%, transparent 95%, var(--bg)); }
+        .logo-track { position: relative; z-index: 1; display: flex; gap: 14px; width: max-content; }
+        .logo-track.lt-left { animation: marquee 70s linear infinite; }
+        .logo-track.lt-right { animation: marqueeReverse 70s linear infinite; }
+        .logo-wall:hover .logo-track { animation-play-state: paused; }
+        @keyframes marqueeReverse { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        .logo-cell { position: relative; flex-shrink: 0; width: 152px; height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; background: rgba(255,255,255,0.025); border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.35s, background 0.35s, transform 0.35s, box-shadow 0.35s; }
+        a.logo-cell:hover { border-color: rgba(120,119,198,0.35); background: rgba(120,119,198,0.05); transform: translateY(-2px); box-shadow: 0 0 28px rgba(120,119,198,0.16); }
+        .logo-cell img { height: 23px; max-width: 104px; object-fit: contain; opacity: 0.4; filter: brightness(0) invert(1); transition: opacity 0.3s, filter 0.3s; }
+        .logo-cell:hover img { opacity: 1; filter: none; }
+        .logo-cell:hover img[src*="-d.png"], .logo-cell:hover img[src*="notion"], .logo-cell:hover img[src*="mistertafel"] { filter: brightness(0) invert(1); }
+        .logo-name { font-size: 9px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.32); transition: color 0.3s; }
+        a.logo-cell:hover .logo-name { color: rgba(255,255,255,0.72); }
+        .logo-cell .cs-pill { font-size: 8px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); background: rgba(120,119,198,0.12); border: 1px solid rgba(120,119,198,0.3); padding: 2px 9px; border-radius: 100px; transition: all 0.3s; }
+        a.logo-cell:hover .cs-pill { background: rgba(120,119,198,0.22); color: #fff; }
+        .cs-pop { position: absolute; bottom: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); width: 282px; padding: 15px 18px; background: rgba(12,12,16,0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 60; text-align: left; }
+        .cs-pop::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 7px solid transparent; border-top-color: rgba(12,12,16,0.98); }
+        .logo-cell:hover .cs-pop { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .cs-pop-title { font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 700; color: #fff; line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 8px; }
+        .cs-pop-stats { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+        .cs-pop-cta { font-size: 11px; font-weight: 700; color: var(--accent); margin-top: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+        @media (max-width: 768px) { .logo-cell { width: 128px; height: 90px; } .logo-cell img { height: 20px; max-width: 88px; } .cs-pop { display: none; } }
+
         /* Case Studies section */
         .cases-section { max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
         .section-header { margin-bottom: 60px; }
@@ -588,6 +614,7 @@
             "@type": "PostalAddress",
             "streetAddress": "Jodenbreestraat 25",
             "addressLocality": "Amsterdam",
+            "postalCode": "1011 NH",
             "addressCountry": "NL"
           },
           "areaServed": [
@@ -627,12 +654,13 @@
           "name": "closed:in GTM Engineering Agency",
           "image": "https://www.closedin.io/closedin-logo.png",
           "url": "https://www.closedin.io/",
-          "telephone": "",
+          "telephone": "+31 6 28741200",
           "priceRange": "$$$",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Jodenbreestraat 25",
             "addressLocality": "Amsterdam",
+            "postalCode": "1011 NH",
             "addressCountry": "NL"
           },
           "areaServed": ["NL", "BE", "GB", "DE", "FR"],
@@ -940,14 +968,14 @@
         <div class="tv-ring tv-ring-2"></div>
 
         <!-- Inner ring: 8 core tools -->
-        <div class="tv-tool tv-inner" data-name="Clay" data-cat="Orchestration"><img src="logos/clay.png" alt="Clay" loading="lazy"></div>
+        <div class="tv-tool tv-inner" data-name="Clay" data-cat="Orchestration"><img src="wall/clay.png" alt="Clay" loading="lazy"></div>
         <div class="tv-tool tv-inner" data-name="Instantly" data-cat="Email sending"><img src="logos/instantly.png" alt="Instantly" loading="lazy"></div>
         <div class="tv-tool tv-inner" data-name="Apollo" data-cat="Sourcing"><img src="logos/apollo.png" alt="Apollo" loading="lazy"></div>
         <div class="tv-tool tv-inner" data-name="Close" data-cat="CRM"><img src="logos/close.png" alt="Close" loading="lazy"></div>
-        <div class="tv-tool tv-inner" data-name="HubSpot" data-cat="CRM &amp; marketing"><img src="logos/hubspot.png" alt="HubSpot" loading="lazy"></div>
-        <div class="tv-tool tv-inner" data-name="Claude" data-cat="AI agents"><img src="logos/claude.png" alt="Claude" loading="lazy"></div>
+        <div class="tv-tool tv-inner" data-name="HubSpot" data-cat="CRM &amp; marketing"><img src="wall/hubspot.png" alt="HubSpot" loading="lazy"></div>
+        <div class="tv-tool tv-inner" data-name="Claude" data-cat="AI agents"><img src="wall/claude.png" alt="Claude" loading="lazy"></div>
         <div class="tv-tool tv-inner" data-name="n8n" data-cat="Workflow automation"><img src="logos/n8n.png" alt="n8n" loading="lazy"></div>
-        <div class="tv-tool tv-inner" data-name="Notion" data-cat="Knowledge base"><img src="logos/notion.png" alt="Notion" loading="lazy"></div>
+        <div class="tv-tool tv-inner" data-name="Notion" data-cat="Knowledge base"><img src="wall/notion.png" alt="Notion" loading="lazy"></div>
 
         <!-- Outer ring: 12 specialty tools -->
         <div class="tv-tool tv-outer" data-name="Findymail" data-cat="Email finding"><img src="logos/findymail.png" alt="Findymail" loading="lazy"></div>
@@ -1166,36 +1194,43 @@
 <section class="clients-section" style="padding: 120px 40px 120px;">
     <h3 class="reveal">Trusted by 50+ B2B companies</h3>
     <p class="reveal" style="font-size: 15px; color: var(--muted); max-width: 520px; margin: 16px auto 40px; line-height: 1.6; text-transform: none; letter-spacing: 0; font-weight: 400;">Service businesses, SaaS, recruitment, fintech. The same outbound engine, tuned per ICP.</p>
-    <div class="reveal client-logos-grid">
-        <a href="case-studies" class="client-card">
-            <img src="tsc-logo.png" alt="Thomas Scott &amp; Co" style="filter: brightness(10);">
-            <span>Thomas Scott &amp; Co</span>
-        </a>
-        <a href="case-studies" class="client-card">
-            <img src="zano-logo.svg" alt="Zano" style="filter: brightness(10);">
-            <span>Zano</span>
-        </a>
-        <a href="case-study-jamezz" class="client-card">
-            <img src="https://framerusercontent.com/images/YY9He5jrWx87I4keGv6qFwL0.png" alt="Jamezz">
-            <span>Jamezz</span>
-        </a>
-        <a href="case-study-endresz" class="client-card">
-            <img src="https://framerusercontent.com/images/lZMSlkgqqiqVAueZvqtJWBo.png" alt="Endresz">
-            <span>Endresz</span>
-        </a>
-        <a href="case-studies" class="client-card">
-            <img src="wetaxus-logo.png" alt="Wetaxus">
-            <span>Wetaxus</span>
-        </a>
-        <a href="case-studies" class="client-card">
-            <img src="rewize-logo.png" alt="Rewize">
-            <span>Rewize</span>
-        </a>
-        <a href="https://asif.ventures/" target="_blank" rel="noopener" class="client-card">
-            <img src="asif-logo.png" alt="ASIF Ventures">
-            <span>ASIF Ventures</span>
-        </a>
+    <div class="logo-wall reveal">
+        <div class="logo-track lt-left">
+            <a class="logo-cell" href="case-study-gen-zero"><img src="wall/gen-zero-d.png" alt="Gen-Zero"><span class="logo-name">Gen-Zero</span><span class="cs-pill">Case Study</span><div class="cs-pop"><div class="cs-pop-title">How closed:in turned a saturated market into 142 opportunities</div><div class="cs-pop-stats">We built Gen-Zero's entire NL prospecting engine: KVK-anchored data, signal-based segmentation and Instantly infrastructure. 27,455 businesses contacted, investment recouped in under 2 months.</div><div class="cs-pop-cta">Read case study →</div></div></a>
+            <div class="logo-cell"><img src="wall/clay.png" alt="Clay"><span class="logo-name">Clay</span></div>
+            <a class="logo-cell" href="case-study-verzendbazen"><img src="wall/verzendbazen-d.png" alt="Verzendbazen"><span class="logo-name">Verzendbazen</span><span class="cs-pill">Case Study</span><div class="cs-pop"><div class="cs-pop-title">How closed:in delivered 78 opportunities at a 13.9% reply rate</div><div class="cs-pop-stats">A targeted outbound system that produced €77,951 in pipeline in 8 weeks, double the industry reply rate. They had to hire to keep up with demand.</div><div class="cs-pop-cta">Read case study →</div></div></a>
+            <div class="logo-cell"><img src="logos/salesforce.png" alt="Salesforce"><span class="logo-name">Salesforce</span></div>
+            <a class="logo-cell" href="case-study-jamezz"><img src="wall/jamezz-d.png" alt="Jamezz"><span class="logo-name">Jamezz</span><span class="cs-pill">Case Study</span><div class="cs-pop"><div class="cs-pop-title">How closed:in reached an unreachable ICP for Jamezz</div><div class="cs-pop-stats">We cracked a hard-to-find hospitality ICP and generated 81 qualified leads in 60 days from prospects most databases miss.</div><div class="cs-pop-cta">Read case study →</div></div></a>
+            <div class="logo-cell"><img src="wall/qwilr.png" alt="Qwilr"><span class="logo-name">Qwilr</span></div>
+            <a class="logo-cell" href="case-study-endresz"><img src="wall/endresz-d.png" alt="Endresz"><span class="logo-name">Endresz</span><span class="cs-pill">Case Study</span><div class="cs-pop"><div class="cs-pop-title">How closed:in opened 4 markets for Endresz</div><div class="cs-pop-stats">A multi-market outbound rollout across NL, France, Poland and London that generated 247 boutique conversations and $128K+ in pipeline.</div><div class="cs-pop-cta">Read case study →</div></div></a>
+            <div class="logo-cell"><img src="wall/hubspot.png" alt="HubSpot"><span class="logo-name">HubSpot</span></div>
+            <a class="logo-cell" href="case-study-mistertafel"><img src="wall/mistertafel.png" alt="Mistertafel"><span class="logo-name">Mistertafel</span><span class="cs-pill">Case Study</span><div class="cs-pop"><div class="cs-pop-title">How closed:in took Mistertafel from zero B2B to 96 opportunities</div><div class="cs-pop-stats">A B2C founder with no B2B experience. We built the outbound engine from scratch: 96 retail opportunities from 900 contacts in under 30 days, 35%+ reply rate.</div><div class="cs-pop-cta">Read case study →</div></div></a>
+            <div class="logo-cell"><img src="wall/notion.png" alt="Notion"><span class="logo-name">Notion</span></div>
+            <div class="logo-cell"><img src="wall/brandsom.png" alt="Brandsom"><span class="logo-name">Brandsom</span></div>
+            <div class="logo-cell"><img src="wall/agile.png" alt="Agile Professionals"><span class="logo-name">Agile Professionals</span></div>
+            <div class="logo-cell"><img src="wall/atelierld.png" alt="Atelier LD"><span class="logo-name">Atelier LD</span></div>
+            <div class="logo-cell"><img src="wall/emptynest.png" alt="Empty Nest"><span class="logo-name">Empty Nest</span></div>
+        </div>
+        <div class="logo-track lt-right">
+            <div class="logo-cell"><img src="wall/tsc-d.png" alt="Thomas Scott &amp; Co"><span class="logo-name">Thomas Scott &amp; Co</span></div>
+            <div class="logo-cell"><img src="logos/close.png" alt="Close"><span class="logo-name">Close</span></div>
+            <div class="logo-cell"><img src="zano-logo.svg" alt="Zano"><span class="logo-name">Zano</span></div>
+            <div class="logo-cell"><img src="logos/fireflies.png" alt="Fireflies"><span class="logo-name">Fireflies</span></div>
+            <div class="logo-cell"><img src="wall/wetaxus-d.png" alt="Wetaxus"><span class="logo-name">Wetaxus</span></div>
+            <div class="logo-cell"><img src="wall/trigify.png" alt="Trigify"><span class="logo-name">Trigify</span></div>
+            <div class="logo-cell"><img src="wall/rewize-d.png" alt="Rewize"><span class="logo-name">Rewize</span></div>
+            <div class="logo-cell"><img src="wall/lavender-d.png" alt="Lavender"><span class="logo-name">Lavender</span></div>
+            <div class="logo-cell"><img src="wall/claude.png" alt="Claude"><span class="logo-name">Claude</span></div>
+            <div class="logo-cell"><img src="wall/datagma-d.png" alt="Datagma"><span class="logo-name">Datagma</span></div>
+            <a class="logo-cell" href="https://asif.ventures/" target="_blank" rel="noopener"><img src="wall/asif-d.png" alt="ASIF Ventures"><span class="logo-name">ASIF Ventures</span></a>
+            <div class="logo-cell"><img src="wall/deslimmedoos-d.png" alt="De Slimme Doos"><span class="logo-name">De Slimme Doos</span></div>
+            <div class="logo-cell"><img src="wall/redfox-d.png" alt="Red Fox"><span class="logo-name">Red Fox</span></div>
+            <div class="logo-cell"><img src="wall/careerstudent.png" alt="Career Student"><span class="logo-name">Career Student</span></div>
+            <div class="logo-cell"><img src="wall/quantumclub-d.png" alt="The Quantum Club"><span class="logo-name">The Quantum Club</span></div>
+            <div class="logo-cell"><img src="wall/zoku-d.png" alt="Zoku"><span class="logo-name">Zoku</span></div>
+        </div>
     </div>
+    <script>document.querySelectorAll(".logo-track").forEach(function(t){t.innerHTML=t.innerHTML+t.innerHTML;});</script>
     <div class="reveal" style="text-align: center; margin-top: 40px;">
         <a href="case-studies" class="btn-secondary" style="font-size: 14px; padding: 14px 32px;">View All Case Studies →</a>
     </div>
@@ -1208,6 +1243,21 @@
         <div class="section-title">Real results from<br>real campaigns</div>
     </div>
     <div class="cases-grid">
+        <a href="case-study-gen-zero" class="case-card reveal">
+            <div class="case-card-spotlight"></div>
+            <div class="case-card-top">
+                <div class="case-card-client">Gen-Zero</div>
+            </div>
+            <div class="case-card-body">
+                <div class="case-card-headline">142 opportunities from 27,455 contacts in 13 weeks. A custom KVK-anchored data engine on Instantly, investment recouped in under 2 months.</div>
+                <div class="case-card-stats">
+                    <div><div class="case-card-stat-val" data-count="142">0</div><div class="case-card-stat-lbl">Opportunities</div></div>
+                    <div><div class="case-card-stat-val">13 wk</div><div class="case-card-stat-lbl">Timeline</div></div>
+                    <div><div class="case-card-stat-val">5.07%</div><div class="case-card-stat-lbl">Reply rate</div></div>
+                </div>
+            </div>
+            <div class="case-card-arrow">&#8599;</div>
+        </a>
         <!-- TSC temporarily hidden - awaiting client confirmation
         <a href="case-study-tsc" class="case-card reveal">
             <div class="case-card-spotlight"></div>
@@ -1602,7 +1652,7 @@
             <a href="https://instantly.ai/experts/jurre-groot" target="_blank" class="footer-glow-badge"><img src="badge-instantly.png" alt="Instantly"></a>
             <a href="https://www.apollo.io" target="_blank" class="footer-glow-badge"><img src="badge-apollo.png" alt="Apollo Partner"></a>
             <a href="https://www.s-bb.nl/" target="_blank" rel="noopener" class="footer-glow-badge"><img src="badge-sbb.png" alt="SBB Accredited Work Placement Company"></a>
-            <a href="https://www.utrechtbusiness.nl/ZO!_utrecht" target="_blank" rel="noopener" class="footer-glow-badge"><img src="badge-zo-utrecht.svg" alt="ZO! Utrecht Business Member"></a>
+            <a href="https://www.utrechtbusiness.nl/ZO!_utrecht" target="_blank" rel="noopener" class="footer-glow-badge"><img src="badge-zo-utrecht.png" alt="ZO! Utrecht Business Member"></a>
         </div>
         <div class="footer-bottom">
             <span>&copy; 2026 closed:in. All rights reserved.</span>
