@@ -164,7 +164,7 @@
         .logo-track { position: relative; z-index: 1; display: flex; gap: 14px; width: max-content; }
         .logo-track.lt-left { animation: marquee 70s linear infinite; }
         .logo-track.lt-right { animation: marqueeReverse 70s linear infinite; }
-        .logo-wall:hover .logo-track { animation-play-state: paused; }
+        .logo-track:hover { animation-play-state: paused; }
         @keyframes marqueeReverse { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
         .logo-cell { position: relative; flex-shrink: 0; width: 152px; height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; background: rgba(255,255,255,0.025); border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.35s, background 0.35s, transform 0.35s, box-shadow 0.35s; }
         a.logo-cell:hover { border-color: rgba(120,119,198,0.35); background: rgba(120,119,198,0.05); transform: translateY(-2px); box-shadow: 0 0 28px rgba(120,119,198,0.16); }
