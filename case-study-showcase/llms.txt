@@ -1,6 +1,6 @@
 # closed:in
 
-> closed:in is a GTM engineering agency based in Amsterdam, Netherlands. We build outbound sales systems for B2B service companies that want more qualified sales meetings within 2-3 weeks. We combine cold email infrastructure (Instantly), LinkedIn outreach, lead enrichment (Clay), website visitor tracking and CRM orchestration (Close) into a single managed outbound engine.
+> closed:in is a creative GTM engineering agency based in Amsterdam, Netherlands, awarded Most Innovative B2B GTM Engineering Agency 2026 (Netherlands) by Acquisition International. We build outbound sales systems for B2B service companies that want more qualified sales meetings within 2-3 weeks. We combine cold email infrastructure (Instantly), LinkedIn outreach, lead enrichment (Clay), website visitor tracking and CRM orchestration (Close) into a single managed outbound engine.
 
 ## About
 
@@ -28,7 +28,7 @@ closed:in clients average 20+ qualified sales meetings per month, with most enga
 
 ## Key pages
 
-- [Homepage](https://www.closedin.io/): overview, services, process, testimonials, partner badges.
+- [Homepage](https://www.closedin.io/): intro video, client stories (video testimonials), results and three case studies, 5-step process, services, who it is for, FAQ, partner badges.
 - [Case studies index](https://www.closedin.io/case-studies): all published client results.
 - [Case study: Verzendbazen](https://www.closedin.io/case-study-verzendbazen): e-commerce fulfillment outbound system.
 - [Case study: Jamezz](https://www.closedin.io/case-study-jamezz): custom outbound system for hospitality SaaS targeting an unreachable ICP.

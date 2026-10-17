@@ -1,0 +1,11 @@
+{
+  "name": "closedin-site-tools",
+  "private": true,
+  "type": "module",
+  "description": "Local QA and asset tooling for the closedin.io site. Not deployed.",
+  "devDependencies": {
+    "puppeteer-core": "25.13.0",
+    "lighthouse": "13.5.0",
+    "serve": "14.2.6"
+  }
+}

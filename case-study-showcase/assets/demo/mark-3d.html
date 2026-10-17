@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>closed:in 3D mark, standalone demo</title>
+<style>
+  :root { --surface-1: #f5f5f7; --accent: #0066cc; --bg: #ffffff; }
+  html, body { margin: 0; background: var(--bg); font: 17px/1.5 -apple-system, "Inter", sans-serif; color: #1d1d1f; }
+  .page { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+  .stage { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .mark { position: relative; width: min(100%, 420px); aspect-ratio: 1; background: var(--surface-1); border-radius: 20px; overflow: hidden; }
+  .mark canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; opacity: 0; transition: opacity .6s; }
+  .mark.is-live canvas { opacity: 1; }
+  .mark__poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+  .mark.is-live .mark__poster { opacity: 0; }
+  .filler { height: 180vh; padding-top: 24px; color: #6e6e73; }
+  code { background: #f5f5f7; padding: 2px 6px; border-radius: 6px; }
+</style>
+<script type="importmap">{"imports":{"three":"/assets/vendor/three-0.186.1/three.module.min.js","three/addons/":"/assets/vendor/three-0.186.1/addons/"}}</script>
+<script defer src="/assets/vendor/gsap-3.15.0/gsap.min.js"></script>
+<script defer src="/assets/vendor/gsap-3.15.0/ScrollTrigger.min.js"></script>
+</head>
+<body>
+<div class="page">
+  <h1>closed:in glass mark</h1>
+  <p>Scroll to turn it, move the mouse to tilt it. This page is the reference embed for <code>/assets/js/mark-3d.js</code>.</p>
+  <div class="stage">
+    <div class="mark" data-mark-3d><img class="mark__poster" src="/assets/img/mark-poster.webp" alt=""></div>
+    <div class="filler" data-trigger>
+      <p>Embed recipe: a square box with <code>data-mark-3d</code> and a poster image inside, the import map above, gsap + ScrollTrigger loaded, then:</p>
+      <pre><code>import('/assets/js/mark-3d.js').then(m =&gt; m.init(box, { gsap, ScrollTrigger, lenis: null, isMobile: false, trigger: '[data-trigger]' }));</code></pre>
+      <p>CONFIG and MARK at the top of mark-3d.js hold every tunable: rest pose, material (color, transmission, tint), scroll turns, tilt strength, idle spin. The geometry mirrors <code>/assets/brand/closedin-mark.svg</code>.</p>
+    </div>
+  </div>
+</div>
+<script>
+  window.addEventListener('load', function () {
+    gsap.registerPlugin(ScrollTrigger);
+    import('/assets/js/mark-3d.js').then(function (m) { m.init(document.querySelector('[data-mark-3d]'), { gsap: gsap, ScrollTrigger: ScrollTrigger, lenis: null, isMobile: false, trigger: '[data-trigger]' }); });
+  });
+</script>
+</body>
+</html>

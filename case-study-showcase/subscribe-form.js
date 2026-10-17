@@ -36,12 +36,13 @@
     var wrapper = document.createElement('div');
     wrapper.className = 'subscribe-success';
     wrapper.setAttribute('role', 'status');
+    var light = document.documentElement.getAttribute('data-theme') === 'light';
     wrapper.style.cssText = [
       'padding: 18px 22px',
-      'background: rgba(120,119,198,0.08)',
-      'border: 1px solid rgba(120,119,198,0.35)',
+      light ? 'background: #f5f5f7' : 'background: rgba(120,119,198,0.08)',
+      light ? 'border: 1px solid rgba(0,0,0,0.08)' : 'border: 1px solid rgba(120,119,198,0.35)',
       'border-radius: 14px',
-      'color: #fff',
+      light ? 'color: #1d1d1f' : 'color: #fff',
       'font-family: inherit',
       'font-size: 14px',
       'line-height: 1.5',
@@ -51,7 +52,7 @@
     ].join(';');
     wrapper.innerHTML =
       '<strong style="display:block;margin-bottom:6px;">Check your inbox.</strong>' +
-      '<span style="color:rgba(255,255,255,0.7);">' +
+      '<span style="color:' + (light ? '#6e6e73' : 'rgba(255,255,255,0.7)') + ';">' +
       (msg || 'Confirmation mail sent. Click the link to get your download.') +
       '</span>';
     form.parentNode.replaceChild(wrapper, form);
@@ -62,7 +63,8 @@
     if (existing) existing.remove();
     var note = document.createElement('div');
     note.className = 'subscribe-error';
-    note.style.cssText = 'margin-top:10px;font-size:13px;color:#ff9b9b;text-align:center;';
+    var lightErr = document.documentElement.getAttribute('data-theme') === 'light';
+    note.style.cssText = 'margin-top:10px;font-size:13px;color:' + (lightErr ? '#c0262d' : '#ff9b9b') + ';text-align:center;';
     note.textContent = msg || 'Something went wrong. Try again or check your email format.';
     form.appendChild(note);
   }

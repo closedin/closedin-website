@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>rendering</title>
+<style>html,body{margin:0;background:transparent}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"/case-study-showcase/assets/vendor/three-0.186.1/three.module.min.js","three/addons/":"/case-study-showcase/assets/vendor/three-0.186.1/addons/"}}</script>
+</head><body>
+<canvas id="c"></canvas>
+<script type="module">
+  import { renderStatic } from '/case-study-showcase/assets/js/mark-3d.js';
+  const size = parseInt(new URLSearchParams(location.search).get('size') || '1600', 10);
+  const c = document.getElementById('c'); c.width = size; c.height = size; c.style.width = size + 'px'; c.style.height = size + 'px';
+  renderStatic(c, size, { accent: '#0066cc', bg: new URLSearchParams(location.search).get('bg') || '#f3f3f3' });
+  requestAnimationFrame(() => requestAnimationFrame(() => { document.title = 'ready'; }));
+</script>
+</body></html>
